@@ -1,22 +1,19 @@
-import "./CardAdmin.css"
+// import "./CardAdmin.css"
 
-export default function CardAdmin(){
-    return(
-        
-        <div className="container mt-2">
-  
-  <div className="row mx-5 mt-4">
-    <div className="col-md-3 col-sm-6 item">
-      <div className="card item-card card-block">
-        <a href="">
-      <h4 className="card-title text-right px-2 pt-2"><i className="bi bi-gear-fill"></i></h4></a>
-    <img src="https://static.pexels.com/photos/7096/people-woman-coffee-meeting.jpg" alt="Photo of sunset"/>
-        <h5 className="item-card-title mt-3 mb-3 px-2">Sierra Web Development • Owner</h5>
-        <p className="card-text px-2">This is input company that builds websites, web apps and e-commerce solutions.</p> 
-  </div>
+export default function CardAdmin() {
+  return (
+    <div class="card" style={{ width: "18rem", height: "18rem" }}>
+      <img src="..." class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" class="btn btn-primary">
+          Go somewhere
+        </a>
+      </div>
     </div>
-    </div>
-    </div>
-        
-    )
+  );
 }
