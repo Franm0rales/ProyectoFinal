@@ -1,0 +1,83 @@
+
+
+h1,h2,h3 {
+    font-weight: 900;
+}
+h2 {
+    font-size: 3.6rem;
+}
+h3 {
+    font-size: 3rem;
+}
+.header {
+    height: 30rem;
+    background-image: url(../../assets/superior.jpg);
+    background-size: cover;
+    background-position: bottom center;
+}
+
+.bg-light {
+    background-color: white!important;
+}
+
+.nombre-sitio {
+    font-size: 2.4rem;
+    font-weight: 300;
+}
+.nombre-sitio span {
+    font-weight: 900;
+}
+.nav-link {
+    color: white!important;
+    font: bold;
+}
+@media (min-width:992px) {
+    .header .nav-link:first-child::before {
+        display: none;
+    }
+    .header .nav-link::before {
+     
+        margin-right: 1.5rem;
+    }
+}
+
+
+/* Nosotros */
+.sobre-nosotros-bg {
+    min-height: 44rem;
+    background-image: url(../../assets/nosotros.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}
+@media (min-width:768px) {
+    .sobre-nosotros-bg {
+        min-height: 36rem;
+    }
+}
+
+/**Modelos**/
+
+.modelo {
+    background-repeat: no-repeat;
+    min-height: 40rem;
+}
+@media (min-width:768px) {
+    .modelo {
+        min-height: 30rem;
+    }
+}
+.basico {
+    background-image: url(img/modelo1.jpg);
+    background-position: top right;
+}
+
+.premier {
+    background-image: url(img/modelo2.jpg);
+    background-position: top left;
+}
+
+.elite {
+    background-image: url(img/modelo3.jpg);
+    background-position: top right;
+}
+
