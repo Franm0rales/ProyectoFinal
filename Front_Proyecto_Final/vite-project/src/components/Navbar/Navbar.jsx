@@ -24,16 +24,16 @@ export default function Navbar() {
 
                 <div className="collapse navbar-collapse " id="navegacion">
                   <nav className="navegacion d-flex flex-column flex-lg-row text-center ">
-                    <a href="#" className="nav-link px-2">
+                    <Link to="/" className="nav-link px-2">
                       Inicio
-                    </a>
+                    </Link>
                     <a href="#" className="nav-link px-2">
                       Nosotros
                     </a>
                     <a href="#" className="nav-link px-2">
                       Quedadas
                     </a>
-                    <Link to="registro" className="nav-link px-2">
+                    <Link to="login" className="nav-link px-2">
                       Login
                     </Link>
                     <a href="#" className="nav-link pr-0 px-2">

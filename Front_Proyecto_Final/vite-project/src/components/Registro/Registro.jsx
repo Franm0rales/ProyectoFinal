@@ -78,7 +78,7 @@ export default function Registro() {
     </div>        <div className="valid-feedback">Looks good!</div>
       </div>
    
-      <div className="col-md-4">
+      <div className="col-md-8">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Email
         </label>
@@ -96,7 +96,7 @@ export default function Registro() {
     
     {errors.email}
     </div>      </div>
-      <div className="col-md-4">
+      <div className="col-md-6">
         <label htmlFor="exampleInputPassword1" className="form-label">
           Contraseña
         </label>
@@ -113,7 +113,7 @@ export default function Registro() {
     
     {errors.password}
     </div>      </div>
-      <div className="col-md-4">
+      <div className="col-md-6">
         <label htmlFor="exampleInputPassword1" className="form-label">
           Repetir contraseña
         </label>
@@ -130,7 +130,7 @@ export default function Registro() {
     
     {errors.passwordRepeat}
     </div>      </div>
-      <div className="mb-3 pl-3 form-check">
+      <div className="mb-3  form-check">
         <input type="checkbox" className="form-check-input" required />
         <label className="form-check-label" htmlFor="exampleCheck1">
           Aceptar política de privacidad

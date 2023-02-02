@@ -7,7 +7,7 @@ import AlumnosAdmin from "./views/AlumnosAdmin/AlumnosAdmin";
 import LayoutAdmin from "./components/LayoutAdmin/LayoutAdmin";
 import EmpresasAdmin from "./views/EmpresasAdmin/EmpresasAdmin";
 import TarjetasAdmin from "./views/TarjetasAdmin/TarjetasAdmin";
-import Registro from "./components/Registro/Registro";
+import LoginAcount from "./views/Login/LoginRegistro";
 const ROLES = {
   Admin: "1",
   User: "0",
@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="registro" element={<Registro />} />
+          <Route path="login" element={<LoginAcount />} />
           {/* </Route>
 
         <Route element={<PrivateRoute allowedRoles={[ROLES.Admin]} />}> */}
