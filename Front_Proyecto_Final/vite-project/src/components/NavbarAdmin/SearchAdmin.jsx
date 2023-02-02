@@ -1,20 +1,20 @@
 export default function SearchAdmin() {
   return (
-    <nav class="navbar bg-dark d-flex">
-      <div class="container ">
+    <nav class="navbar bg-dark ">
+      <div class="px-2 d-flex justify-content-between">
         <a class="navbar-brand" href="#">
           <img
             src="../../Avatar.png"
             alt="Bootstrap"
-            width="30"
-            height="24"
-            className="mr-3 rounded-circle img-thumbnail shadow-sm"
+            width="32"
+            height="28"
+            className=" rounded-circle"
           />
-          <span className="px-4 text-white">Fran admin</span>
+          <span className="px-2 text-white">Fran admin</span>
         </a>
-        <form class="d-flex" role="search">
+        <form class="d-flex justify-content-between" role="search">
           <input
-            class="form-control me-2"
+            class="form-control me-2 ml-3"
             type="search"
             placeholder="Search"
             aria-label="Search"
@@ -23,6 +23,7 @@ export default function SearchAdmin() {
             Search
           </button>
         </form>
+        <div></div>
       </div>
     </nav>
   );

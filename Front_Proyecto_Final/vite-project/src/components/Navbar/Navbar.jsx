@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Navbar() {
   return (
     <header className="header">
@@ -31,9 +33,9 @@ export default function Navbar() {
                     <a href="#" className="nav-link px-2">
                       Quedadas
                     </a>
-                    <a href="#" className="nav-link px-2">
+                    <Link to="registro" className="nav-link px-2">
                       Login
-                    </a>
+                    </Link>
                     <a href="#" className="nav-link pr-0 px-2">
                       Contacto
                     </a>
