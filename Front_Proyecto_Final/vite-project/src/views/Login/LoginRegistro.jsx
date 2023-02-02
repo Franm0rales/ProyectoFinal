@@ -7,5 +7,6 @@ export default function LoginAcount(){
         <Login/>
         <Registro/>
         </div>
+        
     )
 }

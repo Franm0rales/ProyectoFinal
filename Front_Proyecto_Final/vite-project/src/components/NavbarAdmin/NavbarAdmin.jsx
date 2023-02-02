@@ -52,14 +52,14 @@ export default function NavbarAdmin() {
                 
               </li>
               <li>
-                <a
-                  href="#submenu3"
-                  data-bs-toggle="collapse"
+                <Link
+                  to="galeriaadmin"
+                 
                   className="nav-link px-0 align-middle"
                 >
                   <i class="bi bi-images"></i>
                   <span className="ms-1 d-none d-sm-inline">Imagenes</span>{" "}
-                </a>
+                </Link>
                 
               </li>
               <li>

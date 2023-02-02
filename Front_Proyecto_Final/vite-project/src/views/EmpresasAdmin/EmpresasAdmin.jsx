@@ -99,7 +99,7 @@ export default function EmpresasAdmin() {
     </div>
     <div className="col-md-6">
     <label for="exampleDataList" class="form-label ">Ciudad</label>
-<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder=""/>
+<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="" required/>
 <datalist id="datalistOptions">
   <option value="Jaén"/>
   <option value="Cádiz"/>
@@ -145,11 +145,11 @@ export default function EmpresasAdmin() {
      
       <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">Descripción tarjeta</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
 </div>
 <div class="mb-3">
   <label for="formFile" class="form-label">Seleccionar foto tarjeta</label>
-  <input className="form-control" type="file" id="formFile"/>
+  <input className="form-control" type="file" id="formFile" required/>
 </div>
 
       <button disabled={isSubmitting} type="submit" className="btn btn-dark">
