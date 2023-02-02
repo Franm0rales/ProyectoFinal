@@ -1,6 +1,6 @@
 export default function SearchAdmin() {
   return (
-    <nav class="navbar bg-dark ">
+    <nav class="navbar bg-dark sticky-top">
       <div class="px-2 d-flex justify-content-between">
         <a class="navbar-brand" href="#">
           <img

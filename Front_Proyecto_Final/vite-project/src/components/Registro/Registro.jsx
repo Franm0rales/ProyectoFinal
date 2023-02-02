@@ -26,14 +26,18 @@ export default function Registro() {
         </label>
         <input
           type="text"
-          className={errors.nombre && touched.nombre ? "form-control input-error" : ""}
+          className={errors.nombre && touched.nombre ? "form-control is-invalid" : "form-control"}
           value={values.nombre}
           name="nombre"
           onChange={handleChange}
           onBlur={handleBlur}
+          id="nombre"
        
         />
-        {errors.nombre && touched.nombre && ( <p className="error">{errors.nombre}</p> )}
+        <div className={errors.nombre && touched.nombre ? "invalid-feeback is-invalid":"" }>
+    
+        {errors.nombre}
+        </div>
         <div className="valid-feedback">Looks good!</div>
       </div>
       <div className="col-md-4">
@@ -42,15 +46,18 @@ export default function Registro() {
         </label>
         <input
           type="text"
-          className={errors.apellidos && touched.apellidos ? "form-control input-error" : ""}
+          className={errors.apellidos && touched.apellidos ? "form-control is-invalid" : "form-control"}
           value={values.apellidos}
           name="apellidos"
           onChange={handleChange}
           onBlur={handleBlur}
        
         />
-        {errors.apellidos && touched.apellidos && ( <p className="error">{errors.apellidos}</p> )}
-        <div className="valid-feedback">Looks good!</div>
+   <div className={errors.apellidos
+     && touched.apellidos ? "invalid-feeback is-invalid":"" }>
+    
+    {errors.apellidos}
+    </div>        <div className="valid-feedback">Looks good!</div>
       </div>
       <div className="col-md-4">
         <label htmlFor="validationCustom01" className="form-label">
@@ -62,11 +69,13 @@ export default function Registro() {
           name="telefono"
           onChange={handleChange}
           onBlur={handleBlur}
-          className={errors.telefono && touched.telefono ? "form-control input-error" : ""}
+          className={errors.telefono && touched.telefono ? "form-control is-invalid" : "form-control"}
        
         />
-        {errors.telefono && touched.telefono && ( <p className="error">{errors.telefono}</p> )}
-        <div className="valid-feedback">Looks good!</div>
+   <div className={errors.telefono  && touched.telefono ? "invalid-feeback is-invalid":"" }>
+    
+    {errors.telefono}
+    </div>        <div className="valid-feedback">Looks good!</div>
       </div>
    
       <div className="col-md-4">
@@ -75,7 +84,7 @@ export default function Registro() {
         </label>
         <input
           type="email"
-          className={errors.email && touched.email ? "form-control input-error" : ""}
+          className={errors.email && touched.email ? "form-control is-invalid" : "form-control"}
           aria-describedby="emailHelp"
           value={values.email}
           name="email"
@@ -83,42 +92,48 @@ export default function Registro() {
           onBlur={handleBlur}
           
         />
-        {errors.email && touched.email && ( <p className="error">{errors.email}</p> )}
-      </div>
+   <div className={errors.email && touched.email ? "invalid-feeback is-invalid":"" }>
+    
+    {errors.email}
+    </div>      </div>
       <div className="col-md-4">
         <label htmlFor="exampleInputPassword1" className="form-label">
           Contraseña
         </label>
         <input
           type="password"
-          className={errors.password && touched.password ? "form-control input-error" : ""}
+          className={errors.password && touched.password ? "form-control is-invalid" : "form-control"}
           value={values.password}
           name="password"
           onChange={handleChange}
           onBlur={handleBlur}
        
         />
-        {errors.password && touched.password && ( <p className="error">{errors.password}</p> )}
-      </div>
+   <div className={errors.password && touched.password ? "invalid-feeback is-invalid":"" }>
+    
+    {errors.password}
+    </div>      </div>
       <div className="col-md-4">
         <label htmlFor="exampleInputPassword1" className="form-label">
           Repetir contraseña
         </label>
         <input
           type="password"
-          className={errors.passwordRepeat && touched.passwordRepeat ? "form-control input-error" : ""}
+          className={errors.passwordRepeat && touched.passwordRepeat ? "form-control is-invalid" : "form-control"}
           value={values.passwordRepeat}
           name="passwordRepeat"
           onChange={handleChange}
           onBlur={handleBlur}
        
         />
-        {errors.passwordRepeat && touched.passwordRepeat && ( <p className="error">{errors.passwordRepeat}</p> )}
-      </div>
+   <div className={errors.passwordRepeat && touched.passwordRepeat ? "invalid-feeback is-invalid":"" }>
+    
+    {errors.passwordRepeat}
+    </div>      </div>
       <div className="mb-3 pl-3 form-check">
-        <input type="checkbox" className="form-check-input" />
+        <input type="checkbox" className="form-check-input" required />
         <label className="form-check-label" htmlFor="exampleCheck1">
-          Recordar usuario y contraseña
+          Aceptar política de privacidad
         </label>
       </div>
       <button disabled={isSubmitting} type="submit" className="btn btn-dark">

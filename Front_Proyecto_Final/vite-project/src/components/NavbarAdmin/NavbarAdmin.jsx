@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 // import "./NavbarAdmin.css";
 export default function NavbarAdmin() {
   return (
-    <div className="">
+    <div className="sticky-top">
       <div className="row flex-nowrap ">
         <div className="px-0 bg-dark">
           <div className="flex-column align-items-center align-items-sm-start px-1 pt-2 text-white min-vh-100">
