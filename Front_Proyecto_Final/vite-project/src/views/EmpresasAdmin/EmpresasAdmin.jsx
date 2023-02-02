@@ -95,7 +95,19 @@ export default function EmpresasAdmin() {
    <div className={errors.email && touched.email ? "invalid-feeback is-invalid":"" }>
     
     {errors.email}
-    </div>      </div>
+    </div>      
+    </div>
+    <div className="col-md-6">
+    <label for="exampleDataList" class="form-label ">Ciudad</label>
+<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder=""/>
+<datalist id="datalistOptions">
+  <option value="Jaén"/>
+  <option value="Cádiz"/>
+  <option value="Almeria"/>
+  <option value="Córdoba"/>
+  <option value="Málaga"/>
+</datalist>
+</div>
       <div className="col-md-4">
         <label htmlFor="exampleInputPassword1" className="form-label">
           Contraseña
