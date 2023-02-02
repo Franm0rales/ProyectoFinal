@@ -130,12 +130,16 @@ export default function EmpresasAdmin() {
     
     {errors.passwordRepeat}
     </div>      </div>
-      <div className="mb-3 pl-3 form-check">
-        <input type="checkbox" className="form-check-input" required />
-        <label className="form-check-label" htmlFor="exampleCheck1">
-          Aceptar política de privacidad
-        </label>
-      </div>
+     
+      <div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Descripción tarjeta</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+<div class="mb-3">
+  <label for="formFile" class="form-label">Seleccionar foto tarjeta</label>
+  <input className="form-control" type="file" id="formFile"/>
+</div>
+
       <button disabled={isSubmitting} type="submit" className="btn btn-dark">
         Crear tarjeta ahora
       </button>
