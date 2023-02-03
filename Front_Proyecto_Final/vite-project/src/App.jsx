@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./views/Home/Home";
 import HomeAdmin from "./views/HomeAdmin/HomeAdmin";
+import {AuthContextProvider} from './context/AuthContext/AuthContext';
+
 // import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AlumnosAdmin from "./views/AlumnosAdmin/AlumnosAdmin";
 import LayoutAdmin from "./components/LayoutAdmin/LayoutAdmin";
@@ -15,6 +17,7 @@ const ROLES = {
 };
 function App() {
   return (
+  <AuthContextProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -33,6 +36,7 @@ function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+  </AuthContextProvider>
   );
 }
 export default App;

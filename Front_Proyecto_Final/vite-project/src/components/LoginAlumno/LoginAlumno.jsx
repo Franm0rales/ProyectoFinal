@@ -1,5 +1,8 @@
 import {useFormik} from "formik"
 import { BasicFormSchema } from "./BasicFormSchema";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext/AuthContext";
+import {useEffect } from "react";
 
 async function onSubmit(values,actions){
   console.log(values);
@@ -8,16 +11,24 @@ async function onSubmit(values,actions){
   actions.resetForm();
 }
 
-export default function Login() {
+export default function LoginAlumno() {
+  const {  authorization } = useAuthContext();
+  const navigate = useNavigate();
   const { values,touched, errors, handleBlur,handleChange,handleSubmit,isSubmitting } = useFormik({
   initialValues:{email:"",nombre:"",apellidos:"",password:"",passwordRepeat:"",telefono:""},
   validationSchema: BasicFormSchema,
   onSubmit,
 
  });
+
+ useEffect(() => {
+  if (authorization.Email) {
+    navigate("/");
+  }
+}, [authorization]);
   return (
     <div className="m-5 mb-5 ">
-    <h1>Login</h1>
+    <h1>Login Alumno</h1>
     
     <form onSubmit={handleSubmit} className="row g-3 needs-validation">
       

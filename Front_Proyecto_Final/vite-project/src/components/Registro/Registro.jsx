@@ -1,14 +1,31 @@
 import {useFormik} from "formik"
 import { BasicFormSchema } from "./BasicFormSchema";
 
-async function onSubmit(values,actions){
+export default function Registro() {
+async function onSubmit(values,actions,){
+
+    fetch("http://localhost:3000/user", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(values),
+    }).then((response) => {
+      console.log(values);
+      if (response.status === 400) {
+        alert("error al recibir el body");
+      } else if (response.status === 200) {
+        alert(`usuario ${values.Nombre} registrado correctamente`);
+      } else if (response.status === 409) {
+        alert("usuario ya registrado");
+      }
+    })
   console.log(values);
   console.log(actions);
   await new Promise((resolve)=>setTimeout(resolve,2000))
   actions.resetForm();
 }
 
-export default function Registro() {
   const { values,touched, errors, handleBlur,handleChange,handleSubmit,isSubmitting } = useFormik({
   initialValues:{email:"",nombre:"",apellidos:"",password:"",passwordRepeat:"",telefono:""},
   validationSchema: BasicFormSchema,
