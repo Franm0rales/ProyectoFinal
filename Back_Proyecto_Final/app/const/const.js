@@ -14,6 +14,7 @@ export const data = {
   id: "id",
   idUsuario: "idUsuario",
   usuario: "usuario",
+  empresa: "empresa",
   email: "email",
   telefono: "telefono",
   CIF: "CIF",

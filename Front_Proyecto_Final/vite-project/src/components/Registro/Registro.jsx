@@ -41,6 +41,7 @@ export default function Registro() {
       password: "",
       passwordRepeat: "",
       telefono: "",
+      ciudad: "",
     },
     validationSchema: BasicFormSchema,
     onSubmit,
@@ -130,6 +131,34 @@ export default function Registro() {
           >
             {errors.telefono}
           </div>{" "}
+          <div className="valid-feedback">Looks good!</div>
+        </div>
+        <div className="col-md-4">
+          <label htmlFor="validationCustom01" className="form-label">
+            Ciudad
+          </label>
+          <input
+            type="text"
+            className={
+              errors.ciudad && touched.ciudad
+                ? "form-control is-invalid"
+                : "form-control"
+            }
+            value={values.ciudad}
+            name="ciudad"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            id="ciudad"
+          />
+          <div
+            className={
+              errors.ciudad && touched.ciudad
+                ? "invalid-feeback is-invalid"
+                : ""
+            }
+          >
+            {errors.ciudad}
+          </div>
           <div className="valid-feedback">Looks good!</div>
         </div>
 

@@ -1,14 +1,8 @@
-import { createContext, useState, useContext } from "react";
-import jwt_decode from "jwt-decode";
-
 const AuthContext = createContext({
   authorization: {
-    email: null,
-    role: null,
-    idUsuario: null,
+    user: null,
   },
-  user: 2,
-  toggleUser: () => {},
+
   login: () => {},
   logout: () => {},
   errorMessage: null,
@@ -27,8 +21,7 @@ export function AuthContextProvider({ children }) {
   );
   const [errorMessage, setErrorMessage] = useState(null);
 
-  async function login(user) {
-    console.log(user);
+  async function login(e, user) {
     const response = await fetch("http://localhost:3000/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -56,20 +49,12 @@ export function AuthContextProvider({ children }) {
       role: null,
     });
   }
-  function toggleUser() {
-    if (user === 1) {
-      return 2;
-    } else {
-      return 1;
-    }
-  }
   console.log(authorization);
   const value = {
     authorization,
     errorMessage,
     login,
     logout,
-    toggleUser,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

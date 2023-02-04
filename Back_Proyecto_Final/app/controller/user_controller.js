@@ -10,16 +10,20 @@ const controller = {};
 controller.addAlumno = async (req, res) => {
   const { nombre, apellidos, email, password, telefono, ciudad } = req.body;
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
-  if (!nombre || !email || !password || !apellidos || !telefono)
+  if (!nombre || !email || !password || !apellidos || !telefono || !ciudad)
     return res.status(400).send("Error al recibir el body");
   try {
     // Buscamos el usuario en la base de datos
-    const alumnoEmail = await dao.getUserByData(tables[2], email, data.email);
+    const alumnoEmail = await dao.getUserByData(
+      tables[role.alumno],
+      data.email,
+      email
+    );
     // Buscamos el telefono ya está registrado
     const alumnoTelefono = await dao.getUserByData(
-      tables[2],
-      telefono,
-      data.telefono
+      tables[role.alumno],
+      data.telefono,
+      telefono
     );
     // Comprobamos que no los usuarios matcheados no están eliminados
     if (
@@ -34,7 +38,7 @@ controller.addAlumno = async (req, res) => {
     }
     // Si no existe lo registramos
     let usuarioObj = {
-      role: role.alumno,
+      role: role.alumno + 1,
     };
     const idUser = await dao.addUser(usuarioObj, data.usuario);
 
@@ -47,18 +51,19 @@ controller.addAlumno = async (req, res) => {
       password: md5(password),
       idUsuario: idUser,
     };
-    const addAlumno = await dao.addUser(alumnoObj, tables[2]);
-    if (addAlumno) {
-      await transporter.sendMail({
-        from: '"Bienvenido a proyeto" <picassomorales@gmail.com>', // sender address
-        to: email, // list of receivers
-        subject: "Hello ✔", // Subject line
-        // text: "Hello world?", // plain text body
-        html: "<b>Bienvenido a Canteen design,espero disfrutes de nuestros productos para cualquier consulta contactanos, gracias por registrarte!! Enlace de la web: http://127.0.0.1:5173/login</b>", // html body
-      });
+    const addAlumno = await dao.addUser(alumnoObj, tables[role.alumno]);
+    //Para enviar email cuando se registre
+    // if (addAlumno) {
+    //   await transporter.sendMail({
+    //     from: '"Bienvenido a proyeto" <picassomorales@gmail.com>', // sender address
+    //     to: email, // list of receivers
+    //     subject: "Hello ✔", // Subject line
+    //     // text: "Hello world?", // plain text body
+    //     html: "<b>Bienvenido a Canteen design,espero disfrutes de nuestros productos para cualquier consulta contactanos, gracias por registrarte!! Enlace de la web: http://127.0.0.1:5173/login</b>", // html body
+    //   });
 
-      return res.send(`Usuario ${nombre} con id: ${addAlumno} registrado`);
-    }
+    return res.send(`Usuario ${nombre} con id: ${addAlumno} registrado`);
+    //}
   } catch (e) {
     console.log(e.message);
   }
@@ -91,18 +96,22 @@ controller.addEmpresa = async (req, res) => {
   // Buscamos el usuario en la base de datos
   try {
     const empresaEmail = await dao.getUserByData(
-      data.empresa,
+      tables[role.empresa],
       data.email,
       email
     );
     // Si existe el usuario respondemos con un 409 (conflict)
     if (empresaEmail.length > 0)
       return res.status(409).send("Correo ya registrado");
-    const empresaCIF = await dao.getUserByData(data.empresa, data.CIF, CIF);
+    const empresaCIF = await dao.getUserByData(
+      tables[role.empresa],
+      data.CIF,
+      CIF
+    );
     // Si existe el usuario respondemos con un 409 (conflict)
     if (empresaCIF.length > 0) return res.status(409).send("CIF ya registrado");
     const empresaTelefono = await dao.getUserByData(
-      data.empresa,
+      tables[role.empresa],
       data.telefono,
       telefono
     );
@@ -111,7 +120,7 @@ controller.addEmpresa = async (req, res) => {
       return res.status(409).send("Telefono ya registrado");
     // Si no existe lo registramos
     let usuarioObj = {
-      role: role.empresa,
+      role: role.empresa + 1,
     };
     const idUser = await dao.addUser(usuarioObj, data.usuario);
     let empresaObj = {
@@ -155,7 +164,7 @@ controller.addAdmin = async (req, res) => {
       return res.status(409).send("Correo ya registrado");
     // Si no existe lo registramos
     let usuarioObj = {
-      role: role.admin,
+      role: role.admin + 1,
     };
     const idUser = await dao.addUser(usuarioObj, data.usuario);
     let adminObj = {
@@ -250,14 +259,13 @@ controller.deleteUser = async (req, res) => {
 };
 // Controlador para el login de un usuario
 controller.loginUser = async (req, res) => {
-  const { email, password } = req.body;
-  const usuario = req.params.role;
-  const tabla = tables[usuario];
+  const { email, password /*role */ } = req.body;
+  const tabla = tables[role.alumno];
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
   if (!email || !password)
     return res.status(400).send("Error al recibir el body");
   try {
-    let userData = await dao.getUserByData(tabla, email, data.email);
+    let userData = await dao.getUserByData(tabla, data.email, email);
     // Si no existe el usuario respondemos con un 404 (not found)
     if (userData.length <= 0)
       return res.status(404).send("usuario no registrado");
@@ -272,8 +280,8 @@ controller.loginUser = async (req, res) => {
     // Buscamos el rol en la tabla usuario
     let user = await dao.getUserByData(
       data.usuario,
-      userData.idUsuario,
-      data.id
+      data.id,
+      userData.idUsuario
     );
     // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
     [user] = user;

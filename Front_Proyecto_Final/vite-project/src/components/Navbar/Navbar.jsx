@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext/AuthContext";
 
 export default function Navbar() {
+  const { logout, authorization } = useAuthContext();
   return (
     <header className="header">
       <div className="container h-100">
@@ -36,9 +38,54 @@ export default function Navbar() {
                     <a href="#" className="nav-link pr-0 px-2">
                       Contacto
                     </a>
-                    <Link to="login" className="nav-link px-2">
-                      Login
-                    </Link>
+                    {!authorization?.email ? (
+                      <Link to="login" className="nav-link px-2">
+                        Login
+                      </Link>
+                    ) : (
+                      <Link
+                        class="nav-link text-dark "
+                        aria-current="page"
+                        to="/"
+                      >
+                        <div
+                          data-bs-toggle="dropdown"
+                          className=" dropdown text-end mt-1 bg-dark rounded-pill badge d-flex justify-content-center "
+                        >
+                          {" "}
+                          {authorization.email}
+                          <ul class="dropdown-menu text-small">
+                            <li>
+                              <a class="dropdown-item" href="#">
+                                New project...
+                              </a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="#">
+                                Settings
+                              </a>
+                            </li>
+                            <li>
+                              <a class="dropdown-item" href="#">
+                                Profile
+                              </a>
+                            </li>
+                            <li>
+                              <hr class="dropdown-divider" />
+                            </li>
+                            <li>
+                              <Link
+                                onClick={logout}
+                                class="dropdown-item"
+                                to="/"
+                              >
+                                Log Out
+                              </Link>
+                            </li>
+                          </ul>
+                        </div>
+                      </Link>
+                    )}
                   </nav>
                 </div>
               </div>

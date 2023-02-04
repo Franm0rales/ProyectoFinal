@@ -19,7 +19,7 @@ userQueries.addUser = async (data, tabla) => {
   }
 };
 //Query para buscar usuario por dato
-userQueries.getUserByData = async (tabla, dato, columna) => {
+userQueries.getUserByData = async (tabla, columna, dato) => {
   //Conectamos con la base de datos y buscamos si existe el usuario por el email
   let conn = null;
   try {

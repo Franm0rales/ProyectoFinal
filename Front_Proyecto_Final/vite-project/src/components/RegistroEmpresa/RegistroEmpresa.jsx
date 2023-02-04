@@ -42,8 +42,8 @@ export default function RegistroEmpresa() {
       passwordRepeat: "",
       telefono: "",
       ciudad: "",
-      direccion:"",
-      descripcion:""
+      direccion: "",
+      descripcion: "",
     },
     validationSchema: BasicFormSchema,
     onSubmit,
@@ -99,9 +99,7 @@ export default function RegistroEmpresa() {
           />
           <div
             className={
-              errors.CIF && touched.CIF
-                ? "invalid-feeback is-invalid"
-                : ""
+              errors.CIF && touched.CIF ? "invalid-feeback is-invalid" : ""
             }
           >
             {errors.CIF}
@@ -173,7 +171,7 @@ export default function RegistroEmpresa() {
                 : "form-control"
             }
             value={values.direccion}
-            name="ciudad"
+            name="direccion"
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -187,11 +185,12 @@ export default function RegistroEmpresa() {
             {errors.direccion}
           </div>{" "}
         </div>
-          
-    
         <div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Descripción tarjeta</label>
-  <textarea type="text"
+          <label for="exampleFormControlTextarea1" class="form-label">
+            Descripción tarjeta
+          </label>
+          <textarea
+            type="text"
             className={
               errors.descripcion && touched.descripcion
                 ? "form-control is-invalid"
@@ -201,15 +200,18 @@ export default function RegistroEmpresa() {
             value={values.descripcion}
             name="descripcion"
             onChange={handleChange}
-            onBlur={handleBlur}></textarea>
-             <div
+            onBlur={handleBlur}
+          ></textarea>
+          <div
             className={
-              errors.descripcion && touched.descripcion ? "invalid-feeback is-invalid" : ""
+              errors.descripcion && touched.descripcion
+                ? "invalid-feeback is-invalid"
+                : ""
             }
           >
             {errors.descripcion}
-            </div>
-</div>
+          </div>
+        </div>
         <div className="col-md-8">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Email
@@ -261,7 +263,7 @@ export default function RegistroEmpresa() {
             {errors.password}
           </div>{" "}
         </div>
-       
+
         <div className="col-md-6">
           <label htmlFor="exampleInputPassword1" className="form-label">
             Repetir contraseña
