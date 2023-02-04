@@ -10,6 +10,7 @@ export default function Home() {
         <Descripcion />
         <Quedadas />
         <Galeria />
+  
       </div>
     </>
   );

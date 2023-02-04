@@ -63,10 +63,10 @@ export default function NavbarAdmin() {
                 
               </li>
               <li>
-                <a href="#" className="nav-link px-0 align-middle">
+                <Link to="/" className="nav-link px-0 align-middle">
                   <i class="bi bi-person-dash"></i>
                   <span className="ms-1 d-none d-sm-inline">Log out</span>{" "}
-                </a>
+                </Link>
               </li>
             </ul>
             <hr />

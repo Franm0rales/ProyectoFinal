@@ -33,12 +33,12 @@ export default function Navbar() {
                     <a href="#" className="nav-link px-2">
                       Quedadas
                     </a>
-                    <Link to="login" className="nav-link px-2">
-                      Login
-                    </Link>
                     <a href="#" className="nav-link pr-0 px-2">
                       Contacto
                     </a>
+                    <Link to="login" className="nav-link px-2">
+                      Login
+                    </Link>
                   </nav>
                 </div>
               </div>

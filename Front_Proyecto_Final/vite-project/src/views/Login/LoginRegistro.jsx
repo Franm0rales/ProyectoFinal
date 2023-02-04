@@ -8,18 +8,19 @@ export default function LoginAcount(){
     const [view,setView] = useState("Alumno")
     return(
         <div className="d-flex  justify-content-around pt-5">
-            <nav className="">
-            <ul className="nav nav-tabs">
-                 <li className="nav-item">
-                    <a onClick={()=>setView("Alumno")} className="nav-link active text-dark "  >Alumno</a>
+            <nav className="col-5">
+            <ul className="nav nav-tabs px-5">
+                 <li className="">
+                    <a type="button" onClick={()=>setView("Alumno")} className="nav-link active text-dark "  >Alumno</a>
                 </li>
-                <li className="nav-item">
-                    <a onClick={()=>setView("Empresa")} className="nav-link  text-dark" >Empresa</a>
+                <li className="">
+                    <a type="button" onClick={()=>setView("Empresa")} className="nav-link active text-dark" >Empresa</a>
                 </li>
            </ul>
-            </nav>
         {view === "Alumno" ? <LoginAlumno/> : <LoginEmpresa/>}
         <Registro/>
+            </nav>
+           
         </div>
         
     )
