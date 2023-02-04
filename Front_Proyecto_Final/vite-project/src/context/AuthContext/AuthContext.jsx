@@ -3,9 +3,10 @@ import jwt_decode from "jwt-decode";
 
 const AuthContext = createContext({
   authorization: {
-    Email: null,
+    email: null,
     role: null,
   },
+  
   login: () => {},
   logout: () => {},
   errorMessage: null,
@@ -13,18 +14,18 @@ const AuthContext = createContext({
 export default AuthContext;
 
 const MY_AUTH_APP = "MY_AUTH_APP";
-
+console.log("email");
 export function AuthContextProvider({ children }) {
   const [authorization, setAuthorization] = useState(
     JSON.parse(window.localStorage.getItem(MY_AUTH_APP)) ?? {
-      Email: null,
+      email: null,
       role: null,
     }
   );
   const [errorMessage, setErrorMessage] = useState(null);
 
   async function login(e, user) {
-    e.preventDefault();
+ 
     const response = await fetch("http://localhost:3000/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -49,7 +50,7 @@ export function AuthContextProvider({ children }) {
     window.localStorage.removeItem(
       MY_AUTH_APP)
     setAuthorization({
-      Email: null,
+      email: null,
       role: null,
     });
   }

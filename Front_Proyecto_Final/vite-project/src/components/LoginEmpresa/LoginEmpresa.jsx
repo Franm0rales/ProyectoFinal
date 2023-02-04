@@ -15,14 +15,14 @@ export default function LoginEmpresa() {
   const {  authorization } = useAuthContext();
   const navigate = useNavigate();
   const { values,touched, errors, handleBlur,handleChange,handleSubmit,isSubmitting } = useFormik({
-  initialValues:{email:"",nombre:"",apellidos:"",password:"",passwordRepeat:"",telefono:""},
+  initialValues:{email:"",password:""},
   validationSchema: BasicFormSchema,
   onSubmit,
 
  });
 
  useEffect(() => {
-  if (authorization.Email) {
+  if (authorization.email) {
     navigate("/");
   }
 }, [authorization]);

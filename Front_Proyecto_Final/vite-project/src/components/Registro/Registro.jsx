@@ -2,7 +2,7 @@ import {useFormik} from "formik"
 import { BasicFormSchema } from "./BasicFormSchema";
 
 export default function Registro() {
-async function onSubmit(values,actions,){
+async function onSubmit(values,actions){
 
     fetch("http://localhost:3000/user", {
       method: "POST",

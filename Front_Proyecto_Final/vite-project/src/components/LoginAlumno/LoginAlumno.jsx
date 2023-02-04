@@ -4,37 +4,34 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 import {useEffect } from "react";
 
-async function onSubmit(values,actions){
-  console.log(values);
-  console.log(actions);
-  await new Promise((resolve)=>setTimeout(resolve,2000))
-  actions.resetForm();
-}
+
+
 
 export default function LoginAlumno() {
   const {  authorization } = useAuthContext();
   const navigate = useNavigate();
-  const { values,touched, errors, handleBlur,handleChange,handleSubmit,isSubmitting } = useFormik({
-  initialValues:{email:"",nombre:"",apellidos:"",password:"",passwordRepeat:"",telefono:""},
+  async function onSubmit(values,actions){
+ 
+ console.log(values);
+ console.log(actions);
+ await new Promise((resolve)=>setTimeout(resolve,2000))
+
+}
+const { login,values,touched, errors, handleBlur,handleChange,handleSubmit,isSubmitting } = useFormik({
+  initialValues:{email:"",password:""},
   validationSchema: BasicFormSchema,
   onSubmit,
 
  });
-
  useEffect(() => {
-  if (authorization.Email) {
+  if (authorization.email) {
     navigate("/");
   }
 }, [authorization]);
   return (
     <div className="m-5 mb-5 ">
     <h1>Login Alumno</h1>
-    
-    <form onSubmit={handleSubmit} className="row g-3 needs-validation">
-      
-      
-     
-   
+    <form onSubmit={login} className="row g-3 needs-validation">
       <div className="mb-3">
         <label htmlFor="exampleInputEmail1" className="form-label">
           Email
