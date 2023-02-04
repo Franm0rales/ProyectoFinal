@@ -1,6 +1,6 @@
 import dao from "../services/dao.js";
 import md5 from "md5";
-import jwt_decode, { InvalidTokenError } from "jwt-decode";
+import jwt_decode from "jwt-decode";
 import { SignJWT, jwtVerify } from "jose";
 import { role, data, tables } from "../const/const.js";
 import { transporter } from "../config/mailer.js";
@@ -10,16 +10,16 @@ const controller = {};
 controller.addAlumno = async (req, res) => {
   const { nombre, apellidos, email, password, telefono, ciudad } = req.body;
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
-  if (!nombre || !email || !password || !apellidos || !telefono || !ciudad)
+  if (!nombre || !email || !password || !apellidos || !telefono)
     return res.status(400).send("Error al recibir el body");
   try {
     // Buscamos el usuario en la base de datos
-    const alumnoEmail = await dao.getUserByData(data.alumno, data.email, email);
+    const alumnoEmail = await dao.getUserByData(tables[2], email, data.email);
     // Buscamos el telefono ya está registrado
     const alumnoTelefono = await dao.getUserByData(
-      data.alumno,
-      data.telefono,
-      telefono
+      tables[2],
+      telefono,
+      data.telefono
     );
     // Comprobamos que no los usuarios matcheados no están eliminados
     if (
@@ -47,7 +47,7 @@ controller.addAlumno = async (req, res) => {
       password: md5(password),
       idUsuario: idUser,
     };
-    const addAlumno = await dao.addUser(alumnoObj, data.alumno);
+    const addAlumno = await dao.addUser(alumnoObj, tables[2]);
     if (addAlumno) {
       await transporter.sendMail({
         from: '"Bienvenido a proyeto" <picassomorales@gmail.com>', // sender address
