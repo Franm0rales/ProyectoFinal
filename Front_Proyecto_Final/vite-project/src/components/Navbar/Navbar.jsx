@@ -57,7 +57,7 @@ export default function Navbar() {
                           <ul class="dropdown-menu text-small">
                             <li>
                               <a class="dropdown-item" href="#">
-                                New project...
+                                New project
                               </a>
                             </li>
                             <li>
