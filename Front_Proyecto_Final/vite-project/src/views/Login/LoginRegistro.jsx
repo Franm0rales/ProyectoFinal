@@ -2,6 +2,7 @@ import { useState } from "react";
 import LoginAlumno from "../../components/LoginAlumno/LoginAlumno";
 import LoginEmpresa from "../../components/LoginEmpresa/LoginEmpresa";
 import Registro from "../../components/Registro/Registro";
+import RegistroEmpresa from "../../components/RegistroEmpresa/RegistroEmpresa";
 
 
 export default function LoginAcount(){
@@ -17,8 +18,10 @@ export default function LoginAcount(){
                     <a type="button" onClick={()=>setView("Empresa")} className="nav-link active text-dark" >Empresa</a>
                 </li>
            </ul>
-        {view === "Alumno" ? <LoginAlumno/> : <LoginEmpresa/>}
-        <Registro/>
+        {view === "Alumno" ? <LoginAlumno/> : <LoginEmpresa/> }
+        {view === "Alumno" ? <Registro/> : <RegistroEmpresa/> }
+
+       
             </nav>
            
         </div>
