@@ -9,5 +9,7 @@ export const BasicFormSchema = yup.object().shape({
     telefono: yup.number().positive().integer().required("Requerido"),
     CIF:yup.string().required("Requerido"),
     ciudad:yup.string().required("Requerido"),
+    direccion:yup.string().required("Requerido"),
+   descripcion:yup.string().required("Requerido"),
 
 })

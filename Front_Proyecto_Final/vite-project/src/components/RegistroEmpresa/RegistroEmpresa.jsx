@@ -41,7 +41,9 @@ export default function RegistroEmpresa() {
       password: "",
       passwordRepeat: "",
       telefono: "",
-      ciudad: ""
+      ciudad: "",
+      direccion:"",
+      descripcion:""
     },
     validationSchema: BasicFormSchema,
     onSubmit,
@@ -159,6 +161,55 @@ export default function RegistroEmpresa() {
             {errors.ciudad}
           </div>{" "}
         </div>
+        <div className="col-md-6">
+          <label htmlFor="exampleInputPassword1" className="form-label">
+            Dirección
+          </label>
+          <input
+            type="text"
+            className={
+              errors.direccion && touched.direccion
+                ? "form-control is-invalid"
+                : "form-control"
+            }
+            value={values.direccion}
+            name="ciudad"
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          <div
+            className={
+              errors.direccion && touched.direccion
+                ? "invalid-feeback is-invalid"
+                : ""
+            }
+          >
+            {errors.direccion}
+          </div>{" "}
+        </div>
+          
+    
+        <div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Descripción tarjeta</label>
+  <textarea type="text"
+            className={
+              errors.descripcion && touched.descripcion
+                ? "form-control is-invalid"
+                : "form-control"
+            }
+            aria-describedby="emailHelp"
+            value={values.descripcion}
+            name="descripcion"
+            onChange={handleChange}
+            onBlur={handleBlur}></textarea>
+             <div
+            className={
+              errors.descripcion && touched.descripcion ? "invalid-feeback is-invalid" : ""
+            }
+          >
+            {errors.descripcion}
+            </div>
+</div>
         <div className="col-md-8">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Email
