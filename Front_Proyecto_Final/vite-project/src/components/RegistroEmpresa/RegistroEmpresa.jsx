@@ -37,10 +37,11 @@ export default function RegistroEmpresa() {
     initialValues: {
       email: "",
       nombre: "",
-      apellidos: "",
+      CIF: "",
       password: "",
       passwordRepeat: "",
       telefono: "",
+      ciudad: ""
     },
     validationSchema: BasicFormSchema,
     onSubmit,
@@ -80,28 +81,28 @@ export default function RegistroEmpresa() {
         </div>
         <div className="col-md-4">
           <label htmlFor="validationCustom02" className="form-label">
-            Apellidos
+            CIF
           </label>
           <input
             type="text"
             className={
-              errors.apellidos && touched.apellidos
+              errors.CIF && touched.CIF
                 ? "form-control is-invalid"
                 : "form-control"
             }
-            value={values.apellidos}
-            name="apellidos"
+            value={values.CIF}
+            name="CIF"
             onChange={handleChange}
             onBlur={handleBlur}
           />
           <div
             className={
-              errors.apellidos && touched.apellidos
+              errors.CIF && touched.CIF
                 ? "invalid-feeback is-invalid"
                 : ""
             }
           >
-            {errors.apellidos}
+            {errors.CIF}
           </div>{" "}
           <div className="valid-feedback">Looks good!</div>
         </div>
@@ -132,7 +133,32 @@ export default function RegistroEmpresa() {
           </div>{" "}
           <div className="valid-feedback">Looks good!</div>
         </div>
-
+        <div className="col-md-6">
+          <label htmlFor="exampleInputPassword1" className="form-label">
+            Ciudad
+          </label>
+          <input
+            type="text"
+            className={
+              errors.ciudad && touched.ciudad
+                ? "form-control is-invalid"
+                : "form-control"
+            }
+            value={values.ciudad}
+            name="ciudad"
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          <div
+            className={
+              errors.ciudad && touched.ciudad
+                ? "invalid-feeback is-invalid"
+                : ""
+            }
+          >
+            {errors.ciudad}
+          </div>{" "}
+        </div>
         <div className="col-md-8">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Email
@@ -184,6 +210,7 @@ export default function RegistroEmpresa() {
             {errors.password}
           </div>{" "}
         </div>
+       
         <div className="col-md-6">
           <label htmlFor="exampleInputPassword1" className="form-label">
             Repetir contraseña

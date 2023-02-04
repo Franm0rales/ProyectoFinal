@@ -7,6 +7,7 @@ export const BasicFormSchema = yup.object().shape({
     password: yup.string().matches(passwordRules,{message:"Por favor necesita una password con mayúscula,número y mínimo 5 caracteres"}).required("Requerido"),
     passwordRepeat: yup.string().oneOf([yup.ref("password"),null],"Password incorrecta").required("Requerido"),
     telefono: yup.number().positive().integer().required("Requerido"),
-    apellidos:yup.string().required("Requerido"),
+    CIF:yup.string().required("Requerido"),
+    ciudad:yup.string().required("Requerido"),
 
 })
