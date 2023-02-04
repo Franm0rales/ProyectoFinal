@@ -37,14 +37,16 @@ userQueries.getUserByData = async (tabla, columna, dato) => {
   }
 };
 // Modificar un usuario por su id
-userQueries.updateUser = async (tabla, id, userData) => {
+userQueries.updateUser = async (tabla, id, userData, columna) => {
+  // Eliminamos todos los campos que no se han rellenado
+  userData = await utils.removeUndefinedKeys(userData);
   // Conectamos con la base de datos
   let conn = null;
   try {
     conn = await db.createConnection();
     // Actualizamos el usuario con los datos introducidos
     return await db.query(
-      `UPDATE ${tabla} SET ? WHERE idUsuario = ?`,
+      `UPDATE ${tabla} SET ? WHERE ${columna} = ?`,
       [userData, id],
       "update",
       conn

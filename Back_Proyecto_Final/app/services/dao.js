@@ -14,8 +14,8 @@ dao.addAlumno = async (userData, idUser) =>
 dao.addEmpresa = async (userData, idUser) =>
   await userQueries.addEmpresa(userData, idUser);
 // Modificar usuario por su id
-dao.updateUser = async (tabla, id, userData) =>
-  await userQueries.updateUser(tabla, id, userData);
+dao.updateUser = async (tabla, id, userData, columna) =>
+  await userQueries.updateUser(tabla, id, userData, columna);
 // Eliminar usuario por su id
 dao.deleteUser = async (id) => await userQueries.deleteUser(id);
 

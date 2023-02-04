@@ -184,7 +184,7 @@ controller.addAdmin = async (req, res) => {
 controller.updateUser = async (req, res) => {
   // Token hardcodeado para comprobar que funciona
   const authorization =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwIiwicm9sZSI6IjIifQ.bZ8Xdo1Lk-awrIOKUItS9_Krd95Mx2pzJ5UAlSM00vI";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjFwaWNhc3NvbW9yYWxlc0BnbWFpbC5jb20iLCJpZCI6IjQwIn0.CQw13UaNs6PG4ouCakwYMXtFEnLVD4sq_x9XDZedkwc";
   // Recibimos el token desde el header
   // const { authorization } = req.headers;
   // Decodificamos el token para saber el id y el role
@@ -198,7 +198,7 @@ controller.updateUser = async (req, res) => {
       return res.status(400).send("Error al recibir el body");
 
     // Usuario que quiere modificar los datos
-    const tabla = tables[tokenDecode.role];
+    const tabla = tables[2];
 
     // Actualizamos el usuario
     await dao.updateUser(tabla, tokenDecode.id, req.body, data.idUsuario);
