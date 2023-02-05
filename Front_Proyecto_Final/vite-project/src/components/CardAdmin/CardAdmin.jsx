@@ -3,7 +3,7 @@ import "./CardAdmin.css"
 export default function CardAdmin(user) {
   return (
 
-    <div className="container pt-4 pb-3">
+    <div className="container pt-4 pb-2 col-4">
       <div className="card   ">
         <div className="imgContainer">
           <img src="https://images.pexels.com/photos/1456268/pexels-photo-1456268.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
