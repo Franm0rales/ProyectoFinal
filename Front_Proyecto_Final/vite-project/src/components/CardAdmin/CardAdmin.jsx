@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import "./CardAdmin.css"
 
 export default function CardAdmin(user) {
-  console.log(user)
   return (
     
     <div className="container pt-3 pb-2 col-3">

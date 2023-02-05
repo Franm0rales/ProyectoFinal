@@ -3,6 +3,7 @@ import { BasicFormSchema } from "./BasicFormSchema";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 import { useParams } from "react-router-dom";
 export default function SettingsUser() {
+  
   const { authorization } = useAuthContext();
   const params = useParams()
   async function onSubmit(values, actions) {
@@ -22,8 +23,7 @@ export default function SettingsUser() {
         alert("usuario ya modificado");
       }
     });
-    console.log(values);
-    console.log(actions);
+   
     await new Promise((resolve) => setTimeout(resolve, 2000));
     actions.resetForm();
   }
@@ -70,6 +70,8 @@ export default function SettingsUser() {
             onChange={handleChange}
             onBlur={handleBlur}
             id="nombre"
+            
+            
           />
           <div
             className={
