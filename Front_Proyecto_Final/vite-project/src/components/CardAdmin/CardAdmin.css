@@ -45,11 +45,7 @@
     margin-top: -40px;
     transition-delay: 0.3s;
 }
-.container{
-    display: flex;
-    
-    flex-wrap: wrap;
-}
+
 @media (max-width: 330px){
     .container .card .imgContainer{
         left: -2px;
