@@ -4,28 +4,33 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 import {useEffect } from "react";
 
-async function onSubmit(values,actions){
-  console.log(values);
-  console.log(actions);
-  await new Promise((resolve)=>setTimeout(resolve,2000))
-  actions.resetForm();
-}
+
 
 export default function LoginEmpresa() {
-  const {  authorization } = useAuthContext();
+  const { authorization, user, loginEmpresa } = useAuthContext();
   const navigate = useNavigate();
-  const { values,touched, errors, handleBlur,handleChange,handleSubmit,isSubmitting } = useFormik({
-  initialValues:{email:"",password:""},
-  validationSchema: BasicFormSchema,
-  onSubmit,
-
- });
-
- useEffect(() => {
-  if (authorization.email) {
-    navigate("/");
+  async function onSubmit(values, actions) {
+    loginEmpresa(values);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   }
-}, [authorization]);
+  const {
+    values,
+    touched,
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    isSubmitting,
+  } = useFormik({
+    initialValues: { email: "", password: "", user: user },
+    validationSchema: BasicFormSchema,
+    onSubmit,
+  });
+  useEffect(() => {
+    if (authorization.email) {
+      navigate("/");
+    }
+  }, [authorization]);
   return (
     <div className="m-5 mb-5 ">
     <h1>Login Empresa</h1>

@@ -7,9 +7,10 @@ const AuthContext = createContext({
     role: null,
     idUsuario: null,
   },
-  user: 2,
+  user: 1,
   toggleUser: () => {},
   login: () => {},
+  loginEmpresa:()=>{},
   logout: () => {},
   errorMessage: null,
 });
@@ -26,7 +27,7 @@ export function AuthContextProvider({ children }) {
     }
   );
   const [errorMessage, setErrorMessage] = useState(null);
-
+  const [user, setUser] = useState(1);
   async function login(user) {
     console.log(user);
     const response = await fetch("http://localhost:3000/user/login", {
@@ -34,6 +35,7 @@ export function AuthContextProvider({ children }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     });
+    
 
     if (response.status === 200) {
       const token = await response.json();
@@ -45,7 +47,25 @@ export function AuthContextProvider({ children }) {
       setErrorMessage(alert("Error al introducir password o usuario"));
     }
   }
+  async function loginEmpresa(user) {
+    console.log(user);
+    const response = await fetch("http://localhost:3000/user/loginempresa", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    });
+    
 
+    if (response.status === 200) {
+      const token = await response.json();
+      setAuthorization(jwt_decode(token.jwt));
+
+      window.localStorage.setItem(MY_AUTH_APP, JSON.stringify(token.jwt));
+      setErrorMessage(null);
+    } else {
+      setErrorMessage(alert("Error al introducir password o usuario"));
+    }
+  }
   function logout() {
     window.localStorage.removeItem(MY_AUTH_APP);
     setAuthorization({
@@ -55,9 +75,9 @@ export function AuthContextProvider({ children }) {
   }
   function toggleUser() {
     if (user === 1) {
-      return 2;
+      setUser(2)
     } else {
-      return 1;
+      setUser(1);
     }
   }
   console.log(authorization);
@@ -65,6 +85,7 @@ export function AuthContextProvider({ children }) {
     authorization,
     errorMessage,
     login,
+    loginEmpresa,
     logout,
     toggleUser,
   };
