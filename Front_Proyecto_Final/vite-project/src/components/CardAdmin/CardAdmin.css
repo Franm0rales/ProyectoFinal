@@ -34,14 +34,14 @@
     text-align: center;
     color:#111;
     visibility: hidden;
-    opacity: 0;
+    opacity: 1;
     pointer-events: none;
     transition: 0.3s ease-in-out;
 }
 .container .card:hover .content
 {
     visibility: visible;
-    opacity: 1;
+    opacity: 2;
     margin-top: -40px;
     transition-delay: 0.3s;
 }
