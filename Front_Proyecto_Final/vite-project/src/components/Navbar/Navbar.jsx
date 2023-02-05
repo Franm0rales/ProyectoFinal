@@ -26,7 +26,7 @@ export default function Navbar() {
 
                 <div className="collapse navbar-collapse " id="navegacion">
                   <nav className="navegacion d-flex flex-column flex-lg-row text-center ">
-                    <Link to="/" className="nav-link px-2">
+                    <Link to="/" className=" a nav-link px-2">
                       Inicio
                     </Link>
                     <a href="#" className="nav-link px-2">
