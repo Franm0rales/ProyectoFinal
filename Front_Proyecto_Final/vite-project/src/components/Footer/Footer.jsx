@@ -18,7 +18,7 @@ export default function Footer() {
                 </a>
 
                 <a href="#" className="nav-link px-3" role="button">
-                  <i className="bi bi-twitter fa-lg"></i>
+                  <i className=" bi bi-twitter fa-lg"></i>
                 </a>
 
                 <a href="#" className="nav-link px-3" role="button">
