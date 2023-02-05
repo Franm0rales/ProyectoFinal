@@ -6,9 +6,9 @@ export default function Navbar() {
   return (
     <header className="header">
       <div className="container h-100">
-        <div className="row h-100 justify-content-center justify-content-lg-between text-light p-4">
+        <div className="row  justify-content-center justify-content-lg-between text-light p-4">
           <div className="col-lg-4 d-flex justify-content-center">
-            <h1 className="nombre-sitio">
+            <h1 className="nombre-sitio text">
               Future<span>Present</span>
             </h1>
           </div>
@@ -26,7 +26,7 @@ export default function Navbar() {
 
                 <div className="collapse navbar-collapse " id="navegacion">
                   <nav className="navegacion d-flex flex-column flex-lg-row text-center ">
-                    <Link to="/" className=" a nav-link px-2">
+                    <Link to="/" className="  nav-link px-2">
                       Inicio
                     </Link>
                     <a href="#" className="nav-link px-2">
