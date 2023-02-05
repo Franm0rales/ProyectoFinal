@@ -39,10 +39,7 @@ export function AuthContextProvider({ children }) {
       const token = await response.json();
       setAuthorization(jwt_decode(token.jwt));
 
-      window.localStorage.setItem(
-        MY_AUTH_APP,
-        JSON.stringify(jwt_decode(token.jwt))
-      );
+      window.localStorage.setItem(MY_AUTH_APP, JSON.stringify(token.jwt));
       setErrorMessage(null);
     } else {
       setErrorMessage(alert("Error al introducir password o usuario"));
