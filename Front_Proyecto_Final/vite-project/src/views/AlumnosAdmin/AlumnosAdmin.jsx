@@ -15,7 +15,8 @@ export default function AlumnosAdmin() {
 
   return (
     <div className="">
-    <div className=" d-flex px-3 flex-wrap d-grip gap-5">
+    <div className=" d-flex px-1 flex-wrap d-grip gap-5">
+      
     {users ? (
         users.map((user) => <CardAdmin key={user.id} nombre={user.nombre} apellidos={user.apellidos} ciudad={user.ciudad} email={user.email} telefono={user.telefono}/>)
       ) : (
