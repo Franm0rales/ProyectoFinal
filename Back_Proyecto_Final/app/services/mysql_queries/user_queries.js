@@ -76,5 +76,23 @@ userQueries.deleteUser = async (tabla, data, id, columna) => {
     conn && (await conn.end());
   }
 };
+//Traer todos los Usuarios
+userQueries.allUsers = async () => {
+  // Conectamos con la base de datos
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      "SELECT * FROM alumno where eliminado='0'",
+      [],
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 
 export default userQueries;

@@ -307,5 +307,16 @@ controller.loginUser = async (req, res) => {
     console.log(e.message);
   }
 };
-
+// Controlador para todos los usuarios
+controller.allUsers = async (req, res) => {
+  try {
+    let users = await dao.allUsers();
+    // Si no existe el producto respondemos con un 404 (not found)
+    if (users.length <= 0) return res.status(404).send("No hay usuarios");
+    // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
+    return res.send(users);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
 export default controller;
