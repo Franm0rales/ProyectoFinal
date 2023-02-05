@@ -18,7 +18,7 @@ export default function AlumnosAdmin() {
     <div className=" d-flex px-1 flex-wrap d-grip gap-5">
       
     {users ? (
-        users.map((user) => <CardAdmin key={user.id} nombre={user.nombre} apellidos={user.apellidos} ciudad={user.ciudad} email={user.email} telefono={user.telefono}/>)
+        users.map((user) => <CardAdmin key={user.id} idUsuario={user.idUsuario} nombre={user.nombre} apellidos={user.apellidos} ciudad={user.ciudad} email={user.email} telefono={user.telefono}/>)
       ) : (
         <h4>No hay usuarios cargados...</h4>)}
     </div>

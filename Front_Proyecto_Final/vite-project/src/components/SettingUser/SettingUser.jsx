@@ -1,10 +1,12 @@
 import { useFormik } from "formik";
 import { BasicFormSchema } from "./BasicFormSchema";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
+import { useParams } from "react-router-dom";
 export default function SettingsUser() {
   const { authorization } = useAuthContext();
+  const params = useParams()
   async function onSubmit(values, actions) {
-    fetch("http://localhost:3000/user/updateUser", {
+    fetch(`http://localhost:3000/user/updateUser/${params.id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -15,7 +17,7 @@ export default function SettingsUser() {
       if (response.status === 400) {
         alert("Error al recibir el body");
       } else if (response.status === 200) {
-        alert(`usuario ${values.nombre} modificado correctamente`);
+        alert(`usuario ${params.id} modificado correctamente`);
       } else if (response.status === 409) {
         alert("usuario ya modificado");
       }
@@ -247,7 +249,7 @@ export default function SettingsUser() {
           </label>
         </div>
         <button disabled={isSubmitting} type="submit" className="btn btn-dark">
-          Crea una cuenta ahora
+          Modificar datos ahora
         </button>
       </form>
     </div>

@@ -11,6 +11,8 @@ export default function CardEmpresa(user) {
       <div className="col-md-8">
         <div className="card-body">
           <h5 className="card-title">{user.nombre}</h5>
+          <p className="card-text">{user.ciudad}</p>
+          <p className="card-text">{user.direccion}</p>
           <p className="card-text">{user.descripcion}</p>
           <p className="card-text"><small className="text-muted">{user.telefono}</small></p>
         </div>

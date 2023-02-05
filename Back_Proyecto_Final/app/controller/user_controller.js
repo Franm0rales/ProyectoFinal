@@ -182,15 +182,16 @@ controller.addAdmin = async (req, res) => {
 };
 //Controlador para modificar datos de un alumno por el id
 controller.updateUser = async (req, res) => {
+  const id=req.params.id
   // Token hardcodeado para comprobar que funciona
-  const authorization =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjFwaWNhc3NvbW9yYWxlc0BnbWFpbC5jb20iLCJpZCI6IjQwIn0.CQw13UaNs6PG4ouCakwYMXtFEnLVD4sq_x9XDZedkwc";
+  // const authorization =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjFwaWNhc3NvbW9yYWxlc0BnbWFpbC5jb20iLCJpZCI6IjQwIn0.CQw13UaNs6PG4ouCakwYMXtFEnLVD4sq_x9XDZedkwc";
   // Recibimos el token desde el header
   // const { authorization } = req.headers;
   // Decodificamos el token para saber el id y el role
-  const tokenDecode = jwt_decode(authorization);
+  // const tokenDecode = jwt_decode(authorization);
   // Si no existe el token enviamos un 401 (unauthorized)
-  if (!authorization) return res.sendStatus(401);
+  // if (!authorization) return res.sendStatus(401);
 
   try {
     // Si no nos llega ningún campo por el body devolvemos un 400 (bad request)
@@ -201,10 +202,10 @@ controller.updateUser = async (req, res) => {
     const tabla = tables[2];
 
     // Actualizamos el usuario
-    await dao.updateUser(tabla, tokenDecode.id, req.body, data.idUsuario);
+    await dao.updateUser(tabla, id, req.body, data.idUsuario);
 
     // Devolvemos la respuesta
-    return res.send(`Usuario con id ${tokenDecode.id} modificado`);
+    return res.send(`Usuario con id ${id} modificado`);
   } catch (e) {
     console.log(e.message);
   }
@@ -359,7 +360,19 @@ controller.loginEmpresa = async (req, res) => {
 // Controlador para todos los usuarios
 controller.allUsers = async (req, res) => {
   try {
-    let users = await dao.allUsers();
+    let users = await dao.allUsers(data.alumno);
+    // Si no existe el producto respondemos con un 404 (not found)
+    if (users.length <= 0) return res.status(404).send("No hay usuarios");
+    // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
+    return res.send(users);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+// Controlador para todos los usuarios
+controller.allEmpresa = async (req, res) => {
+  try {
+    let users = await dao.allUsers(data.empresa);
     // Si no existe el producto respondemos con un 404 (not found)
     if (users.length <= 0) return res.status(404).send("No hay usuarios");
     // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.

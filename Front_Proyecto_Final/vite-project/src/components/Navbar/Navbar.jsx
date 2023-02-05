@@ -35,9 +35,9 @@ export default function Navbar() {
                     <a href="#" className="nav-link px-2">
                       Quedadas
                     </a>
-                    <Link to="/settings" className="nav-link pr-0 px-2">
+                    <a href="#" className="nav-link pr-0 px-2">
                       Contacto
-                    </Link>
+                    </a>
                     {!authorization?.email ? (
                       <Link to="login" className="nav-link px-2">
                         Login

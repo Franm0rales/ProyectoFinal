@@ -7,7 +7,7 @@ export default function TarjetasAdmin() {
     const [users, setUsers] = useState(null);
   useEffect(()=>{
    const fetchData= async ()=> {
-      const response = await fetch("http://localhost:3000/user/allUsers");
+      const response = await fetch("http://localhost:3000/user/allEmpresa");
       const json = await response.json();
       setUsers(json);
     }
@@ -19,7 +19,7 @@ export default function TarjetasAdmin() {
     <div className=" d-flex px-1 flex-wrap d-grip gap-5">
       
     {users ? (
-        users.map((user) => <CardEmpresa key={user.id} nombre={user.nombre} apellidos={user.apellidos} ciudad={user.ciudad} email={user.email} telefono={user.telefono}/>)
+        users.map((user) => <CardEmpresa key={user.id} nombre={user.nombre} descripcion={user.descripcion} ciudad={user.ciudad} direccion={user.direccion} email={user.email} telefono={user.telefono}/>)
       ) : (
         <h4>No hay usuarios cargados...</h4>)}
     </div>

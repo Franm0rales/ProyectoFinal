@@ -77,13 +77,13 @@ userQueries.deleteUser = async (tabla, data, id, columna) => {
   }
 };
 //Traer todos los Usuarios
-userQueries.allUsers = async () => {
+userQueries.allUsers = async (tabla) => {
   // Conectamos con la base de datos
   let conn = null;
   try {
     conn = await db.createConnection();
     return await db.query(
-      "SELECT * FROM alumno where eliminado='0'",
+      `SELECT * FROM ${tabla} where eliminado='0'`,
       [],
       "select",
       conn
