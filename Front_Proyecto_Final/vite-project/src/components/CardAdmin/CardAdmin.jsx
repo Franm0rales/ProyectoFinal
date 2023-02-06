@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./CardAdmin.css"
 
 export default function CardAdmin(user) {
@@ -15,9 +16,9 @@ export default function CardAdmin(user) {
           <p>{user.telefono}</p>
           
         </div>
-        <a href="#" className="btn btn-primary">
+        <Link to={`/admin/settings/${user.idUsuario}`} className="btn btn-primary">
             Editar Alumno
-          </a>
+          </Link>
       </div>
     </div>
   );

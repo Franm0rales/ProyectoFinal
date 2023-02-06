@@ -7,7 +7,8 @@ import { useAuthContext } from "../../context/AuthContext/AuthContext";
 
 export default function LoginAcount() {
   const [view, setView] = useState("Alumno");
-  const { toggleUser } = useAuthContext();
+  const { toggleUser,user } = useAuthContext();
+  console.log(user)
   return (
     <div className="d-flex  justify-content-around pt-5">
       <nav className="col-5">
@@ -27,7 +28,9 @@ export default function LoginAcount() {
           <li className="">
             <a
               type="button"
-              onClick={() => setView("Empresa")}
+              onClick={() => {setView("Empresa")
+              toggleUser();}
+            }
               className="nav-link active text-dark"
             >
               Empresa

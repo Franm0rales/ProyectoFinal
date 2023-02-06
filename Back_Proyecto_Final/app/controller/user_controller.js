@@ -182,15 +182,16 @@ controller.addAdmin = async (req, res) => {
 };
 //Controlador para modificar datos de un alumno por el id
 controller.updateUser = async (req, res) => {
+  const id=req.params.id
   // Token hardcodeado para comprobar que funciona
-  const authorization =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjFwaWNhc3NvbW9yYWxlc0BnbWFpbC5jb20iLCJpZCI6IjQwIn0.CQw13UaNs6PG4ouCakwYMXtFEnLVD4sq_x9XDZedkwc";
+  // const authorization =
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjFwaWNhc3NvbW9yYWxlc0BnbWFpbC5jb20iLCJpZCI6IjQwIn0.CQw13UaNs6PG4ouCakwYMXtFEnLVD4sq_x9XDZedkwc";
   // Recibimos el token desde el header
   // const { authorization } = req.headers;
   // Decodificamos el token para saber el id y el role
-  const tokenDecode = jwt_decode(authorization);
+  // const tokenDecode = jwt_decode(authorization);
   // Si no existe el token enviamos un 401 (unauthorized)
-  if (!authorization) return res.sendStatus(401);
+  // if (!authorization) return res.sendStatus(401);
 
   try {
     // Si no nos llega ningún campo por el body devolvemos un 400 (bad request)
@@ -201,10 +202,10 @@ controller.updateUser = async (req, res) => {
     const tabla = tables[2];
 
     // Actualizamos el usuario
-    await dao.updateUser(tabla, tokenDecode.id, req.body, data.idUsuario);
+    await dao.updateUser(tabla, id, req.body, data.idUsuario);
 
     // Devolvemos la respuesta
-    return res.send(`Usuario con id ${tokenDecode.id} modificado`);
+    return res.send(`Usuario con id ${id} modificado`);
   } catch (e) {
     console.log(e.message);
   }
@@ -259,8 +260,62 @@ controller.deleteUser = async (req, res) => {
 };
 // Controlador para el login de un usuario
 controller.loginUser = async (req, res) => {
+<<<<<<< HEAD
   const { email, password, role } = req.body;
   const tabla = tables[role];
+=======
+  const { email, password   } = req.body;
+  const tabla = tables[role.alumno];
+>>>>>>> 0ccfdb89f4b4f3dec4f7dfbbf6cacee4a66987a6
+  // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
+  if (!email || !password)
+    return res.status(400).send("Error al recibir el body");
+  try {
+    let userData = await dao.getUserByData(tabla, data.email, email);
+    // Si no existe el usuario respondemos con un 404 (not found)
+    if (userData.length <= 0)
+      return res.status(404).send("usuario no registrado");
+    // Pasamos md5 a la paswword recibida del cliente
+    const clienPassword = md5(password);
+    // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
+    [userData] = userData;
+    // Si existe el usuario, comprobamos que la password es correcta(No es la contraseña real, es la cifrada). Si no lo es devolvemos un 401 (unathorized)
+    if (userData.password != clienPassword)
+      return res.status(401).send("Email o contraseña incorrectos");
+    // Si es correcta generamos el token y lo devolvemos al cliente
+    // Buscamos el rol en la tabla usuario
+    let user = await dao.getUserByData(
+      data.usuario,
+      data.id,
+      userData.idUsuario
+    );
+    // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
+    [user] = user;
+    // Construimos el JWT con el id, email y rol del usuario
+    const jwtConstructor = new SignJWT({
+      id: userData.idUsuario,
+      role: user.role,
+      email,
+    });
+    // Codificamos el la clave secreta definida en la variable de entorno por requisito de la librería jose
+    // y poder pasarla en el formato correcto (uint8Array) en el método .sign
+    const encoder = new TextEncoder();
+    // Generamos el JWT. Lo hacemos asíncrono, ya que nos devuelve una promesa.
+    // Le indicamos la cabecera, la creación, la expiración y la firma (clave secreta).
+    const jwt = await jwtConstructor
+      .setProtectedHeader({ alg: "HS256", typ: "JWT" })
+      .setIssuedAt()
+      .setExpirationTime("1h")
+      .sign(encoder.encode(process.env.JWT_SECRET));
+    //Si todo es correcto enviamos la respuesta. 200 OK
+    return res.send({ jwt });
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+controller.loginEmpresa = async (req, res) => {
+  const { email, password   } = req.body;
+  const tabla = tables[role.empresa];
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
   if (!email || !password)
     return res.status(400).send("Error al recibir el body");
@@ -310,7 +365,19 @@ controller.loginUser = async (req, res) => {
 // Controlador para todos los usuarios
 controller.allUsers = async (req, res) => {
   try {
-    let users = await dao.allUsers();
+    let users = await dao.allUsers(data.alumno);
+    // Si no existe el producto respondemos con un 404 (not found)
+    if (users.length <= 0) return res.status(404).send("No hay usuarios");
+    // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
+    return res.send(users);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+// Controlador para todos los usuarios
+controller.allEmpresa = async (req, res) => {
+  try {
+    let users = await dao.allUsers(data.empresa);
     // Si no existe el producto respondemos con un 404 (not found)
     if (users.length <= 0) return res.status(404).send("No hay usuarios");
     // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.

@@ -5,6 +5,7 @@ import galeria4 from "../../assets/galeria4.jpg"
 import galeria5 from "../../assets/galeria5.jpg"
 import galeria6 from "../../assets/galeria6.jpg"
 import galeria7 from "../../assets/galeria7.jpg"
+import "./Galeria.css"
 export default function Galeria(){
     return(
 <div class="container mt-5">

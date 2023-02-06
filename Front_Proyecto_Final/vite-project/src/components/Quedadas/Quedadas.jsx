@@ -5,7 +5,7 @@ export default function Quedadas() {
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-6">
-          <h2>Conoce nuestras quedadas</h2>
+          <h2 className="pt-5 ">Conoce nuestras quedadas</h2>
         </div>
       </div>
 

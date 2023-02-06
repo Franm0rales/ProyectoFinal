@@ -6,9 +6,9 @@ export default function Navbar() {
   return (
     <header className="header">
       <div className="container h-100">
-        <div className="row h-100 justify-content-center justify-content-lg-between text-light p-4">
+        <div className="row  justify-content-center justify-content-lg-between text-light p-4">
           <div className="col-lg-4 d-flex justify-content-center">
-            <h1 className="nombre-sitio">
+            <h1 className="nombre-sitio text">
               Future<span>Present</span>
             </h1>
           </div>
@@ -26,20 +26,20 @@ export default function Navbar() {
 
                 <div className="collapse navbar-collapse " id="navegacion">
                   <nav className="navegacion d-flex flex-column flex-lg-row text-center ">
-                    <Link to="/" className="nav-link px-2">
+                    <Link to="/" className="a  nav-link px-2">
                       Inicio
                     </Link>
-                    <a href="#" className="nav-link px-2">
+                    <a href="#" className=" a nav-link px-2">
                       Nosotros
                     </a>
-                    <a href="#" className="nav-link px-2">
+                    <a href="#" className="a nav-link px-2">
                       Quedadas
                     </a>
-                    <Link to="/settings" className="nav-link pr-0 px-2">
+                    <a href="#" className="a nav-link pr-0 px-2">
                       Contacto
-                    </Link>
+                    </a>
                     {!authorization?.email ? (
-                      <Link to="login" className="nav-link px-2">
+                      <Link to="login" className="a nav-link px-2">
                         Login
                       </Link>
                     ) : (
@@ -92,7 +92,7 @@ export default function Navbar() {
             </div>
           </div>
           <div className="contenido-hero align-self-end text-center text-md-right w-100">
-            <h1>Planifica tu futuro</h1>
+            <h2 className="">Planifica tu futuro</h2>
             <p>Tu destino lo escribes tú mismo con cada decisión que tomas.</p>
           </div>
         </div>
