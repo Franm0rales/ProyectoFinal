@@ -94,5 +94,24 @@ userQueries.allUsers = async (tabla) => {
     conn && (await conn.end());
   }
 };
+//Borrar un usuario por su id
+userQueries.deleteUser = async (tabla, data, id, columna) => {
+  // Conectamos con la base de datos y eliminamos el usuario por su id.
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      `
+      UPDATE ${tabla} SET ? WHERE ${columna} = ?`,
+      [data, id],
+      "update",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 
 export default userQueries;

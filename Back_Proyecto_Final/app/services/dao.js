@@ -20,5 +20,8 @@ dao.updateUser = async (tabla, id, userData, columna) =>
 dao.deleteUser = async (id) => await userQueries.deleteUser(id);
 // Traer todos los usuarios
 dao.allUsers = async (tabla) => await userQueries.allUsers(tabla);
+// Eliminar usuario por su id
+dao.deleteUser = async (tabla, data, id, columna) =>
+  await userQueries.deleteUser(tabla, data, id, columna);
 
 export default dao;

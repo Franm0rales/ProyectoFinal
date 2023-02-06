@@ -11,6 +11,7 @@ userRouter.post("/signUpEmpresa", userController.addEmpresa);
 userRouter.post("/signUpAdmin", userController.addAdmin);
 //Modificar alumno
 userRouter.patch("/updateUser/:id", userController.updateUser);
+userRouter.patch("/updateEmpresa/:id", userController.updateEmpresa);
 //Login de un usuario
 userRouter.post("/login", validateLoginDto, userController.loginUser);
 //Login de un usuario
@@ -22,5 +23,8 @@ userRouter.get("/allEmpresa", userController.allEmpresa);
 // userRouter.delete("/deleteUser", userController.deleteUser);
 //Traer un usuario
 userRouter.get("/:id", userController.getUser);
+userRouter.get("/empresa/:id", userController.getEmpresa);
+//Eliminar un usuario
+userRouter.patch("/deleteUser/:id", userController.deleteUser);
 
 export default userRouter;
