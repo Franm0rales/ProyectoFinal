@@ -381,4 +381,16 @@ controller.allEmpresa = async (req, res) => {
     console.log(e.message);
   }
 };
+controller.getUser = async (req, res) => {
+  const tabla = data.alumno;
+  try {
+    let users = await dao.getUserByData(tabla, data.idUsuario, req.params.id);
+    // Si no existe el producto respondemos con un 404 (not found)
+    if (users.length <= 0) return res.status(404).send("No hay usuarios");
+    // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
+    return res.send(users[0]);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
 export default controller;

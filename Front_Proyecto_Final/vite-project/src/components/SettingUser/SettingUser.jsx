@@ -3,9 +3,8 @@ import { BasicFormSchema } from "./BasicFormSchema";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 import { useParams } from "react-router-dom";
 export default function SettingsUser() {
-  
   const { authorization } = useAuthContext();
-  const params = useParams()
+  const params = useParams();
   async function onSubmit(values, actions) {
     fetch(`http://localhost:3000/user/updateUser/${params.id}`, {
       method: "PATCH",
@@ -23,7 +22,7 @@ export default function SettingsUser() {
         alert("usuario ya modificado");
       }
     });
-   
+
     await new Promise((resolve) => setTimeout(resolve, 2000));
     actions.resetForm();
   }
@@ -70,8 +69,6 @@ export default function SettingsUser() {
             onChange={handleChange}
             onBlur={handleBlur}
             id="nombre"
-            
-            
           />
           <div
             className={
@@ -244,12 +241,7 @@ export default function SettingsUser() {
             {errors.passwordRepeat}
           </div>{" "}
         </div>
-        <div className="mb-3  form-check">
-          <input type="checkbox" className="form-check-input" required />
-          <label className="form-check-label" htmlFor="exampleCheck1">
-            Aceptar política de privacidad
-          </label>
-        </div>
+
         <button disabled={isSubmitting} type="submit" className="btn btn-dark">
           Modificar datos ahora
         </button>

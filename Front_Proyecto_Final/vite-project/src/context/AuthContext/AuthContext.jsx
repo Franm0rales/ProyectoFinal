@@ -7,10 +7,10 @@ const AuthContext = createContext({
     role: null,
     idUsuario: null,
   },
-  user: 1,
+  user: true,
   toggleUser: () => {},
   login: () => {},
-  loginEmpresa:()=>{},
+  loginEmpresa: () => {},
   logout: () => {},
   errorMessage: null,
 });
@@ -35,7 +35,6 @@ export function AuthContextProvider({ children }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     });
-    
 
     if (response.status === 200) {
       const token = await response.json();
@@ -54,7 +53,6 @@ export function AuthContextProvider({ children }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     });
-    
 
     if (response.status === 200) {
       const token = await response.json();
@@ -74,11 +72,7 @@ export function AuthContextProvider({ children }) {
     });
   }
   function toggleUser() {
-    if (user === 1) {
-      setUser(2)
-    } else {
-      setUser(1);
-    }
+    setUser(!user);
   }
   console.log(authorization);
   const value = {

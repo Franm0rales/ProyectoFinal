@@ -9,8 +9,7 @@ export default function NavbarAdmin() {
             <a
               href="/"
               className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
-            >
-            </a>
+            ></a>
             <ul
               className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start px-2"
               id="menu"
@@ -33,34 +32,26 @@ export default function NavbarAdmin() {
                 ></ul>
               </li>
               <li>
-                <Link to="empresasadmin" className="nav-link px-0 align-middle">
-                  <i className="bi bi-building"></i>
+                <Link
+                  to="empresasadmin"
+                  className="nav-link px-0 align-middle "
+                >
+                  <i className="bi bi-card-checklist"></i>
                   <span className="ms-1 d-none d-sm-inline">Empresas</span>
                 </Link>
               </li>
               <li>
-                <Link
-                  to="tarjetasadmin"
-                  
-                  className="nav-link px-0 align-middle "
-                >
-                  <i className="bi bi-card-checklist"></i>
-                  <span className="ms-1 d-none d-sm-inline">
-                    Tarjetas visita
-                  </span>
+                <Link to="tarjetasadmin" className="nav-link px-0 align-middle">
+                  <i className="bi bi-building"></i>
+                  <span className="ms-1 d-none d-sm-inline">Tarjetas</span>
                 </Link>
-                
               </li>
+
               <li>
-                <Link
-                  to="galeriaadmin"
-                 
-                  className="nav-link px-0 align-middle"
-                >
+                <Link to="galeriaadmin" className="nav-link px-0 align-middle">
                   <i class="bi bi-images"></i>
                   <span className="ms-1 d-none d-sm-inline">Imagenes</span>{" "}
                 </Link>
-                
               </li>
               <li>
                 <Link to="/" className="nav-link px-0 align-middle">

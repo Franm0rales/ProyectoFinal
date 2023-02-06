@@ -20,5 +20,7 @@ userRouter.get("/allUsers", userController.allUsers);
 userRouter.get("/allEmpresa", userController.allEmpresa);
 // //Eliminar un usuario
 // userRouter.delete("/deleteUser", userController.deleteUser);
+//Traer un usuario
+userRouter.get("/:id", userController.getUser);
 
 export default userRouter;

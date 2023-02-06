@@ -24,7 +24,6 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="login" element={<LoginAcount />} />
-            
 
             {/* </Route>
 
@@ -34,9 +33,9 @@ function App() {
             <Route index element={<HomeAdmin />} />
             <Route path="alumnosadmin" element={<AlumnosAdmin />} />
             <Route path="settings/:id" element={<EditarAlumno />} />
-           
-            <Route path="empresasadmin" element={<EmpresasAdmin />} />
+
             <Route path="tarjetasadmin" element={<TarjetasAdmin />} />
+            <Route path="empresasadmin" element={<EmpresasAdmin />} />
             <Route path="galeriaadmin" element={<GaleriaAdmin />} />
           </Route>
         </Routes>
