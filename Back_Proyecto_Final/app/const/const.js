@@ -21,5 +21,6 @@ export const data = {
   eliminado: "eliminado",
   eliminadoSi: 1,
   eliminadoNo: 0,
-  alumno:"alumno"
+  alumno: "alumno",
+  tarjeta: "tarjeta",
 };

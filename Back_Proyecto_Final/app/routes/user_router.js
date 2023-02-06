@@ -18,7 +18,15 @@ userRouter.post("/loginempresa", validateLoginDto, userController.loginEmpresa);
 //Traer todos los usuarios
 userRouter.get("/allUsers", userController.allUsers);
 userRouter.get("/allEmpresa", userController.allEmpresa);
-// //Eliminar un usuario
-// userRouter.delete("/deleteUser", userController.deleteUser);
+//Traer un usuario
+userRouter.get("/:id", userController.getUser);
+//Traer una empresa
+userRouter.get("/empresa/:id", userController.getEmpresa);
+//Eliminar un usuario
+userRouter.patch("/deleteEmpresa/:id", userController.deleteUser);
+//Eliminar un usuario
+userRouter.patch("/deleteUser/:id", userController.deleteUser);
+//Crear tarjeta
+userRouter.post("/addCard/:id", userController.addCard);
 
 export default userRouter;

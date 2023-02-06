@@ -17,7 +17,8 @@ dao.addEmpresa = async (userData, idUser) =>
 dao.updateUser = async (tabla, id, userData, columna) =>
   await userQueries.updateUser(tabla, id, userData, columna);
 // Eliminar usuario por su id
-dao.deleteUser = async (id) => await userQueries.deleteUser(id);
+dao.deleteUser = async (tabla, data, id, columna) =>
+  await userQueries.deleteUser(tabla, data, id, columna);
 // Traer todos los usuarios
 dao.allUsers = async (tabla) => await userQueries.allUsers(tabla);
 
