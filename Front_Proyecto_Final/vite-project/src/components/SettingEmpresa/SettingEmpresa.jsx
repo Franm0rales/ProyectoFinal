@@ -2,11 +2,11 @@ import { useFormik } from "formik";
 import { BasicFormSchema } from "./BasicFormSchema";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 import { useParams } from "react-router-dom";
-export default function SettingsUser() {
+export default function SettingsEmpresa() {
   const { authorization } = useAuthContext();
   const params = useParams();
   async function onSubmit(values, actions) {
-    fetch(`http://localhost:3000/user/updateUser/${params.id}`, {
+    fetch(`http://localhost:3000/user/updateEmpresa/${params.id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

@@ -11,6 +11,7 @@ userRouter.post("/signUpEmpresa", userController.addEmpresa);
 userRouter.post("/signUpAdmin", userController.addAdmin);
 //Modificar alumno
 userRouter.patch("/updateUser/:id", userController.updateUser);
+userRouter.patch("/updateEmpresa/:id", userController.updateEmpresa);
 //Login de un usuario
 userRouter.post("/login", validateLoginDto, userController.loginUser);
 //Login de un usuario
@@ -18,15 +19,14 @@ userRouter.post("/loginempresa", validateLoginDto, userController.loginEmpresa);
 //Traer todos los usuarios
 userRouter.get("/allUsers", userController.allUsers);
 userRouter.get("/allEmpresa", userController.allEmpresa);
+// //Eliminar un usuario
+// userRouter.delete("/deleteUser", userController.deleteUser);
 //Traer un usuario
 userRouter.get("/:id", userController.getUser);
-//Traer una empresa
 userRouter.get("/empresa/:id", userController.getEmpresa);
 //Eliminar un usuario
-userRouter.patch("/deleteEmpresa/:id", userController.deleteUser);
-//Eliminar un usuario
+userRouter.patch("/deleteEmpresa/:id", userController.deleteEmpresa);
 userRouter.patch("/deleteUser/:id", userController.deleteUser);
 //Crear tarjeta
-userRouter.post("/addCard/:id", userController.addCard);
-
+userRouter.post("/addCard", userController.addCard);
 export default userRouter;
