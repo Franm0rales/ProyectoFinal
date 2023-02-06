@@ -12,6 +12,7 @@ import TarjetasAdmin from "./views/TarjetasAdmin/TarjetasAdmin";
 import LoginAcount from "./views/Login/LoginRegistro";
 import GaleriaAdmin from "./views/GaleriaAdmin/GaleriaAdmin";
 import EditarAlumno from "./views/EditarAlumno/EditarAlumno";
+import EditarEmpresa from "./views/EditarEmpresa/EditarEmpresa";
 const ROLES = {
   Admin: "1",
   User: "0",
@@ -33,7 +34,7 @@ function App() {
             <Route index element={<HomeAdmin />} />
             <Route path="alumnosadmin" element={<AlumnosAdmin />} />
             <Route path="settings/:id" element={<EditarAlumno />} />
-
+            <Route path="settingsempresa/:id" element={<EditarEmpresa />} />
             <Route path="tarjetasadmin" element={<TarjetasAdmin />} />
             <Route path="empresasadmin" element={<EmpresasAdmin />} />
             <Route path="galeriaadmin" element={<GaleriaAdmin />} />

@@ -18,6 +18,7 @@ export default function EmpresasAdmin() {
           users.map((user) => (
             <CardEmpresa
               key={user.id}
+              idUsuario={user.idUsuario}
               nombre={user.nombre}
               descripcion={user.descripcion}
               ciudad={user.ciudad}
