@@ -20,7 +20,7 @@ export default function LoginAlumno() {
     handleSubmit,
     isSubmitting,
   } = useFormik({
-    initialValues: { email: "", password: "", user: user },
+    initialValues: { email: "", password: "", role: "2" },
     validationSchema: BasicFormSchema,
     onSubmit,
   });

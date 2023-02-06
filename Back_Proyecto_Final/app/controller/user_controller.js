@@ -259,8 +259,8 @@ controller.deleteUser = async (req, res) => {
 };
 // Controlador para el login de un usuario
 controller.loginUser = async (req, res) => {
-  const { email, password /*role */ } = req.body;
-  const tabla = tables[role.alumno];
+  const { email, password, role } = req.body;
+  const tabla = tables[role];
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
   if (!email || !password)
     return res.status(400).send("Error al recibir el body");
