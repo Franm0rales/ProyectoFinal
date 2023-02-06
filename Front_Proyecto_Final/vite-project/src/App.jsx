@@ -8,11 +8,11 @@ import { AuthContextProvider } from "./context/AuthContext/AuthContext";
 import AlumnosAdmin from "./views/AlumnosAdmin/AlumnosAdmin";
 import LayoutAdmin from "./components/LayoutAdmin/LayoutAdmin";
 import EmpresasAdmin from "./views/EmpresasAdmin/EmpresasAdmin";
-import TarjetasAdmin from "./views/TarjetasAdmin/TarjetasAdmin";
 import LoginAcount from "./views/Login/LoginRegistro";
 import GaleriaAdmin from "./views/GaleriaAdmin/GaleriaAdmin";
 import EditarAlumno from "./views/EditarAlumno/EditarAlumno";
 import EditarEmpresa from "./views/EditarEmpresa/EditarEmpresa";
+import CrearTarjeta from "./views/CrearTarjeta/CrearTarjeta";
 const ROLES = {
   Admin: "1",
   User: "0",
@@ -35,7 +35,7 @@ function App() {
             <Route path="alumnosadmin" element={<AlumnosAdmin />} />
             <Route path="settings/:id" element={<EditarAlumno />} />
             <Route path="settingsempresa/:id" element={<EditarEmpresa />} />
-            <Route path="tarjetasadmin" element={<TarjetasAdmin />} />
+            <Route path="tarjetasadmin" element={<CrearTarjeta />} />
             <Route path="empresasadmin" element={<EmpresasAdmin />} />
             <Route path="galeriaadmin" element={<GaleriaAdmin />} />
           </Route>

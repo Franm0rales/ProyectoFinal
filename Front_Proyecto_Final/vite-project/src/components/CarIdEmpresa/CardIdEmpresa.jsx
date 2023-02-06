@@ -1,11 +1,10 @@
 import galeria1 from "../../assets/galeria1.jpg";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 export default function CardIdEmpresa({ users }) {
   async function deleteUser() {
     let idUsuario = users.idUsuario;
     console.log(idUsuario);
-    await fetch(`http://localhost:3000/user/deleteUser/${idUsuario}`, {
+    await fetch(`http://localhost:3000/user/deleteEmpresa/${idUsuario}`, {
       method: "PATCH",
     });
   }
@@ -56,10 +55,18 @@ export default function CardIdEmpresa({ users }) {
       </div>
       <div class={`alert alert-danger ${visible}`} role="alert">
         Eliminar usuario ¿Estas seguro?
-        <button href="#" onClick={deleteUser}>
-          <a href=""> Si</a>
+        <button
+          className="btn btn-outline-secondary mx-1 text-white rounded-2"
+          onClick={deleteUser}
+        >
+          Si
         </button>
-        <button onClick={toggleVisible}>No</button>
+        <button
+          className="btn btn-outline-secondary mx-1 text-white rounded-2"
+          onClick={toggleVisible}
+        >
+          No
+        </button>
       </div>
     </>
   );

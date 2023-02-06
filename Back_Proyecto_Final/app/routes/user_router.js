@@ -25,6 +25,8 @@ userRouter.get("/allEmpresa", userController.allEmpresa);
 userRouter.get("/:id", userController.getUser);
 userRouter.get("/empresa/:id", userController.getEmpresa);
 //Eliminar un usuario
+userRouter.patch("/deleteEmpresa/:id", userController.deleteEmpresa);
 userRouter.patch("/deleteUser/:id", userController.deleteUser);
-
+//Crear tarjeta
+userRouter.post("/addCard", userController.addCard);
 export default userRouter;

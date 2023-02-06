@@ -1,5 +1,3 @@
-import galeria1 from "../../assets/galeria1.jpg";
-
 import { useFormik } from "formik";
 import { BasicFormSchema } from "./BasicFormSchema";
 
@@ -22,9 +20,10 @@ export default function TarjetasAdmin() {
     initialValues: {
       email: "",
       nombre: "",
-      apellidos: "",
-      password: "",
-      passwordRepeat: "",
+      direccion: "",
+      ciudad: "",
+      imagen: "",
+      descripcion: "",
       telefono: "",
     },
     validationSchema: BasicFormSchema,
@@ -63,33 +62,7 @@ export default function TarjetasAdmin() {
           </div>
           <div className="valid-feedback">Looks good!</div>
         </div>
-        <div className="col-md-4">
-          <label htmlFor="validationCustom02" className="form-label">
-            Apellidos
-          </label>
-          <input
-            type="text"
-            className={
-              errors.apellidos && touched.apellidos
-                ? "form-control is-invalid"
-                : "form-control"
-            }
-            value={values.apellidos}
-            name="apellidos"
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          <div
-            className={
-              errors.apellidos && touched.apellidos
-                ? "invalid-feeback is-invalid"
-                : ""
-            }
-          >
-            {errors.apellidos}
-          </div>{" "}
-          <div className="valid-feedback">Looks good!</div>
-        </div>
+
         <div className="col-md-4">
           <label htmlFor="validationCustom01" className="form-label">
             Teléfono
@@ -143,7 +116,7 @@ export default function TarjetasAdmin() {
             {errors.email}
           </div>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-4">
           <label for="exampleDataList" class="form-label ">
             Ciudad
           </label>
@@ -162,56 +135,28 @@ export default function TarjetasAdmin() {
             <option value="Málaga" />
           </datalist>
         </div>
-        <div className="col-md-4">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Contraseña
-          </label>
+        <div className="col-md-6">
+          <label className="form-label">Direccion</label>
           <input
-            type="password"
+            type="texto"
             className={
-              errors.password && touched.password
+              errors.direccion && touched.direccion
                 ? "form-control is-invalid"
                 : "form-control"
             }
-            value={values.password}
-            name="password"
+            value={values.direccion}
+            name="direccion"
             onChange={handleChange}
             onBlur={handleBlur}
           />
           <div
             className={
-              errors.password && touched.password
+              errors.direccion && touched.direccion
                 ? "invalid-feeback is-invalid"
                 : ""
             }
           >
-            {errors.password}
-          </div>{" "}
-        </div>
-        <div className="col-md-4">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Repetir contraseña
-          </label>
-          <input
-            type="password"
-            className={
-              errors.passwordRepeat && touched.passwordRepeat
-                ? "form-control is-invalid"
-                : "form-control"
-            }
-            value={values.passwordRepeat}
-            name="passwordRepeat"
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-          <div
-            className={
-              errors.passwordRepeat && touched.passwordRepeat
-                ? "invalid-feeback is-invalid"
-                : ""
-            }
-          >
-            {errors.passwordRepeat}
+            {errors.direccion}
           </div>{" "}
         </div>
 

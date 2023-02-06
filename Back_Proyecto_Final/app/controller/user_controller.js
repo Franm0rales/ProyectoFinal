@@ -435,7 +435,7 @@ controller.getEmpresa = async (req, res) => {
   }
 };
 // Controlador para eliminar un usuario por su id
-controller.deleteUser = async (req, res) => {
+controller.deleteEmpresa = async (req, res) => {
   const { id } = req.params.id;
   // // // OBTENER CABECERA Y COMPROBAR SU AUTENTICIDAD Y CADUCIDAD
   // const { authorization } = req.headers;
@@ -482,6 +482,89 @@ controller.deleteUser = async (req, res) => {
     await dao.deleteUser(data.usuario, dataObj, req.params.id, data.id);
     // Devolvemos la respuesta
     return res.send(`Usuario con id ${user[0].nombre} eliminado`);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+controller.deleteUser = async (req, res) => {
+  const { id } = req.params.id;
+  // // // OBTENER CABECERA Y COMPROBAR SU AUTENTICIDAD Y CADUCIDAD
+  // const { authorization } = req.headers;
+
+  // // const tokenDecode = jwt_decode(authorization);
+  // // Si no existe el token enviamos un 401 (unauthorized)
+  // if (!authorization) return res.sendStatus(401);
+  // // const token = authorization.split(" ")[1];
+
+  try {
+    // // codificamos la clave secreta
+    // const encoder = new TextEncoder();
+    // // verificamos el token con la función jwtVerify. Le pasamos el token y la clave secreta codificada
+    // const { payload } = await jwtVerify(
+    //   authorization,
+    //   encoder.encode(process.env.JWT_SECRET)
+    // );
+    // // Verificamos que seamos usuario administrador
+    // if (payload.role != role.admin)
+    //   return res.status(409).send("No tiene permiso de administrador");
+    // Buscamos si el id del usuario existe en la base de datos
+    // Usuario que quiere modificar los datos
+    // const tabla = tables[id];
+    const user = await dao.getUserByData(
+      data.alumno,
+      data.idUsuario,
+      req.params.id
+    );
+    // Si no existe devolvemos un 404 (not found)
+    if (user.length <= 0) return res.status(404).send("El usuario no existe");
+    //Creamos el objeto para cambiar el valor de los campos
+
+    let dataObj = {
+      eliminado: "1",
+    };
+    // Eliminamos los campos por el id
+
+    await dao.deleteUser(data.alumno, dataObj, req.params.id, data.idUsuario);
+    // Creamos el objeto para eliminar el rol
+    dataObj = {
+      role: "3",
+    };
+    // Eliminamos el rol del usuario por el id
+    await dao.deleteUser(data.usuario, dataObj, req.params.id, data.id);
+    // Devolvemos la respuesta
+    return res.send(`Usuario con id ${user[0].nombre} eliminado`);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+controller.addCard = async (req, res) => {
+  const { nombre, email, ciudad, direccion, telefono, descripcion, imagen } =
+    req.body;
+  // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
+  if (
+    !nombre ||
+    !email ||
+    !descripcion ||
+    !direccion ||
+    !telefono ||
+    !ciudad ||
+    !imagen
+  )
+    return res.status(400).send("Error al recibir el body");
+  try {
+    // Lo registramos
+    let tarjetaObj = {
+      nombre: nombre,
+      email: email,
+      ciudad: ciudad,
+      direccion: direccion,
+      telefono: telefono,
+      descripcion: descripcion,
+      imagen: imagen,
+    };
+    const idTarjeta = await dao.addUser(tarjetaObj, data.tarjeta);
+    return res.send(`Tarjeta ${nombre} con id: ${idTarjeta} registrado`);
+    //}
   } catch (e) {
     console.log(e.message);
   }
