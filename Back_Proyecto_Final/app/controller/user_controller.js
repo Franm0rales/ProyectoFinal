@@ -182,7 +182,7 @@ controller.addAdmin = async (req, res) => {
 };
 //Controlador para modificar datos de un alumno por el id
 controller.updateUser = async (req, res) => {
-  const id=req.params.id
+  const id = req.params.id;
   // Token hardcodeado para comprobar que funciona
   // const authorization =
   //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjFwaWNhc3NvbW9yYWxlc0BnbWFpbC5jb20iLCJpZCI6IjQwIn0.CQw13UaNs6PG4ouCakwYMXtFEnLVD4sq_x9XDZedkwc";
@@ -260,13 +260,8 @@ controller.deleteUser = async (req, res) => {
 };
 // Controlador para el login de un usuario
 controller.loginUser = async (req, res) => {
-<<<<<<< HEAD
-  const { email, password, role } = req.body;
-  const tabla = tables[role];
-=======
-  const { email, password   } = req.body;
+  const { email, password } = req.body;
   const tabla = tables[role.alumno];
->>>>>>> 0ccfdb89f4b4f3dec4f7dfbbf6cacee4a66987a6
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
   if (!email || !password)
     return res.status(400).send("Error al recibir el body");
@@ -314,7 +309,7 @@ controller.loginUser = async (req, res) => {
   }
 };
 controller.loginEmpresa = async (req, res) => {
-  const { email, password   } = req.body;
+  const { email, password } = req.body;
   const tabla = tables[role.empresa];
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
   if (!email || !password)
