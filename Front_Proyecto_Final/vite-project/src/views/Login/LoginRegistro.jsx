@@ -7,34 +7,35 @@ import { useAuthContext } from "../../context/AuthContext/AuthContext";
 
 export default function LoginAcount() {
   const [view, setView] = useState("Alumno");
-  const { toggleUser,user } = useAuthContext();
-  console.log(user)
+  const { toggleUser, user } = useAuthContext();
+  console.log(user);
   return (
-    <div className="d-flex  justify-content-around pt-5">
+    <div className="d-flex justify-content-around ">
       <nav className="col-5">
-        <ul className="nav nav-tabs px-5">
+        <ul className="nav nav-tabs justify-content-between">
           <li className="">
-            <a
+            <button
               type="button"
               onClick={() => {
                 setView("Alumno");
                 toggleUser();
               }}
-              className="nav-link active text-dark "
+              className="nav-link text-dark mt-3 btn btn-outline-dark"
             >
               Alumno
-            </a>
+            </button>
           </li>
           <li className="">
-            <a
+            <button
               type="button"
-              onClick={() => {setView("Empresa")
-              toggleUser();}
-            }
-              className="nav-link active text-dark"
+              onClick={() => {
+                setView("Empresa");
+                toggleUser();
+              }}
+              className="nav-link  text-dark mt-3 btn btn-outline-dark"
             >
               Empresa
-            </a>
+            </button>
           </li>
         </ul>
         {view === "Alumno" ? <LoginAlumno /> : <LoginEmpresa />}
