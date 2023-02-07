@@ -65,9 +65,8 @@ userQueries.deleteUser = async (tabla, data, id, columna) => {
     conn = await db.createConnection();
     return await db.query(
       `UPDATE ${tabla} SET ? WHERE ${columna} = ?`,
-      data,
-      id,
-      "UPDATE",
+      [data, id],
+      "update",
       conn
     );
   } catch (e) {

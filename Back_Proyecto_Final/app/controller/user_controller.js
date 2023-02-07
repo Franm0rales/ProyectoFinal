@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 import { SignJWT, jwtVerify } from "jose";
 import { role, data, tables } from "../const/const.js";
 import { transporter } from "../config/mailer.js";
+import { useParams } from "react-router-dom";
 
 const controller = {};
 // Controlador para añadir alumno
@@ -241,48 +242,51 @@ controller.updateEmpresa = async (req, res) => {
 };
 // Controlador para eliminar un usuario por su id
 controller.deleteUser = async (req, res) => {
-  const { id } = req.body;
-  // // OBTENER CABECERA Y COMPROBAR SU AUTENTICIDAD Y CADUCIDAD
+  // // // OBTENER CABECERA Y COMPROBAR SU AUTENTICIDAD Y CADUCIDAD
   // const { authorization } = req.headers;
-  const authorization =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzdWFyaW8iOiIxNSIsInJvbGUiOiIwIn0.Ce7ocu1L06S_E_SoSEynorEpcuEBQwqbbFskTYFPhRA";
-  const tokenDecode = jwt_decode(authorization);
-  // Si no existe el token enviamos un 401 (unauthorized)
-  if (!authorization) return res.sendStatus(401);
-  // const token = authorization.split(" ")[1];
+
+  // // const tokenDecode = jwt_decode(authorization);
+  // // Si no existe el token enviamos un 401 (unauthorized)
+  // if (!authorization) return res.sendStatus(401);
+  // // const token = authorization.split(" ")[1];
 
   try {
-    // codificamos la clave secreta
-    const encoder = new TextEncoder();
-    // verificamos el token con la función jwtVerify. Le pasamos el token y la clave secreta codificada
-    const { payload } = await jwtVerify(
-      authorization,
-      encoder.encode(process.env.JWT_SECRET)
-    );
-    // Verificamos que seamos usuario administrador
-    if (tokenDecode.role != role.admin)
-      return res.status(409).send("No tiene permiso de administrador");
+    // // codificamos la clave secreta
+    // const encoder = new TextEncoder();
+    // // verificamos el token con la función jwtVerify. Le pasamos el token y la clave secreta codificada
+    // const { payload } = await jwtVerify(
+    //   authorization,
+    //   encoder.encode(process.env.JWT_SECRET)
+    // );
+    // // Verificamos que seamos usuario administrador
+    // if (payload.role != role.admin)
+    //   return res.status(409).send("No tiene permiso de administrador");
     // Buscamos si el id del usuario existe en la base de datos
     // Usuario que quiere modificar los datos
-    const tabla = tables[id];
-    const user = await dao.getUserByData(tabla, id, data.idUsuario);
+    // const tabla = tables[id];
+    const user = await dao.getUserByData(
+      data.alumno,
+      data.idUsuario,
+      req.params.id
+    );
     // Si no existe devolvemos un 404 (not found)
     if (user.length <= 0) return res.status(404).send("El usuario no existe");
     //Creamos el objeto para cambiar el valor de los campos
 
     let dataObj = {
-      eliminado: 1,
+      eliminado: "1",
     };
     // Eliminamos los campos por el id
-    await dao.deleteUser(tabla, dataObj, id, data.idUsuario);
+
+    await dao.deleteUser(data.alumno, dataObj, req.params.id, data.idUsuario);
     // Creamos el objeto para eliminar el rol
     dataObj = {
-      role: 3,
+      role: "3",
     };
     // Eliminamos el rol del usuario por el id
-    await dao.deleteUser(data.usuario, dataObj, id, data.id);
+    await dao.deleteUser(data.usuario, dataObj, req.params.id, data.id);
     // Devolvemos la respuesta
-    return res.send(`Usuario con id ${tokenDecode.id} eliminado`);
+    return res.send(`Usuario con id ${user[0].nombre} eliminado`);
   } catch (e) {
     console.log(e.message);
   }
@@ -344,8 +348,7 @@ controller.loginEmpresa = async (req, res) => {
   if (!email || !password)
     return res.status(400).send("Error al recibir el body");
   try {
-    let userData = await dao.getUserByData(tabla, data.email, email);
-    // Si no existe el usuario respondemos con un 404 (not found)
+    let userData = await dao.getUserByData(tabla, data.email, email); // Si no existe el usuario respondemos con un 404 (not found)
     if (userData.length <= 0)
       return res.status(404).send("usuario no registrado");
     // Pasamos md5 a la paswword recibida del cliente
@@ -382,6 +385,30 @@ controller.loginEmpresa = async (req, res) => {
       .sign(encoder.encode(process.env.JWT_SECRET));
     //Si todo es correcto enviamos la respuesta. 200 OK
     return res.send({ jwt });
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+controller.getUser = async (req, res) => {
+  const tabla = data.alumno;
+  try {
+    let users = await dao.getUserByData(tabla, data.idUsuario, req.params.id);
+    // Si no existe el producto respondemos con un 404 (not found)
+    if (users.length <= 0) return res.status(404).send("No hay usuarios");
+    // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
+    return res.send(users);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+controller.getEmpresa = async (req, res) => {
+  const tabla = data.empresa;
+  try {
+    let users = await dao.getUserByData(tabla, data.idUsuario, req.params.id);
+    // Si no existe el producto respondemos con un 404 (not found)
+    if (users.length <= 0) return res.status(404).send("No hay usuarios");
+    // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
+    return res.send(users);
   } catch (e) {
     console.log(e.message);
   }

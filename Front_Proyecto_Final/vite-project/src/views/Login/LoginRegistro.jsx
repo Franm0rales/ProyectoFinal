@@ -32,7 +32,11 @@ export default function LoginAcount() {
                 setView("Empresa");
                 toggleUser();
               }}
+<<<<<<< HEAD
               className="nav-link  text-dark mt-3 btn btn-outline-dark"
+=======
+              className="nav-link text-dark mt-3 btn btn-outline-dark"
+>>>>>>> 788d8d14aef517c63172f4c7ca84f8ab9e9aed7d
             >
               Empresa
             </button>
