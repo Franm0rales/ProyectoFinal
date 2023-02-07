@@ -1,4 +1,4 @@
-/* 
+
 
 
 h1,h2,h3 {
@@ -57,7 +57,7 @@ h3 {
 }
 
 /**Modelos**/
-/* 
+
 .modelo {
     background-repeat: no-repeat;
     min-height: 40rem;
@@ -99,8 +99,8 @@ h3 {
     background: #ddd;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
-  } */
-   
+  }
+  
   /* .text:hover::after {
     width: 100%;
     left: 0;
