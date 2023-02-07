@@ -1,4 +1,4 @@
-
+/* 
 
 
 h1,h2,h3 {
@@ -57,7 +57,7 @@ h3 {
 }
 
 /**Modelos**/
-
+/* 
 .modelo {
     background-repeat: no-repeat;
     min-height: 40rem;
@@ -99,12 +99,12 @@ h3 {
     background: #ddd;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
-  }
-  
-  .text:hover::after {
+  } */
+   
+  /* .text:hover::after {
     width: 100%;
     left: 0;
-  }
+  
   ul {
     display: flex; 
 }
@@ -216,4 +216,4 @@ ul li a:hover::before{
     opacity: 1;
     top: -8px;
     right: -8px;
-  }
+  } */ 

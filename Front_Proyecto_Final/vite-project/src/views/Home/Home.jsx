@@ -6,11 +6,10 @@ export default function Home() {
   return (
     <>
       <div>
-        <Link to="/admin">Dashboard</Link>
         <Descripcion />
+        <Link to="/admin">Dashboard</Link>
         <Quedadas />
         <Galeria />
-  
       </div>
     </>
   );

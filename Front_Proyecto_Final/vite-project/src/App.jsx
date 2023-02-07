@@ -3,6 +3,7 @@ import Layout from "./components/Layout/Layout";
 import Home from "./views/Home/Home";
 import HomeAdmin from "./views/HomeAdmin/HomeAdmin";
 import { AuthContextProvider } from "./context/AuthContext/AuthContext";
+import "./App.css";
 
 // import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AlumnosAdmin from "./views/AlumnosAdmin/AlumnosAdmin";
