@@ -17,7 +17,6 @@ const AuthContext = createContext({
 export default AuthContext;
 
 const MY_AUTH_APP = "MY_AUTH_APP";
-console.log("email");
 export function AuthContextProvider({ children }) {
   const [authorization, setAuthorization] = useState(
     JSON.parse(window.localStorage.getItem(MY_AUTH_APP)) ?? {
@@ -39,8 +38,12 @@ export function AuthContextProvider({ children }) {
     if (response.status === 200) {
       const token = await response.json();
       setAuthorization(jwt_decode(token.jwt));
+      console.log(authorization, "contexto");
 
-      window.localStorage.setItem(MY_AUTH_APP, JSON.stringify(token.jwt));
+      window.localStorage.setItem(
+        MY_AUTH_APP,
+        JSON.stringify(jwt_decode(token.jwt))
+      );
       setErrorMessage(null);
     } else {
       setErrorMessage(alert("Error al introducir password o usuario"));
@@ -58,7 +61,10 @@ export function AuthContextProvider({ children }) {
       const token = await response.json();
       setAuthorization(jwt_decode(token.jwt));
 
-      window.localStorage.setItem(MY_AUTH_APP, JSON.stringify(token.jwt));
+      window.localStorage.setItem(
+        MY_AUTH_APP,
+        JSON.stringify(jwt_decode(token.jwt))
+      );
       setErrorMessage(null);
     } else {
       setErrorMessage(alert("Error al introducir password o usuario"));
@@ -69,6 +75,7 @@ export function AuthContextProvider({ children }) {
     setAuthorization({
       email: null,
       role: null,
+      idUsuario: null,
     });
   }
   function toggleUser() {
