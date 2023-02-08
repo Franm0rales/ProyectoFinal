@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import { BasicFormSchema } from "./BasicFormSchema";
+import Avatar1 from "../../assets/avatares/avatar2.png";
 
 export default function Registro() {
   async function onSubmit(values, actions) {
@@ -42,6 +43,7 @@ export default function Registro() {
       passwordRepeat: "",
       telefono: "",
       ciudad: "",
+      avatar: "",
     },
     validationSchema: BasicFormSchema,
     onSubmit,
@@ -104,7 +106,17 @@ export default function Registro() {
           >
             {errors.apellidos}
           </div>{" "}
-          <div className="valid-feedback">Looks good!</div>
+        </div>
+        <div className="col-md-7">
+          <label htmlFor="validationCustom01" className="form-label">
+            Avatar
+          </label>
+
+          <select class="form-select " aria-label="Default select example">
+            <option selected>Selecciona avatar</option>
+            <option value="8">Mujer</option>
+            <option value="7">Hombre</option>
+          </select>
         </div>
         <div className="col-md-4">
           <label htmlFor="validationCustom01" className="form-label">
