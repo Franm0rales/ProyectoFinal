@@ -106,9 +106,9 @@ export default function Navbar() {
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <Link class="dropdown-item" to="editar">
                         Settings
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       <a class="dropdown-item" href="#">
