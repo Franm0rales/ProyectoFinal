@@ -263,7 +263,17 @@ export default function RegistroEmpresa() {
             {errors.password}
           </div>{" "}
         </div>
+        <div className="col-md-7">
+          <label htmlFor="validationCustom01" className="form-label">
+            Avatar
+          </label>
 
+          <select class="form-select " aria-label="Default select example">
+            <option selected>Selecciona avatar</option>
+            <option value="8">Mujer</option>
+            <option value="7">Hombre</option>
+          </select>
+        </div>
         <div className="col-md-6">
           <label htmlFor="exampleInputPassword1" className="form-label">
             Repetir contraseña
@@ -297,7 +307,7 @@ export default function RegistroEmpresa() {
           </label>
         </div>
         <button
-          id="botones"
+          id="boton-registroempresa"
           disabled={isSubmitting}
           type="submit"
           className="btn text-white"

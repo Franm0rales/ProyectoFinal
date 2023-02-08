@@ -1,6 +1,5 @@
 import { useFormik } from "formik";
 import { BasicFormSchema } from "./BasicFormSchema";
-import Avatar1 from "../../assets/avatares/avatar2.png";
 
 export default function Registro() {
   async function onSubmit(values, actions) {
@@ -112,8 +111,15 @@ export default function Registro() {
             Avatar
           </label>
 
-          <select class="form-select " aria-label="Default select example">
-            <option selected>Selecciona avatar</option>
+          <select
+            as="select"
+            name="avatar"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.avatar}
+            class="form-select "
+            aria-label="Default select example"
+          >
             <option value="8">Mujer</option>
             <option value="7">Hombre</option>
           </select>
@@ -261,7 +267,7 @@ export default function Registro() {
           id="botones"
           disabled={isSubmitting}
           type="submit"
-          className="btn text-white"
+          className="btn text-white "
         >
           Crea una cuenta ahora
         </button>

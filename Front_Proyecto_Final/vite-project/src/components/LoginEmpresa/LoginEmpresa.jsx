@@ -93,7 +93,7 @@ export default function LoginEmpresa() {
           </label>
         </div>
         <button
-          id="botones"
+          id="empresa-botones"
           disabled={isSubmitting}
           type="submit"
           className="btn text-white"
