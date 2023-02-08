@@ -1370,14 +1370,15 @@ body {
   }
   
   #footer {
-    background: #587187;
+    background: #5e96ff;
     padding: 0 0 30px 0;
     color: #fff;
     font-size: 14px;
   }
   
   #footer .footer-top {
-    background: #5c768d;
+    margin-top: 48px;
+    background: #5e96ff;
     border-top: 1px solid #768fa6;
     border-bottom: 1px solid #67839c;
     padding: 60px 0 30px 0;
@@ -1493,11 +1494,12 @@ body {
     background: none;
     font-size: 16px;
     padding: 0 20px;
-    background: #428bca;
+    background: #043d6e;
     color: #fff;
     transition: 0.3s;
     border-radius: 4;
   }
+  
   
   #footer .footer-top .footer-newsletter form input[type=submit]:hover {
     background: #5295ce;
@@ -1517,4 +1519,8 @@ body {
   
   #footer .credits a {
     color: #9eccf4;
+  }
+
+  #botones{
+    background:#5295ce ;
   }

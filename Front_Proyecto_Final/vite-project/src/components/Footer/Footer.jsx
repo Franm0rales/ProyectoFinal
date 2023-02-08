@@ -1,34 +1,70 @@
-import "./Footer.css";
-
 export default function Footer() {
   return (
-    <footer className="footer mt-5">
-      <div className="container h-100">
-        <div className="row h-100 juntify-content-center justify-content-lg-between align-items-end pb-4 text-light">
-          <div className="col-lg-4 d-flex justify-content-center">
-            <h1 className="nombre-sitio">
-              Future<span>Present</span>
-            </h1>
-          </div>
-          <div className="col-lg-7 d-flex justify-content-center justify-content-lg-end">
-            <div className="contenido text-center">
-              <nav className="navegacion d-flex flex-column flex-lg-row text-center">
-                <a href="#" className="nav-link px-3" role="button">
-                  <i className="bi bi-facebook fa-lg"></i>
-                </a>
+    <footer id="footer">
+      <div class="footer-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 footer-info">
+              <h3>Horizons</h3>
+            </div>
 
-                <a href="#" className="nav-link px-3" role="button">
-                  <i className=" bi bi-twitter fa-lg"></i>
-                </a>
+            <div class="col-lg-2 col-md-6 footer-links">
+              <h4>Useful Links</h4>
+              <ul>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Home</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">About us</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Services</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>{" "}
+                  <a href="#">Terms of service</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>{" "}
+                  <a href="#">Privacy policy</a>
+                </li>
+              </ul>
+            </div>
 
-                <a href="#" className="nav-link px-3" role="button">
-                  <i className="bi bi-google"></i>
-                </a>
+            <div class="col-lg-3 col-md-6 footer-links">
+              <h4>Our Services</h4>
+              <ul>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Web Design</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>{" "}
+                  <a href="#">Web Development</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>{" "}
+                  <a href="#">Product Management</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Marketing</a>
+                </li>
+                <li>
+                  <i class="bx bx-chevron-right"></i>{" "}
+                  <a href="#">Graphic Design</a>
+                </li>
+              </ul>
+            </div>
 
-                <a href="#" className="nav-link px-3" role="button">
-                  <i className="bi bi-instagram"></i>
-                </a>
-              </nav>
+            <div class="col-lg-4 col-md-6 footer-newsletter">
+              <h4>Our Newsletter</h4>
+              <p>
+                Tamen quem nulla quae legam multos aute sint culpa legam noster
+                magna
+              </p>
+              <form action="" method="post">
+                <input type="email" name="email" />
+                <input type="submit" value="Subscribe" />
+              </form>
             </div>
           </div>
         </div>

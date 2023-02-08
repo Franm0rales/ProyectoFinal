@@ -296,7 +296,12 @@ export default function RegistroEmpresa() {
             Aceptar política de privacidad
           </label>
         </div>
-        <button disabled={isSubmitting} type="submit" className="btn btn-dark">
+        <button
+          id="botones"
+          disabled={isSubmitting}
+          type="submit"
+          className="btn text-white"
+        >
           Crea una cuenta ahora
         </button>
       </form>

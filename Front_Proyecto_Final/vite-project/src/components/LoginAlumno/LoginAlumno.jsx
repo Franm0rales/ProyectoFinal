@@ -92,7 +92,12 @@ export default function LoginAlumno() {
             Aceptar política de privacidad
           </label>
         </div>
-        <button disabled={isSubmitting} type="submit" className="btn btn-dark">
+        <button
+          disabled={isSubmitting}
+          type="submit"
+          id="botones"
+          className="btn text-white"
+        >
           Login
         </button>
       </form>
