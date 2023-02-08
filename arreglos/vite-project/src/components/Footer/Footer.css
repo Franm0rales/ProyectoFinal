@@ -1,0 +1,13 @@
+.footer {
+    height: 20rem;
+    background-image: url(../../assets/footer_bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    filter: grayscale(1)
+}
+
+
+.bg-dark {
+    background-color: #111!important;
+}
