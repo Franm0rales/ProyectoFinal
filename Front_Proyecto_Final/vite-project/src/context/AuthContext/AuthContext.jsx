@@ -48,7 +48,6 @@ export function AuthContextProvider({ children }) {
     if (response.status === 200) {
       const token = await response.json();
       setAuthorization(jwt_decode(token.jwt));
-      console.log(authorization, "contexto");
 
       window.localStorage.setItem(
         MY_AUTH_APP,
