@@ -4,38 +4,55 @@ import { useAuthContext } from "../../../../context/AuthContext/AuthContext";
 export default function Campo({ etiqueta, campo }) {
   const [inputName, setInputName] = useState(false);
   const { authorization } = useAuthContext();
-  async function onSubmit(values, actions) {
+
+  const [editarUsuario, setEditarUsuario] = useState("");
+
+  function handleInput(e) {
+    setEditarUsuario({ ...editarUsuario, [{ etiqueta }]: e.target.value });
+  }
+
+  async function onSubmit() {
     fetch(`http://localhost:3000/user/updateUser/${authorization.id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(values),
+      body: JSON.stringify(editarUsuario),
     }).then((response) => {
-      console.log(values);
       if (response.status === 400) {
         alert("Error al recibir el body");
       } else if (response.status === 200) {
+        setInputName(!inputName);
         alert(`usuario ${authorization.id} modificado correctamente`);
       } else if (response.status === 409) {
         alert("usuario ya modificado");
       }
     });
-
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    actions.resetForm();
   }
+  console.log(editarUsuario);
   return (
     <div className="media">
       <label>{etiqueta}</label>
       <button className="btn " onClick={() => setInputName(!inputName)}>
         <i className="bi bi-pencil text-primary"></i>
       </button>
-      <button className="btn" onClick={() => onSubmit}></button>
 
+      {inputName ? (
+        <button className="btn" onClick={() => onSubmit()}>
+          {" "}
+          <i class="bi bi-check-circle text-success"></i>
+        </button>
+      ) : (
+        ""
+      )}
       <div className="d-flex align-text-center gap-3">
         {inputName ? (
-          <input className="form-control" placeholder={`${campo}`}></input>
+          <input
+            name="nombre"
+            onChange={handleInput}
+            className="form-control"
+            placeholder={`${campo}`}
+          ></input>
         ) : (
           <p>{campo}</p>
         )}

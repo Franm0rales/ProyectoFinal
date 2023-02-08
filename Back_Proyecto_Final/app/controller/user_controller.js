@@ -193,7 +193,8 @@ controller.addAdmin = async (req, res) => {
 };
 //Controlador para modificar datos de un alumno por el id
 controller.updateUser = async (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params.id;
+  console.log(req.body);
   // Token hardcodeado para comprobar que funciona
   // const authorization =
   //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjFwaWNhc3NvbW9yYWxlc0BnbWFpbC5jb20iLCJpZCI6IjQwIn0.CQw13UaNs6PG4ouCakwYMXtFEnLVD4sq_x9XDZedkwc";
@@ -206,8 +207,8 @@ controller.updateUser = async (req, res) => {
 
   try {
     // Si no nos llega ningún campo por el body devolvemos un 400 (bad request)
-    if (Object.entries(req.body).length === 0)
-      return res.status(400).send("Error al recibir el body");
+    // if (Object.entries(req.body).length === 0)
+    //   return res.status(400).send("Error al recibir el body");
 
     // Usuario que quiere modificar los datos
     const tabla = tables[2];
