@@ -4,7 +4,6 @@ import jwt_decode from "jwt-decode";
 import { SignJWT, jwtVerify } from "jose";
 import { role, data, tables } from "../const/const.js";
 import { transporter } from "../config/mailer.js";
-import { useParams } from "react-router-dom";
 
 const controller = {};
 // Controlador para añadir alumno

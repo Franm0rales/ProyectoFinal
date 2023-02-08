@@ -10,9 +10,10 @@ h2 {
 h3 {
     font-size: 3rem;
 }
-.header {
-    height: 30rem;
-    background-image: url(../../assets/superior.jpg);
+
+.header  {
+    height: 25rem;
+    background-image: url(../Navbar/gif.gif);
     background-size: cover;
     background-position: bottom center;
 }
@@ -101,11 +102,11 @@ h3 {
     width: 0;
   }
   
-  /* .text:hover::after {
+  .text:hover::after {
     width: 100%;
     left: 0;
-  
-  ul {
+  }
+  /* ul {
     display: flex; 
 }
 
@@ -216,4 +217,4 @@ ul li a:hover::before{
     opacity: 1;
     top: -8px;
     right: -8px;
-  } */ 
+  } */

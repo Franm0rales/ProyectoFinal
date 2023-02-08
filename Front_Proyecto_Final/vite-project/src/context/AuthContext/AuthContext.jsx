@@ -7,7 +7,7 @@ const AuthContext = createContext({
     role: null,
     idUsuario: null,
   },
-  user: true,
+  user: 1,
   toggleUser: () => {},
   login: () => {},
   loginEmpresa: () => {},
@@ -29,6 +29,7 @@ export function AuthContextProvider({ children }) {
   const [errorMessage, setErrorMessage] = useState(null);
   const [user, setUser] = useState(1);
   async function login(user) {
+    console.log(user);
     const response = await fetch("http://localhost:3000/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -70,9 +71,13 @@ export function AuthContextProvider({ children }) {
       role: null,
     });
   }
-  // function toggleUser() {
-  //   setUser(!user);
-  // }
+  function toggleUser() {
+    if (user === 1) {
+      setUser(2);
+    } else {
+      setUser(1);
+    }
+  }
   console.log(authorization);
   const value = {
     authorization,
@@ -80,7 +85,7 @@ export function AuthContextProvider({ children }) {
     login,
     loginEmpresa,
     logout,
-    // toggleUser,
+    toggleUser,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
