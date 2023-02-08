@@ -9,8 +9,7 @@ export default function NavbarAdmin() {
             <a
               href="/"
               className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
-            >
-            </a>
+            ></a>
             <ul
               className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start px-2"
               id="menu"
@@ -41,7 +40,6 @@ export default function NavbarAdmin() {
               <li>
                 <Link
                   to="tarjetasadmin"
-                  
                   className="nav-link px-0 align-middle "
                 >
                   <i className="bi bi-card-checklist"></i>
@@ -49,22 +47,16 @@ export default function NavbarAdmin() {
                     Tarjetas visita
                   </span>
                 </Link>
-                
               </li>
               <li>
-                <Link
-                  to="galeriaadmin"
-                 
-                  className="nav-link px-0 align-middle"
-                >
-                  <i class="bi bi-images"></i>
+                <Link to="galeriaadmin" className="nav-link px-0 align-middle">
+                  <i className="bi bi-images"></i>
                   <span className="ms-1 d-none d-sm-inline">Imagenes</span>{" "}
                 </Link>
-                
               </li>
               <li>
                 <Link to="/" className="nav-link px-0 align-middle">
-                  <i class="bi bi-person-dash"></i>
+                  <i className="bi bi-person-dash"></i>
                   <span className="ms-1 d-none d-sm-inline">Log out</span>{" "}
                 </Link>
               </li>

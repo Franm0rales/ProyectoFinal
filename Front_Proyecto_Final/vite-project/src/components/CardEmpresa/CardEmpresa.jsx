@@ -26,7 +26,7 @@ export default function CardEmpresa(user) {
           </div>
           <Link
             to={`/admin/settingsempresa/${user.idUsuario}`}
-            class="btn btn-primary"
+            className="btn btn-primary"
           >
             Editar tarjeta de visita
           </Link>

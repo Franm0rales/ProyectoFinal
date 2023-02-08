@@ -185,8 +185,8 @@ export default function RegistroEmpresa() {
             {errors.direccion}
           </div>{" "}
         </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">
+        <div className="mb-3">
+          <label for="exampleFormControlTextarea1" className="form-label">
             Descripción tarjeta
           </label>
           <textarea

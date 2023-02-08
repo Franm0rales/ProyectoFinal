@@ -6,9 +6,7 @@ import RegistroEmpresa from "../../components/RegistroEmpresa/RegistroEmpresa";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 
 export default function LoginAcount() {
-  const [view, setView] = useState("Alumno");
-  const { toggleUser,user } = useAuthContext();
-  console.log(user)
+  const { view, setView } = useAuthContext();
   return (
     <div className="d-flex  justify-content-around pt-5">
       <nav className="col-5">
@@ -18,7 +16,6 @@ export default function LoginAcount() {
               type="button"
               onClick={() => {
                 setView("Alumno");
-                toggleUser();
               }}
               className="nav-link active text-dark "
             >
@@ -28,9 +25,9 @@ export default function LoginAcount() {
           <li className="">
             <a
               type="button"
-              onClick={() => {setView("Empresa")
-              toggleUser();}
-            }
+              onClick={() => {
+                setView("Empresa");
+              }}
               className="nav-link active text-dark"
             >
               Empresa
