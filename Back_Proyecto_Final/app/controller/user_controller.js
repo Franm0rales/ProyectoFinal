@@ -8,9 +8,19 @@ import { transporter } from "../config/mailer.js";
 const controller = {};
 // Controlador para añadir alumno
 controller.addAlumno = async (req, res) => {
-  const { nombre, apellidos, email, password, telefono, ciudad } = req.body;
+  const { nombre, apellidos, email, password, telefono, ciudad, avatar } =
+    req.body;
+  console.log(req.body);
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
-  if (!nombre || !email || !password || !apellidos || !telefono || !ciudad)
+  if (
+    !nombre ||
+    !email ||
+    !password ||
+    !apellidos ||
+    !telefono ||
+    !ciudad ||
+    !avatar
+  )
     return res.status(400).send("Error al recibir el body");
   try {
     // Buscamos el usuario en la base de datos
@@ -50,6 +60,7 @@ controller.addAlumno = async (req, res) => {
       email: email,
       password: md5(password),
       idUsuario: idUser,
+      avatar: avatar,
     };
     const addAlumno = await dao.addUser(alumnoObj, tables[role.alumno]);
     //Para enviar email cuando se registre
@@ -293,8 +304,7 @@ controller.deleteUser = async (req, res) => {
 // Controlador para el login de un usuario
 controller.loginUser = async (req, res) => {
   const { email, password } = req.body;
-  const id = req.params.id;
-  const tabla = tables[id];
+  const tabla = tables[role.alumno];
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
   if (!email || !password)
     return res.status(400).send("Error al recibir el body");
