@@ -7,7 +7,8 @@ const AuthContext = createContext({
     role: null,
     idUsuario: null,
   },
-  user: 1,
+  view: "Alumno",
+  setView: () => {},
   toggleUser: () => {},
   login: () => {},
   loginEmpresa: () => {},
@@ -25,15 +26,24 @@ export function AuthContextProvider({ children }) {
       idUsuario: null,
     }
   );
+  const [view, setView] = useState("Alumno");
   const [errorMessage, setErrorMessage] = useState(null);
-  const [user, setUser] = useState(1);
+  const [alumnoEmpresa, setAlumnoEmpresa] = useState(2);
   async function login(user) {
-    console.log(user);
-    const response = await fetch("http://localhost:3000/user/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
-    });
+    if (view === "Alumno") {
+      setAlumnoEmpresa(2);
+    } else {
+      setAlumnoEmpresa(1);
+    }
+    console.log(alumnoEmpresa, "alumnoEmpresa");
+    const response = await fetch(
+      `http://localhost:3000/user/login/${alumnoEmpresa}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(user),
+      }
+    );
 
     if (response.status === 200) {
       const token = await response.json();
@@ -78,21 +88,16 @@ export function AuthContextProvider({ children }) {
       idUsuario: null,
     });
   }
-  function toggleUser() {
-    if (user === 1) {
-      setUser(2);
-    } else {
-      setUser(1);
-    }
-  }
+
   console.log(authorization);
   const value = {
     authorization,
     errorMessage,
+    view,
+    setView,
     login,
     loginEmpresa,
     logout,
-    toggleUser,
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

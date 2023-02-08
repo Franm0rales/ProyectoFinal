@@ -6,7 +6,6 @@ import { useEffect } from "react";
 
 export default function LoginAlumno() {
   const { authorization, user, login } = useAuthContext();
-  console.log(authorization, "authori");
   const navigate = useNavigate();
   async function onSubmit(values, actions) {
     login(values);

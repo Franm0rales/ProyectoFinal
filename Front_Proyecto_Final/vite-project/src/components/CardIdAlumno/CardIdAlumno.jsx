@@ -46,16 +46,16 @@ export default function CardIdAlumno({ users }) {
                 <button
                   onClick={toggleVisible}
                   type="button"
-                  class="btn btn-danger btn-sm  "
+                  className="btn btn-danger btn-sm  "
                 >
-                  <i class="bi bi-trash3 text-white fs-5 "></i>
+                  <i className="bi bi-trash3 text-white fs-5 "></i>
                 </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class={`alert alert-danger ${visible}`} role="alert">
+      <div className={`alert alert-danger ${visible}`} role="alert">
         Eliminar usuario ¿Estas seguro?
         <button
           className="btn btn-outline-secondary mx-1 text-white rounded-2"

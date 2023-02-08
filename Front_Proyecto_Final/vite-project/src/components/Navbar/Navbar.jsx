@@ -7,19 +7,19 @@ export default function Navbar() {
   return (
     <>
       <NavbarSuperior />
-      <header id="header" class="d-flex align-items-center sticky-top">
-        <div class="container d-flex align-items-center">
-          <div class="logo me-auto mt-3">
+      <header id="header" className="d-flex align-items-center sticky-top">
+        <div className="container d-flex align-items-center">
+          <div className="logo me-auto mt-3">
             <h1>
               <a className="">horizons</a>
             </h1>
 
             <a href="index.html">
-              <img src="assets/img/logo.png" alt="" class="img-fluid" />
+              <img src="assets/img/logo.png" alt="" className="img-fluid" />
             </a>
           </div>
 
-          <nav id="navbar" class="navbar">
+          <nav id="navbar" className="navbar">
             <ul>
               <li>
                 <Link to="/" className="nav-link scrollto active text-dark">
@@ -27,28 +27,28 @@ export default function Navbar() {
                 </Link>
               </li>
               <li>
-                <a href="#" class="nav-link scrollto text-dark">
+                <a href="#" className="nav-link scrollto text-dark">
                   Nosotros
                 </a>
               </li>
 
               <li>
-                <a class="nav-link scrollto text-dark" href="#portfolio">
+                <a className="nav-link scrollto text-dark" href="#portfolio">
                   Eventos
                 </a>
               </li>
-              <li class="dropdown">
-                <a href="#">
-                  <span>Empresas</span> <i class="bi bi-chevron-down"></i>
+              <li className="dropdown">
+                <a href="#" className="text-decoration-none">
+                  <span>Empresas</span> <i className="bi bi-chevron-down"></i>
                 </a>
                 <ul>
                   <li>
                     <a href="#">Drop Down 1</a>
                   </li>
-                  <li class="dropdown">
+                  <li className="dropdown">
                     <a href="#">
                       <span>Deep Drop Down</span>{" "}
-                      <i class="bi bi-chevron-right"></i>
+                      <i className="bi bi-chevron-right"></i>
                     </a>
                     <ul>
                       <li>
@@ -80,44 +80,44 @@ export default function Navbar() {
                 </ul>
               </li>
               <li>
-                <a class="nav-link scrollto text-dark" href="#contact">
+                <a className="nav-link scrollto text-dark" href="#contact">
                   Contacto
                 </a>
               </li>
             </ul>
-            <i class="bi bi-list mobile-nav-toggle"></i>
+            <i className="bi bi-list mobile-nav-toggle"></i>
             {!authorization?.email ? (
               <Link to="login" className="nav-link scrollto text-dark">
                 Login
               </Link>
             ) : (
               <Link
-                class="nav-link scrollto text-dark"
+                className="nav-link scrollto text-dark"
                 aria-current="page"
                 to="/"
               >
                 <div className=" dropdown text-end mt-1 text-info fs-6 badge d-flex justify-content-center ">
                   {" "}
                   {authorization.email}
-                  <ul class="dropdown-menu text-small">
+                  <ul className="dropdown-menu text-small">
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         New project
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         Settings
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         Profile
                       </a>
                     </li>
                     <li></li>
                     <li>
-                      <Link onClick={logout} class="dropdown-item" to="/">
+                      <Link onClick={logout} className="dropdown-item" to="/">
                         Log Out
                       </Link>
                     </li>
