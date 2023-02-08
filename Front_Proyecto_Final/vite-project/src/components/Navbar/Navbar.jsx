@@ -106,17 +106,13 @@ export default function Navbar() {
                       </a>
                     </li>
                     <li>
-<<<<<<< HEAD
-                      <Link class="dropdown-item" to="editar">
-=======
-                      <a className="dropdown-item" href="#">
->>>>>>> 214663e441aa77ceaad590f57b61708791dde6c5
-                        Settings
+                      <Link className="dropdown-item" to="editar">
+                        Profile
                       </Link>
                     </li>
                     <li>
                       <a className="dropdown-item" href="#">
-                        Profile
+                        Settings
                       </a>
                     </li>
                     <li></li>
