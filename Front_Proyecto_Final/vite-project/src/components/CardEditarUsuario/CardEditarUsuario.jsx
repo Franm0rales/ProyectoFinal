@@ -1,14 +1,52 @@
-import Campo from "./componentes/Campo/Campo";
+import { useState } from "react";
+import { useAuthContext } from "../../context/AuthContext/AuthContext";
 
-export default function CardEditarUsuario({ user }) {
+export default function CardEditarUsuario({ user, setUser }) {
+  const [inputNombre, setInputNombre] = useState(false);
+  const [inputApellido, setInputApellido] = useState(false);
+  const [inputTelefono, setInputTelefono] = useState(false);
+  const [inputCiudad, setInputCiudad] = useState(false);
+  const [inputEmail, setInputEmail] = useState(false);
+  const [inputFecha, setInputFecha] = useState(false);
+
+  const { authorization } = useAuthContext();
+
+  const [editarUsuario, setEditarUsuario] = useState("");
+  function handleInput(e) {
+    let cambio = { ...editarUsuario, [e.target.name]: e.target.value };
+    setEditarUsuario(cambio);
+  }
+
+  async function onSubmit() {
+    const response = await fetch(
+      `http://localhost:3000/user/updateUser/${authorization.id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(editarUsuario),
+      }
+    );
+
+    if (response.status === 400) {
+      alert("Error al recibir el body");
+    } else if (response.status === 200) {
+      setInputNombre(!inputNombre);
+      setUser(await response.json());
+      alert(`usuario ${authorization.id} modificado correctamente`);
+    } else if (response.status === 409) {
+      alert("usuario ya modificado");
+    }
+  }
   return (
-    <section class="section about-section gray-bg" id="about">
-      <div class="container">
-        <div class="row align-items-center flex-row-reverse">
-          <div class="col-lg-6">
-            <div class="about-text go-to">
-              <h3 class="dark-color">About Me</h3>
-              <h6 class="theme-color lead">
+    <section className="section about-section gray-bg" id="about">
+      <div className="container">
+        <div className="row align-items-center flex-row-reverse">
+          <div className="col-lg-6">
+            <div className="about-text go-to">
+              <h3 className="dark-color">About Me</h3>
+              <h6 className="theme-color lead">
                 A Lead UX &amp; UI designer based in Canada
               </h6>
               <p>
@@ -18,22 +56,220 @@ export default function CardEditarUsuario({ user }) {
                 experiences through the bold interface and meaningful
                 interactions.
               </p>
-              <div class="row about-list">
-                <div class="col-md-6">
-                  <Campo etiqueta="Nombre" campo={user.nombre}></Campo>
-                  <Campo etiqueta="Apellidos" campo={user.apellidos}></Campo>
-                  <Campo etiqueta="Ciudad" campo={user.ciudad}></Campo>
+              <div className="row about-list">
+                <div className="col-md-6">
+                  <div className="media">
+                    <label>Nombre</label>
+                    <button
+                      className="btn "
+                      onClick={() => setInputNombre(!inputNombre)}
+                    >
+                      {!inputNombre ? (
+                        <i className="bi bi-pencil text-primary"></i>
+                      ) : (
+                        <i className="bi bi-x-circle"></i>
+                      )}
+                    </button>
+
+                    {inputNombre ? (
+                      <button className="btn" onClick={() => onSubmit()}>
+                        {" "}
+                        <i className="bi bi-check-circle text-success"></i>
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                    <div className="d-flex align-text-center gap-3">
+                      {inputNombre ? (
+                        <input
+                          name="nombre"
+                          onChange={handleInput}
+                          className="form-control"
+                          placeholder={`${user.nombre}`}
+                        ></input>
+                      ) : (
+                        <p>{user.nombre}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="media">
+                    <label>Apellidos</label>
+                    <button
+                      className="btn "
+                      onClick={() => setInputApellido(!inputApellido)}
+                    >
+                      {!inputApellido ? (
+                        <i className="bi bi-pencil text-primary"></i>
+                      ) : (
+                        <i className="bi bi-x-circle"></i>
+                      )}
+                    </button>
+
+                    {inputApellido ? (
+                      <button className="btn" onClick={() => onSubmit()}>
+                        {" "}
+                        <i className="bi bi-check-circle text-success"></i>
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                    <div className="d-flex align-text-center gap-3">
+                      {inputApellido ? (
+                        <input
+                          name="apellidos"
+                          onChange={handleInput}
+                          className="form-control"
+                          placeholder={`${user.apellidos}`}
+                        ></input>
+                      ) : (
+                        <p>{user.apellidos}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="media">
+                    <label>Ciudad</label>
+                    <button
+                      className="btn "
+                      onClick={() => setInputCiudad(!inputCiudad)}
+                    >
+                      {!inputCiudad ? (
+                        <i className="bi bi-pencil text-primary"></i>
+                      ) : (
+                        <i className="bi bi-x-circle"></i>
+                      )}
+                    </button>
+
+                    {inputCiudad ? (
+                      <button className="btn" onClick={() => onSubmit()}>
+                        {" "}
+                        <i className="bi bi-check-circle text-primary"></i>
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                    <div className="d-flex align-text-center gap-3">
+                      {inputCiudad ? (
+                        <input
+                          name="ciudad"
+                          onChange={handleInput}
+                          className="form-control"
+                          placeholder={`${user.ciudad}`}
+                        ></input>
+                      ) : (
+                        <p>{user.ciudad}</p>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-6">
-                  <Campo etiqueta="Correo" campo={user.email}></Campo>
-                  <Campo etiqueta="Telefono" campo={user.telefono}></Campo>
-                  <Campo etiqueta="Fecha alta" campo={user.tsAlta}></Campo>
+                <div className="col-md-6">
+                  <div className="media">
+                    <label>Correo</label>
+                    <button
+                      className="btn "
+                      onClick={() => setInputEmail(!inputEmail)}
+                    >
+                      {!inputEmail ? (
+                        <i className="bi bi-pencil text-primary"></i>
+                      ) : (
+                        <i className="bi bi-x-circle text-danger"></i>
+                      )}
+                    </button>
+
+                    {inputEmail ? (
+                      <button className="btn" onClick={() => onSubmit()}>
+                        {" "}
+                        <i className="bi bi-check-circle text-primary"></i>
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                    <div className="d-flex align-text-center gap-3">
+                      {inputEmail ? (
+                        <input
+                          name="email"
+                          onChange={handleInput}
+                          className="form-control"
+                          placeholder={`${user.email}`}
+                        ></input>
+                      ) : (
+                        <p>{user.email}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="media">
+                    <label>Telefono</label>
+                    <button
+                      className="btn "
+                      onClick={() => setInputTelefono(!inputTelefono)}
+                    >
+                      {!inputTelefono ? (
+                        <i className="bi bi-pencil text-primary"></i>
+                      ) : (
+                        <i className="bi bi-x-circle text-primary"></i>
+                      )}
+                    </button>
+
+                    {inputTelefono ? (
+                      <button className="btn" onClick={() => onSubmit()}>
+                        {" "}
+                        <i className="bi bi-check-circle text-success"></i>
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                    <div className="d-flex align-text-center gap-3">
+                      {inputTelefono ? (
+                        <input
+                          name="telefono"
+                          onChange={handleInput}
+                          className="form-control"
+                          placeholder={`${user.telefono}`}
+                        ></input>
+                      ) : (
+                        <p>{user.telefono}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="media">
+                    <label>Fecha de alta</label>
+                    <button
+                      className="btn "
+                      onClick={() => setInputFecha(!inputFecha)}
+                    >
+                      {!inputFecha ? (
+                        <i className="bi bi-pencil text-primary"></i>
+                      ) : (
+                        <i className="bi bi-x-circle text-danger"></i>
+                      )}
+                    </button>
+
+                    {inputFecha ? (
+                      <button className="btn" onClick={() => onSubmit()}>
+                        {" "}
+                        <i className="bi bi-check-circle text-success"></i>
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                    <div className="d-flex align-text-center gap-3">
+                      {inputFecha ? (
+                        <input
+                          name="tsAlta"
+                          onChange={handleInput}
+                          className="form-control"
+                          placeholder={`${user.tsAlta}`}
+                        ></input>
+                      ) : (
+                        <p>{user.tsAlta}</p>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="about-avatar">
+          <div className="col-lg-6">
+            <div className="about-avatar">
               <img
                 src={`https://bootdey.com/img/Content/avatar/avatar${user.avatar}.png`}
                 title=""
@@ -42,38 +278,38 @@ export default function CardEditarUsuario({ user }) {
             </div>
           </div>
         </div>
-        <div class="counter">
-          <div class="row">
-            <div class="col-6 col-lg-3">
-              <div class="count-data text-center">
-                <h6 class="count h2" data-to="500" data-speed="500">
+        <div className="counter">
+          <div className="row">
+            <div className="col-6 col-lg-3">
+              <div className="count-data text-center">
+                <h6 className="count h2" data-to="500" data-speed="500">
                   500
                 </h6>
-                <p class="m-0px font-w-600">Happy Clients</p>
+                <p className="m-0px font-w-600">Happy Clients</p>
               </div>
             </div>
-            <div class="col-6 col-lg-3">
-              <div class="count-data text-center">
-                <h6 class="count h2" data-to="150" data-speed="150">
+            <div className="col-6 col-lg-3">
+              <div className="count-data text-center">
+                <h6 className="count h2" data-to="150" data-speed="150">
                   150
                 </h6>
-                <p class="m-0px font-w-600">Project Completed</p>
+                <p className="m-0px font-w-600">Project Completed</p>
               </div>
             </div>
-            <div class="col-6 col-lg-3">
-              <div class="count-data text-center">
-                <h6 class="count h2" data-to="850" data-speed="850">
+            <div className="col-6 col-lg-3">
+              <div className="count-data text-center">
+                <h6 className="count h2" data-to="850" data-speed="850">
                   850
                 </h6>
-                <p class="m-0px font-w-600">Photo Capture</p>
+                <p className="m-0px font-w-600">Photo Capture</p>
               </div>
             </div>
-            <div class="col-6 col-lg-3">
-              <div class="count-data text-center">
-                <h6 class="count h2" data-to="190" data-speed="190">
+            <div className="col-6 col-lg-3">
+              <div className="count-data text-center">
+                <h6 className="count h2" data-to="190" data-speed="190">
                   190
                 </h6>
-                <p class="m-0px font-w-600">Telephonic Talk</p>
+                <p className="m-0px font-w-600">Telephonic Talk</p>
               </div>
             </div>
           </div>

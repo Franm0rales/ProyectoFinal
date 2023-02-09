@@ -33,9 +33,12 @@ export default function Navbar() {
               </li>
 
               <li>
-                <a className="nav-link scrollto text-dark" href="#portfolio">
+                <Link
+                  to="buscarempresa"
+                  className="nav-link scrollto text-dark"
+                >
                   Eventos
-                </a>
+                </Link>
               </li>
               <li className="dropdown">
                 <a href="#" className="text-decoration-none">
@@ -80,9 +83,13 @@ export default function Navbar() {
                 </ul>
               </li>
               <li>
-                <a className="nav-link scrollto text-dark" href="#contact">
+                <Link
+                  to="contacto"
+                  className="nav-link scrollto text-dark"
+                  href="#contact"
+                >
                   Contacto
-                </a>
+                </Link>
               </li>
             </ul>
             <i className="bi bi-list mobile-nav-toggle"></i>

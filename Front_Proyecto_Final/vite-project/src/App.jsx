@@ -15,6 +15,8 @@ import EditarAlumno from "./views/EditarAlumno/EditarAlumno";
 import EditarEmpresa from "./views/EditarEmpresa/EditarEmpresa";
 import CrearTarjeta from "./views/CrearTarjeta/CrearTarjeta";
 import EditarUsuario from "./views/EditarUsuario/EditarUsuario";
+import Contacto from "./views/Contacto/Contacto";
+import BuscarEmpr from "./views/BuscarEmpresa/BuscarEmpresa";
 const ROLES = {
   Admin: "1",
   User: "0",
@@ -28,6 +30,8 @@ function App() {
             <Route index element={<Home />} />
             <Route path="login" element={<LoginAcount />} />
             <Route path="editar" element={<EditarUsuario />} />
+            <Route path="contacto" element={<Contacto />} />
+            <Route path="buscarempresa" element={<BuscarEmpr />} />
 
             {/* </Route>
 

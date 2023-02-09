@@ -8,7 +8,7 @@ export default function Campo({ etiqueta, campo }) {
   const [editarUsuario, setEditarUsuario] = useState("");
 
   function handleInput(e) {
-    setEditarUsuario({ ...editarUsuario, [{ etiqueta }]: e.target.value });
+    setEditarUsuario(e.target.value);
   }
 
   async function onSubmit() {

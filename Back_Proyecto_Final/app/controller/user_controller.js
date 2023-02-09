@@ -193,8 +193,8 @@ controller.addAdmin = async (req, res) => {
 };
 //Controlador para modificar datos de un alumno por el id
 controller.updateUser = async (req, res) => {
-  const { id } = req.params.id;
-  console.log(req.body);
+  const id = req.params.id;
+  const user = await dao.getUserByData(data.usuario, data.id, id);
   // Token hardcodeado para comprobar que funciona
   // const authorization =
   //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjFwaWNhc3NvbW9yYWxlc0BnbWFpbC5jb20iLCJpZCI6IjQwIn0.CQw13UaNs6PG4ouCakwYMXtFEnLVD4sq_x9XDZedkwc";
@@ -211,13 +211,14 @@ controller.updateUser = async (req, res) => {
     //   return res.status(400).send("Error al recibir el body");
 
     // Usuario que quiere modificar los datos
-    const tabla = tables[2];
+    const tabla = tables[user[0].role];
 
     // Actualizamos el usuario
     await dao.updateUser(tabla, id, req.body, data.idUsuario);
+    const userUp = await dao.getUserByData(tabla, data.idUsuario, id);
 
     // Devolvemos la respuesta
-    return res.send(`Usuario con id ${id} modificado`);
+    return res.send(userUp[0]);
   } catch (e) {
     console.log(e.message);
   }

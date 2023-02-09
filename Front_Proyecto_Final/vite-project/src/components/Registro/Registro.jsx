@@ -112,7 +112,6 @@ export default function Registro() {
           </label>
 
           <select
-            as="select"
             name="avatar"
             onChange={handleChange}
             onBlur={handleBlur}
@@ -120,6 +119,7 @@ export default function Registro() {
             class="form-select "
             aria-label="Default select example"
           >
+            <option value="">Selecciona un género</option>
             <option value="8">Mujer</option>
             <option value="7">Hombre</option>
           </select>
@@ -155,19 +155,25 @@ export default function Registro() {
           <label htmlFor="validationCustom01" className="form-label">
             Ciudad
           </label>
-          <input
-            type="text"
-            className={
-              errors.ciudad && touched.ciudad
-                ? "form-control is-invalid"
-                : "form-control"
-            }
-            value={values.ciudad}
+
+          <select
             name="ciudad"
             onChange={handleChange}
             onBlur={handleBlur}
-            id="ciudad"
-          />
+            value={values.ciudad}
+            className="form-select "
+            aria-label="Default select example"
+          >
+            <option value="">Selecciona una ciudad</option>
+            <option value="Almeria">Almeria</option>
+            <option value="Cadiz">Cadiz</option>
+            <option value="Cordoba">Cordaba</option>
+            <option value="Granada">Granada</option>
+            <option value="Huelva">Huelva</option>
+            <option value="Jaen">Jaen</option>
+            <option value="Malaga">Malaga</option>
+            <option value="Sevilla">Sevilla</option>
+          </select>
           <div
             className={
               errors.ciudad && touched.ciudad
@@ -272,6 +278,7 @@ export default function Registro() {
           Crea una cuenta ahora
         </button>
       </form>
+      <pre>{JSON.stringify({ values, errors })}</pre>
     </div>
   );
 }
