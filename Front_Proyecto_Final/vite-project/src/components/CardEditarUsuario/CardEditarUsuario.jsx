@@ -8,6 +8,9 @@ export default function CardEditarUsuario({ user, setUser }) {
   const [inputCiudad, setInputCiudad] = useState(false);
   const [inputEmail, setInputEmail] = useState(false);
   const [inputAvatar, setInputAvatar] = useState(false);
+  const [inputTitulo, setInputTitulo] = useState(false);
+  const [inputDescripcion, setInputDescripcion] = useState(false);
+
   const [avatar2, setAvatar2] = useState("");
   const [avatar3, setAvatar3] = useState("");
   const [avatar4, setAvatar4] = useState("");
@@ -100,6 +103,9 @@ export default function CardEditarUsuario({ user, setUser }) {
       setInputCiudad(false);
       setInputEmail(false);
       setInputAvatar(false);
+      setInputTitulo(false);
+      setInputDescripcion(false);
+
       setUser(await response.json());
       setEditarUsuario("");
     } else if (response.status === 409) {
@@ -123,16 +129,84 @@ export default function CardEditarUsuario({ user, setUser }) {
           <div className="col-lg-6">
             <div className="about-text go-to">
               <h3 className="dark-color">About Me</h3>
-              <h6 className="theme-color lead">
-                A Lead UX &amp; UI designer based in Canada
-              </h6>
-              <p>
-                I <mark>design and develop</mark> services for customers of all
-                sizes, specializing in creating stylish, modern websites, web
-                services and online stores. My passion is to design digital user
-                experiences through the bold interface and meaningful
-                interactions.
-              </p>
+              <div className="d-flex">
+                <h4 className="theme-color lead">
+                  {!inputTitulo ? (
+                    user.titulo === "null" ? (
+                      "Inserte un titulo"
+                    ) : (
+                      user.titulo
+                    )
+                  ) : (
+                    <input
+                      name="titulo"
+                      onChange={handleInput}
+                      className="form-control"
+                      placeholder={
+                        user.titulo === "null" ? "Titulo" : `${user.titulo}`
+                      }
+                    ></input>
+                  )}
+                </h4>
+                <button
+                  className="btn "
+                  onClick={() => setInputTitulo(!inputTitulo)}
+                >
+                  {!inputTitulo ? (
+                    <i className="bi bi-pencil text-primary"></i>
+                  ) : (
+                    <i className="bi bi-x-circle"></i>
+                  )}
+                </button>
+                {inputTitulo ? (
+                  <button className="btn" onClick={() => onSubmit()}>
+                    {" "}
+                    <i className="bi bi-check-circle text-success"></i>
+                  </button>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className="d-flex">
+                <h6>
+                  {!inputDescripcion ? (
+                    user.descripcion === "null" ? (
+                      "Inserte un descripcion"
+                    ) : (
+                      user.descripcion
+                    )
+                  ) : (
+                    <textarea
+                      name="descripcion"
+                      onChange={handleInput}
+                      className="form-control d-flex flex-fill"
+                      placeholder={
+                        user.descripcion === "null"
+                          ? "Descripcion"
+                          : `${user.descripcion}`
+                      }
+                    ></textarea>
+                  )}
+                </h6>
+                <button
+                  className="btn "
+                  onClick={() => setInputDescripcion(!inputDescripcion)}
+                >
+                  {!inputDescripcion ? (
+                    <i className="bi bi-pencil text-primary"></i>
+                  ) : (
+                    <i className="bi bi-x-circle"></i>
+                  )}
+                </button>
+                {inputDescripcion ? (
+                  <button className="btn" onClick={() => onSubmit()}>
+                    {" "}
+                    <i className="bi bi-check-circle text-success"></i>
+                  </button>
+                ) : (
+                  ""
+                )}
+              </div>
               <div className="row about-list">
                 <div className="col-md-6">
                   <div className="media">
