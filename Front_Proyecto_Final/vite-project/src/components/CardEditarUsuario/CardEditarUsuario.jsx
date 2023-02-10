@@ -531,6 +531,7 @@ export default function CardEditarUsuario({ user, setUser }) {
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
+          <i class="bi bi-plus-circle fs-2 d-flex justify-content-end mas"></i>
         </div>
       </div>
     </section>

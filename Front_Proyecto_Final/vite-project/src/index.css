@@ -1694,10 +1694,13 @@ body {
   /* background-color: #eef2f3; */
  
   border: 1px #5295ce solid;
-  border-left: 16px #5295ce solid;
+  border-left: 32px #5295ce solid;
+  border-radius: 16px;
 }
 
-
+.mas{
+  color: #5295ce;
+}
 
 .row-striped {
     padding: 15px 0;

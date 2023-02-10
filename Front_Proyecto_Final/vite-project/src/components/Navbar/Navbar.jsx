@@ -41,9 +41,9 @@ export default function Navbar() {
                 </Link>
               </li>
               <li className="dropdown">
-                <a href="#" className="text-decoration-none">
+                <Link to="/empresas" className="text-decoration-none">
                   <span>Empresas</span> <i className="bi bi-chevron-down"></i>
-                </a>
+                </Link>
                 <ul>
                   <li>
                     <a href="#">Drop Down 1</a>
