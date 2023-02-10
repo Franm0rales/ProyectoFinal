@@ -128,7 +128,7 @@ export default function CardEditarUsuario({ user, setUser }) {
           </div>
           <div className="col-lg-6">
             <div className="about-text go-to">
-              <h2 className="dark-color eventos">Perfil</h2>
+              <h1 className="dark-color eventos">Perfil</h1>
               <div className="d-flex">
                 <h4 className="theme-color lead">
                   {!inputTitulo ? (
@@ -503,7 +503,7 @@ export default function CardEditarUsuario({ user, setUser }) {
         </div>
       </div>
       <div class="container pt-5 eventoscard">
-        <h2 className="eventos text-center">Eventos</h2>
+        <h1 className="eventos text-center">Eventos</h1>
         <div class="row row-striped">
           <div class="col-2 text-right">
             <h1 class="display-4">

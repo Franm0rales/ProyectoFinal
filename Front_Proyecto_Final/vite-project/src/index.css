@@ -1705,3 +1705,12 @@ body {
 .row-striped {
     padding: 15px 0;
 }
+#calendar {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  width: 420px;
+  margin: 0 auto;
+  height: 570px;
+  overflow: hidden;
+}
