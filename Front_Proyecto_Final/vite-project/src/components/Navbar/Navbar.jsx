@@ -118,9 +118,9 @@ export default function Navbar() {
                       </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
-                        Settings
-                      </a>
+                      <Link className="dropdown-item" to="test">
+                        Test vocacional
+                      </Link>
                     </li>
                     <li></li>
                     <li>

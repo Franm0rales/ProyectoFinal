@@ -1,7 +1,7 @@
 export default function Contacto() {
   return (
-    <div className="col-4 shadow p-3">
-      <h4>Enviar formulario</h4>
+    <div className="col-4 shadow p-3 mt-5 mb-5">
+      <h2 id="test">Enviar formulario</h2>
       <form>
         <div className="border rounded p-3 ">
           <div className="pt-2">
@@ -40,7 +40,7 @@ export default function Contacto() {
             rows="3"
           ></textarea>
           <div className="pt-3">
-            <button type="submit" className="btn btn-primary">
+            <button id="botones" type="submit" className="btn text-white">
               Enviar consulta
             </button>
           </div>
