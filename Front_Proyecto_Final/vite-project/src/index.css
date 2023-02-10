@@ -1592,6 +1592,9 @@ body {
     }
   }
 
+  .color-sombra-avatar{
+    box-shadow: 0 0 30px 5px #5295ce;;
+  }
   /* test */
   .question{
     width: 75%;
