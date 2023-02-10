@@ -128,7 +128,7 @@ export default function CardEditarUsuario({ user, setUser }) {
           </div>
           <div className="col-lg-6">
             <div className="about-text go-to">
-              <h3 className="dark-color">About Me</h3>
+              <h2 className="dark-color eventos">Perfil</h2>
               <div className="d-flex">
                 <h4 className="theme-color lead">
                   {!inputTitulo ? (
@@ -155,7 +155,7 @@ export default function CardEditarUsuario({ user, setUser }) {
                   {!inputTitulo ? (
                     <i className="bi bi-pencil text-primary"></i>
                   ) : (
-                    <i className="bi bi-x-circle"></i>
+                    <i className="bi bi-x-circle text-danger"></i>
                   )}
                 </button>
                 {inputTitulo ? (
@@ -195,7 +195,7 @@ export default function CardEditarUsuario({ user, setUser }) {
                   {!inputDescripcion ? (
                     <i className="bi bi-pencil text-primary"></i>
                   ) : (
-                    <i className="bi bi-x-circle"></i>
+                    <i className="bi bi-x-circle text-danger"></i>
                   )}
                 </button>
                 {inputDescripcion ? (
@@ -218,7 +218,7 @@ export default function CardEditarUsuario({ user, setUser }) {
                       {!inputNombre ? (
                         <i className="bi bi-pencil text-primary"></i>
                       ) : (
-                        <i className="bi bi-x-circle"></i>
+                        <i className="bi bi-x-circle text-danger"></i>
                       )}
                     </button>
 
@@ -252,7 +252,7 @@ export default function CardEditarUsuario({ user, setUser }) {
                       {!inputApellido ? (
                         <i className="bi bi-pencil text-primary"></i>
                       ) : (
-                        <i className="bi bi-x-circle"></i>
+                        <i className="bi bi-x-circle text-danger"></i>
                       )}
                     </button>
 
@@ -286,14 +286,14 @@ export default function CardEditarUsuario({ user, setUser }) {
                       {!inputCiudad ? (
                         <i className="bi bi-pencil text-primary"></i>
                       ) : (
-                        <i className="bi bi-x-circle"></i>
+                        <i className="bi bi-x-circle text-danger"></i>
                       )}
                     </button>
 
                     {inputCiudad ? (
                       <button className="btn" onClick={() => onSubmit()}>
                         {" "}
-                        <i className="bi bi-check-circle text-primary"></i>
+                        <i className="bi bi-check-circle text-success"></i>
                       </button>
                     ) : (
                       ""
@@ -338,7 +338,7 @@ export default function CardEditarUsuario({ user, setUser }) {
                     {inputEmail ? (
                       <button className="btn" onClick={() => onSubmit()}>
                         {" "}
-                        <i className="bi bi-check-circle text-primary"></i>
+                        <i className="bi bi-check-circle text-success"></i>
                       </button>
                     ) : (
                       ""
@@ -365,7 +365,7 @@ export default function CardEditarUsuario({ user, setUser }) {
                       {!inputTelefono ? (
                         <i className="bi bi-pencil text-primary"></i>
                       ) : (
-                        <i className="bi bi-x-circle text-primary"></i>
+                        <i className="bi bi-x-circle text-danger"></i>
                       )}
                     </button>
 
@@ -501,40 +501,35 @@ export default function CardEditarUsuario({ user, setUser }) {
             </div>
           </div>
         </div>
-        <div className="counter">
-          <div className="row">
-            <div className="col-6 col-lg-3">
-              <div className="count-data text-center">
-                <h6 className="count h2" data-to="500" data-speed="500">
-                  500
-                </h6>
-                <p className="m-0px font-w-600">Happy Clients</p>
-              </div>
-            </div>
-            <div className="col-6 col-lg-3">
-              <div className="count-data text-center">
-                <h6 className="count h2" data-to="150" data-speed="150">
-                  150
-                </h6>
-                <p className="m-0px font-w-600">Project Completed</p>
-              </div>
-            </div>
-            <div className="col-6 col-lg-3">
-              <div className="count-data text-center">
-                <h6 className="count h2" data-to="850" data-speed="850">
-                  850
-                </h6>
-                <p className="m-0px font-w-600">Photo Capture</p>
-              </div>
-            </div>
-            <div className="col-6 col-lg-3">
-              <div className="count-data text-center">
-                <h6 className="count h2" data-to="190" data-speed="190">
-                  190
-                </h6>
-                <p className="m-0px font-w-600">Telephonic Talk</p>
-              </div>
-            </div>
+      </div>
+      <div class="container pt-5 eventoscard">
+        <h2 className="eventos text-center">Eventos</h2>
+        <div class="row row-striped">
+          <div class="col-2 text-right">
+            <h1 class="display-4">
+              <span class="text-dark">23</span>
+            </h1>
+            <h2>OCT</h2>
+          </div>
+          <div class="col-10">
+            <h3 class="text-uppercase">
+              <strong>Ice Cream Social</strong>
+            </h3>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <i class="bi bi-calendar"></i> Monday
+              </li>
+              <li class="list-inline-item">
+                <i class="bi bi-clock"></i> 12:30 PM - 2:00 PM
+              </li>
+              <li class="list-inline-item">
+                <i class="bi bi-cup-hot"></i> Café
+              </li>
+            </ul>
+            <p>
+              Lorem ipsum dolsit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
           </div>
         </div>
       </div>

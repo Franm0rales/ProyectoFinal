@@ -1656,3 +1656,49 @@ body {
 
   color: #5295ce
 }
+
+.widget-49 .widget-49-title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #edf1fc;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.widget-49 .widget-49-title-wrapper .widget-49-date-primary .widget-49-date-day {
+  color: #5295ce;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+
+
+
+.eventos{
+  
+  margin-bottom: 20px;
+  padding-bottom: 0;
+  color: #5c768d;
+}
+
+.row-striped:nth-of-type(odd){
+  /* background-color: #eef2f3; */
+ 
+  border: 1px #5295ce solid;
+  border-left: 16px #5295ce solid;
+}
+
+
+
+.row-striped {
+    padding: 15px 0;
+}
