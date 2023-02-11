@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import CardEditarEmpresa from "../../components/CardEditarEmpresa/CardEditarEmpresa";
 import CardIdEmpresa from "../../components/CarIdEmpresa/CardIdEmpresa";
 import SettingsEmpresa from "../../components/SettingEmpresa/SettingEmpresa";
 
@@ -17,9 +18,12 @@ export default function EditarEmpresa() {
   console.log(users, "vista");
   return (
     <>
+    <div className="container">
+
       {users ? <CardIdEmpresa users={users} /> : <p>Cargando...</p>}
 
       <SettingsEmpresa />
+    </div>
     </>
   );
 }

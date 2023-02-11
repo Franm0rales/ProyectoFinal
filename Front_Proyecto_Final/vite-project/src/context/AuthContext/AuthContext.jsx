@@ -18,6 +18,7 @@ const AuthContext = createContext({
 export default AuthContext;
 
 const MY_AUTH_APP = "MY_AUTH_APP";
+
 export function AuthContextProvider({ children }) {
   const [authorization, setAuthorization] = useState(
     JSON.parse(window.localStorage.getItem(MY_AUTH_APP)) ?? {
@@ -35,7 +36,6 @@ export function AuthContextProvider({ children }) {
     } else {
       setAlumnoEmpresa(1);
     }
-    console.log(alumnoEmpresa, "alumnoEmpresa");
     const response = await fetch(
       `http://localhost:3000/user/login/${alumnoEmpresa}`,
       {
@@ -88,7 +88,6 @@ export function AuthContextProvider({ children }) {
     });
   }
 
-  console.log(authorization);
   const value = {
     authorization,
     errorMessage,

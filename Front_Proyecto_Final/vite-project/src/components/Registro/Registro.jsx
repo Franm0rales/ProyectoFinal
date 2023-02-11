@@ -19,8 +19,7 @@ export default function Registro() {
         alert("usuario ya registrado");
       }
     });
-    console.log(values);
-    console.log(actions);
+ 
     await new Promise((resolve) => setTimeout(resolve, 2000));
     actions.resetForm();
   }

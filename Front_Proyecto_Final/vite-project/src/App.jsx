@@ -18,6 +18,7 @@ import EditarUsuario from "./views/EditarUsuario/EditarUsuario";
 import Contacto from "./views/Contacto/Contacto";
 import TestUsuario from "./views/TestUsuario/TestUsuario";
 import Empresa from "./views/Empresa/Empresa";
+import AgendaPerfilEmpresa from "./views/AgendaPerfilEmpresa/AgendaPerfilEmpresa";
 const ROLES = {
   Admin: "1",
   User: "0",
@@ -31,6 +32,10 @@ function App() {
             <Route index element={<Home />} />
             <Route path="login" element={<LoginAcount />} />
             <Route path="editar" element={<EditarUsuario />} />
+            <Route path="editarempresa" element={<EditarEmpresa />} />
+            <Route path="agendaeventos" element={<AgendaPerfilEmpresa />} />
+
+             
             <Route path="test" element={<TestUsuario />} />
             <Route path="contacto" element={<Contacto />} />
             <Route path="empresas" element={<Empresa />} />

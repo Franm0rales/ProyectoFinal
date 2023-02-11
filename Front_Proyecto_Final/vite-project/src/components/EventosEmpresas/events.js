@@ -78,15 +78,15 @@ export default [
     },
     {
       id: 11.1,
-      title: "Inconvenient Conference Call",
-      start: "2015-04-13T07:30:00.000Z",
-      end: "2015-04-13T10:00:00.000Z"
+      title: "Jornadas puertas abiertas málaga",
+      start: "2023-02-08T07:30:00.000Z",
+      end: "2023-02-11T10:00:00.000Z"
     },
     {
       id: 11.2,
       title: "Project Kickoff - Lou's Shoes",
       start: "2015-04-13T09:30:00.000Z",
-      end: "2015-04-13T12:00:00.000Z"
+      end: "2015-05-13T12:00:00.000Z"
     },
     {
       id: 11.3,

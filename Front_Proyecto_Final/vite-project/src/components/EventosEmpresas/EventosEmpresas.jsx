@@ -20,7 +20,6 @@ export default function EventoEmpresas() {
   const onSelectEvent = (event) => alert(event.title);
 
   const loadData = (targetedDateRange) => {
-    console.log("loadData");
     const data = eventsData.filter((item) => {
       const itemStart = moment(item.start);
       const itemEnd = moment(item.end);
@@ -46,21 +45,25 @@ export default function EventoEmpresas() {
     loadData(newDateRange);
   };
   return (
-    <Container>
-      <h1 className="eventos text-center pt-5 pb-5">Agenda</h1>
+    <>
+    <h1 className="eventos text-center pt-5 pb-5">Agenda</h1>
+    <Container className="d-flex pt-5 pb-5 justify-content-center">
+      
       <Calendar
+      className="eventos calendario "
         views={["day", "work_week", "month"]}
         selectable
         localizer={localizer}
         defaultDate={new Date()}
         defaultView="month"
         events={eventsList}
-        style={{ height: "50vh", width:"70vh"  }}
+        style={{ height: "50vh", width:"70vh" , }}
         onSelectEvent={onSelectEvent}
         onNavigate={(newDate) => {
           agendaNavigation(newDate);
         }}
       />
     </Container >
+    </>
   );
 }
