@@ -1714,3 +1714,23 @@ body {
   height: 570px;
   overflow: hidden;
 }
+
+
+.app {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.app__container {
+
+	width: 500px;
+	height: 500px;
+	border: 1px solid #5295ce;
+  border-radius: 16px;
+}
+
+.app__input {
+	margin-top: 32px;
+}
