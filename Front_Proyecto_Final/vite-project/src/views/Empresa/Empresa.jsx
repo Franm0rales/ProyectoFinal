@@ -1,3 +1,5 @@
+import EventosEmpresas from "../../components/EventosEmpresas/EventosEmpresas";
+
 export default function Empresa() {
-  return;
+  return<EventosEmpresas/>
 }
