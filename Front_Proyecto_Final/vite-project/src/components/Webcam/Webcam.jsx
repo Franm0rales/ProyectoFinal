@@ -11,6 +11,7 @@ export default function Webcam() {
 		setPlaying(true);
 		navigator.getUserMedia(
 			{
+				// audio:true,
 				video: true,
 			},
 			(stream) => {
@@ -27,6 +28,8 @@ export default function Webcam() {
 		setPlaying(false);
 		let video = document.getElementsByClassName('app__videoFeed')[0];
 		video.srcObject.getTracks()[0].stop();
+
+		
 	};
 
 	return (

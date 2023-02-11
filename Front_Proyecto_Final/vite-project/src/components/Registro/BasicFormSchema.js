@@ -23,6 +23,5 @@ export const BasicFormSchema = yup.object().shape({
   avatar: yup.string().required(),
   ciudad: yup
     .string()
-    .oneOf(["designer", "developer", "manager", "other"], "Invalid Job Type")
     .required("Required"),
 });
