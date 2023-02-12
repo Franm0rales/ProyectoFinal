@@ -1,5 +1,5 @@
-import EventosEmpresas from "../../components/EventosEmpresas/EventosEmpresas";
+import BuscarEmpresa from "../../components/BuscarEmpresa/BuscarEmpresa";
 
 export default function Empresas() {
-  return <EventosEmpresas />;
+  return <BuscarEmpresa />;
 }
