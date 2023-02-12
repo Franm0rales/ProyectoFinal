@@ -19,7 +19,7 @@ import Contacto from "./views/Contacto/Contacto";
 import TestUsuario from "./views/TestUsuario/TestUsuario";
 import Empresa from "./views/Empresa/Empresa";
 import AgendaPerfilEmpresa from "./views/AgendaPerfilEmpresa/AgendaPerfilEmpresa";
-import BuscarEmpresa from "./components/BuscarEmpresa/BuscarEmpresa";
+import Eventos from "./views/Eventos/Eventos";
 const ROLES = {
   Admin: "1",
   User: "0",
@@ -40,7 +40,7 @@ function App() {
             <Route path="test" element={<TestUsuario />} />
             <Route path="contacto" element={<Contacto />} />
             <Route path="empresas" element={<Empresa />} />
-            <Route path="eventos" element={<BuscarEmpresa />} />
+            <Route path="eventos" element={<Eventos/>} />
 
             {/* </Route>
 
