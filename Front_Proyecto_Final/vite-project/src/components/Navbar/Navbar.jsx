@@ -36,7 +36,7 @@ export default function Navbar() {
 
               <li>
                 <Link
-                  to="buscarempresa"
+                  to="eventos"
                   className="nav-link scrollto text-dark"
                 >
                   Eventos
