@@ -1,5 +1,6 @@
 import { createContext, useState, useContext } from "react";
 import jwt_decode from "jwt-decode";
+import Swal from "sweetalert2";
 
 const AuthContext = createContext({
   authorization: {
@@ -54,6 +55,16 @@ export function AuthContextProvider({ children }) {
         JSON.stringify(jwt_decode(token.jwt))
       );
       setErrorMessage(null);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Registrado correctamente ',
+        showConfirmButton: false,
+        timer: 1500,
+        didOpen: () => {
+          Swal.showLoading()
+        }
+      })
     } else {
       setErrorMessage(alert("Error al introducir password o usuario"));
     }
@@ -75,6 +86,16 @@ export function AuthContextProvider({ children }) {
         JSON.stringify(jwt_decode(token.jwt))
       );
       setErrorMessage(null);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Registrado correctamente ',
+        showConfirmButton: false,
+        timer: 1500,
+        didOpen: () => {
+          Swal.showLoading()
+        }
+      })
     } else {
       setErrorMessage(alert("Error al introducir password o usuario"));
     }
@@ -86,6 +107,16 @@ export function AuthContextProvider({ children }) {
       role: null,
       idUsuario: null,
     });
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Ha cerrado la sesion correctamente ',
+      showConfirmButton: false,
+      timer: 1500,
+      didOpen: () => {
+        Swal.showLoading()
+      }
+    })
   }
 
   const value = {

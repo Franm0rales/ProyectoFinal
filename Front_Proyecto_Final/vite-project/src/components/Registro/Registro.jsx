@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import { BasicFormSchema } from "./BasicFormSchema";
-
+import Swal from "sweetalert2"
 export default function Registro() {
   async function onSubmit(values, actions) {
     fetch("http://localhost:3000/user/signUpAlumno", {
@@ -10,13 +10,32 @@ export default function Registro() {
       },
       body: JSON.stringify(values),
     }).then((response) => {
-      console.log(values);
       if (response.status === 400) {
-        alert("error al recibir el body");
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Usuario ya registrado',
+          showConfirmButton: false,
+          timer: 1500
+        })
+       
       } else if (response.status === 200) {
-        alert(`usuario ${values.nombre} registrado correctamente`);
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Registrado correctamente ',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        
       } else if (response.status === 409) {
-        alert("usuario ya registrado");
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Usuario ya registrado',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     });
  

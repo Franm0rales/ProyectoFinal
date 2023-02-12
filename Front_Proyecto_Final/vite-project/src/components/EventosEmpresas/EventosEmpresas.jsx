@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-
+import Swal from "sweetalert2";
 import eventsData from "./events";
 
 moment.locale("es-Es");
@@ -17,8 +17,11 @@ export default function EventoEmpresas() {
     end: moment().endOf("month")
   });
   const [eventsList, setEventsList] = useState([]);
-  const onSelectEvent = (event) => alert(event.title);
-
+  const onSelectEvent = (event) =>  
+  Swal.fire({
+    title:`${event.title}`,
+    confirmButtonColor:"#5295ce",
+  })
   const loadData = (targetedDateRange) => {
     const data = eventsData.filter((item) => {
       const itemStart = moment(item.start);
