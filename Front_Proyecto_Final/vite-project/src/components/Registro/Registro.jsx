@@ -47,6 +47,7 @@ export default function Registro() {
     onSubmit,
   });
   return (
+    
     <div className="m-5">
       <h1>Regístrate</h1>
 

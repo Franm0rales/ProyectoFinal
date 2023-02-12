@@ -47,9 +47,9 @@ export default function Webcam() {
 			</div>
 			<div className="app__input">
 				{playing ? (
-					<button id='botones' className='bt text-white border-0 fs-3 rounded mb-5' onClick={stopVideo}>Stop</button>
+					<button id='botones' className='bt text-white border-0  rounded mb-5' onClick={stopVideo}>Stop</button>
 				) : (
-					<button id='botones' className='bt text-white border-0 fs-3 rounded mb-5' onClick={startVideo}>Start</button>
+					<button id='botones' className='bt text-white border-0 rounded mb-5' onClick={startVideo}>Start</button>
 				)}
 			</div>
 		</div>
