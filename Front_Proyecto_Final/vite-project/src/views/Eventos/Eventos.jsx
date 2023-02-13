@@ -4,6 +4,7 @@ import ContadorVisitas from "../../components/ContadorVisitas/Contadorvisitas";
 export default function Eventos() {
   return (
     <>
+      <h1 className="mt-5 mb-5 text-center">Eventos</h1>
       <BuscarEmpresa />
       <div className="container meetup-card">
         <div class=" mb-3">
