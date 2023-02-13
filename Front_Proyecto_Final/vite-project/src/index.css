@@ -564,6 +564,13 @@ body {
     padding-bottom: 0;
     color: #5c768d;
   }
+  h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+    color: #5c768d;
+  }
   
   .section-title p {
     margin-bottom: 0;

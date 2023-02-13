@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import Swal from "sweetalert2";
 export default function ContadorVisitas() {
   const [visitCount, setVisitCount] = useState(0);
   const [buttonState, setButtonState] = useState("Asistiré");
@@ -7,11 +7,21 @@ export default function ContadorVisitas() {
   const maxVisitors = 20;
 
   const handleClick = () => {
+    Swal.fire({
+      title: "Registrado al Evento",
+      icon: "success",
+      confirmButtonColor: "#5295ce",
+    });
     setVisitCount(visitCount + 1);
     setButtonState("No asistiré");
     setIsDisabled(true);
   };
   const handleUnclick = () => {
+    Swal.fire({
+      title: "Te has eliminado del evento correctamente",
+      icon: "success",
+      confirmButtonColor: "#5295ce",
+    });
     setVisitCount(visitCount - 1);
     setButtonState("Asistiré");
     setIsDisabled(false);
