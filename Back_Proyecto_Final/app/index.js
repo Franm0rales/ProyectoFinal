@@ -25,5 +25,6 @@ app.use(cors());
 
 //Definir punto entrada rutas del proyecto
 app.use("/user", userRouter);
+app.use("/test", userRouter);
 
 export default app;
