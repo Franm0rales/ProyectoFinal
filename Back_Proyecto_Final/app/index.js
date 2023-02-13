@@ -12,6 +12,7 @@ import morgan from "morgan";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/user_router.js";
+import testRouter from "./routes/test_router.js";
 
 dotenv.config();
 
@@ -25,6 +26,6 @@ app.use(cors());
 
 //Definir punto entrada rutas del proyecto
 app.use("/user", userRouter);
-app.use("/test", userRouter);
+app.use("/test", testRouter);
 
 export default app;
