@@ -1,8 +1,7 @@
 import express from "express";
-import userController from "../controller/user_controller.js";
-import validateLoginDto from "../utils/validate_login_dto.js";
+import testController from "../controller/test_controller.js";
 const testRouter = express.Router();
 //Traer todas las preguntas
-userRouter.get("/", userController.allTests);
+testRouter.get("/", testController.allTests);
 
 export default testRouter;

@@ -1,4 +1,5 @@
 import userQueries from "./mysql_queries/user_queries.js";
+import testQueries from "./mysql_queries/test_queries.js";
 
 const dao = {};
 
@@ -24,5 +25,6 @@ dao.allUsers = async (tabla) => await userQueries.allUsers(tabla);
 // Eliminar usuario por su id
 dao.deleteUser = async (tabla, data, id, columna) =>
   await userQueries.deleteUser(tabla, data, id, columna);
+dao.allTests = async (tabla) => await testQueries.allTests(tabla);
 
 export default dao;

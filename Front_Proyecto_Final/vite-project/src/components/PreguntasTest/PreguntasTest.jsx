@@ -1,62 +1,30 @@
-export default function PreguntasTest() {
+export default function PreguntasTest({ key, test }) {
   return (
     <>
-      <div class="container mt-sm-5 my-1">
-        <div class="question ml-sm-5 pl-sm-5 pt-2">
-          <div class="py-2 h5">
-            <b>1. which option best describes your job role?</b>
+      <div className="container mt-sm-5 my-1" key={key}>
+        <div className="question ml-sm-5 pl-sm-5 pt-2">
+          <div className="py-2 h5">
+            <b>{test}</b>
           </div>
-          <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
-            <label class="options">
+          <div className="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
+            <label className="options">
               Small Business Owner or Employee
               <input type="radio" name="radio" />
-              <span class="checkmark"></span>
+              <span className="checkmark"></span>
             </label>
-            <label class="options">
+            <label className="options">
               Nonprofit Owner or Employee
               <input type="radio" name="radio" />
-              <span class="checkmark"></span>
+              <span className="checkmark"></span>
             </label>
-            <label class="options">
+            <label className="options">
               Journalist or Activist
               <input type="radio" name="radio" />
-              <span class="checkmark"></span>
+              <span className="checkmark"></span>
             </label>
           </div>
         </div>
       </div>
-      <nav
-        aria-label="Page navigation example "
-        className="d-flex justify-content-center pt-5"
-      >
-        <ul class="pagination">
-          <li class="page-item">
-            <a id="test" class="page-link" href="#">
-              Previous
-            </a>
-          </li>
-          <li class="page-item">
-            <a id="test" class="page-link" href="#">
-              1
-            </a>
-          </li>
-          <li class="page-item">
-            <a id="test" class="page-link" href="#">
-              2
-            </a>
-          </li>
-          <li class="page-item">
-            <a id="test" class="page-link" href="#">
-              3
-            </a>
-          </li>
-          <li class="page-item">
-            <a id="test" class="page-link" href="#">
-              Next
-            </a>
-          </li>
-        </ul>
-      </nav>
     </>
   );
 }
