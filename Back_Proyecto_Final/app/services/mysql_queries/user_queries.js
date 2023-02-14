@@ -5,7 +5,6 @@ const userQueries = {};
 
 //Añadir nuevo usuario
 userQueries.addUser = async (data, tabla) => {
-  console.log(data, "data");
   // Conectamos con la base de datos y añadimos el usuario.
   let conn = null;
   try {

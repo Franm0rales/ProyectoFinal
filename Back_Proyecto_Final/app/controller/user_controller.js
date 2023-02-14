@@ -609,4 +609,35 @@ controller.addCard = async (req, res) => {
     console.log(e.message);
   }
 };
+//Añadir aptitudes
+controller.addAptitudes = async (req, res) => {
+  const { resp } = req.body;
+  const { id } = req.params;
+  // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
+
+  try {
+    let userData = await dao.getUserByData(data.alumno, data.idUsuario, id);
+    [userData] = userData;
+    // Lo registramos
+    let resultadosObj = {
+      servicioSocial: resp[0],
+      ejecutivoPersuasivo: resp[1],
+      verbal: resp[2],
+      artesPlasticas: resp[3],
+      musical: resp[4],
+      organizacionOficina: resp[5],
+      cientifico: resp[6],
+      calculoNumerico: resp[7],
+      mecanico: resp[8],
+      aireLibre: resp[9],
+      idAlumno: userData.idUsuario,
+    };
+
+    const idresultados = await dao.addUser(resultadosObj, data.respuestastest);
+    return res.send(`resultados en ${idresultados}`);
+    //}
+  } catch (e) {
+    console.log(e.message);
+  }
+};
 export default controller;

@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
-import PreguntasTest from "../../components/PreguntasTest/PreguntasTest";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useAuthContext } from "../../context/AuthContext/AuthContext";
 
 export default function TestUsuario() {
+  const { authorization } = useAuthContext();
   const value = [0, 1, 2, 3];
   const [test, setTest] = useState([]);
   const [pagination, setPagination] = useState(0);
-  const [numeros, setNumeros] = useState([]);
+  const [disable, setDisable] = useState("d-none");
+  const navigate = useNavigate();
+
+  const [numeros, setNumeros] = useState([0, 0]);
   let suma = 0;
   useEffect(() => {
     const fetchTests = async () => {
@@ -19,8 +25,54 @@ export default function TestUsuario() {
   const actualizarNumero = (index, event) => {
     const nuevoValor = parseInt(event.target.value);
     numeros[index] = nuevoValor;
-    console.log(numeros);
+    if (numeros.length > 39) {
+      setDisable("");
+    }
   };
+
+  let resp = [];
+  function resultadosTest() {
+    for (let i = 0; i < 10; i++) {
+      for (let z = 0; z < 4; z++) {
+        suma += numeros[i + z * 10];
+      }
+      resp[i] = suma;
+      suma = 0;
+    }
+    console.log(resp);
+  }
+
+  async function confirmar() {
+    resultadosTest();
+
+    const response = await fetch(
+      `http://localhost:3000/user/aptitudes/${authorization.id}`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ resp: resp }),
+      }
+    );
+
+    if (response.status === 400) {
+    } else if (response.status === 200) {
+    } else if (response.status === 409) {
+    }
+    Swal.fire({
+      title: "<strong>El resultado de tu test <u>es:</u></strong>",
+      icon: "success",
+      html:
+        "Lo tienes disponible <b> en tu perfil</b> " +
+        '<a href="http://127.0.0.1:5173/editar">links</a> ' +
+        "Enlace a tu perfil",
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+    });
+    navigate("/editar");
+  }
 
   function agregarNumeros() {
     for (let i of numeros) {
@@ -164,6 +216,15 @@ export default function TestUsuario() {
               href="#"
             >
               Next
+            </button>
+          </li>
+          <li>
+            <button
+              className={`${disable} rounded-end`}
+              id="botones"
+              onClick={() => confirmar()}
+            >
+              Obtener resultados
             </button>
           </li>
         </ul>
