@@ -22,6 +22,7 @@ export default function EditarUsuario() {
       ) : (
         <p>Cargando...</p>
       )}
+      <h1 className="text-center">Resultado Test aptitudes</h1>
     </>
   );
 }

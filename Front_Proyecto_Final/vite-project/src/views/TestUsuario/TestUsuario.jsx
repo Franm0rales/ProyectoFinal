@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PreguntasTest from "../../components/PreguntasTest/PreguntasTest";
+import Swal from "sweetalert2";
 
 export default function TestUsuario() {
   const value = [0, 1, 2, 3];
@@ -26,6 +26,7 @@ export default function TestUsuario() {
     for (let i of numeros) {
       suma += i;
     }
+    console.log(suma);
   }
 
   return (
