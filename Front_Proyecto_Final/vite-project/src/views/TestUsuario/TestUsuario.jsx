@@ -13,6 +13,7 @@ export default function TestUsuario() {
 
   const [numeros, setNumeros] = useState([0, 0]);
   let suma = 0;
+  let total = 0;
   useEffect(() => {
     const fetchTests = async () => {
       const response = await fetch(`http://localhost:3000/test/${pagination}`);
@@ -37,9 +38,10 @@ export default function TestUsuario() {
         suma += numeros[i + z * 10];
       }
       resp[i] = suma;
+      total += suma;
       suma = 0;
     }
-    console.log(resp);
+    resp[10] = total;
   }
 
   async function confirmar() {
