@@ -9,6 +9,8 @@ const AuthContext = createContext({
     idUsuario: null,
   },
   view: "Alumno",
+  puntuacionTest: 0,
+  setPuntuacionTest: () => {},
   setView: () => {},
   toggleUser: () => {},
   login: () => {},
@@ -21,6 +23,7 @@ export default AuthContext;
 const MY_AUTH_APP = "MY_AUTH_APP";
 
 export function AuthContextProvider({ children }) {
+  const [puntuacionTest, setPuntuacionTest] = useState(0);
   const [authorization, setAuthorization] = useState(
     JSON.parse(window.localStorage.getItem(MY_AUTH_APP)) ?? {
       email: null,
@@ -56,15 +59,15 @@ export function AuthContextProvider({ children }) {
       );
       setErrorMessage(null);
       Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Registrado correctamente ',
+        position: "center",
+        icon: "success",
+        title: "Registrado correctamente ",
         showConfirmButton: false,
         timer: 1500,
         didOpen: () => {
-          Swal.showLoading()
-        }
-      })
+          Swal.showLoading();
+        },
+      });
     } else {
       setErrorMessage(alert("Error al introducir password o usuario"));
     }
@@ -87,15 +90,15 @@ export function AuthContextProvider({ children }) {
       );
       setErrorMessage(null);
       Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Registrado correctamente ',
+        position: "center",
+        icon: "success",
+        title: "Registrado correctamente ",
         showConfirmButton: false,
         timer: 1500,
         didOpen: () => {
-          Swal.showLoading()
-        }
-      })
+          Swal.showLoading();
+        },
+      });
     } else {
       setErrorMessage(alert("Error al introducir password o usuario"));
     }
@@ -108,19 +111,21 @@ export function AuthContextProvider({ children }) {
       idUsuario: null,
     });
     Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Ha cerrado la sesion correctamente ',
+      position: "center",
+      icon: "success",
+      title: "Ha cerrado la sesion correctamente ",
       showConfirmButton: false,
       timer: 1500,
       didOpen: () => {
-        Swal.showLoading()
-      }
-    })
+        Swal.showLoading();
+      },
+    });
   }
 
   const value = {
     authorization,
+    puntuacionTest,
+    setPuntuacionTest,
     errorMessage,
     view,
     setView,

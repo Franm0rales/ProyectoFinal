@@ -1,7 +1,8 @@
 export const role = {
-  admin: 0,
-  empresa: 1,
-  alumno: 2,
+  admin: "0",
+  empresa: "1",
+  alumno: "2",
+  eliminado: "3",
 };
 
 export const tables = {

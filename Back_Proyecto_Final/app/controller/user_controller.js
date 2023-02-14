@@ -48,8 +48,9 @@ controller.addAlumno = async (req, res) => {
     }
     // Si no existe lo registramos
     let usuarioObj = {
-      role: role.alumno + 1,
+      role: role.alumno,
     };
+    console.log(usuarioObj);
     const idUser = await dao.addUser(usuarioObj, data.usuario);
 
     let alumnoObj = {
