@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
-<<<<<<< HEAD
-import Swal from "sweetalert2";
-=======
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
->>>>>>> 93e2c2e23a890bb8e8104f68167f8f137d264924
 
 export default function TestUsuario() {
   const { authorization } = useAuthContext();

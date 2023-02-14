@@ -12,6 +12,7 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "bootstrap-select": "^1.13.18",
+    "d3": "^7.8.2",
     "formik": "^2.2.9",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.4",
