@@ -29,4 +29,6 @@ userRouter.patch("/deleteEmpresa/:id", userController.deleteEmpresa);
 userRouter.patch("/deleteUser/:id", userController.deleteUser);
 //Crear tarjeta
 userRouter.post("/addCard", userController.addCard);
+//Para añadir aptitudes a la tabla
+userRouter.post("/aptitudes/:id", userController.addAptitudes);
 export default userRouter;
