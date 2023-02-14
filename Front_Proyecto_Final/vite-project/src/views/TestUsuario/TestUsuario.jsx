@@ -58,14 +58,6 @@ export default function TestUsuario() {
           </tr>
         </tbody>
       </table>
-      {/* <ul className="container">
-        <li className="list-unstyled">3 "TE CONSIDERAS MUY COMPETENTE"</li>
-        <li className="list-unstyled">2 "TE CONSIDERAS COMPETENTE"</li>
-        <li className="list-unstyled">
-          1 "TE CONSIDERAS MEDIANAMENTE COMPETENTE"
-        </li>
-        <li className="list-unstyled">0 "TE CONSIDERAS INCOMPETENTE"</li>
-      </ul> */}
       {test ? (
         test.map((pregunta) => (
           <div className="container mt-sm-5 my-1" key={pregunta.id}>
