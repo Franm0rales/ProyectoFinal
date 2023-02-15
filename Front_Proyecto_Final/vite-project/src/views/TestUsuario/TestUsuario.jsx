@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
-
+let numeros = [0, 0];
 export default function TestUsuario() {
   const { authorization } = useAuthContext();
   const value = [0, 1, 2, 3];
@@ -11,7 +11,6 @@ export default function TestUsuario() {
   const [disable, setDisable] = useState("d-none");
   const navigate = useNavigate();
 
-  let numeros = [0, 0];
   let suma = 0;
   let total = 0;
   useEffect(() => {
@@ -26,6 +25,7 @@ export default function TestUsuario() {
   const actualizarNumero = (index, event) => {
     const nuevoValor = parseInt(event.target.value);
     numeros[index] = nuevoValor;
+    console.log(numeros);
     if (numeros.length > 39) {
       setDisable("");
     }

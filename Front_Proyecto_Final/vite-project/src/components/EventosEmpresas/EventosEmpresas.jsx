@@ -25,8 +25,8 @@ export default function EventoEmpresas() {
     {
       id: 0,
       title: "Evento Jornada phyton",
-      start: "2023-02-21",
-      end: "2023-02-24",
+      start: "2023/02/21",
+      end: "2023/02/24",
     },
     {
       id: 1,
