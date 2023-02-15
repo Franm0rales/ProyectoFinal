@@ -2,8 +2,6 @@ import { useFormik } from "formik";
 import { BasicFormSchema } from "./BasicFormSchema";
 
 async function onSubmit(values, actions) {
-  console.log(values);
-  console.log(actions);
   await new Promise((resolve) => setTimeout(resolve, 2000));
   actions.resetForm();
 }

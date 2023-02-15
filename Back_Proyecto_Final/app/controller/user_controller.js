@@ -13,7 +13,7 @@ const controller = {};
 controller.addAlumno = async (req, res) => {
   const { nombre, apellidos, email, password, telefono, ciudad, avatar } =
     req.body;
-  console.log(req.body);
+
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
   if (
     !nombre ||
@@ -53,7 +53,7 @@ controller.addAlumno = async (req, res) => {
     let usuarioObj = {
       role: role.alumno,
     };
-    console.log(usuarioObj);
+
     const idUser = await dao.addUser(usuarioObj, data.usuario);
 
     let alumnoObj = {

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import galeria1 from "../../assets/galeria1.jpg";
 
 export default function CardEmpresa(user) {
-  console.log(user);
   return (
     <div className="container-fluid">
       <div

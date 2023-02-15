@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function CardIdEmpresa({ users }) {
   async function deleteUser() {
     let idUsuario = users.idUsuario;
-    console.log(idUsuario);
+
     await fetch(`http://localhost:3000/user/deleteEmpresa/${idUsuario}`, {
       method: "PATCH",
     });

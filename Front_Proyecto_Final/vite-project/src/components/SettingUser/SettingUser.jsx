@@ -13,7 +13,6 @@ export default function SettingsUser() {
       },
       body: JSON.stringify(values, authorization),
     }).then((response) => {
-      console.log(values);
       if (response.status === 400) {
         alert("Error al recibir el body");
       } else if (response.status === 200) {

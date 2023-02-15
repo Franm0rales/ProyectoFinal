@@ -15,15 +15,14 @@ export default function EditarEmpresa() {
     };
     fetchData();
   }, []);
-  console.log(users, "vista");
+
   return (
     <>
-    <div className="container">
+      <div className="container">
+        {users ? <CardIdEmpresa users={users} /> : <p>Cargando...</p>}
 
-      {users ? <CardIdEmpresa users={users} /> : <p>Cargando...</p>}
-
-      <SettingsEmpresa />
-    </div>
+        <SettingsEmpresa />
+      </div>
     </>
   );
 }
