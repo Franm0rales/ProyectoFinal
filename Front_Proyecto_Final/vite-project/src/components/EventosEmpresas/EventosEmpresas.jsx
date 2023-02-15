@@ -12,41 +12,27 @@ const isBetween = (start, end, base) =>
   base.isBetween(start, end, undefined, "[]");
 
 export default function EventoEmpresas() {
+  const [test, setTest] = useState([]);
   const { authorization } = useAuthContext();
-  useEffect(() => {
-    const fetchCalendario = async () => {
-      const response = await fetch(`http://localhost:3000/${authorization.id}`);
-      const json = await response.json();
-      setTest(json);
-    };
-    fetchCalendario();
-  }, []);
-  const eventsData = [
-    {
-      id: 0,
-      title: "Evento Jornada phyton",
-      start: "2023-02-21",
-      end: "2023-02-24",
-    },
-    {
-      id: 1,
-      title: "Long Event",
-      start: "2015-04-06T22:00:00.000Z",
-      end: "2015-04-09T22:00:00.000Z",
-    },
-  ];
+
+  const fetchCalendario = async () => {
+    const response = await fetch(`http://localhost:3000/user/getTarjeta/82`);
+    const json = await response.json();
+    setTest(json);
+  };
+
   const [dateRange, setDateRange] = useState({
     start: moment().startOf("month"),
     end: moment().endOf("month"),
   });
   const [eventsList, setEventsList] = useState([]);
-  const onSelectEvent = (event) =>
+  const onSelectEvent = (test) =>
     Swal.fire({
-      title: `${event.title}`,
+      title: `${test.title}`,
       confirmButtonColor: "#5e96ff",
     });
   const loadData = (targetedDateRange) => {
-    const data = eventsData.filter((item) => {
+    const data = test.filter((item) => {
       const itemStart = moment(item.start);
       const itemEnd = moment(item.end);
 
@@ -57,10 +43,6 @@ export default function EventoEmpresas() {
     });
     setEventsList(data);
   };
-
-  useEffect(() => {
-    loadData(dateRange);
-  }, [dateRange]);
 
   const agendaNavigation = (newDate) => {
     const newDateRange = {
@@ -89,7 +71,7 @@ export default function EventoEmpresas() {
         />
         <div className="text-center">
           <button
-            onClick=""
+            onClick={() => fetchCalendario}
             id="botones"
             className="btn text-white mt-3  "
             type="submit"
