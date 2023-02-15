@@ -719,7 +719,7 @@ controller.addTarjeta = async (req, res) => {
       // imagen: uploadRelPath,
       idEmpresa: id,
       plazas: plazas,
-      fechaInicio: `${fechaInicio}T${horaInicio}:00:00:0000`,
+      fechaInicio: `${fechaInicio}T${horaInicio}:00:0000`,
       fechaFin: fechaFin,
     };
     await dao.addUser(tarjetaObj, data.tarjeta);
