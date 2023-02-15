@@ -1,21 +1,27 @@
 import React, { useState } from "react";
-
+import { useAuthContext } from "../../context/AuthContext/AuthContext";
 export default function CrearEvento() {
-  const [eventName, setEventName] = useState("");
-  const [eventDate, setEventDate] = useState("");
-  const [eventTime, setEventTime] = useState("");
-  const [eventPerson, setEventPerson] = useState("");
-  const [eventDescription, setEventDescription] = useState("");
+  const { authorization } = useAuthContext();
+
+  const [nombre, setEventName] = useState("");
+  const [fechaInicio, setfechaInicio] = useState("");
+  const [fechaFin, setfechaFin] = useState("");
+  const [horaInicio, sethoraInicio] = useState("");
+  const [plazas, setEventPerson] = useState("");
+  const [descripcion, setdescripcion] = useState("");
   const [eventImagen, setEventImagen] = useState("");
-  async function onSubmit(values, actions) {
+  async function onSubmit(values) {
     try {
-      const response = await fetch("http://localhost:3000/", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
+      const response = await fetch(
+        `http://localhost:3000/user/tarjeta/${authorization.id}`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }
+      );
 
       if (response.status === 400) {
         Swal.fire({
@@ -50,20 +56,23 @@ export default function CrearEvento() {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     switch (name) {
-      case "eventName":
+      case "nombre":
         setEventName(value);
         break;
-      case "eventDate":
-        setEventDate(value);
+      case "fechaInicio":
+        setfechaInicio(value);
         break;
-      case "eventTime":
-        setEventTime(value);
+        case "fechaFin":
+          setfechaFin(value);
+          break;
+      case "horaInicio":
+        sethoraInicio(value);
         break;
-      case "eventPerson":
+      case "plazas":
         setEventPerson(value);
         break;
-      case "eventDescription":
-        setEventDescription(value);
+      case "descripcion":
+        setdescripcion(value);
         break;
       case "eventImagen":
         setEventImagen(value);
@@ -83,8 +92,8 @@ export default function CrearEvento() {
               <input
                 className="form-control "
                 type="text"
-                name="eventName"
-                value={eventName}
+                name="nombre"
+                value={nombre}
                 onChange={handleInputChange}
               />
             </label>
@@ -95,8 +104,8 @@ export default function CrearEvento() {
               <input
                 className="form-control"
                 type="date"
-                name="eventDate"
-                value={eventDate}
+                name="fechaInicio"
+                value={fechaInicio}
                 onChange={handleInputChange}
               />
             </label>
@@ -106,8 +115,8 @@ export default function CrearEvento() {
               <input
                 className="form-control"
                 type="date"
-                name="eventDate"
-                value={eventDate}
+                name="fechaFin"
+                value={fechaFin}
                 onChange={handleInputChange}
               />
             </label>
@@ -118,8 +127,8 @@ export default function CrearEvento() {
               <input
                 className="form-control"
                 type="time"
-                name="eventTime"
-                value={eventTime}
+                name="horaInicio"
+                value={horaInicio}
                 onChange={handleInputChange}
               />
             </label>
@@ -130,8 +139,8 @@ export default function CrearEvento() {
               <input
                 className="form-control"
                 type="number"
-                name="eventPerson"
-                value={eventPerson}
+                name="plazas"
+                value={plazas}
                 onChange={handleInputChange}
               />
             </label>
@@ -154,8 +163,8 @@ export default function CrearEvento() {
               Descripción del evento:
               <textarea
                 className="form-control"
-                name="eventDescription"
-                value={eventDescription}
+                name="descripcion"
+                value={descripcion}
                 onChange={handleInputChange}
               />
             </label>
