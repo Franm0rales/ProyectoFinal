@@ -651,18 +651,18 @@ controller.getAptitudesUser = async (req, res) => {
     );
     [aptitudesUser] = aptitudesUser;
 
-    const aptitudesObj = {
-      servicioSocial: aptitudesUser.servicioSocial,
-      ejecutivoPersuasivo: aptitudesUser.ejecutivoPersuasivo,
-      verbal: aptitudesUser.verbal,
-      artesPlasticas: aptitudesUser.artesPlasticas,
-      musical: aptitudesUser.musical,
-      organizacionOficina: aptitudesUser.organizacionOficina,
-      cientifico: aptitudesUser.cientifico,
-      calculoNumerico: aptitudesUser.calculoNumerico,
-      mecanico: aptitudesUser.mecanico,
-      aireLibre: aptitudesUser.aireLibre,
-    };
+    const aptitudesObj = [
+      aptitudesUser.servicioSocial,
+      aptitudesUser.ejecutivoPersuasivo,
+      aptitudesUser.verbal,
+      aptitudesUser.artesPlasticas,
+      aptitudesUser.musical,
+      aptitudesUser.organizacionOficina,
+      aptitudesUser.cientifico,
+      aptitudesUser.calculoNumerico,
+      aptitudesUser.mecanico,
+      aptitudesUser.aireLibre,
+    ];
     return res.send(aptitudesObj);
   } catch (e) {
     console.log(e.message);

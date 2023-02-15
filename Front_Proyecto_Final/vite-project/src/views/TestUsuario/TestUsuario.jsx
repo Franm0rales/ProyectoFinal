@@ -11,7 +11,7 @@ export default function TestUsuario() {
   const [disable, setDisable] = useState("d-none");
   const navigate = useNavigate();
 
-  const [numeros, setNumeros] = useState([0, 0]);
+  let numeros = [0, 0];
   let suma = 0;
   let total = 0;
   useEffect(() => {

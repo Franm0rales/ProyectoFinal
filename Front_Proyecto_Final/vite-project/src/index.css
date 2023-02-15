@@ -1508,7 +1508,7 @@ body {
   
   
   #footer .footer-top .footer-newsletter form input[type=submit]:hover {
-    background: #5295ce;
+    background: #5e96ff;
   }
   
   #footer .copyright {
@@ -1528,8 +1528,8 @@ body {
   }
 
   #botones{
-    background:#5295ce ;
-    background-color: #5295ce;
+    background:#5e96ff ;
+    background-color: #5e96ff;
   color: #fff;
   border: none;
   padding: 0.5rem 1.5rem;
@@ -1547,13 +1547,13 @@ body {
   
  
   #boton-registroempresa{
-    background:#5295ce ;
+    background:#5e96ff ;
   }
   #login-botones{
-    background:#5295ce ;
+    background:#5e96ff ;
   }
   #empresa-botones{
-    background:#5295ce ;
+    background:#5e96ff ;
   }
   .slider {
     
@@ -1615,7 +1615,7 @@ body {
   }
 
   .color-sombra-avatar{
-    box-shadow: 0 0 30px 5px #5295ce;;
+    box-shadow: 0 0 30px 5px #5e96ff;;
   }
   /* test */
   .question{
@@ -1661,7 +1661,7 @@ body {
     transition: 300ms ease-in-out 0s;
 }
 .options input[type="radio"]:checked ~ .checkmark{
-    background: #5295ce;
+    background: #5e96ff;
     transition: 300ms ease-in-out 0s;
 }
 .options input[type="radio"]:checked ~ .checkmark:after{
@@ -1676,7 +1676,7 @@ body {
 }
 #test{
 
-  color: #5295ce
+  color: #5e96ff
 }
 
 .widget-49 .widget-49-title-wrapper {
@@ -1696,7 +1696,7 @@ body {
 }
 
 .widget-49 .widget-49-title-wrapper .widget-49-date-primary .widget-49-date-day {
-  color: #5295ce;
+  color: #5e96ff;
   font-weight: 500;
   font-size: 1.5rem;
   line-height: 1;
@@ -1715,13 +1715,13 @@ body {
 .row-striped:nth-of-type(odd){
   /* background-color: #eef2f3; */
  
-  border: 1px #5295ce solid;
-  border-left: 32px #5295ce solid;
+  border: 1px #5e96ff solid;
+  border-left: 32px #5e96ff solid;
   border-radius: 16px;
 }
 
 .mas{
-  color: #5295ce;
+  color: #5e96ff;
 }
 
 .row-striped {
@@ -1749,7 +1749,7 @@ body {
 
 	width: 500px;
 	height: 500px;
-	/* border: 1px solid #5295ce; */
+	/* border: 1px solid #5e96ff; */
   border-radius: 16px;
 }
 
@@ -1788,7 +1788,7 @@ body {
 }
 
 .meetup-card .btn {
-  background-color: #5e72e4;
+  background-color: #5e96ff;
   color: #fff;
   border: none;
   padding: 0.5rem 1.5rem;
@@ -1803,4 +1803,7 @@ body {
 .meetup-card .btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+#aptitudes{
+  background: #5e96ff;
 }
