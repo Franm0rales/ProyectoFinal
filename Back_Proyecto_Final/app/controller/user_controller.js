@@ -460,7 +460,8 @@ controller.getUser = async (req, res) => {
     // Si no existe el producto respondemos con un 404 (not found)
     if (users.length <= 0) return res.status(404).send("No hay usuarios");
     // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
-    return res.send(users[0]);
+    [users] = users;
+    return res.send(users);
   } catch (e) {
     console.log(e.message);
   }
@@ -753,6 +754,17 @@ controller.getTarjeta = async (req, res) => {
       i++;
     }
     return res.send(tarjetaObj);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+//Controlador para traer todas las tarjetas
+controller.getAllTarjetas = async (req, res) => {
+  try {
+    let tarjetas = await dao.getAllTarjetas();
+    // Si no existe el producto respondemos con un 404 (not found)
+    if (tarjetas.length <= 0) return res.status(404).send("No hay tarjetas");
+    return res.send(tarjetas);
   } catch (e) {
     console.log(e.message);
   }
