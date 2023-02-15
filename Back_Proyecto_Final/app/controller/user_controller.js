@@ -651,21 +651,67 @@ controller.getAptitudesUser = async (req, res) => {
     );
     [aptitudesUser] = aptitudesUser;
 
-    const aptitudesObj = {
-      servicioSocial: aptitudesUser.servicioSocial,
-      ejecutivoPersuasivo: aptitudesUser.ejecutivoPersuasivo,
-      verbal: aptitudesUser.verbal,
-      artesPlasticas: aptitudesUser.artesPlasticas,
-      musical: aptitudesUser.musical,
-      organizacionOficina: aptitudesUser.organizacionOficina,
-      cientifico: aptitudesUser.cientifico,
-      calculoNumerico: aptitudesUser.calculoNumerico,
-      mecanico: aptitudesUser.mecanico,
-      aireLibre: aptitudesUser.aireLibre,
-    };
+    const aptitudesObj = [
+      aptitudesUser.servicioSocial,
+      aptitudesUser.ejecutivoPersuasivo,
+      aptitudesUser.verbal,
+      aptitudesUser.artesPlasticas,
+      aptitudesUser.musical,
+      aptitudesUser.organizacionOficina,
+      aptitudesUser.cientifico,
+      aptitudesUser.calculoNumerico,
+      aptitudesUser.mecanico,
+      aptitudesUser.aireLibre,
+    ];
     return res.send(aptitudesObj);
   } catch (e) {
     console.log(e.message);
   }
 };
+//Añadir tarjetas
+// controller.addTarjetas = async (req, res) => {
+//   const { id } = req.params;
+//   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
+
+//   let userData = await dao.getUserByData(data.empresa, data.idUsuario, id);
+//   [userData] = userData;
+//   try {
+//     let userData = await dao.getUserByData(data.alumno, data.idUsuario, id);
+//     [userData] = userData;
+//     // Controlamos cuando el objeto files sea null
+//     if (req.files === null) return;
+//     // Controlamos si nos viene algún tipo de archivo en el objeto files
+//     if (!req.files || Object.keys(req.files).length === 0) {
+//       return res.status(400).send("No se ha cargado ningún archivo");
+//     }
+//     if (!req.query) {
+//       return res.status(400).send("No se ha indicado el id del producto");
+//     }
+//     // Obtenemos un array de objetos con todas las imagenes
+//     const images = !req.files.imagen.length
+//       ? [req.files.imagen]
+//       : req.files.imagen;
+//     // Recorremos el array para procesar cada imagen
+//     images.forEach(async (image) => {
+//       // Ya podemos acceder a las propiedades del objeto image.
+//       // Obtenemos la ruta de la imagen.
+//       let uploadPath = __dirname + "/public/images/products/" + image.name;
+//       let BBDDPath = "images/products/" + image.name;
+//       // Usamos el método mv() para ubicar el archivo en nuestro servidor
+//       image.mv(uploadPath, (err) => {
+//         if (err) return res.status(500).send(err);
+//       });
+
+//       const idresultados = await dao.addUser(
+//         resultadosObj,
+//         data.respuestastest
+//       );
+//       return res.send(`resultados en ${idresultados}`);
+//     });
+//     return res.send("listo");
+//   } catch (e) {
+//     console.log(e.message);
+//     return res.status(400).send(e.message);
+//   }
+// };
 export default controller;

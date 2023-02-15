@@ -1,44 +1,46 @@
 import { useFormik } from "formik";
 import { BasicFormSchema } from "./BasicFormSchema";
-import Swal from "sweetalert2"
+import Swal from "sweetalert2";
 export default function Registro() {
   async function onSubmit(values, actions) {
-    fetch("http://localhost:3000/user/signUpAlumno", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(values),
-    }).then((response) => {
+    try {
+      const response = await fetch("http://localhost:3000/user/signUpAlumno", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
       if (response.status === 400) {
         Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'Usuario ya registrado',
+          position: "center",
+          icon: "error",
+          title: "Usuario ya registrado",
           showConfirmButton: false,
-          timer: 1500
-        })
-       
+          timer: 1500,
+        });
       } else if (response.status === 200) {
         Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Registrado correctamente ',
+          position: "center",
+          icon: "success",
+          title: "Registrado correctamente ",
           showConfirmButton: false,
-          timer: 1500
-        })
-        
+          timer: 1500,
+        });
       } else if (response.status === 409) {
         Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'Usuario ya registrado',
+          position: "center",
+          icon: "error",
+          title: "Usuario ya registrado",
           showConfirmButton: false,
-          timer: 1500
-        })
+          timer: 1500,
+        });
       }
-    });
- 
+    } catch (e) {
+      console.log(e);
+    }
+
     await new Promise((resolve) => setTimeout(resolve, 2000));
     actions.resetForm();
   }
@@ -66,7 +68,6 @@ export default function Registro() {
     onSubmit,
   });
   return (
-    
     <div className="m-5">
       <h1>Regístrate</h1>
 
