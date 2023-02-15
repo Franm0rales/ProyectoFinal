@@ -1,15 +1,9 @@
-import React, { useState } from "react";
+import { useFormik } from "formik";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
+
 export default function CrearEvento() {
   const { authorization } = useAuthContext();
 
-  const [nombre, setEventName] = useState("");
-  const [fechaInicio, setfechaInicio] = useState("");
-  const [fechaFin, setfechaFin] = useState("");
-  const [horaInicio, sethoraInicio] = useState("");
-  const [plazas, setEventPerson] = useState("");
-  const [descripcion, setdescripcion] = useState("");
-  const [eventImagen, setEventImagen] = useState("");
   async function onSubmit(values) {
     try {
       const response = await fetch(
@@ -53,39 +47,31 @@ export default function CrearEvento() {
     }
   }
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    switch (name) {
-      case "nombre":
-        setEventName(value);
-        break;
-      case "fechaInicio":
-        setfechaInicio(value);
-        break;
-        case "fechaFin":
-          setfechaFin(value);
-          break;
-      case "horaInicio":
-        sethoraInicio(value);
-        break;
-      case "plazas":
-        setEventPerson(value);
-        break;
-      case "descripcion":
-        setdescripcion(value);
-        break;
-      case "eventImagen":
-        setEventImagen(value);
-        break;
-      default:
-        break;
-    }
-  };
+  const {
+    values,
+    touched,
+    errors,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    isSubmitting,
+  } = useFormik({
+    initialValues: {
+      nombre: "",
+      fechaInicio: "",
+      fechaFin: "",
+      horaInicio: "",
+      plazas: "",
+      descripcion: "",
+    },
+
+    onSubmit,
+  });
 
   return (
     <>
       <div className="container mb-5">
-        <form className=" row g-2 d-flex" onSubmit={onSubmit}>
+        <form className=" row g-2 d-flex" onSubmit={handleSubmit}>
           <div className="">
             <label className="form-label col-10">
               Nombre del evento:
@@ -93,8 +79,9 @@ export default function CrearEvento() {
                 className="form-control "
                 type="text"
                 name="nombre"
-                value={nombre}
-                onChange={handleInputChange}
+                value={values.nombre}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </label>
           </div>
@@ -105,8 +92,9 @@ export default function CrearEvento() {
                 className="form-control"
                 type="date"
                 name="fechaInicio"
-                value={fechaInicio}
-                onChange={handleInputChange}
+                value={values.fechaInicio}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </label>
 
@@ -116,8 +104,9 @@ export default function CrearEvento() {
                 className="form-control"
                 type="date"
                 name="fechaFin"
-                value={fechaFin}
-                onChange={handleInputChange}
+                value={values.fechaFin}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </label>
           </div>
@@ -128,8 +117,9 @@ export default function CrearEvento() {
                 className="form-control"
                 type="time"
                 name="horaInicio"
-                value={horaInicio}
-                onChange={handleInputChange}
+                value={values.horaInicio}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </label>
           </div>
@@ -140,8 +130,9 @@ export default function CrearEvento() {
                 className="form-control"
                 type="number"
                 name="plazas"
-                value={plazas}
-                onChange={handleInputChange}
+                value={values.plazas}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </label>
           </div>
@@ -152,8 +143,9 @@ export default function CrearEvento() {
             </label>
             <input
               name="eventImagen"
-              value={eventImagen}
-              onChange={handleInputChange}
+              value={values.eventImagen}
+              onChange={handleChange}
+              onBlur={handleBlur}
               class="form-control "
               type="file"
             />
@@ -164,13 +156,15 @@ export default function CrearEvento() {
               <textarea
                 className="form-control"
                 name="descripcion"
-                value={descripcion}
-                onChange={handleInputChange}
+                value={values.descripcion}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </label>
           </div>
           <div className="text-center">
             <button
+              onClick={isSubmitting}
               id="botones"
               className="btn text-white mt-3  "
               type="submit"
