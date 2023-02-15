@@ -89,14 +89,15 @@ export default function CrearEvento() {
               />
             </label>
           </div>
+
           <div className="">
-            <label className="form-label col-10">
-              Direccion:
+            <label className="form-label col-6">
+              Email
               <input
                 className="form-control "
                 type="text"
-                name="direccion"
-                value={values.direccion}
+                name="email"
+                value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -117,23 +118,23 @@ export default function CrearEvento() {
           </div>
           <div className="">
             <label className="form-label col-10">
-              Email
+              Direccion:
               <input
                 className="form-control "
                 type="text"
-                name="email"
-                value={values.email}
+                name="direccion"
+                value={values.direccion}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
             </label>
           </div>
           <div className="">
-            <label className="form-label col-10">
-              Telefono
+            <label className="form-label col-6">
+              Telefono:
               <input
                 className="form-control "
-                type="text"
+                type="number"
                 name="telefono"
                 value={values.telefono}
                 onChange={handleChange}
@@ -170,7 +171,7 @@ export default function CrearEvento() {
             <label className="form-label col-4">
               Hora del evento:
               <input
-                className="form-control"
+                className="form-control "
                 type="time"
                 name="horaInicio"
                 value={values.horaInicio}
@@ -178,8 +179,7 @@ export default function CrearEvento() {
                 onBlur={handleBlur}
               />
             </label>
-          </div>
-          <div className="">
+
             <label className="form-label col-2">
               Plazas:
               <input
