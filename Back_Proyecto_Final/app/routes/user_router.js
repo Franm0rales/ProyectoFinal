@@ -35,4 +35,6 @@ userRouter.post("/aptitudes/:id", userController.addAptitudes);
 userRouter.get("/aptitudesUser/:id", userController.getAptitudesUser);
 //Añadir tarjetas
 userRouter.post("/tarjeta/:id", userController.addTarjeta);
+//Traer tarjetas por id
+userRouter.get("/getTarjeta/:id", userController.getTarjeta);
 export default userRouter;

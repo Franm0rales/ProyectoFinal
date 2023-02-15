@@ -730,6 +730,22 @@ controller.addTarjeta = async (req, res) => {
     return res.status(400).send(e.message);
   }
 };
+//Controlador para traer tarjetas por id
+controller.getTarjeta = async (req, res) => {
+  try {
+    let tarjetas = await dao.getUserByData(
+      data.tarjeta,
+      data.idEmpresa,
+      req.params.id
+    );
+    // Si no existe el producto respondemos con un 404 (not found)
+    if (tarjetas.length <= 0) return res.status(404).send("No hay usuarios");
+    // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
+    return res.send(tarjetas);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
 // controller.addTarjetas = async (req, res) => {
 //   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
 
