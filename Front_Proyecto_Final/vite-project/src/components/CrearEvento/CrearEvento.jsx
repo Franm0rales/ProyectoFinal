@@ -78,7 +78,7 @@ export default function CrearEvento() {
       <div className="container mb-5">
         <form className=" row g-2 d-flex" onSubmit={onSubmit}>
           <div className="">
-            <label className="form-label col-6">
+            <label className="form-label col-10">
               Nombre del evento:
               <input
                 className="form-control "
@@ -90,8 +90,19 @@ export default function CrearEvento() {
             </label>
           </div>
           <div className="">
-            <label className="form-label col-4">
-              Fecha del evento:
+            <label className="form-label col-5">
+              Fecha inicio del evento:
+              <input
+                className="form-control"
+                type="date"
+                name="eventDate"
+                value={eventDate}
+                onChange={handleInputChange}
+              />
+            </label>
+
+            <label className="form-label col-5">
+              Fecha fin del evento:
               <input
                 className="form-control"
                 type="date"
@@ -122,7 +133,6 @@ export default function CrearEvento() {
                 name="eventPerson"
                 value={eventPerson}
                 onChange={handleInputChange}
-                placeholder=""
               />
             </label>
           </div>
