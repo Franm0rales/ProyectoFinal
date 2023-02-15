@@ -93,19 +93,13 @@ userQueries.allUsers = async (tabla) => {
     conn && (await conn.end());
   }
 };
-//Borrar un usuario por su id
-userQueries.deleteUser = async (tabla, data, id, columna) => {
-  // Conectamos con la base de datos y eliminamos el usuario por su id.
+//Traer todas las tarjetas
+userQueries.getAllTarjetas = async () => {
+  // Conectamos con la base de datos
   let conn = null;
   try {
     conn = await db.createConnection();
-    return await db.query(
-      `
-      UPDATE ${tabla} SET ? WHERE ${columna} = ?`,
-      [data, id],
-      "update",
-      conn
-    );
+    return await db.query(`SELECT * FROM tarjeta`, [], "select", conn);
   } catch (e) {
     throw new Error(e);
   } finally {
