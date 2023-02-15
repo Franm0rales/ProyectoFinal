@@ -27,9 +27,11 @@ export default function Eventos() {
             alt="Meetup event image"
           />
           <div class="card-body">
-            <h5 class="card-title">Título del evento</h5>
-            <p class="card-text">Fecha y hora:</p>
-            <p class="card-text">Lugar:</p>
+            <h5 class="card-title">Título del evento:</h5>
+            <p class="card-text">Fecha inico/Fecha fin:</p>
+            <p class="card-text">Hora:</p>
+            <p class="card-text">Ciudad:</p>
+            <p class="card-text">Dirección:</p>
             <p class="card-text">Descripción:</p>
           </div>
           <div class="card-footer">
