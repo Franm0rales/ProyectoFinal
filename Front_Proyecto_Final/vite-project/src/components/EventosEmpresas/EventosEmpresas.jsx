@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import Swal from "sweetalert2";
+import { useAuthContext } from "../../context/AuthContext/AuthContext";
 
 moment.locale("es-Es");
 const localizer = momentLocalizer(moment);
@@ -11,9 +12,10 @@ const isBetween = (start, end, base) =>
   base.isBetween(start, end, undefined, "[]");
 
 export default function EventoEmpresas() {
+  const { authorization } = useAuthContext();
   useEffect(() => {
     const fetchCalendario = async () => {
-      const response = await fetch(`http://localhost:3000/`);
+      const response = await fetch(`http://localhost:3000/${authorization.id}`);
       const json = await response.json();
       setTest(json);
     };
