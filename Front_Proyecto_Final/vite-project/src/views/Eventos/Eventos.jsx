@@ -1,7 +1,20 @@
 import BuscarEmpresa from "../../components/BuscarEmpresa/BuscarEmpresa";
 import ContadorVisitas from "../../components/ContadorVisitas/Contadorvisitas";
+import { useEffect, useState } from "react";
 
 export default function Eventos() {
+  const [eventos, setEventos] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const responseAptitudes = await fetch(`http://localhost:3000/user/`);
+
+      const jsonAptitudes = await responseAptitudes.json();
+      setAptitudes(jsonAptitudes);
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <h1 className="mt-5 mb-5 text-center">Eventos</h1>
