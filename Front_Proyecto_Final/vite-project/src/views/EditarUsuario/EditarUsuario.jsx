@@ -84,7 +84,7 @@ export default function EditarUsuario() {
       )}
 
       <h1 className="text-center mt-5 mb-5">Resultado Test aptitudes</h1>
-      <div className="container">
+      <div className="container mb-5">
         <div className="d-flex align-items-center justify-content-around">
           <div className="text-center">
             <table class="table container ">
