@@ -720,7 +720,7 @@ controller.addTarjeta = async (req, res) => {
       idEmpresa: id,
       plazas: plazas,
       fechaInicio: `${fechaInicio}T${horaInicio}:00:0000`,
-      fechaFin: fechaFin,
+      fechaFin: `${fechaFin}T24:00:00:0000`,
     };
     await dao.addUser(tarjetaObj, data.tarjeta);
     // });
