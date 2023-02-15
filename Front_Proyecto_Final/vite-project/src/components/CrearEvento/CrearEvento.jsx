@@ -63,6 +63,10 @@ export default function CrearEvento() {
       horaInicio: "",
       plazas: "",
       descripcion: "",
+      email: "",
+      telefono: "",
+      direccion: "",
+      ciudad: "",
     },
 
     onSubmit,
@@ -80,6 +84,58 @@ export default function CrearEvento() {
                 type="text"
                 name="nombre"
                 value={values.nombre}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </label>
+          </div>
+          <div className="">
+            <label className="form-label col-10">
+              Direccion:
+              <input
+                className="form-control "
+                type="text"
+                name="direccion"
+                value={values.direccion}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </label>
+          </div>
+          <div className="">
+            <label className="form-label col-10">
+              Ciudad:
+              <input
+                className="form-control "
+                type="text"
+                name="ciudad"
+                value={values.ciudad}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </label>
+          </div>
+          <div className="">
+            <label className="form-label col-10">
+              Email
+              <input
+                className="form-control "
+                type="text"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </label>
+          </div>
+          <div className="">
+            <label className="form-label col-10">
+              Telefono
+              <input
+                className="form-control "
+                type="text"
+                name="telefono"
+                value={values.telefono}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
