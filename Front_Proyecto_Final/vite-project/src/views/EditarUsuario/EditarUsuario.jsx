@@ -1,15 +1,6 @@
 import { useEffect, useState } from "react";
 import CardEditarUsuario from "../../components/CardEditarUsuario/CardEditarUsuario";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
 import Grafica from "../../components/Grafica/Grafica";
 
 export default function EditarUsuario() {

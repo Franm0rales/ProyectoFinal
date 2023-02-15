@@ -1,9 +1,12 @@
 import dao from "../services/dao.js";
 import md5 from "md5";
+import { currentDir } from "../index.js";
 import jwt_decode from "jwt-decode";
 import { SignJWT, jwtVerify } from "jose";
 import { role, data, tables } from "../const/const.js";
 import { transporter } from "../config/mailer.js";
+
+const __dirname = currentDir().__dirname;
 
 const controller = {};
 // Controlador para añadir alumno
@@ -132,7 +135,7 @@ controller.addEmpresa = async (req, res) => {
       return res.status(409).send("Telefono ya registrado");
     // Si no existe lo registramos
     let usuarioObj = {
-      role: role.empresa + 1,
+      role: role.empresa,
     };
     const idUser = await dao.addUser(usuarioObj, data.usuario);
     let empresaObj = {
@@ -669,49 +672,101 @@ controller.getAptitudesUser = async (req, res) => {
   }
 };
 //Añadir tarjetas
-// controller.addTarjetas = async (req, res) => {
-//   const { id } = req.params;
-//   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
+// controlador para subir una imagen a nuestro servidor y guardar el path en la base de datos.
+controller.addTarjeta = async (req, res) => {
+  const { id } = req.params;
+  const {
+    nombre,
+    descripcion,
+    email,
+    telefono,
+    direccion,
+    ciudad,
+    fechaFin,
+    fechaInicio,
+  } = req.body;
+  try {
+    // // Controlamos cuando el objeto files sea null
+    // if (req.files === null) return;
+    // // Controlamos si nos viene algún tipo de archivo en el objeto files
+    // if (!req.files || Object.keys(req.files).length === 0) {
+    //   return res.status(400).send("No se ha cargado ningún archivo");
+    // }
+    // // 1 archivo [{}] , >1 archivo [[{},{},...]]
+    // // Obtenemos un array de objetos con todas las imagenes
+    // const images = !req.files.imagen.length
+    //   ? [req.files.imagen]
+    //   : req.files.imagen;
+    // // Recorremos el array para procesar cada imagen
+    // images.forEach(async (image) => {
+    //   // Ya podemos acceder a las propiedades del objeto image.
+    //   // Obtenemos la ruta de la imagen.
+    //   let uploadPath = __dirname + "/public/images/products/" + image.name;
+    //   let uploadRelPath = "/images/products/" + image.name;
+    //   // Usamos el método mv() para ubicar el archivo en nuestro servidor
+    //   image.mv(uploadPath, (err) => {
+    //     if (err) return res.status(500).send(err);
+    // });
+    const tarjetaObj = {
+      nombre: nombre,
+      descripcion: descripcion,
+      email: email,
+      telefono: telefono,
+      direccion: direccion,
+      ciudad: ciudad,
+      // imagen: uploadRelPath,
+      idEmpresa: id,
+      fechaInicio: fechaInicio,
+      fechaFin: fechaFin,
+    };
+    await dao.addUser(tarjetaObj, data.tarjeta);
+    // });
+    return res.send("Tarjeta subida!");
+  } catch (e) {
+    console.log(e.message);
+    return res.status(400).send(e.message);
+  }
+};
+controller.addTarjetas = async (req, res) => {
+  // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
 
-//   let userData = await dao.getUserByData(data.empresa, data.idUsuario, id);
-//   [userData] = userData;
-//   try {
-//     let userData = await dao.getUserByData(data.alumno, data.idUsuario, id);
-//     [userData] = userData;
-//     // Controlamos cuando el objeto files sea null
-//     if (req.files === null) return;
-//     // Controlamos si nos viene algún tipo de archivo en el objeto files
-//     if (!req.files || Object.keys(req.files).length === 0) {
-//       return res.status(400).send("No se ha cargado ningún archivo");
-//     }
-//     if (!req.query) {
-//       return res.status(400).send("No se ha indicado el id del producto");
-//     }
-//     // Obtenemos un array de objetos con todas las imagenes
-//     const images = !req.files.imagen.length
-//       ? [req.files.imagen]
-//       : req.files.imagen;
-//     // Recorremos el array para procesar cada imagen
-//     images.forEach(async (image) => {
-//       // Ya podemos acceder a las propiedades del objeto image.
-//       // Obtenemos la ruta de la imagen.
-//       let uploadPath = __dirname + "/public/images/products/" + image.name;
-//       let BBDDPath = "images/products/" + image.name;
-//       // Usamos el método mv() para ubicar el archivo en nuestro servidor
-//       image.mv(uploadPath, (err) => {
-//         if (err) return res.status(500).send(err);
-//       });
+  try {
+    let userData = await dao.getUserByData(data.alumno, data.idUsuario, id);
+    [userData] = userData;
+    // Controlamos cuando el objeto files sea null
+    if (req.files === null) return;
+    // Controlamos si nos viene algún tipo de archivo en el objeto files
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).send("No se ha cargado ningún archivo");
+    }
+    if (!req.query) {
+      return res.status(400).send("No se ha indicado el id del producto");
+    }
+    // Obtenemos un array de objetos con todas las imagenes
+    const images = !req.files.imagen.length
+      ? [req.files.imagen]
+      : req.files.imagen;
+    // Recorremos el array para procesar cada imagen
+    images.forEach(async (image) => {
+      // Ya podemos acceder a las propiedades del objeto image.
+      // Obtenemos la ruta de la imagen.
+      let uploadPath = __dirname + "/public/images/products/" + image.name;
+      let BBDDPath = "images/products/" + image.name;
+      // Usamos el método mv() para ubicar el archivo en nuestro servidor
+      image.mv(uploadPath, (err) => {
+        if (err) return res.status(500).send(err);
+      });
 
-//       const idresultados = await dao.addUser(
-//         resultadosObj,
-//         data.respuestastest
-//       );
-//       return res.send(`resultados en ${idresultados}`);
-//     });
-//     return res.send("listo");
-//   } catch (e) {
-//     console.log(e.message);
-//     return res.status(400).send(e.message);
-//   }
-// };
+      const idresultados = await dao.addUser(
+        resultadosObj,
+        data.respuestastest
+      );
+      return res.send(`resultados en ${idresultados}`);
+    });
+    return res.send("listo");
+  } catch (e) {
+    console.log(e.message);
+    return res.status(400).send(e.message);
+  }
+};
 export default controller;
