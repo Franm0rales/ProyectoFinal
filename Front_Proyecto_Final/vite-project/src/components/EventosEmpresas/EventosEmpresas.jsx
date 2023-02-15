@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
@@ -12,12 +12,12 @@ const isBetween = (start, end, base) =>
 
 export default function EventoEmpresas() {
   useEffect(() => {
-    const fetchTests = async () => {
+    const fetchCalendario = async () => {
       const response = await fetch(`http://localhost:3000/`);
       const json = await response.json();
       setTest(json);
     };
-    fetchTests();
+    fetchCalendario();
   }, []);
   const eventsData = [
     {
