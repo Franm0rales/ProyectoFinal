@@ -242,7 +242,12 @@ export default function SettingsEmpresa() {
           </div>{" "}
         </div>
 
-        <button disabled={isSubmitting} type="submit" className="btn btn-dark">
+        <button
+          disabled={isSubmitting}
+          id="botones"
+          type="submit"
+          className="btn rounded"
+        >
           Modificar datos ahora
         </button>
       </form>
