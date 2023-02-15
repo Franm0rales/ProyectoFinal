@@ -1,7 +1,20 @@
 import BuscarEmpresa from "../../components/BuscarEmpresa/BuscarEmpresa";
 import ContadorVisitas from "../../components/ContadorVisitas/Contadorvisitas";
+import { useEffect, useState } from "react";
 
 export default function Eventos() {
+  const [eventos, setEventos] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const responseAptitudes = await fetch(`http://localhost:3000/user/`);
+
+      const jsonAptitudes = await responseAptitudes.json();
+      setAptitudes(jsonAptitudes);
+    };
+    fetchData();
+  }, []);
+
   return (
     <>
       <h1 className="mt-5 mb-5 text-center">Eventos</h1>
@@ -14,9 +27,11 @@ export default function Eventos() {
             alt="Meetup event image"
           />
           <div class="card-body">
-            <h5 class="card-title">Título del evento</h5>
-            <p class="card-text">Fecha y hora:</p>
-            <p class="card-text">Lugar:</p>
+            <h5 class="card-title">Título del evento:</h5>
+            <p class="card-text">Fecha inico/Fecha fin:</p>
+            <p class="card-text">Hora:</p>
+            <p class="card-text">Ciudad:</p>
+            <p class="card-text">Dirección:</p>
             <p class="card-text">Descripción:</p>
           </div>
           <div class="card-footer">
