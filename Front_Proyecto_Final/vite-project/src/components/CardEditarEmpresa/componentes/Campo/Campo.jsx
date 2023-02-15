@@ -29,7 +29,6 @@ export default function Campo({ etiqueta, campo }) {
       }
     });
   }
-  console.log(editarUsuario);
   return (
     <div className="media">
       <label>{etiqueta}</label>

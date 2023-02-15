@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function CardIdAlumno({ users }) {
   async function deleteUser() {
     let idUsuario = users.idUsuario;
-    
+
     await fetch(`http://localhost:3000/user/deleteUser/${idUsuario}`, {
       method: "PATCH",
     });
@@ -16,7 +16,7 @@ export default function CardIdAlumno({ users }) {
       setVisible("d-none");
     }
   }
-  console.log(users, "card");
+
   return (
     <>
       <div className="container-fluid">

@@ -80,7 +80,6 @@ export default function TestUsuario() {
     for (let i of numeros) {
       suma += i;
     }
-    console.log(suma);
   }
 
   return (

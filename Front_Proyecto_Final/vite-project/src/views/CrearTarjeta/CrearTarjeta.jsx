@@ -2,7 +2,6 @@ import TarjetasAdmin from "../../components/TarjetasAdmin/TarjetasAdmin";
 
 export default function CrearTarjeta() {
   async function crearTarjeta(user) {
-    console.log(user);
     const response = await fetch("http://localhost:3000/user/addCard", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

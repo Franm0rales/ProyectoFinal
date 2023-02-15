@@ -14,7 +14,7 @@ export default function EditarAlumno() {
     };
     fetchData();
   }, []);
-  console.log(users, "vista");
+
   return (
     <>
       {users ? <CardIdAlumno users={users} /> : <p>Cargando...</p>}

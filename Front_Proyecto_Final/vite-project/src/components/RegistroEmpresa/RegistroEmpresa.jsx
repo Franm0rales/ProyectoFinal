@@ -14,19 +14,18 @@ export default function RegistroEmpresa() {
         alert("error al recibir el body");
       } else if (response.status === 200) {
         Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Registrado correctamente ',
+          position: "center",
+          icon: "success",
+          title: "Registrado correctamente ",
           showConfirmButton: false,
-          timer: 1500
-        })
+          timer: 1500,
+        });
         // alert(`usuario ${values.nombre} registrado correctamente`);
       } else if (response.status === 409) {
         alert("usuario ya registrado");
       }
     });
-    console.log(values);
-    console.log(actions);
+
     await new Promise((resolve) => setTimeout(resolve, 2000));
     actions.resetForm();
   }

@@ -73,7 +73,6 @@ export function AuthContextProvider({ children }) {
     }
   }
   async function loginEmpresa(user) {
-    console.log(user);
     const response = await fetch("http://localhost:3000/user/loginempresa", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
