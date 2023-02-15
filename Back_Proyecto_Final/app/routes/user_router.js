@@ -31,6 +31,8 @@ userRouter.patch("/deleteUser/:id", userController.deleteUser);
 userRouter.post("/addCard", userController.addCard);
 //Para añadir aptitudes a la tabla
 userRouter.post("/aptitudes/:id", userController.addAptitudes);
+//Traer todas las aptitudes
+userRouter.get("/aptitudesUser/:id", userController.getAptitudesUser);
 // //Añadir tarjetas
 // userRouter.post("/tarjeta/:id", userController.addTarjeta);
 export default userRouter;
