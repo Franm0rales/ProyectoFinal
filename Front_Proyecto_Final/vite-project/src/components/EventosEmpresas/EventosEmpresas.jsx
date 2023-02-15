@@ -11,6 +11,14 @@ const isBetween = (start, end, base) =>
   base.isBetween(start, end, undefined, "[]");
 
 export default function EventoEmpresas() {
+  useEffect(() => {
+    const fetchTests = async () => {
+      const response = await fetch(`http://localhost:3000/`);
+      const json = await response.json();
+      setTest(json);
+    };
+    fetchTests();
+  }, []);
   const eventsData = [
     {
       id: 0,
@@ -78,7 +86,12 @@ export default function EventoEmpresas() {
           }}
         />
         <div className="text-center">
-          <button id="botones" className="btn text-white mt-3  " type="submit">
+          <button
+            onClick=""
+            id="botones"
+            className="btn text-white mt-3  "
+            type="submit"
+          >
             Actualizar agenda
           </button>
         </div>
