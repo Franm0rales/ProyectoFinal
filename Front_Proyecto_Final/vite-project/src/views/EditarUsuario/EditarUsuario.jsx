@@ -101,8 +101,6 @@ export default function EditarUsuario() {
           </tr>
         </tbody>
       </table>
-      <span>{aptitudes.servicioSocial}</span>
-      <span>{aptitudes.ejecutivoPersuasivo}</span>
     </>
   );
 }
