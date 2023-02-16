@@ -26,7 +26,7 @@ CREATE TABLE `usuario` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `role` enum('0','1','2','3') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=84 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,29 +36,17 @@ CREATE TABLE `usuario` (
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
 INSERT INTO `usuario` VALUES
-(31,'1'),
-(32,'1'),
-(33,'1'),
-(34,'1'),
-(35,'0'),
-(36,'1'),
-(37,'1'),
-(38,'3'),
-(39,'2'),
-(40,'2'),
-(41,'3'),
-(42,'3'),
-(43,'2'),
-(44,'1'),
-(45,'1'),
-(46,'2'),
-(47,'2'),
-(48,'2'),
-(49,'2'),
-(50,'2'),
-(51,'2'),
-(52,'2'),
-(53,'2');
+(73,'2'),
+(74,'2'),
+(75,'2'),
+(76,'2'),
+(77,'2'),
+(78,'2'),
+(79,'2'),
+(80,'2'),
+(81,'2'),
+(82,'1'),
+(83,'1');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -71,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-13 11:18:08
+-- Dump completed on 2023-02-16  9:40:11

@@ -36,6 +36,7 @@ CREATE TABLE `test` (
 LOCK TABLES `test` WRITE;
 /*!40000 ALTER TABLE `test` DISABLE KEYS */;
 INSERT INTO `test` VALUES
+(0,'manejar con habilidad pequeñas piezas y herramientas como agujas, manecillas, joyas, piezas de relojería, etc.'),
 (1,'tratar y hablar con tacto a las personas'),
 (2,'ser jefe competente de un grupo, equipo o sociedad'),
 (3,'expresarte con facilidad en clase o al participar con tus amigos'),
@@ -46,7 +47,7 @@ INSERT INTO `test` VALUES
 (8,'ejecutar con rapidez y exactitud mecanizaciones matemáticas'),
 (9,'armar y componer objetos mecánicos como chapas, timbres, etc.'),
 (10,'actividades que requieren destreza manual'),
-(11,'ser miembro actibo y útil en un club o sociedad'),
+(11,'ser miembro activo y útil en un club o sociedad'),
 (12,'organizar y dirigir festivales, encuentros deportivos, excursiones o campañas sociales'),
 (13,'redactar composiciones o artículos periodísticos'),
 (14,'pintar paisajes'),
@@ -74,8 +75,7 @@ INSERT INTO `test` VALUES
 (36,'anotar y manejar con exactitud y rapidez nombres, números y otros datos'),
 (37,'entender principios y hechos económicos y sociales'),
 (38,'resolver problemas de Álgebra'),
-(39,'armar y componer muebles'),
-(40,'manejar con habilidad pequeñas piezas y herramientas como agujas, manecillas, joyas, piezas de relojería, etc.');
+(39,'armar y componer muebles');
 /*!40000 ALTER TABLE `test` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -88,4 +88,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-13 11:18:09
+-- Dump completed on 2023-02-16  9:40:11
