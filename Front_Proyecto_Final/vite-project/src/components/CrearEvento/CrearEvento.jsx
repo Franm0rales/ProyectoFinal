@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 
-export default function CrearEvento() {
+export default function CrearEvento(setEvento) {
   const { authorization } = useAuthContext();
 
   async function onSubmit(values) {
@@ -16,6 +16,8 @@ export default function CrearEvento() {
           body: JSON.stringify(values),
         }
       );
+      const json = await response.json();
+      setEvento(json);
 
       if (response.status === 400) {
         Swal.fire({
