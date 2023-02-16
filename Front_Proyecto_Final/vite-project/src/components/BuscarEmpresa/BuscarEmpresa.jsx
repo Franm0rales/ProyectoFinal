@@ -1,6 +1,6 @@
 export default function BuscarEmpresa() {
   return (
-    <div class="container">
+    <div class="container col-4">
       <div>
         <input
           type="text"

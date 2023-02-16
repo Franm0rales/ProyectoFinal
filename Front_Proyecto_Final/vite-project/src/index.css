@@ -14,7 +14,7 @@ body {
   }
   
   a {
-    color: #428bca;
+    color: #5e96ff;
     text-decoration: none;
   }
   
@@ -43,7 +43,7 @@ body {
     right: 15px;
     bottom: 15px;
     z-index: 99999;
-    background: #428bca;
+    background: #5e96ff;
     width: 40px;
     height: 40px;
     border-radius: 4px;
@@ -93,11 +93,11 @@ body {
   }
   
   #topbar .contact-info a:hover {
-    color: #428bca;
+    color: #5e96ff;
   }
   
   #topbar .contact-info i {
-    color: #428bca;
+    color: #5e96ff;
     line-height: 0;
     margin-right: 5px;
   }
@@ -107,7 +107,7 @@ body {
   }
   
   #topbar .social-links a {
-    color: #5c768d;
+    color: #5e96ff;
     padding: 4px 12px;
     display: inline-block;
     line-height: 1px;
@@ -115,7 +115,7 @@ body {
   }
   
   #topbar .social-links a:hover {
-    color: #428bca;
+    color: #5e96ff;
   }
   
   /*--------------------------------------------------------------
@@ -184,7 +184,7 @@ body {
     padding: 10px 0 10px 30px;
     font-family: "Open Sans", sans-serif;
     font-size: 15px;
-    color: #5c768d;
+    color: #5e96ff;
     white-space: nowrap;
     transition: 0.3s;
   }
@@ -200,7 +200,7 @@ body {
   .navbar .active,
   .navbar .active:focus,
   .navbar li:hover>a {
-    color: #428bca;
+    color: #5e96ff;
   }
   
   .navbar .dropdown ul {
@@ -234,7 +234,7 @@ body {
   .navbar .dropdown ul a:hover,
   .navbar .dropdown ul .active:hover,
   .navbar .dropdown ul li:hover>a {
-    color: #428bca;
+    color: #5e96ff;
   }
   
   .navbar .dropdown:hover>ul {
@@ -332,7 +332,7 @@ body {
   .navbar-mobile a:hover,
   .navbar-mobile .active,
   .navbar-mobile li:hover>a {
-    color: #428bca;
+    color: #5e96ff;
   }
   
   .navbar-mobile .getstarted,
@@ -367,7 +367,7 @@ body {
   .navbar-mobile .dropdown ul a:hover,
   .navbar-mobile .dropdown ul .active:hover,
   .navbar-mobile .dropdown ul li:hover>a {
-    color: #428bca;
+    color: #5e96ff;
   }
   
   .navbar-mobile .dropdown>.dropdown-active {
@@ -508,7 +508,7 @@ body {
     -webkit-animation-delay: 0.8s;
     animation-delay: 0.8s;
     border: 0;
-    background: #428bca;
+    background: #5e96ff;
   }
   
   #hero .btn-get-started:hover {
@@ -562,14 +562,14 @@ body {
     font-weight: 600;
     margin-bottom: 20px;
     padding-bottom: 0;
-    color: #5c768d;
+    color: #5e96ff;
   }
   h1 {
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 20px;
     padding-bottom: 0;
-    color: #5c768d;
+    color: #5e96ff;
   }
   
   .section-title p {
@@ -666,12 +666,12 @@ body {
   }
   
   .about .icon-box .icon i {
-    color: #428bca;
+    color: #5e96ff;
     font-size: 32px;
   }
   
   .about .icon-box:hover .icon {
-    background: #428bca;
+    background: #5e96ff;
   }
   
   .about .icon-box:hover .icon i {
@@ -692,7 +692,7 @@ body {
   }
   
   .about .icon-box .title a:hover {
-    color: #428bca;
+    color: #5e96ff;
   }
   
   .about .icon-box .description {
@@ -708,7 +708,7 @@ body {
   .about .play-btn {
     width: 94px;
     height: 94px;
-    background: radial-gradient(#428bca 50%, rgba(66, 139, 202, 0.4) 52%);
+    background: radial-gradient(#5e96ff 50%, rgba(66, 139, 202, 0.4) 52%);
     border-radius: 50%;
     display: block;
     position: absolute;
@@ -756,7 +756,7 @@ body {
   }
   
   .about .play-btn:hover::after {
-    border-left: 15px solid #428bca;
+    border-left: 15px solid #5e96ff;
     transform: scale(20);
   }
   
@@ -903,7 +903,7 @@ body {
     background: #fff;
     border-radius: 50%;
     transition: 0.5s;
-    color: #428bca;
+    color: #5e96ff;
     box-shadow: 0px 0 25px rgba(0, 0, 0, 0.15);
     overflow: hidden;
   }
@@ -931,7 +931,7 @@ body {
   }
   
   .services .title a:hover {
-    color: #428bca;
+    color: #5e96ff;
   }
   
   .services .title::after {
@@ -940,7 +940,7 @@ body {
     display: block;
     width: 50px;
     height: 2px;
-    background: #428bca;
+    background: #5e96ff;
     bottom: 0;
     left: calc(50% - 25px);
   }
@@ -981,7 +981,7 @@ body {
   
   .portfolio #portfolio-flters li:hover,
   .portfolio #portfolio-flters li.filter-active {
-    background: #428bca;
+    background: #5e96ff;
     color: #fff;
   }
   
@@ -1030,7 +1030,7 @@ body {
   }
   
   .portfolio .portfolio-wrap .portfolio-info a {
-    color: #428bca;
+    color: #5e96ff;
     margin: 0 4px;
     line-height: 0;
     background-color: #fff;
@@ -1050,7 +1050,7 @@ body {
   }
   
   .portfolio .portfolio-wrap .portfolio-info a:hover {
-    background: #428bca;
+    background: #5e96ff;
     color: #fff;
   }
   
@@ -1088,11 +1088,11 @@ body {
     height: 12px;
     background-color: #fff;
     opacity: 1;
-    border: 1px solid #428bca;
+    border: 1px solid #5e96ff;
   }
   
   .portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet-active {
-    background-color: #428bca;
+    background-color: #5e96ff;
   }
   
   .portfolio-details .portfolio-info {
@@ -1253,7 +1253,7 @@ body {
   
   .contact .info-box i {
     font-size: 32px;
-    color: #428bca;
+    color: #5e96ff;
     border-radius: 50%;
     padding: 8px;
     border: 2px dotted #9eccf4;
@@ -1333,7 +1333,7 @@ body {
   
   .contact .php-email-form input::focus,
   .contact .php-email-form textarea::focus {
-    background-color: #428bca;
+    background-color: #5e96ff;
   }
   
   .contact .php-email-form input {
@@ -1345,7 +1345,7 @@ body {
   }
   
   .contact .php-email-form button[type=submit] {
-    background: #428bca;
+    background: #5e96ff;
     border: 0;
     padding: 10px 30px;
     color: #fff;
@@ -1426,7 +1426,7 @@ body {
   }
   
   #footer .footer-top .social-links a:hover {
-    background: #428bca;
+    background: #5e96ff;
     color: #fff;
     text-decoration: none;
   }
@@ -1640,7 +1640,7 @@ body {
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #5c768d;
+    background-color: #5e96ff;
     border: 1px solid #ddd;
     border-radius: 50%;
 }
@@ -1709,7 +1709,7 @@ body {
   
   margin-bottom: 20px;
   padding-bottom: 0;
-  color: #5c768d;
+  color: #5e96ff;
 }
 
 .row-striped:nth-of-type(odd){
@@ -1759,7 +1759,7 @@ body {
 .meetup-card {
   max-width: 200px;
   margin: 1rem auto;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -1813,4 +1813,9 @@ body {
 }
 div.rbc-event, .rbc-day-slot {
   background-color: #5e96ff;
+}
+#fondo{
+  background-image: url("../4931029.jpg"); 
+  background-size: cover;
+  width: 100%;
 }

@@ -103,7 +103,10 @@ export default function Navbar() {
                     aria-current="page"
                     to="/"
                   >
-                    <div className=" dropdown text-end mt-1 text-info fs-6 badge d-flex justify-content-center ">
+                    <div
+                      id="botones"
+                      className=" dropdown text-end mt-1 fs-6 badge d-flex justify-content-center "
+                    >
                       {" "}
                       {authorization.email}
                       <ul className="dropdown-menu text-small">
@@ -237,7 +240,10 @@ export default function Navbar() {
                     aria-current="page"
                     to="/"
                   >
-                    <div className=" dropdown text-end mt-1 text-info fs-6 badge d-flex justify-content-center ">
+                    <div
+                      id="botones"
+                      className=" dropdown text-end mt-1 fs-6 badge d-flex justify-content-center "
+                    >
                       {" "}
                       {authorization.email}
                       <ul className="dropdown-menu text-small">
