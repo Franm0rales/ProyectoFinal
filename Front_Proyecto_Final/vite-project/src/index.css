@@ -1807,3 +1807,10 @@ body {
 #aptitudes{
   background: #5e96ff;
 }
+.rbc-toolbar .rbc-toolbar-label {
+  font-size:32px ;
+  color: #5e96ff;
+}
+div.rbc-event, .rbc-day-slot {
+  background-color: #5e96ff;
+}

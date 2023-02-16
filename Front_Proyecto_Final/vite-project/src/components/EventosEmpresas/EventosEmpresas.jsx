@@ -30,12 +30,12 @@ export default function EventoEmpresas() {
       <Container className=" pt-4 ">
         <Calendar
           className="eventos calendario "
-          views={["day", "work_week", "month"]}
+          views={["month"]}
           localizer={localizer}
           defaultDate={new Date()}
           defaultView="month"
           events={test}
-          style={{ height: "60vh", width: "80vh" }}
+          style={{ height: "70vh", width: "90vh" }}
           onSelectEvent={onSelectEvent}
         />
         <div className="text-center">
