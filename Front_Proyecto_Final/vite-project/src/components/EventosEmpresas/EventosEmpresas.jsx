@@ -8,17 +8,17 @@ import { useAuthContext } from "../../context/AuthContext/AuthContext";
 moment.locale("es-Es");
 const localizer = momentLocalizer(moment);
 
-export default function EventoEmpresas(test) {
-  // const [test, setTest] = useState([]);
-  // const { authorization } = useAuthContext();
+export default function EventoEmpresas() {
+  const [test, setTest] = useState([]);
+  const { authorization } = useAuthContext();
 
-  // async function fetchCalendario() {
-  //   const response = await fetch(
-  //     `http://localhost:3000/user/getTarjeta/${authorization.id}`
-  //   );
-  //   const json = await response.json();
-  //   setTest(json);
-  // }
+  async function fetchCalendario() {
+    const response = await fetch(
+      `http://localhost:3000/user/getTarjeta/${authorization.id}`
+    );
+    const json = await response.json();
+    setTest(json);
+  }
   const onSelectEvent = (test) =>
     Swal.fire({
       title: `${test.title}`,
@@ -38,7 +38,7 @@ export default function EventoEmpresas(test) {
           style={{ height: "60vh", width: "80vh" }}
           onSelectEvent={onSelectEvent}
         />
-        {/* <div className="text-center">
+        <div className="text-center">
           <button
             onClick={() => fetchCalendario()}
             id="botones"
@@ -47,7 +47,7 @@ export default function EventoEmpresas(test) {
           >
             Actualizar agenda
           </button>
-        </div> */}
+        </div>
       </Container>
     </>
   );

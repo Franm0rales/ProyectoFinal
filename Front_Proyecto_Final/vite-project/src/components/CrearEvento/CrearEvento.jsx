@@ -1,10 +1,11 @@
 import { useFormik } from "formik";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
+import Swal from "sweetalert2";
 
 export default function CrearEvento(setEvento) {
   const { authorization } = useAuthContext();
 
-  async function onSubmit(values) {
+  async function onSubmit(values, actions) {
     try {
       const response = await fetch(
         `http://localhost:3000/user/tarjeta/${authorization.id}`,
@@ -47,32 +48,27 @@ export default function CrearEvento(setEvento) {
     } catch (e) {
       console.log(e);
     }
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    actions.resetForm();
   }
 
-  const {
-    values,
-    touched,
-    errors,
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    isSubmitting,
-  } = useFormik({
-    initialValues: {
-      nombre: "",
-      fechaInicio: "",
-      fechaFin: "",
-      horaInicio: "",
-      plazas: "",
-      descripcion: "",
-      email: "",
-      telefono: "",
-      direccion: "",
-      ciudad: "",
-    },
+  const { values, handleBlur, handleChange, handleSubmit, isSubmitting } =
+    useFormik({
+      initialValues: {
+        nombre: "",
+        fechaInicio: "",
+        fechaFin: "",
+        horaInicio: "",
+        plazas: "",
+        descripcion: "",
+        email: "",
+        telefono: "",
+        direccion: "",
+        ciudad: "",
+      },
 
-    onSubmit,
-  });
+      onSubmit,
+    });
 
   return (
     <>
