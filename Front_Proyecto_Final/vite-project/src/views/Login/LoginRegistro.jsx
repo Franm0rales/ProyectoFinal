@@ -9,7 +9,7 @@ export default function LoginAcount() {
   const { view, setView } = useAuthContext();
   return (
     <div className="d-flex  justify-content-around pt-5">
-      <nav className="col-5">
+      <nav className="col-4">
         <ul className="nav nav-tabs px-5">
           <li className="">
             <a
@@ -28,7 +28,7 @@ export default function LoginAcount() {
               onClick={() => {
                 setView("Empresa");
               }}
-              className="nav-link active text-white" id="botones"
+              className="nav-link active text-white " id="botones"
             >
               Empresa
             </a>
