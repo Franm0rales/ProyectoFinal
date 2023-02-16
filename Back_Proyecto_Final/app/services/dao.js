@@ -28,5 +28,8 @@ dao.deleteUser = async (tabla, data, id, columna) =>
 dao.allTests = async (pagination) => await testQueries.allTests(pagination);
 // Traer todas las tarjetas de eventos
 dao.getAllTarjetas = async () => await userQueries.getAllTarjetas();
+//Filtrar tarjetas por datos
+dao.getTarjetaByData = async (tabla, columna, data) =>
+  await userQueries.getTarjetaByData(tabla, columna, data);
 
 export default dao;

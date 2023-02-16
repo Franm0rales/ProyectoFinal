@@ -106,5 +106,23 @@ userQueries.getAllTarjetas = async () => {
     conn && (await conn.end());
   }
 };
+//Filtrar tarjetas por data
+userQueries.getTarjetaByData = async (tabla, columna, data) => {
+  // Conectamos con la base de datos
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      `SELECT * FROM ${tabla} where ${columna} like '%${data}%' `,
+      [],
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 
 export default userQueries;

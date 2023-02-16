@@ -39,5 +39,10 @@ userRouter.post("/tarjeta/:id", userController.addTarjeta);
 userRouter.get("/getTarjeta/:id", userController.getTarjeta);
 //Traer tarjetas
 userRouter.get("/getAllTarjetas/tarjetas", userController.getAllTarjetas);
+//Buscar tarjetas por nombre
+userRouter.get(
+  "/getTarjetaByNombre/:nombre",
+  userController.getTarjetaByNombre
+);
 
 export default userRouter;

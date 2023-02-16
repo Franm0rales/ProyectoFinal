@@ -14,6 +14,7 @@ export const tables = {
 export const data = {
   id: "id",
   test: "test",
+  nombre: "nombre",
   respuestastest: "respuestastest",
   idUsuario: "idUsuario",
   idEmpresa: "idEmpresa",

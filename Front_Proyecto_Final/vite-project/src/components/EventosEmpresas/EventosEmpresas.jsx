@@ -24,6 +24,7 @@ export default function EventoEmpresas() {
       title: `${test.title}`,
       confirmButtonColor: "#5e96ff",
     });
+  console.log(test);
 
   return (
     <>
