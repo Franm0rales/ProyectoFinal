@@ -312,7 +312,7 @@ export default function RegistroEmpresa() {
           </label>
         </div>
         <button
-          id="boton-registroempresa"
+          id="botones"
           disabled={isSubmitting}
           type="submit"
           className="btn text-white"

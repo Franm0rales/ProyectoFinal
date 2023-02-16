@@ -33,7 +33,7 @@ export default function LoginEmpresa() {
     <div className="m-5 mb-5 ">
       <h1>Login Empresa</h1>
 
-      <form onSubmit={handleSubmit} className="row g-3 needs-validation">
+      <form onSubmit={handleSubmit} className="row g-3 needs-validation ">
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             Email
@@ -86,17 +86,17 @@ export default function LoginEmpresa() {
           </div>{" "}
         </div>
 
-        <div className="mb-3  form-check">
+        <div className="mb-3  form-check col-">
           <input type="checkbox" className="form-check-input" required />
           <label className="form-check-label" htmlFor="exampleCheck1">
             Aceptar política de privacidad
           </label>
         </div>
         <button
-          id="empresa-botones"
+          id="botones"
           disabled={isSubmitting}
           type="submit"
-          className="btn text-white"
+          className="btn text-white "
         >
           Login
         </button>

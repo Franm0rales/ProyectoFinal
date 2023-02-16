@@ -17,7 +17,7 @@ export default function LoginAcount() {
               onClick={() => {
                 setView("Alumno");
               }}
-              className="nav-link active text-dark "
+              className="nav-link active text-white " id="botones"
             >
               Alumno
             </a>
@@ -28,7 +28,7 @@ export default function LoginAcount() {
               onClick={() => {
                 setView("Empresa");
               }}
-              className="nav-link active text-dark"
+              className="nav-link active text-white" id="botones"
             >
               Empresa
             </a>
