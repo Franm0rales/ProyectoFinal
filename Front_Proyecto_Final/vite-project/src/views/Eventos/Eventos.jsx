@@ -1,10 +1,11 @@
 import BuscarEmpresa from "../../components/BuscarEmpresa/BuscarEmpresa";
 import ContadorVisitas from "../../components/ContadorVisitas/Contadorvisitas";
 import { useEffect, useState } from "react";
+import { useAuthContext } from "../../context/AuthContext/AuthContext";
 
 export default function Eventos() {
   const [eventos, setEventos] = useState([]);
-
+  const { authorization } = useAuthContext();
   const [empresaABuscar, setEmpresaABuscar] = useState("");
   const [error, setError] = useState("");
 
@@ -100,6 +101,7 @@ export default function Eventos() {
                 </a>
               </div> */}
             </div>
+            {}
             <div className="pb-2 text-center">
               <ContadorVisitas />
             </div>
