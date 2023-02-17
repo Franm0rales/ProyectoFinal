@@ -38,6 +38,7 @@ userQueries.getUserByData = async (tabla, columna, dato) => {
 };
 // Modificar un usuario por su id
 userQueries.updateUser = async (tabla, id, userData, columna) => {
+  console.log(userData);
   // Eliminamos todos los campos que no se han rellenado
   userData = await utils.removeUndefinedKeys(userData);
   // Conectamos con la base de datos

@@ -793,18 +793,23 @@ controller.getTarjetaByNombre = async (req, res) => {
 controller.unirseEvento = async (req, res) => {
   const { idUsuario, idEvento } = req.body;
   try {
-    const eventoObj = {
-      idTarjeta: idUsuario,
-    };
     const user = dao.getUserByData(tables[2], data.idUsuario, idUsuario);
-    console.log(user);
+    if (user.length > 0)
+      return res.status(409).send("Usuario ya registrado en un evento");
+    const eventoObj = {
+      idTarjeta: idEvento,
+    };
+    await dao.updateUser(data.alumno, idUsuario, eventoObj, data.idUsuario);
+
     // const addUserEvent = dao.updateUser(
     //   tables[2],
     //   idUsuario,
     //   eventoObj,
     //   data.idTarjeta
     // );
-    return res.send(user);
+    return res.send(
+      `Usuario ${user.nombre} con id: ${idUsuario} se ha registarado en el evento con id: ${idEvento}`
+    );
   } catch (e) {
     console.log(e.message);
   }

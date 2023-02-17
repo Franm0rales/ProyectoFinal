@@ -44,6 +44,6 @@ userRouter.get(
   "/getTarjetaByNombre/:nombre",
   userController.getTarjetaByNombre
 );
-userRouter.patch("/uniserEvento", userController.unirseEvento);
+userRouter.patch("/unirseEvento", userController.unirseEvento);
 
 export default userRouter;
