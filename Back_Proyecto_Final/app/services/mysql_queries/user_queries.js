@@ -132,8 +132,8 @@ userQueries.contadorByData = async (tabla, columna) => {
   try {
     conn = await db.createConnection();
     return await db.query(
-      `SELECT count(*), idTarjeta FROM ${tabla} group by ?`,
-      [columna],
+      `SELECT count(*) as contador, idTarjeta FROM ${tabla} group by ${columna}`,
+      [],
       "select",
       conn
     );

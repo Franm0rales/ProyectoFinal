@@ -8,6 +8,7 @@ export default function Eventos() {
   const { authorization } = useAuthContext();
   const [empresaABuscar, setEmpresaABuscar] = useState("");
   const [error, setError] = useState("");
+  const [data, setData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,6 +19,11 @@ export default function Eventos() {
         const jsoneventos = await responseEventos.json();
         setEventos(jsoneventos);
         setError(null);
+        const responseData = await fetch(
+          `http://localhost:3000/user/${authorization.id}`
+        );
+        const json = await responseData.json();
+        setData(json);
       } catch (error) {
         console.log(error);
       }
@@ -101,7 +107,7 @@ export default function Eventos() {
               </div> */}
             </div>
             <div className="pb-2 text-center">
-              <ContadorVisitas evento={evento} />
+              <ContadorVisitas evento={evento} idTarjeta={data} />
             </div>
           </div>
         ))}

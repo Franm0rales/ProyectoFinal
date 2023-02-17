@@ -20,18 +20,18 @@ export default function ContadorVisitas({ evento, idTarjeta }) {
           idEvento: evento.id,
         }),
       });
-      const responseContador = await fetch(
-        `http://localhost:3000/user/getAllTarjetas/tarjetas`
-      );
-      const json = await responseContador.json();
-      setVisitCount(json);
+
+      // const responseContador = await fetch(
+      //   `http://localhost:3000/user/getAllTarjetas/tarjetas`
+      // );
+      // const json = await responseContador.json();
+      // setVisitCount(json);
     } catch (e) {
       console.log(e);
     }
   }
 
-  async function handleClick() {
-    console.log(idTarjeta, "data");
+  const handleClick = () => {
     onSubmit();
     Swal.fire({
       title: "Registrado al Evento",
@@ -42,7 +42,7 @@ export default function ContadorVisitas({ evento, idTarjeta }) {
 
     setButtonState("No asistiré");
     setIsDisabled(true);
-  }
+  };
   const handleUnclick = () => {
     Swal.fire({
       title: "Te has eliminado del evento correctamente",
@@ -55,27 +55,29 @@ export default function ContadorVisitas({ evento, idTarjeta }) {
   };
 
   return (
-    <div>
-      <p>
-        <i class="bi bi-people-fill fs-2"></i> {visitCount}/{maxVisitors}
-      </p>
-      {idTarjeta.idTarjeta !== evento.id ? (
-        <button
-          id="botones"
-          className="rounded mt-2 mb-5"
-          onClick={handleUnclick}
-        >
-          Asistir
-        </button>
-      ) : (
-        <button
-          id="botones"
-          className="rounded mt-2 mb-5"
-          onClick={handleClick}
-        >
-          Borrar Curso
-        </button>
-      )}
-    </div>
+    <>
+      <div>
+        <p>
+          <i className="bi bi-people-fill fs-2"></i> {visitCount}/{maxVisitors}
+        </p>
+        {idTarjeta.idTarjeta !== evento.id ? (
+          <button
+            id="botones"
+            className="rounded mt-2 mb-5"
+            onClick={handleUnclick}
+          >
+            Asistir
+          </button>
+        ) : (
+          <button
+            id="botones"
+            className="rounded mt-2 mb-5"
+            onClick={handleClick}
+          >
+            Borrar Curso
+          </button>
+        )}
+      </div>
+    </>
   );
 }
