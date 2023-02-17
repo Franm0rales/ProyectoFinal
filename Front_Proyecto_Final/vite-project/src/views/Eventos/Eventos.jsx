@@ -28,6 +28,13 @@ export default function Eventos() {
         console.log(error);
       }
     };
+    const contadorVisitas = async () => {
+      const responseContador = await fetch(
+        `http://localhost:3000/user/contador/eventosUsuario`
+      );
+      const json = await responseContador.json();
+      setVisitCount(json);
+    };
 
     const fetchRutaABuscar = async () => {
       try {
@@ -106,8 +113,9 @@ export default function Eventos() {
                 </a>
               </div> */}
             </div>
+            <p>{}</p>
             <div className="pb-2 text-center">
-              <ContadorVisitas evento={evento} idTarjeta={data} />
+              <ContadorVisitas plazas={evento.plazas} idTarjeta={evento.id} />
             </div>
           </div>
         ))}

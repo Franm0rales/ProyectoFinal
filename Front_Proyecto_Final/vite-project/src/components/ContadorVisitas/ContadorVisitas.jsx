@@ -1,12 +1,13 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
-export default function ContadorVisitas({ evento, idTarjeta }) {
+export default function ContadorVisitas({ plazas, idTarjeta }) {
   const { authorization } = useAuthContext();
   const [visitCount, setVisitCount] = useState(0);
   const [buttonState, setButtonState] = useState("Asistiré");
   const [isDisabled, setIsDisabled] = useState(false);
-  const maxVisitors = evento.plazas;
+  const maxVisitors = plazas;
+  let objetoFiltrado = 0;
 
   async function onSubmit() {
     try {
@@ -17,15 +18,20 @@ export default function ContadorVisitas({ evento, idTarjeta }) {
         },
         body: JSON.stringify({
           idUsuario: authorization.id,
-          idEvento: evento.id,
+          idEvento: idTarjeta,
         }),
       });
 
-      // const responseContador = await fetch(
-      //   `http://localhost:3000/user/getAllTarjetas/tarjetas`
-      // );
-      // const json = await responseContador.json();
-      // setVisitCount(json);
+      const responseContador = await fetch(
+        `http://localhost:3000/user/contador/eventosUsuario`
+      );
+      const json = await responseContador.json();
+      setVisitCount(json);
+      console.log(visitCount);
+      objetoFiltrado = visitCount.filter(
+        (visit) => visit.idTarjeta === idTarjeta
+      );
+      console.log(objetoFiltrado[0].contador, "idTarjeta");
     } catch (e) {
       console.log(e);
     }
@@ -38,18 +44,19 @@ export default function ContadorVisitas({ evento, idTarjeta }) {
       icon: "success",
       confirmButtonColor: "#5295ce",
     });
-    setVisitCount(visitCount + 1);
+    // setVisitCount(visitCount + 1);
 
     setButtonState("No asistiré");
     setIsDisabled(true);
   };
   const handleUnclick = () => {
+    onSubmit();
     Swal.fire({
       title: "Te has eliminado del evento correctamente",
       icon: "success",
       confirmButtonColor: "#5295ce",
     });
-    setVisitCount(visitCount - 1);
+    // setVisitCount(visitCount - 1);
     setButtonState("Asistiré");
     setIsDisabled(false);
   };
@@ -58,25 +65,25 @@ export default function ContadorVisitas({ evento, idTarjeta }) {
     <>
       <div>
         <p>
-          <i className="bi bi-people-fill fs-2"></i> {visitCount}/{maxVisitors}
+          <i className="bi bi-people-fill fs-2"></i> {objetoFiltrado.contador}/
+          {maxVisitors}
         </p>
-        {idTarjeta.idTarjeta !== evento.id ? (
-          <button
-            id="botones"
-            className="rounded mt-2 mb-5"
-            onClick={handleUnclick}
-          >
-            Asistir
-          </button>
-        ) : (
-          <button
-            id="botones"
-            className="rounded mt-2 mb-5"
-            onClick={handleClick}
-          >
-            Borrar Curso
-          </button>
-        )}
+
+        <button
+          id="botones"
+          className="rounded mt-2 mb-5 col-3"
+          onClick={onSubmit}
+        >
+          Asistir
+        </button>
+
+        <button
+          id="botones"
+          className="rounded mt-2 mb-5 col-3"
+          onClick={onSubmit}
+        >
+          Borrar Curso
+        </button>
       </div>
     </>
   );

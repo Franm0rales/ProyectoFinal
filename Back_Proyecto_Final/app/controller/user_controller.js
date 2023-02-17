@@ -812,7 +812,6 @@ controller.contadorEventosUsuarios = async (req, res) => {
     console.log("hola");
     console.log(data.alumno, data.idTarjeta);
     let dataUser = await dao.contadorByData(data.alumno, data.idTarjeta);
-    [dataUser] = dataUser;
     return res.status(200).send(dataUser);
   } catch (e) {
     console.log(e.message);
