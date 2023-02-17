@@ -111,13 +111,8 @@ export default function Navbar() {
                       {authorization.email}
                       <ul className="dropdown-menu text-small">
                         <li>
-                          <a className="dropdown-item" href="#">
-                            New project
-                          </a>
-                        </li>
-                        <li>
                           <Link className="dropdown-item" to="editar">
-                            Profile
+                            Perfil usuario
                           </Link>
                         </li>
                         <li>
