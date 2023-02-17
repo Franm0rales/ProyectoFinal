@@ -800,16 +800,19 @@ controller.unirseEvento = async (req, res) => {
       idTarjeta: idEvento,
     };
     await dao.updateUser(data.alumno, idUsuario, eventoObj, data.idUsuario);
-
-    // const addUserEvent = dao.updateUser(
-    //   tables[2],
-    //   idUsuario,
-    //   eventoObj,
-    //   data.idTarjeta
-    // );
-    return res.send(
-      `Usuario ${user.nombre} con id: ${idUsuario} se ha registarado en el evento con id: ${idEvento}`
-    );
+    return res.status(200).send();
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+//Contador de usuarios por evento
+controller.contadorEventosUsuarios = async (req, res) => {
+  try {
+    console.log("hola");
+    console.log(data.alumno, data.idTarjeta);
+    let dataUser = await dao.contadorByData(data.alumno, data.idTarjeta);
+    [dataUser] = dataUser;
+    return res.status(200).send(dataUser);
   } catch (e) {
     console.log(e.message);
   }

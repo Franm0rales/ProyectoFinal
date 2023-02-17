@@ -125,5 +125,23 @@ userQueries.getTarjetaByData = async (tabla, columna, data) => {
     conn && (await conn.end());
   }
 };
+//Contador usuarios por evento
+userQueries.contadorByData = async (tabla, columna) => {
+  // Conectamos con la base de datos
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      `SELECT count(*), idTarjeta FROM ${tabla} group by ?`,
+      [columna],
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 
 export default userQueries;
