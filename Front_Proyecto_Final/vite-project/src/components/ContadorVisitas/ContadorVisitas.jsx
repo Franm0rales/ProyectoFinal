@@ -2,13 +2,33 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 export default function ContadorVisitas({ evento }) {
-  const { id } = useAuthContext();
+  const { authorization } = useAuthContext();
   const [visitCount, setVisitCount] = useState(0);
   const [buttonState, setButtonState] = useState("Asistiré");
   const [isDisabled, setIsDisabled] = useState(false);
-  const maxVisitors = 20;
+  const maxVisitors = evento.plazas;
+
+  async function onSubmit() {
+    try {
+      const response = await fetch(`http://localhost:3000/user/unirseEvento`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          idUsuario: authorization.id,
+          idEvento: evento.id,
+        }),
+      });
+      const json = await response.json();
+      set(json);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   async function handleClick() {
+    onSubmit();
     Swal.fire({
       title: "Registrado al Evento",
       icon: "success",
