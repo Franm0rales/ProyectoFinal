@@ -47,6 +47,7 @@ export default function LoginAlumno() {
             aria-describedby="emailHelp"
             value={values.email}
             name="email"
+            data-cy="email"
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -73,6 +74,7 @@ export default function LoginAlumno() {
             name="password"
             onChange={handleChange}
             onBlur={handleBlur}
+            data-cy="password"
           />
           <div
             className={
@@ -85,13 +87,14 @@ export default function LoginAlumno() {
           </div>{" "}
         </div>
 
-        <div className="mb-3  form-check">
+        {/* <div className="mb-3  form-check">
           <input type="checkbox" className="form-check-input" required />
           <label className="form-check-label" htmlFor="exampleCheck1">
             Aceptar política de privacidad
           </label>
-        </div>
+        </div> */}
         <button
+        data-cy="submit"
           disabled={isSubmitting}
           type="submit"
           id="botones"
