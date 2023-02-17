@@ -18,7 +18,6 @@ export default function Eventos() {
         const jsoneventos = await responseEventos.json();
         setEventos(jsoneventos);
         setError(null);
-        console.log(eventos);
       } catch (error) {
         console.log(error);
       }
@@ -29,7 +28,7 @@ export default function Eventos() {
         const response = await fetch(
           `http://localhost:3000/user/getTarjetaByNombre/${empresaABuscar}`
         );
-        console.log(empresaABuscar);
+
         const data = await response.json();
         setEventos(data);
         setError(null);
@@ -101,9 +100,8 @@ export default function Eventos() {
                 </a>
               </div> */}
             </div>
-            {}
             <div className="pb-2 text-center">
-              <ContadorVisitas />
+              <ContadorVisitas evento={evento} />
             </div>
           </div>
         ))}
