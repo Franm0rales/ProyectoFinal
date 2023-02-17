@@ -5,23 +5,55 @@ import { useEffect, useState } from "react";
 export default function Eventos() {
   const [eventos, setEventos] = useState([]);
 
+  const [empresaABuscar, setEmpresaABuscar] = useState("");
+  const [error, setError] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
-      const responseEventos = await fetch(
-        `http://localhost:3000/user/getAllTarjetas/tarjetas`
-      );
-
-      const jsoneventos = await responseEventos.json();
-      setEventos(jsoneventos);
+      try {
+        const responseEventos = await fetch(
+          `http://localhost:3000/user/getAllTarjetas/tarjetas`
+        );
+        const jsoneventos = await responseEventos.json();
+        setEventos(jsoneventos);
+        setError(null);
+        console.log(eventos);
+      } catch (error) {
+        console.log(error);
+      }
     };
-    fetchData();
-  }, []);
-  console.log(eventos);
+
+    const fetchRutaABuscar = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/user/getTarjetaByNombre/${empresaABuscar}`
+        );
+        console.log(empresaABuscar);
+        const data = await response.json();
+        setEventos(data);
+        setError(null);
+      } catch (error) {
+        console.log(error);
+        setError("La ruta no existe");
+        setEventos([]);
+      }
+    };
+
+    if (empresaABuscar !== "") {
+      fetchRutaABuscar();
+    } else {
+      fetchData();
+    }
+  }, [empresaABuscar]);
+
   return (
     <>
       <div id="fondo" className="pb-5">
         <div className="pt-5">
-          <BuscarEmpresa />
+          <BuscarEmpresa
+            empresaABuscar={empresaABuscar}
+            setEmpresaABuscar={setEmpresaABuscar}
+          />
         </div>
         <div className="container col-10 "></div>
         {eventos.map((evento) => (
@@ -33,14 +65,18 @@ export default function Eventos() {
                 alt="Meetup event image"
               />
               <div className="card-body text-start">
-                <h5 className="card-title">{evento.nombre}</h5>
+                <h2 className="card-title fs-1">{evento.nombre}</h2>
                 <p className="card-text ">
                   <i class="bi bi-calendar3 text-primary fs-3"></i> Fecha inico:{" "}
-                  {evento.fechaInicio}
+                  {evento.fechaInicio.split("T")[0].split("-")[2]}-
+                  {evento.fechaInicio.split("T")[0].split("-")[1]}-
+                  {evento.fechaInicio.split("T")[0].split("-")[0]}
                 </p>
                 <p className="card-text ">
                   <i class="bi bi-calendar3 text-primary fs-3"></i> Fecha fin:{" "}
-                  {evento.fechaFin}
+                  {evento.fechaFin.split("T")[0].split("-")[2]}-
+                  {evento.fechaFin.split("T")[0].split("-")[1]}-
+                  {evento.fechaFin.split("T")[0].split("-")[0]}
                 </p>
                 <p className="card-text">
                   <i class="bi bi-clock text-primary fs-3 "></i> Hora:{" "}
@@ -54,15 +90,19 @@ export default function Eventos() {
                   <i className="bi bi-geo-alt text-primary fs-3"></i> Dirección:{" "}
                   {evento.direccion}
                 </p>
-                <p className="card-text">Descripción: {evento.descripcion}</p>
+                <p className="card-text ">
+                  <b> Descripción:</b> {evento.descripcion}
+                </p>
               </div>
-              <div className="card-footer">
+              {/* <div className="card-footer">
                 <a href="#" id="botones" className="btn text-white col-4 ">
                   Ver más
                 </a>
-              </div>
+              </div> */}
             </div>
-            <ContadorVisitas />
+            <div className="pb-2 text-center">
+              <ContadorVisitas />
+            </div>
           </div>
         ))}
       </div>
