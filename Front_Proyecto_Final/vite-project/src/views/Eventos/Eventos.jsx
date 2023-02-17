@@ -8,6 +8,7 @@ export default function Eventos() {
   const { authorization } = useAuthContext();
   const [empresaABuscar, setEmpresaABuscar] = useState("");
   const [error, setError] = useState("");
+  const [data, setData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,9 +19,21 @@ export default function Eventos() {
         const jsoneventos = await responseEventos.json();
         setEventos(jsoneventos);
         setError(null);
+        const responseData = await fetch(
+          `http://localhost:3000/user/${authorization.id}`
+        );
+        const json = await responseData.json();
+        setData(json);
       } catch (error) {
         console.log(error);
       }
+    };
+    const contadorVisitas = async () => {
+      const responseContador = await fetch(
+        `http://localhost:3000/user/contador/eventosUsuario`
+      );
+      const json = await responseContador.json();
+      setVisitCount(json);
     };
 
     const fetchRutaABuscar = async () => {
@@ -100,8 +113,9 @@ export default function Eventos() {
                 </a>
               </div> */}
             </div>
+            <p>{}</p>
             <div className="pb-2 text-center">
-              <ContadorVisitas evento={evento} />
+              <ContadorVisitas plazas={evento.plazas} idTarjeta={evento.id} />
             </div>
           </div>
         ))}
