@@ -792,6 +792,7 @@ controller.getTarjetaByNombre = async (req, res) => {
 //Unirse a un evento
 controller.unirseEvento = async (req, res) => {
   const { idUsuario, idEvento } = req.body;
+  console.log(req.body);
   try {
     const user = dao.getUserByData(tables[2], data.idUsuario, idUsuario);
     if (user.length > 0)
@@ -807,9 +808,7 @@ controller.unirseEvento = async (req, res) => {
     //   eventoObj,
     //   data.idTarjeta
     // );
-    return res.send(
-      `Usuario ${user.nombre} con id: ${idUsuario} se ha registarado en el evento con id: ${idEvento}`
-    );
+    return res.send();
   } catch (e) {
     console.log(e.message);
   }
