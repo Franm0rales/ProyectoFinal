@@ -100,7 +100,7 @@ export default function Registro() {
           </div>
           <div className="valid-feedback">Looks good!</div>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-8">
           <label htmlFor="validationCustom02" className="form-label">
             Apellidos
           </label>
@@ -144,7 +144,7 @@ export default function Registro() {
             <option value="7">Hombre</option>
           </select>
         </div>
-        <div className="col-md-4">
+        <div className="col-md-5">
           <label htmlFor="validationCustom01" className="form-label">
             Teléfono
           </label>
@@ -298,7 +298,7 @@ export default function Registro() {
           Crea una cuenta ahora
         </button>
       </form>
-      <pre>{JSON.stringify({ values, errors })}</pre>
+     
     </div>
   );
 }

@@ -19,12 +19,15 @@ export default function EventoEmpresas() {
     const json = await response.json();
     setTest(json);
   }
-  const onSelectEvent = (test) =>
+  const onSelectEvent = (test) => {
+    console.log(test);
     Swal.fire({
       title: `${test.title}`,
+      html: `<p>Plazas: ${test.plazas} </p> <p>Hora: ${test.horaInicio} </p>`,
+
       confirmButtonColor: "#5e96ff",
     });
-  console.log(test);
+  };
 
   return (
     <>

@@ -749,6 +749,8 @@ controller.getTarjeta = async (req, res) => {
         title: tarjeta.nombre,
         start: tarjeta.fechaInicio,
         end: tarjeta.fechaFin,
+        plazas: tarjeta.plazas,
+        horaInicio: tarjeta.horaInicio,
       };
       tarjetaObj[i] = tarjeta;
       i++;

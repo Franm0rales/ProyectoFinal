@@ -197,7 +197,7 @@ export default function TestUsuario() {
                 }
                 agregarNumeros();
               }}
-              className="page-link"
+              className="page-link "
               href="#"
             >
               Previous
