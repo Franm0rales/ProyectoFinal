@@ -787,4 +787,24 @@ controller.getTarjetaByNombre = async (req, res) => {
     console.log(e.message);
   }
 };
+//Unirse a un evento
+controller.unirseEvento = async (req, res) => {
+  const { idUsuario, idEvento } = req.body;
+  try {
+    const eventoObj = {
+      idTarjeta: idUsuario,
+    };
+    const user = dao.getUserByData(tables[2], data.idUsuario, idUsuario);
+    console.log(user);
+    // const addUserEvent = dao.updateUser(
+    //   tables[2],
+    //   idUsuario,
+    //   eventoObj,
+    //   data.idTarjeta
+    // );
+    return res.send(user);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
 export default controller;
