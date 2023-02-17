@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
-export default function ContadorVisitas({ evento }) {
+export default function ContadorVisitas({ evento, idTarjeta }) {
   const { authorization } = useAuthContext();
   const [visitCount, setVisitCount] = useState(0);
   const [buttonState, setButtonState] = useState("Asistiré");
@@ -10,7 +10,7 @@ export default function ContadorVisitas({ evento }) {
 
   async function onSubmit() {
     try {
-      const response = await fetch(`http://localhost:3000/user/unirseEvento`, {
+      await fetch(`http://localhost:3000/user/unirseEvento`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
@@ -20,14 +20,18 @@ export default function ContadorVisitas({ evento }) {
           idEvento: evento.id,
         }),
       });
-      const json = await response.json();
-      set(json);
+      const responseContador = await fetch(
+        `http://localhost:3000/user/getAllTarjetas/tarjetas`
+      );
+      const json = await responseContador.json();
+      setVisitCount(json);
     } catch (e) {
       console.log(e);
     }
   }
 
   async function handleClick() {
+    console.log(idTarjeta, "data");
     onSubmit();
     Swal.fire({
       title: "Registrado al Evento",
@@ -55,22 +59,21 @@ export default function ContadorVisitas({ evento }) {
       <p>
         <i class="bi bi-people-fill fs-2"></i> {visitCount}/{maxVisitors}
       </p>
-      {buttonState === "Asistiré" && (
-        <button
-          id="botones"
-          className="rounded mt-2 mb-5"
-          onClick={handleClick}
-        >
-          {buttonState}
-        </button>
-      )}
-      {buttonState === "No asistiré" && (
+      {idTarjeta.idTarjeta !== evento.id ? (
         <button
           id="botones"
           className="rounded mt-2 mb-5"
           onClick={handleUnclick}
         >
-          {buttonState}
+          Asistir
+        </button>
+      ) : (
+        <button
+          id="botones"
+          className="rounded mt-2 mb-5"
+          onClick={handleClick}
+        >
+          Borrar Curso
         </button>
       )}
     </div>
