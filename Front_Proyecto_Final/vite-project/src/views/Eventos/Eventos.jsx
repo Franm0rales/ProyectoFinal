@@ -9,7 +9,18 @@ export default function Eventos() {
   const [empresaABuscar, setEmpresaABuscar] = useState("");
   const [error, setError] = useState("");
   const [data, setData] = useState({});
-  const [contadorPersonas, setContadorPersonas] = useState(0);
+  const [contadorPersonas, setContadorPersonas] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const responseContador = await fetch(
+        `http://localhost:3000/user/contador/eventosUsuario`
+      );
+      const jsonContador = await responseContador.json();
+      setContadorPersonas(jsonContador);
+    }
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -109,12 +120,16 @@ export default function Eventos() {
             </div>
             <p>{}</p>
             <div className="pb-2 text-center">
-              <ContadorVisitas
-                plazas={evento.plazas}
-                setContadorPersonas={setContadorPersonas}
-                contadorPersonas={contadorPersonas}
-                idTarjeta={evento.id}
-              />
+              {contadorPersonas && (
+                <ContadorVisitas
+                  plazas={evento.plazas}
+                  setContadorPersonas={setContadorPersonas}
+                  contadorPersonas={contadorPersonas?.find(
+                    ({ idTarjeta }) => idTarjeta === evento.id
+                  )}
+                  idTarjeta={evento.id}
+                />
+              )}
             </div>
           </div>
         ))}

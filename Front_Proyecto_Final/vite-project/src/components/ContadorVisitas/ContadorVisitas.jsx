@@ -71,8 +71,8 @@ export default function ContadorVisitas({
     <>
       <div>
         <p>
-          <i className="bi bi-people-fill fs-2"></i> {contadorPersonas}/
-          {maxVisitors}
+          <i className="bi bi-people-fill fs-2"></i> {contadorPersonas.contador}
+          /{maxVisitors}
         </p>
 
         <button
