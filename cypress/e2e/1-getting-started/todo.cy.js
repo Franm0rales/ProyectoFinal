@@ -1,8 +1,9 @@
 
 
 describe('example Login to app', () => {
+ 
   beforeEach(() => {
-   
+    cy.viewport(1280, 720)
     cy.visit('http://127.0.0.1:5173/login')
   })
   describe('Prueba de inicio de sesión automático', () => {
