@@ -5,18 +5,19 @@ export default function ContadorVisitas({
   plazas,
   idTarjeta,
   contadorPersonas,
-  setContadorPersonas,
+  setUnirse,
+  unirse,
+  data,
 }) {
   const { authorization } = useAuthContext();
-  const [visitCount, setVisitCount] = useState(0);
   const [buttonState, setButtonState] = useState("Asistiré");
   const [isDisabled, setIsDisabled] = useState(false);
-  const [contador, setContador] = useState(0);
-  let objetoFiltrado = 0;
+  const [contador, setContador] = useState(true);
   const maxVisitors = plazas;
 
   async function onSubmit() {
     try {
+      setUnirse(!unirse);
       await fetch(`http://localhost:3000/user/unirseEvento`, {
         method: "PATCH",
         headers: {
@@ -27,18 +28,6 @@ export default function ContadorVisitas({
           idEvento: idTarjeta,
         }),
       });
-      const responseContador = await fetch(
-        `http://localhost:3000/user/contador/eventosUsuario`
-      );
-      const jsonContador = await responseContador.json();
-      setVisitCount(jsonContador);
-
-      console.log(visitCount);
-      objetoFiltrado = visitCount.filter(
-        (visit) => visit.idTarjeta === idTarjeta
-      );
-      setContadorPersonas(objetoFiltrado[0].contador);
-      console.log(objetoFiltrado[0].contador, "idTarjeta");
     } catch (e) {
       console.log(e);
     }
@@ -71,21 +60,22 @@ export default function ContadorVisitas({
     <>
       <div>
         <p>
-          <i className="bi bi-people-fill fs-2"></i> {contadorPersonas.contador}
-          /{maxVisitors}
+          <i className="bi bi-people-fill fs-2"></i> {contadorPersonas || 0}/
+          {maxVisitors}
         </p>
-
-        <button
-          id="botones"
-          className="rounded mt-2 mb-5 col-3"
-          onClick={() => handleClick()}
-        >
-          Asistir
-        </button>
-
-        <button id="botones" className="rounded mt-2 mb-5 col-3" onClick="">
-          Borrar Curso
-        </button>
+        {data != idTarjeta ? (
+          <button
+            id="botones"
+            className="rounded mt-2 mb-5 col-3"
+            onClick={() => handleClick()}
+          >
+            Asistir
+          </button>
+        ) : (
+          <button id="botones" className="rounded mt-2 mb-5 col-3" onClick="">
+            Borrar Curso
+          </button>
+        )}
       </div>
     </>
   );

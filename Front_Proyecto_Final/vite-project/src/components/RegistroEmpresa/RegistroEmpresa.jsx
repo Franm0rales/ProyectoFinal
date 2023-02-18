@@ -9,22 +9,22 @@ export default function RegistroEmpresa() {
         "content-type": "application/json",
       },
       body: JSON.stringify(values),
-    }).then((response) => {
-      if (response.status === 400) {
-        alert("error al recibir el body");
-      } else if (response.status === 200) {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Registrado correctamente ",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        // alert(`usuario ${values.nombre} registrado correctamente`);
-      } else if (response.status === 409) {
-        alert("usuario ya registrado");
-      }
     });
+
+    if (response.status === 400) {
+      alert("error al recibir el body");
+    } else if (response.status === 200) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Registrado correctamente ",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      // alert(`usuario ${values.nombre} registrado correctamente`);
+    } else if (response.status === 409) {
+      alert("usuario ya registrado");
+    }
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
     actions.resetForm();
