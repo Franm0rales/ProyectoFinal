@@ -87,12 +87,12 @@ export default function LoginAlumno() {
           </div>{" "}
         </div>
 
-        {/* <div className="mb-3  form-check">
-          <input type="checkbox" className="form-check-input" required />
+        <div className="mb-3  form-check" >
+          <input data-cy="form-check-input" type="checkbox" className="form-check-input"    />
           <label className="form-check-label" htmlFor="exampleCheck1">
             Aceptar política de privacidad
           </label>
-        </div> */}
+        </div>
         <button
         data-cy="submit"
           disabled={isSubmitting}
