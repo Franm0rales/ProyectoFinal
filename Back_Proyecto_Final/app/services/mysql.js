@@ -37,7 +37,6 @@ db.query = async (sqlQuery, params, type, conn) => {
               resolve(JSON.parse(JSON.stringify(result)));
               break;
             case "insert":
-              console.log(sqlQuery, params, "mysql");
               resolve(parseInt(result.insertId));
               break;
             case "update":

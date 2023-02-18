@@ -49,5 +49,6 @@ userRouter.get(
   "/contador/eventosUsuario",
   userController.contadorEventosUsuarios
 );
+userRouter.post("/addComentario", userController.addComentario);
 
 export default userRouter;
