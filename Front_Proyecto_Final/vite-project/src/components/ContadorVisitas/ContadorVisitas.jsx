@@ -15,7 +15,7 @@ export default function ContadorVisitas({
   const [contador, setContador] = useState(true);
   const maxVisitors = plazas;
 
-  async function onSubmit() {
+  async function onSubmit(x) {
     try {
       setUnirse(!unirse);
       await fetch(`http://localhost:3000/user/unirseEvento`, {
@@ -25,7 +25,7 @@ export default function ContadorVisitas({
         },
         body: JSON.stringify({
           idUsuario: authorization.id,
-          idEvento: idTarjeta,
+          idEvento: x,
         }),
       });
     } catch (e) {
@@ -33,8 +33,8 @@ export default function ContadorVisitas({
     }
   }
 
-  const handleClick = () => {
-    onSubmit();
+  const handleClick = (x) => {
+    onSubmit(x);
 
     Swal.fire({
       title: "Registrado al Evento",
@@ -45,7 +45,8 @@ export default function ContadorVisitas({
     setButtonState("No asistiré");
     setIsDisabled(true);
   };
-  const handleUnclick = () => {
+  const handleUnclick = (x) => {
+    onSubmit(x);
     Swal.fire({
       title: "Te has eliminado del evento correctamente",
       icon: "success",
@@ -63,18 +64,26 @@ export default function ContadorVisitas({
           <i className="bi bi-people-fill fs-2"></i> {contadorPersonas || 0}/
           {maxVisitors}
         </p>
-        {data != idTarjeta ? (
+        {data == 0 && contadorPersonas < maxVisitors ? (
           <button
             id="botones"
             className="rounded mt-2 mb-5 col-3"
-            onClick={() => handleClick()}
+            onClick={() => handleClick(idTarjeta)}
           >
             Asistir
           </button>
-        ) : (
-          <button id="botones" className="rounded mt-2 mb-5 col-3" onClick="">
+        ) : data == idTarjeta ? (
+          <button
+            id="botones"
+            className="rounded mt-2 mb-5 col-3"
+            onClick={() => handleUnclick(0)}
+          >
             Borrar Curso
           </button>
+        ) : contadorPersonas < maxVisitors ? (
+          <p>Antes debes eliminarte del curso</p>
+        ) : (
+          <p>Numero de plazas cubierto</p>
         )}
       </div>
     </>
