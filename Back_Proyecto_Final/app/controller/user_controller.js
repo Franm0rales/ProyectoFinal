@@ -792,15 +792,42 @@ controller.getTarjetaByNombre = async (req, res) => {
 //Unirse a un evento
 controller.unirseEvento = async (req, res) => {
   const { idUsuario, idEvento } = req.body;
-  console.log(req.body);
   try {
-    const user = dao.getUserByData(tables[2], data.idUsuario, idUsuario);
-    if (user.length > 0)
-      return res.status(409).send("Usuario ya registrado en un evento");
+    let user = await dao.getUserByData(tables[2], data.idUsuario, idUsuario);
+    [user] = user;
+    const oldIdTarjeta = user.idTarjeta;
+    // if (oldIdTarjeta !== idEvento)
+    //   return res.status(409).send("Usuario ya registrado en un evento");
     const eventoObj = {
       idTarjeta: idEvento,
     };
     await dao.updateUser(data.alumno, idUsuario, eventoObj, data.idUsuario);
+
+    let contador = await dao.contadorByData(
+      data.alumno,
+      data.idTarjeta,
+      idEvento
+    );
+    [contador] = contador;
+    const contadorObj = {
+      alumnos: contador.contador,
+    };
+    await dao.updateUser(data.tarjeta, idEvento, contadorObj, data.id);
+    let contadorAntiguo = await dao.contadorByData(
+      data.alumno,
+      data.idTarjeta,
+      oldIdTarjeta
+    );
+    [contadorAntiguo] = contadorAntiguo;
+    const contadorAntiguoObj = {
+      alumnos: contadorAntiguo.contador,
+    };
+    await dao.updateUser(
+      data.tarjeta,
+      oldIdTarjeta,
+      contadorAntiguoObj,
+      data.id
+    );
     return res.status(200).send();
   } catch (e) {
     console.log(e.message);
@@ -809,8 +836,6 @@ controller.unirseEvento = async (req, res) => {
 //Contador de usuarios por evento
 controller.contadorEventosUsuarios = async (req, res) => {
   try {
-    console.log("hola");
-    console.log(data.alumno, data.idTarjeta);
     let dataUser = await dao.contadorByData(data.alumno, data.idTarjeta);
     return res.status(200).send(dataUser);
   } catch (e) {

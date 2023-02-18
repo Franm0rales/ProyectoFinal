@@ -32,7 +32,7 @@ dao.getAllTarjetas = async () => await userQueries.getAllTarjetas();
 dao.getTarjetaByData = async (tabla, columna, data) =>
   await userQueries.getTarjetaByData(tabla, columna, data);
 //Contador usuarios por evento
-dao.contadorByData = async (tabla, columna) =>
-  await userQueries.contadorByData(tabla, columna);
+dao.contadorByData = async (tabla, columna, data) =>
+  await userQueries.contadorByData(tabla, columna, data);
 
 export default dao;

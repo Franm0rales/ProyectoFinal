@@ -38,7 +38,6 @@ userQueries.getUserByData = async (tabla, columna, dato) => {
 };
 // Modificar un usuario por su id
 userQueries.updateUser = async (tabla, id, userData, columna) => {
-  console.log(userData);
   // Eliminamos todos los campos que no se han rellenado
   userData = await utils.removeUndefinedKeys(userData);
   // Conectamos con la base de datos
@@ -126,14 +125,14 @@ userQueries.getTarjetaByData = async (tabla, columna, data) => {
   }
 };
 //Contador usuarios por evento
-userQueries.contadorByData = async (tabla, columna) => {
+userQueries.contadorByData = async (tabla, columna, data) => {
   // Conectamos con la base de datos
   let conn = null;
   try {
     conn = await db.createConnection();
     return await db.query(
-      `SELECT count(*) as contador, idTarjeta FROM ${tabla} group by ${columna}`,
-      [],
+      `SELECT count(*) as contador FROM ${tabla} where ${columna}= ?`,
+      [data],
       "select",
       conn
     );
