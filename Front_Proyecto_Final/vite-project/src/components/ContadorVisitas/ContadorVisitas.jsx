@@ -61,7 +61,7 @@ export default function ContadorVisitas({
           position: "center",
           icon: "success",
           title: "Comentario enviado correctamente ",
-          showConfirmButton: false,
+          showConfirmButton: false,   
           timer: 1500,
         });
       }
@@ -118,6 +118,7 @@ export default function ContadorVisitas({
 
 
   return (
+    
     <>
       <div>
         <p>
