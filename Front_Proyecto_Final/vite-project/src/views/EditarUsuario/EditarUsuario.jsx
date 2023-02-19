@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import CardEditarUsuario from "../../components/CardEditarUsuario/CardEditarUsuario";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 import Grafica from "../../components/Grafica/Grafica";
+import CardEventosPerfilUsuario from "../../components/CardEventosPerfilUsuario/CardEventosPerfilUsuarios";
 
 export default function EditarUsuario() {
   const { authorization } = useAuthContext();
   const [user, setUser] = useState({});
   const [aptitudes, setAptitudes] = useState({});
+  const [cardEvento,setCardEvento]=useState("")
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
@@ -15,6 +17,17 @@ export default function EditarUsuario() {
 
       const json = await response.json();
       setUser(json);
+    };
+    fetchData();
+  }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const responseCardEvento = await fetch(
+        `localhost:3000/user/getTarjetaUsuario/${authorization.id}`
+      );
+
+      const json = await responseCardEvento.json();
+      setCardEvento(json);
     };
     fetchData();
   }, []);
@@ -30,7 +43,7 @@ export default function EditarUsuario() {
     };
     fetchDataGrafica();
   }, []);
-  console.log(aptitudes);
+  
   const data = [
     {
       name: "SS",
@@ -81,6 +94,7 @@ export default function EditarUsuario() {
       ) : (
         <p>Cargando...</p>
       )}
+      <CardEventosPerfilUsuario cardEvento={cardEvento}/>
       {aptitudes[0] === undefined ? (
         <div className="d-flex justify-content-center">
           <a
