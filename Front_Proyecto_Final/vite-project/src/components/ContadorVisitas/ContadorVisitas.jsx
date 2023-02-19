@@ -103,7 +103,7 @@ export default function ContadorVisitas({
   }
   const handleStarClick = (starIndex) => {
     setRating(starIndex +1);
-    // Aquí es donde enviarías el número de estrellas seleccionado a tu base de datos
+    // Post con el estado de estrellas marcadas y listo caniooo!!!
   };
 
 
@@ -126,7 +126,8 @@ export default function ContadorVisitas({
         </p>
 
         {fechaAnioActual>=anioEmpiezaEvento && fechaMesActual>=mesEmpiezaEvento && fechaDiaActual>diaEmpiezaEvento? (
-           <div>
+          data==idTarjeta ?(
+            <div>
       <button id="botones" className="rounded mt-2 mb-5 col-3" onClick={()=>cambioTextArea()}>
         Escribir una reseña
       </button>
@@ -171,7 +172,12 @@ export default function ContadorVisitas({
       </div>
       
     </div>
-        ):data == 0 && contadorPersonas < maxVisitors  ? (
+          
+
+          
+           
+        ):(<p>Evento ya Finalizado</p>)):
+        data == 0 && contadorPersonas < maxVisitors  ? (
           <button
             id="botones"
             className="rounded mt-2 mb-5 col-3"
