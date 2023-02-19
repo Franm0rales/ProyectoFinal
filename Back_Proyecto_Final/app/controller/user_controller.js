@@ -844,7 +844,7 @@ controller.contadorEventosUsuarios = async (req, res) => {
   }
 };
 controller.addComentario = async (req, res) => {
-  const { idUsuario, idTarjeta, comentario } = req.body;
+  const { idUsuario, idTarjeta, comentario, rating } = req.body;
   try {
     const eventoObj = {
       idTarjeta: 0,
@@ -853,7 +853,8 @@ controller.addComentario = async (req, res) => {
     const comentarioObj = {
       idUsuario: idUsuario,
       idTarjeta: idTarjeta,
-      comentario: comentario,
+      comentario: comentario.comentario,
+      rating: rating,
     };
     await dao.addUser(comentarioObj, data.comentarios);
     return res.status(200).send();
