@@ -22,7 +22,7 @@ export default function ContadorVisitas({
   const [comentario, setComentario] = useState("");
   const [rating, setRating] = useState(null);
   const maxVisitors = plazas;
-  const ratingStars = [0, 1, 2, 3, 4];
+
 
   async function onSubmit(x) {
     try {
@@ -48,6 +48,7 @@ export default function ContadorVisitas({
 
   async function enviarComentario() {
     try {
+      setUnirse(!unirse);
       const response = await fetch(`http://localhost:3000/user/addComentario`, {
         method: "POST",
         headers: {
@@ -124,7 +125,7 @@ export default function ContadorVisitas({
         star.classList.add("selected");
       } else {
         star.classList.remove("selected");
-        console.log(rating);
+        
       }
     });
   }, [rating]);
