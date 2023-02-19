@@ -20,6 +20,7 @@ export default function ContadorVisitas({
   const [contador, setContador] = useState(true);
   const [abierto, setAbierto] = useState("d-none");
   const [comentario,setComentario] = useState("")
+  const [rating, setRating] = useState(0);
   const maxVisitors = plazas;
 
   async function onSubmit(x) {
@@ -100,7 +101,10 @@ export default function ContadorVisitas({
     let escribiendo = { ...comentario, [e.target.name]: e.target.value };
     setComentario(escribiendo);
   }
-
+  const handleStarClick = (starIndex) => {
+    setRating(starIndex +1);
+    // Aquí es donde enviarías el número de estrellas seleccionado a tu base de datos
+  };
 
 
   let fechaDiaActual = new Date().getDate()
@@ -110,6 +114,7 @@ export default function ContadorVisitas({
    let diaEmpiezaEvento = fechaInicio.split("T")[0].split("-")[2]  
    let mesEmpiezaEvento = fechaInicio.split("T")[0].split("-")[1] 
   let anioEmpiezaEvento = fechaInicio.split("T")[0].split("-")[0]   
+  
 
 
   return (
@@ -141,7 +146,17 @@ export default function ContadorVisitas({
             <div class="customer_name_review_status">
                 <div class="customer_name">{nombre} {""} {apellidos}</div>
                 <div class=" fst-italic text-start">{correo}</div>
-                <div class="customer_review text-start mb-0"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+               
+            <div className="star-rating text-start">
+                {[...Array(5)].map((_, index) => (
+                <i
+                key={index}
+                className={`bi bi-star-fill${index < rating ? " selected" : ""}`}
+                onClick={() => handleStarClick(index)}
+                />
+                ))}
+            </div>
+         
                 <div class="customer_status">
                     
                 </div>

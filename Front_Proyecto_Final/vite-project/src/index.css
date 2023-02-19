@@ -1836,14 +1836,14 @@ div.rbc-event, .rbc-day-slot {
   padding-left: 5px;
 }
 
-.image_review i{
+/* .image_review i{
   font-size: 16px;
   color: gold;
   margin-left: 0;
   margin-right: 2px;
   padding-top: 10px;
   padding-bottom: 10px;
-}
+} */
 
 
 .customer_image{
@@ -1876,4 +1876,19 @@ div.rbc-event, .rbc-day-slot {
   margin-top: 3px;
   padding-right: 5px;
  
+}
+.star-rating {
+  display: flex;
+ 
+}
+
+.star-rating i {
+  color: #ddd;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.star-rating i.selected {
+  color: gold;
+  ;
 }
