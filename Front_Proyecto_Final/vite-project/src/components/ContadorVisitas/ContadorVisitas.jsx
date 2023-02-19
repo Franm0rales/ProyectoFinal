@@ -19,6 +19,7 @@ export default function ContadorVisitas({
   const [isDisabled, setIsDisabled] = useState(false);
   const [contador, setContador] = useState(true);
   const [abierto, setAbierto] = useState("d-none");
+  const [comentario,setComentario] = useState("")
   const maxVisitors = plazas;
 
   async function onSubmit(x) {
@@ -46,12 +47,12 @@ export default function ContadorVisitas({
 
   async function enviarComentario() {
     try {
-      const response = await fetch("http://localhost:3000/user/", {
+      const response = await fetch(`http://localhost:3000/user/addComentario`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({idUsuario:idUsuario,idTarjeta:idTarjeta,comentario:comentario}),
+        body: JSON.stringify({idUsuario:authorization.id,idTarjeta:idTarjeta,comentario:comentario}),
       });
 
       if (response.status === 200) {
@@ -94,6 +95,14 @@ export default function ContadorVisitas({
     setButtonState("Asistiré");
     setIsDisabled(false);
   };
+
+  function handleInput(e) {
+    let escribiendo = { ...comentario, [e.target.name]: e.target.value };
+    setComentario(escribiendo);
+  }
+
+
+
   let fechaDiaActual = new Date().getDate()
   let fechaMesActual = new Date().getMonth()+1
   let fechaAnioActual = new Date().getFullYear()
@@ -140,7 +149,7 @@ export default function ContadorVisitas({
             </div>
         </div>
 
-        <div class="customer_comment"><textarea className="rounded " name="" id="" cols="60" rows="5"></textarea></div>
+        <div class="customer_comment"><textarea className="rounded "  name="comentario" id="" cols="60" rows="5" onChange={handleInput}></textarea></div>
 
     </div>
     <button onClick={()=>enviarComentario()} id="botones" className="rounded mt-3">Enviar</button>
