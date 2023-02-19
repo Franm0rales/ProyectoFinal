@@ -20,7 +20,7 @@ export default function ContadorVisitas({
   const [contador, setContador] = useState(true);
   const [abierto, setAbierto] = useState("d-none");
   const [comentario, setComentario] = useState("");
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(null);
   const maxVisitors = plazas;
   const ratingStars = [0, 1, 2, 3, 4];
 
@@ -103,10 +103,32 @@ export default function ContadorVisitas({
     setComentario(escribiendo);
   }
   function handleStarClick(starIndex) {
-    setRating(starIndex + 1);
-    console.log(rating);
-    // Post con el estado de estrellas marcadas y listo caniooo!!!
+    if (rating === null) {
+      setRating(starIndex + 1);
+    } else {
+      setRating(prevRating => {
+        if (prevRating === starIndex + 1) {
+          return null;
+        } else {
+          return starIndex + 1;
+        }
+      });
+      // Aquí es donde enviarías el número de estrellas seleccionado a tu base de datos
+    }
   }
+  useEffect(() => {
+    const stars = document.querySelectorAll(".star-rating i");
+    stars.forEach((star, index) => {
+      if (index < (rating || 1)) {
+        console.log(rating);
+        star.classList.add("selected");
+      } else {
+        star.classList.remove("selected");
+        console.log(rating);
+      }
+    });
+  }, [rating]);
+  
   const fechaActual = new Date();
   const anio = fechaActual.getFullYear();
   const mes = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
@@ -156,28 +178,16 @@ export default function ContadorVisitas({
                       </div>
                       <div class=" fst-italic text-start">{correo}</div>
 
-                      <div className="star-rating text-start">
-                        {ratingStars.map((index) => (
-                          <i
-                            key={index}
-                            className={
-                              index < rating
-                                ? `bi bi-star-fill selected`
-                                : `bi bi-star-fill`
-                            }
-                            onClick={() => handleStarClick(index)}
-                          />
-                        ))}
-
-                        {/* {[...Array(5)].map((_, index) => (
-                          <i
-                            key={index}
-                            className={`bi bi-star-fill${
-                              index < rating ? " selected" : ""
-                            }`}
-                            onClick={() => handleStarClick(index)}
-                          />
-                        ))} */}
+                      <div className="star-rating">
+                          {[...Array(5)].map((star, index) => {
+                            return (
+                              <i
+                                key={index}
+                                className=" bi bi-star-fill"
+                                onClick={() => handleStarClick(index)}
+                              ></i>
+                            );
+                          })}
                       </div>
 
                       <div class="customer_status"></div>
