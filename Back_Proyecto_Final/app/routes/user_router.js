@@ -35,8 +35,10 @@ userRouter.post("/aptitudes/:id", userController.addAptitudes);
 userRouter.get("/aptitudesUser/:id", userController.getAptitudesUser);
 //Añadir tarjetas
 userRouter.post("/tarjeta/:id", userController.addTarjeta);
-//Traer tarjetas por id
-userRouter.get("/getTarjeta/:id", userController.getTarjeta);
+//Traer tarjetas por idEmpresa
+userRouter.get("/getTarjeta/:id", userController.getTarjetaEmpresa);
+//Traer tarjeta por alumno
+userRouter.get("/getTarjetaUsuario/:id", userController.getTarjetaUsario);
 //Traer tarjetas
 userRouter.get("/getAllTarjetas/tarjetas", userController.getAllTarjetas);
 //Buscar tarjetas por nombre

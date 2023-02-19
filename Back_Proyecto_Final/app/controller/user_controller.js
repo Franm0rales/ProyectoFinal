@@ -731,8 +731,8 @@ controller.addTarjeta = async (req, res) => {
     return res.status(400).send(e.message);
   }
 };
-//Controlador para traer tarjetas por id
-controller.getTarjeta = async (req, res) => {
+//Controlador para traer tarjetas por idEmpresa
+controller.getTarjetaEmpresa = async (req, res) => {
   let i = 0;
   try {
     let tarjetas = await dao.getUserByData(
@@ -757,6 +757,29 @@ controller.getTarjeta = async (req, res) => {
       i++;
     }
     return res.send(tarjetaObj);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+//Controlador para traer tarjetas por idUsuario
+controller.getTarjetaUsario = async (req, res) => {
+  try {
+    let user = await dao.getUserByData(
+      data.alumno,
+      data.idUsuario,
+      req.params.id
+    );
+    [user] = user;
+    let tarjetas = await dao.getUserByData(
+      data.tarjeta,
+      data.id,
+      user.idTarjeta
+    );
+    // Si no existe el producto respondemos con un 404 (not found)
+    if (tarjetas.length <= 0)
+      return (res.status(404).send("No hay tarjetas")[tarjetas] = tarjetas);
+    [tarjetas] = tarjetas;
+    return res.send(tarjetas);
   } catch (e) {
     console.log(e.message);
   }
