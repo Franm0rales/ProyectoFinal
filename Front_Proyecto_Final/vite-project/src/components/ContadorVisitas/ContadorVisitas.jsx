@@ -8,11 +8,17 @@ export default function ContadorVisitas({
   setUnirse,
   unirse,
   data,
+  fechaInicio,
+  avatar,
+  nombre,
+  apellidos,
+  correo,
 }) {
   const { authorization } = useAuthContext();
   const [buttonState, setButtonState] = useState("Asistiré");
   const [isDisabled, setIsDisabled] = useState(false);
   const [contador, setContador] = useState(true);
+  const [abierto, setAbierto] = useState("d-none");
   const maxVisitors = plazas;
 
   async function onSubmit(x) {
@@ -32,10 +38,42 @@ export default function ContadorVisitas({
       console.log(e);
     }
   }
+ 
+  function cambioTextArea(){
+    setAbierto("")
+  }
+
+
+  async function enviarComentario() {
+    try {
+      const response = await fetch("http://localhost:3000/user/", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({idUsuario:idUsuario,idTarjeta:idTarjeta,comentario:comentario}),
+      });
+
+      if (response.status === 200) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Comentario enviado correctamente ",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (e) {
+      console.log(e);
+    }
+
+  }
+
 
   const handleClick = (x) => {
+   
     onSubmit(x);
-
+    console.log(fechaAnioActual,fechaMesActual,fechaDiaActual);
     Swal.fire({
       title: "Registrado al Evento",
       icon: "success",
@@ -56,6 +94,14 @@ export default function ContadorVisitas({
     setButtonState("Asistiré");
     setIsDisabled(false);
   };
+  let fechaDiaActual = new Date().getDate()
+  let fechaMesActual = new Date().getMonth()+1
+  let fechaAnioActual = new Date().getFullYear()
+  
+   let diaEmpiezaEvento = fechaInicio.split("T")[0].split("-")[2]  
+   let mesEmpiezaEvento = fechaInicio.split("T")[0].split("-")[1] 
+  let anioEmpiezaEvento = fechaInicio.split("T")[0].split("-")[0]   
+
 
   return (
     <>
@@ -64,7 +110,44 @@ export default function ContadorVisitas({
           <i className="bi bi-people-fill fs-2"></i> {contadorPersonas || 0}/
           {maxVisitors}
         </p>
-        {data == 0 && contadorPersonas < maxVisitors ? (
+
+        {fechaAnioActual>=anioEmpiezaEvento && fechaMesActual>=mesEmpiezaEvento && fechaDiaActual>diaEmpiezaEvento? (
+           <div>
+      <button id="botones" className="rounded mt-2 mb-5 col-3" onClick={()=>cambioTextArea()}>
+        Escribir una reseña
+      </button>
+      <div>
+      
+      <small><i class="bi bi-asterisk text-primary"></i>Para poder participar en otro evento debes dejar tu comentario</small>
+      </div>
+      <div className={`${abierto} mt-3`}>
+        
+        
+        <div class="verified_customer_section">
+        <div class="image_review">
+            <div class="customer_image">
+                <img src={`https://bootdey.com/img/Content/avatar/avatar${avatar}.png`} alt="customer image"/>
+           </div>
+
+            <div class="customer_name_review_status">
+                <div class="customer_name">{nombre} {""} {apellidos}</div>
+                <div class=" fst-italic text-start">{correo}</div>
+                <div class="customer_review text-start mb-0"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+                <div class="customer_status">
+                    
+                </div>
+
+            </div>
+        </div>
+
+        <div class="customer_comment"><textarea className="rounded " name="" id="" cols="60" rows="5"></textarea></div>
+
+    </div>
+    <button onClick={()=>enviarComentario()} id="botones" className="rounded mt-3">Enviar</button>
+      </div>
+      
+    </div>
+        ):data == 0 && contadorPersonas < maxVisitors  ? (
           <button
             id="botones"
             className="rounded mt-2 mb-5 col-3"
@@ -82,8 +165,8 @@ export default function ContadorVisitas({
           </button>
         ) : contadorPersonas < maxVisitors ? (
           <p>Antes debes eliminarte del curso</p>
-        ) : (
-          <p>Numero de plazas cubierto</p>
+        ) :  (
+          <p>Plazas cubiertas</p>
         )}
       </div>
     </>

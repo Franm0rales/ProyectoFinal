@@ -1,20 +1,23 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import CardEditarEmpresa from "../../components/CardEditarEmpresa/CardEditarEmpresa";
 import CardIdEmpresa from "../../components/CarIdEmpresa/CardIdEmpresa";
 import SettingsEmpresa from "../../components/SettingEmpresa/SettingEmpresa";
+import { useAuthContext } from "../../context/AuthContext/AuthContext";
 
 export default function EditarEmpresa() {
-  const { id } = useParams();
-  const [users, setUsers] = useState([]);
+  const { authorization } = useAuthContext()
+  
+console.log(authorization,"hola");
+  const [users, setUsers] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`http://localhost:3000/user/empresa/${id}`);
+      const response = await fetch(`http://localhost:3000/user/empresa/${authorization.id}`);
       const json = await response.json();
       setUsers(json);
     };
     fetchData();
+    console.log(users);
   }, []);
+
 
   return (
     <>
@@ -23,6 +26,7 @@ export default function EditarEmpresa() {
 
         <SettingsEmpresa />
       </div>
+    
     </>
   );
 }

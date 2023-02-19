@@ -1820,3 +1820,60 @@ div.rbc-event, .rbc-day-slot {
  
   width: 100%;
 }
+.verified_customer_section{
+  display: grid;
+  grid-template-columns: 1fr;
+  border-radius: 10px;
+  border: 2px solid #5e96ff;
+  padding: 5px;
+  max-width: 540px;
+  min-height: 180px;
+  margin: auto;
+}
+
+.image_review{
+  padding-top: 10px;
+  padding-left: 5px;
+}
+
+.image_review i{
+  font-size: 16px;
+  color: gold;
+  margin-left: 0;
+  margin-right: 2px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+.customer_image{
+  max-width: 80px;
+  max-width: 80px;
+}
+
+.customer_image img{
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  float: left;
+  margin-right: 10px;
+}
+
+
+.customer_name{
+
+  font-weight: 700;
+  font-size: 16px;
+  margin-top: 0;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+
+.customer_comment{
+  padding-left: 5px;
+  padding-top: 10px;
+  margin-top: 3px;
+  padding-right: 5px;
+ 
+}

@@ -50,7 +50,7 @@ export default function Eventos() {
           const response = await fetch(
             `http://localhost:3000/user/getTarjetaByNombre/${empresaABuscar}`
           );
-
+            console.log(data);
           const data = await response.json();
           setEventos(data);
           setError(null);
@@ -68,6 +68,8 @@ export default function Eventos() {
       }
     }
   }, [unirse, empresaABuscar]);
+
+  
   return (
     <>
       <div id="fondo" className="pb-5">
@@ -90,7 +92,7 @@ export default function Eventos() {
                 <h2 className="card-title fs-1">{evento.nombre}</h2>
                 <p className="card-text ">
                   <i class="bi bi-calendar3 text-primary fs-3"></i> Fecha inico:{" "}
-                  {evento.fechaInicio.split("T")[0].split("-")[1]}-
+                  {evento.fechaInicio.split("T")[0].split("-")[2]}-
                   {evento.fechaInicio.split("T")[0].split("-")[1]}-
                   {evento.fechaInicio.split("T")[0].split("-")[0]}
                 </p>
@@ -133,6 +135,11 @@ export default function Eventos() {
                   setUnirse={setUnirse}
                   unirse={unirse}
                   data={data.idTarjeta}
+                  fechaInicio={evento.fechaInicio}
+                  avatar={data.avatar}
+                  nombre={data.nombre}
+                  apellidos={data.apellidos}
+                  correo={data.email}
                 />
               )}
             </div>
