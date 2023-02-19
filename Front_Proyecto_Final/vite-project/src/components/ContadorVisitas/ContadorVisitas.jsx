@@ -114,7 +114,7 @@ export default function ContadorVisitas({
           return starIndex + 1;
         }
       });
-      // Aquí es donde enviarías el número de estrellas seleccionado a tu base de datos
+      
     }
   }
   useEffect(() => {
