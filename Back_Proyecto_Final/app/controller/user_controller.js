@@ -843,4 +843,22 @@ controller.contadorEventosUsuarios = async (req, res) => {
     console.log(e.message);
   }
 };
+controller.addComentario = async (req, res) => {
+  const { idUsuario, idTarjeta, comentario } = req.body;
+  try {
+    const eventoObj = {
+      idTarjeta: 0,
+    };
+    await dao.updateUser(data.alumno, idUsuario, eventoObj, data.idUsuario);
+    const comentarioObj = {
+      idUsuario: idUsuario,
+      idTarjeta: idTarjeta,
+      comentario: comentario,
+    };
+    await dao.addUser(comentarioObj, data.comentarios);
+    return res.status(200).send();
+  } catch (e) {
+    console.log(e.message);
+  }
+};
 export default controller;
