@@ -1923,19 +1923,19 @@ div.rbc-event, .rbc-day-slot {
     color: white !important;
 }
 .section-title {
-    font-size: 32px;
+  
     font-weight: 600;
     margin-top: 0.45em;
     margin-bottom: 0.35em;
     color: #303133;
-    font-family: Poppins;
+
     letter-spacing: -0.02em;
 }
 .section-sub-title {
     font-size: 18px;
     margin-bottom: 20px;
     font-weight: 400;
-    font-family: Poppins;
+  
 }
 .section-arrow-primary-color.section-arrow--bottom-center:after {
     border-bottom-color: #0cb4ce;
@@ -1946,9 +1946,7 @@ div.rbc-event, .rbc-day-slot {
 .special-heading.line span:before, .special-heading.line span:after, .footer.footer-minimal, .t-bordered {
     border-top-color: #eaeaea;
 }
-.t-bordered {
-    border-top: 1px solid #eaeaea;
-}
+
 .section-primary {
     padding: 75px 0px;
 }
@@ -1956,14 +1954,19 @@ div.rbc-event, .rbc-day-slot {
 background:#5e96ff ;
 }
 
-
-
-.testimonial-two {
-    padding: 20px;
-    border: 2px solid #0cb4ce;
-    border-radius: 2px;
+.testimonial-three .testimonial-image {
+  float: left;
+  margin: 0 20px 0 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
+  overflow: hidden;
 }
 
+.img-coment {
+  max-width: 100%;
+  height: auto;
+}
 
 
 

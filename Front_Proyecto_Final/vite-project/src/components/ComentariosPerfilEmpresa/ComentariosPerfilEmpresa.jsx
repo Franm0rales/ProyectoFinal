@@ -15,45 +15,47 @@ export default function ComentariosPerfilEmpresa({
     } else {
       setDisplay("");
       setDisplayState(!displayState);
+      console.log(comentarios, evento, "holaa paco");
     }
   }
   return (
     <>
-      <div class="container pt-5 eventoscard position-relative">
+      <div class="container pt-5 eventoscard position-relative pb-5 ">
         <div class="row row-striped">
           <div class="col-10">
             <h3 class="text-uppercase">
               <strong>{evento.title}</strong>
             </h3>
-            <ul class="list-inline">
+            <ul class="list-inline d-flex">
               <li class="list-inline-item">
-                <i class="bi bi-envelope text-primary fs-4"></i>{" "}
-                {comentarios.email}
-              </li>
-              <li class="list-inline-item">
-                <i class="bi bi-telephone-fill  text-primary fs-4"></i>{" "}
-                {evento.telefono}
-              </li>
-
-              <li class="list-inline-item">
-                <i class="bi bi-clock text-primary fs-4 "></i>{" "}
+                <i class="bi bi-people-fill text-primary fs-4 px-1"></i>{" "}
+                {evento.alumnos} / {evento.plazas}{" "}
+              </li>{" "}
+              <li>
+                {" "}
+                <i class="bi bi-calendar3 text-primary fs-4 px-1"></i>{" "}
                 {evento.start.split("T")[0]}
+                {"        "}
+              </li>{" "}
+              <li class="list-inline-item">
+                {"   "}
+                <i class="bi bi-clock text-primary fs-4 px-1"></i>{" "}
+                {evento.horaInicio}{" "}
               </li>
             </ul>
-            <p>{evento.descripcion}</p>
           </div>
         </div>
         {displayState ? (
           <button
             onClick={() => (toggleComments(display), setIdTarjeta(evento.id))}
-            className="border-0 rounded bg-transparent text-primary d-flex position-absolute bottom-0 end-0 "
+            className="border-0 rounded bg-transparent text-primary d-flex position-absolute bottom-50 end-0 "
           >
             <i class="bi bi-chat-square-text-fill fs-1  "></i>
           </button>
         ) : (
           <button
             onClick={() => (toggleComments(display), setIdTarjeta(0))}
-            className="border-0 rounded bg-transparent text-primary  d-flex position-absolute bottom-0 end-0 "
+            className="border-0 rounded bg-transparent text-primary  d-flex position-absolute bottom-50 end-0 "
           >
             <i class="bi bi-x-circle fs-1  "></i>
           </button>
