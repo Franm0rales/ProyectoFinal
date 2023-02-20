@@ -46,11 +46,25 @@ userRouter.get(
   "/getTarjetaByNombre/:nombre",
   userController.getTarjetaByNombre
 );
+//Uniser a evento
 userRouter.patch("/unirseEvento", userController.unirseEvento);
+//BORRAR???????
 userRouter.get(
   "/contador/eventosUsuario",
   userController.contadorEventosUsuarios
 );
+//Añadir comentario
 userRouter.post("/addComentario", userController.addComentario);
-
+//Traer comentarios por idTarjeta
+userRouter.get(
+  "/getComentariosByIdTarjeta/:id",
+  userController.getComentariosByIdTarjeta
+);
+//Traer comentarios por idUsuario
+userRouter.get(
+  "/getComentariosByIdUsuario/:id",
+  userController.getComentariosByIdUsuario
+);
+//Traer usuarios por idTarjeta
+userRouter.get("/getUsersByidTarjeta/:id", userController.getUsersByidTarjeta);
 export default userRouter;

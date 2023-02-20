@@ -776,8 +776,7 @@ controller.getTarjetaUsario = async (req, res) => {
       user.idTarjeta
     );
     // Si no existe el producto respondemos con un 404 (not found)
-    if (tarjetas.length <= 0)
-      return (res.status(404).send("No hay tarjetas")[tarjetas] = tarjetas);
+    if (tarjetas.length <= 0) return res.status(404).send("No hay tarjetas");
     [tarjetas] = tarjetas;
     return res.send(tarjetas);
   } catch (e) {
@@ -866,6 +865,7 @@ controller.contadorEventosUsuarios = async (req, res) => {
     console.log(e.message);
   }
 };
+//Añadir comentario
 controller.addComentario = async (req, res) => {
   const { idUsuario, idTarjeta, comentario, rating } = req.body;
   try {
@@ -884,5 +884,41 @@ controller.addComentario = async (req, res) => {
   } catch (e) {
     console.log(e.message);
   }
+};
+//Traer comentarios por idTarjeta
+controller.getComentariosByIdTarjeta = async (req, res) => {
+  const { id } = req.params;
+  try {
+    let comentarios = await dao.getUserByData(
+      data.comentarios,
+      data.idTarjeta,
+      id
+    );
+    return res.status(200).send(comentarios);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+//Traer comentarios por idUsuario
+controller.getComentariosByIdUsuario = async (req, res) => {
+  const { id } = req.params;
+  try {
+    let comentarios = await dao.getUserByData(
+      data.comentarios,
+      data.idUsuario,
+      id
+    );
+    return res.status(200).send(comentarios);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+//Traer alumnos por idTarjeta
+controller.getUsersByidTarjeta = async (req, res) => {
+  const { id } = req.params;
+  try {
+    let users = await dao.getUserByData(data.alumno, data.idTarjeta, id);
+    return res.status(200).send(users);
+  } catch (e) {}
 };
 export default controller;
