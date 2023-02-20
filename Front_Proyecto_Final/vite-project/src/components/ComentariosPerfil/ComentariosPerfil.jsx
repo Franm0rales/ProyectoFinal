@@ -1,5 +1,17 @@
 export default function ComentariosPerfil({ comentarios }) {
-  let star = comentarios[0].rating;
+  function renderStars(rating) {
+    const stars = [];
+
+    for (let i = 0; i < 5; i++) {
+      if (i < rating) {
+        stars.push(<i className="bi bi-star-fill text-warning" />);
+      } else {
+        stars.push(<i className="bi bi-star" />);
+      }
+    }
+    return stars;
+  }
+
   console.log(comentarios, "holaaaaa");
   return comentarios.map((comentario) => (
     <div class="col-md-4 testimonial-three-col overflow-auto ">
@@ -14,8 +26,7 @@ export default function ComentariosPerfil({ comentarios }) {
         </div>
         <div>
           <div class="testimonial-content">
-            <i className=" bi bi-star-fill text-warning"></i>
-            {comentario.rating}
+            {renderStars(comentario.rating)}
           </div>
           <div class="testimonial-meta">
             <span class="testimonial-job-title" itemprop="jobTitle">
