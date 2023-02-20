@@ -899,7 +899,7 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
       id
     );
     if (comentarios.length <= 0) {
-      return res.status(404).send();
+      return res.status(200).send([]);
     }
     let comentariosObj = [];
     for (let i = 0; i < comentarios.length; i++) {

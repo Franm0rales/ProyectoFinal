@@ -10,7 +10,6 @@ export default function EditarEmpresa() {
   const [comentarios, setComentarios] = useState([]);
   const [eventos, setEventos] = useState(null);
   const [idTarjeta, setIdTarjeta] = useState(0);
-  const [comments, setComments] = useState(true);
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
@@ -25,11 +24,8 @@ export default function EditarEmpresa() {
       );
       const jsoneventos = await responseEventos.json();
       setEventos(jsoneventos);
-      console.log(eventos);
     };
     fetchData();
-
-    console.log(users);
   }, []);
 
   useEffect(() => {
@@ -39,10 +35,9 @@ export default function EditarEmpresa() {
       );
       const jsonComentarios = await responseComentarios.json();
       setComentarios(jsonComentarios);
-      console.log(comentarios, "comentarios", idTarjeta);
     };
     fetchDataComentarios();
-  }, [comments]);
+  }, [idTarjeta]);
 
   return (
     <>
@@ -58,8 +53,6 @@ export default function EditarEmpresa() {
               evento={evento}
               setIdTarjeta={setIdTarjeta}
               comentarios={comentarios}
-              setComments={setComments}
-              comments={comments}
             />
           ))
         ) : (
