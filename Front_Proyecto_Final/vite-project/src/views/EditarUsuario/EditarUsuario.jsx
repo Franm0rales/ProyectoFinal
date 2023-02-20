@@ -25,7 +25,7 @@ export default function EditarUsuario() {
   useEffect(() => {
     const fetchDataEvento = async () => {
       const responseCardEvento = await fetch(
-        `localhost:3000/user/getTarjetaUsuario/${authorization.id}`
+        `http://localhost:3000/user/getTarjetaUsuario/${authorization.id}`
       );
 
       const json = await responseCardEvento.json();
