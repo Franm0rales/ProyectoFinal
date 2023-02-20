@@ -2037,9 +2037,46 @@ background:#5e96ff ;
     border-bottom: none;
 }
 
+#card{
+  width: 400px;
+  height: 300px;
+  margin: 0 auto;
+  overflow: hidden;
+  
+ border-radius:16px;
+  position: relative;
+  top: 100px !important;
+  background: white;
+  transition: all 0.7s;
+  box-shadow:(0px, 7px, 25px, -5px, rgba(0, 0, 0, 0.75));
+}
+ .left {
+  width: 400px;
+ 
+ }
+img {
+  float: left;
+  height: 300px;
+  border-radius: 16px;
+  }
+  
+ .right {
+ 
+  width: 290px;
+  float: right;
+ 
+ }
+ 
+#card .right button:hover {
+  box-shadow:(1px, 2px, 22px, 3px, rgba(0, 0, 0, 0.75));
+}
 
-
-
-
-
+#card:hover {
+  width: 870px;
+  cursor: pointer;
+ box-shadow:(0px, 7px, 25px, 1px, rgba(0, 0, 0, 0.75));
+}
+#card:hover .right {
+  display: block;
+}
 
