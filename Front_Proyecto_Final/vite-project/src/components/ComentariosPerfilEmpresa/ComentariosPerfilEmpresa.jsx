@@ -16,35 +16,50 @@ export default function ComentariosPerfilEmpresa({
       setDisplay("");
       setDisplayState(!displayState);
     }
-    console.log(display);
   }
   return (
     <>
-      <section class="section-medium section-arrow--bottom-center section-arrow-primary-color section-eventos rounded position-relative mb-5">
-        <div class="container ">
-          <div class="row">
-            <div class="col-md-12 text-white text-center">
-              <h2 class="section-title "> {evento.title}</h2>
-              <p class="section-sub-title">{evento.horaInicio}</p>
-            </div>
+      <div class="container pt-5 eventoscard position-relative">
+        <div class="row row-striped">
+          <div class="col-10">
+            <h3 class="text-uppercase">
+              <strong>{evento.title}</strong>
+            </h3>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <i class="bi bi-envelope text-primary fs-4"></i>{" "}
+                {comentarios.email}
+              </li>
+              <li class="list-inline-item">
+                <i class="bi bi-telephone-fill  text-primary fs-4"></i>{" "}
+                {evento.telefono}
+              </li>
+
+              <li class="list-inline-item">
+                <i class="bi bi-clock text-primary fs-4 "></i>{" "}
+                {evento.start.split("T")[0]}
+              </li>
+            </ul>
+            <p>{evento.descripcion}</p>
           </div>
         </div>
         {displayState ? (
           <button
             onClick={() => (toggleComments(display), setIdTarjeta(evento.id))}
-            className="border-0 rounded bg-transparent text-white d-flex position-absolute bottom-0 end-0 "
+            className="border-0 rounded bg-transparent text-primary d-flex position-absolute bottom-0 end-0 "
           >
             <i class="bi bi-chat-square-text-fill fs-1  "></i>
           </button>
         ) : (
           <button
             onClick={() => (toggleComments(display), setIdTarjeta(0))}
-            className="border-0 rounded bg-transparent text-white d-flex position-absolute bottom-0 end-0 "
+            className="border-0 rounded bg-transparent text-primary  d-flex position-absolute bottom-0 end-0 "
           >
             <i class="bi bi-x-circle fs-1  "></i>
           </button>
         )}
-      </section>
+      </div>
+
       <section class={`section-primary t-bordered ${display}`}>
         <div class="row testimonial-three testimonial-three--col-three ">
           {comentarios.length > 0 && evento.id === comentarios[0].idTarjeta ? (

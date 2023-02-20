@@ -1892,82 +1892,151 @@ div.rbc-event, .rbc-day-slot {
   color: gold;
   ;
 }
-
-
+.testimonial-four blockquote:hover::after, .section-arrow-primary-color.section-arrow--bottom-center:after {
+    border-right-color: #0cb4ce;
+}
+.section-arrow-primary-color.section-arrow--bottom-center:after {
+    background-color: #0cb4ce;
+    border-right-color: #0cb4ce;
+    border-bottom-color: #0cb4ce;
+}
+.section-arrow--bottom-center:after {
+    z-index: 1;
+    position: absolute;
+    left: 50%;
+    margin-left: -15px;
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    width: 30px;
+    height: 30px;
+    border-right: 1px solid #262626;
+    border-bottom: 1px solid #262626;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: #262626;
+}
+.text-white h1, .text-white h2, .text-white h3, .text-white h4, .text-white h5, .text-white h6 {
+    color: white !important;
+}
+.section-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 0.45em;
+    margin-bottom: 0.35em;
+    color: #303133;
+    font-family: Poppins;
+    letter-spacing: -0.02em;
+}
+.section-sub-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-family: Poppins;
+}
+.section-arrow-primary-color.section-arrow--bottom-center:after {
+    border-bottom-color: #0cb4ce;
+}
+.section-arrow-primary-color.section-arrow--bottom-center:after{
+    background-color: #0cb4ce;
+}
+.special-heading.line span:before, .special-heading.line span:after, .footer.footer-minimal, .t-bordered {
+    border-top-color: #eaeaea;
+}
+.t-bordered {
+    border-top: 1px solid #eaeaea;
+}
+.section-primary {
+    padding: 75px 0px;
+}
 .section-eventos{
-  background: #5e96ff;
+background:#5e96ff ;
 }
 
+
+
+.testimonial-two {
+    padding: 20px;
+    border: 2px solid #0cb4ce;
+    border-radius: 2px;
+}
+
+
+
+
+
 .testimonial-three .testimonial-image {
-  float: left;
-  margin: 0 20px 0 0;
-  width: 80px;
-  height: 80px;
-  border-radius: 100px;
-  overflow: hidden;
+    float: left;
+    margin: 0 20px 0 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    overflow: hidden;
 }
 
 .testimonial-three .testimonial-content {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .testimonial-three .testimonial-meta {
-  position: relative;
-  overflow: hidden;
-  margin-left: 100px;
+    position: relative;
+    overflow: hidden;
+    margin-left: 100px;
 }
 
 
 .testimonial-three .testimonial-name {
-  display: block;
+    display: block;
 }
 
 
 .testimonial-three .testimonial-three-col {
-  padding-bottom: 35px;
+    padding-bottom: 35px;
 }
 
 .testimonial-three .testimonial-three-col {
-  border-right-style: dashed;
-  border-right-width: 1px;
-  border-bottom-width: 1px;
-  border-right-color: #ddd;
-  border-bottom-color: #ddd;
-  padding: 25px;
+    border-right-style: dashed;
+    border-right-width: 1px;
+    border-bottom-style: dashed;
+    border-bottom-width: 1px;
+    border-right-color: #ddd;
+    border-bottom-color: #ddd;
+    padding: 25px;
 }
 
 .testimonial-three .testimonial-three-col:hover {
- background-color:#f7f7f7;
+   background-color:#f7f7f7;
 }
 
 .alternate-color .testimonial-three .testimonial-three-col:hover {
- background-color:white;
+   background-color:white;
 }
 
 .testimonial-three.testimonial-three--col-two .testimonial-three-col:nth-child(2n) {
-  border-right: none;
+    border-right: none;
 }
 
 .testimonial-three.testimonial-three--col-two .testimonial-three-col:nth-last-child(-n+2),
 .testimonial-three.testimonial-three--col-two .testimonial-three-col:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .testimonial-three.testimonial-three--col-three .testimonial-three-col:nth-child(3n) {
-  border-right: none;
+    border-right: none;
 }
 
 .testimonial-three.testimonial-three--col-three .testimonial-three-col:nth-last-child(-n+3),
 .testimonial-three.testimonial-three--col-three .testimonial-three-col:nth-last-child(-n+2),
 .testimonial-three.testimonial-three--col-three .testimonial-three-col:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 
 
 
 
-.img-coment {
-  max-width: 100%;
-  height: auto;
-}
+
+
