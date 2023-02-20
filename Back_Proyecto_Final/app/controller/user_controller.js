@@ -819,11 +819,13 @@ controller.unirseEvento = async (req, res) => {
     let user = await dao.getUserByData(tables[2], data.idUsuario, idUsuario);
     [user] = user;
     const oldIdTarjeta = user.idTarjeta;
+    console.log(oldIdTarjeta, "oldIdTarjeta");
     // if (oldIdTarjeta !== idEvento)
     //   return res.status(409).send("Usuario ya registrado en un evento");
     const eventoObj = {
       idTarjeta: idEvento,
     };
+    console.log(eventoObj, "eventoObj");
     await dao.updateUser(data.alumno, idUsuario, eventoObj, data.idUsuario);
 
     let contador = await dao.contadorByData(
@@ -835,6 +837,7 @@ controller.unirseEvento = async (req, res) => {
     const contadorObj = {
       alumnos: contador.contador,
     };
+    console.log(contadorObj, "contadorObj");
     await dao.updateUser(data.tarjeta, idEvento, contadorObj, data.id);
     let contadorAntiguo = await dao.contadorByData(
       data.alumno,
@@ -845,6 +848,7 @@ controller.unirseEvento = async (req, res) => {
     const contadorAntiguoObj = {
       alumnos: contadorAntiguo.contador,
     };
+    console.log(contadorAntiguoObj, "contadorAntiguoObj");
     await dao.updateUser(
       data.tarjeta,
       oldIdTarjeta,
@@ -894,7 +898,29 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
       data.idTarjeta,
       id
     );
-    return res.status(200).send(comentarios);
+    if (comentarios.length <= 0) {
+      return res.status(404).send("No hay comentarios");
+    }
+    console.log(comentarios[0]);
+    let comentariosObj = [];
+    for (let i = 0; i < comentarios.length; i++) {
+      let user = await dao.getUserByData(
+        data.alumno,
+        data.idUsuario,
+        comentarios[i].IdUsuario
+      );
+      [user] = user;
+      comentariosObj[i] = {
+        comentario: comentarios[i].comentario,
+        idUsuario: comentarios[i].IdUsuario,
+        idTarjeta: comentarios[i].IdTarjeta,
+        rating: comentarios[i].rating,
+        nombre: user.nombre,
+        apellidos: user.apellidos,
+        email: user.email,
+      };
+    }
+    return res.status(200).send(comentariosObj);
   } catch (e) {
     console.log(e.message);
   }
