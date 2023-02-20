@@ -901,7 +901,6 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
     if (comentarios.length <= 0) {
       return res.status(404).send();
     }
-    console.log(comentarios[0]);
     let comentariosObj = [];
     for (let i = 0; i < comentarios.length; i++) {
       let user = await dao.getUserByData(
