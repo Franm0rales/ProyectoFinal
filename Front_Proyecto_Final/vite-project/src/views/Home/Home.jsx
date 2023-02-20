@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <div>
-        <Link to="/admin">Dashboard</Link>
+        {/* <Link to="/admin">Dashboard</Link> */}
         <Descripcion />
         <TablaHome/>
         <Quedadas />

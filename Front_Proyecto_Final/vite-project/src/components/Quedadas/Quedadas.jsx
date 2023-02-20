@@ -5,7 +5,7 @@ export default function Quedadas() {
     <div className="container mt-5">
       <div className="row">
         <div className="col-md-6">
-          <h2 className="pt-5 ">Conoce nuestras quedadas</h2>
+          <h1 className="pt-5 ">Conoce nuestras quedadas</h1>
         </div>
       </div>
 
@@ -19,7 +19,7 @@ export default function Quedadas() {
               Explicabo sed culpa placeat quis officiis qui eum ducimus delectus
               dolorem! Dignissimos, dolorem?
             </p>
-            <a href="#" className="btn btn-outline-dark text-uppercase">
+            <a href="#" id="botones" className="btn btn-outline-dark text-uppercase">
               Más información
             </a>
           </div>
@@ -36,7 +36,7 @@ export default function Quedadas() {
               Explicabo sed culpa placeat quis officiis qui eum ducimus delectus
               dolorem! Dignissimos, dolorem?
             </p>
-            <a href="#" className="btn btn-outline-dark text-uppercase">
+            <a href="#" id="botones" className="btn btn-outline-dark text-uppercase">
               Más información
             </a>
           </div>
@@ -53,7 +53,7 @@ export default function Quedadas() {
               Explicabo sed culpa placeat quis officiis qui eum ducimus delectus
               dolorem! Dignissimos, dolorem?
             </p>
-            <a href="#" className="btn btn-outline-dark text-uppercase">
+            <a href="#" id="botones" className="btn btn-outline-dark text-uppercase">
               Más información
             </a>
           </div>
