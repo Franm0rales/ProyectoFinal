@@ -776,8 +776,7 @@ controller.getTarjetaUsario = async (req, res) => {
       user.idTarjeta
     );
     // Si no existe el producto respondemos con un 404 (not found)
-    if (tarjetas.length <= 0)
-      return (res.status(404).send("No hay tarjetas")[tarjetas] = tarjetas);
+    if (tarjetas.length <= 0) return res.status(404).send("No hay tarjetas");
     [tarjetas] = tarjetas;
     return res.send(tarjetas);
   } catch (e) {
@@ -820,11 +819,13 @@ controller.unirseEvento = async (req, res) => {
     let user = await dao.getUserByData(tables[2], data.idUsuario, idUsuario);
     [user] = user;
     const oldIdTarjeta = user.idTarjeta;
+    console.log(oldIdTarjeta, "oldIdTarjeta");
     // if (oldIdTarjeta !== idEvento)
     //   return res.status(409).send("Usuario ya registrado en un evento");
     const eventoObj = {
       idTarjeta: idEvento,
     };
+    console.log(eventoObj, "eventoObj");
     await dao.updateUser(data.alumno, idUsuario, eventoObj, data.idUsuario);
 
     let contador = await dao.contadorByData(
@@ -836,6 +837,7 @@ controller.unirseEvento = async (req, res) => {
     const contadorObj = {
       alumnos: contador.contador,
     };
+    console.log(contadorObj, "contadorObj");
     await dao.updateUser(data.tarjeta, idEvento, contadorObj, data.id);
     let contadorAntiguo = await dao.contadorByData(
       data.alumno,
@@ -846,6 +848,7 @@ controller.unirseEvento = async (req, res) => {
     const contadorAntiguoObj = {
       alumnos: contadorAntiguo.contador,
     };
+    console.log(contadorAntiguoObj, "contadorAntiguoObj");
     await dao.updateUser(
       data.tarjeta,
       oldIdTarjeta,
@@ -866,6 +869,7 @@ controller.contadorEventosUsuarios = async (req, res) => {
     console.log(e.message);
   }
 };
+//Añadir comentario
 controller.addComentario = async (req, res) => {
   const { idUsuario, idTarjeta, comentario, rating } = req.body;
   try {
@@ -884,5 +888,64 @@ controller.addComentario = async (req, res) => {
   } catch (e) {
     console.log(e.message);
   }
+};
+//Traer comentarios por idTarjeta
+controller.getComentariosByIdTarjeta = async (req, res) => {
+  const { id } = req.params;
+  try {
+    let comentarios = await dao.getUserByData(
+      data.comentarios,
+      data.idTarjeta,
+      id
+    );
+    if (comentarios.length <= 0) {
+      return res.status(200).send([]);
+    }
+    let comentariosObj = [];
+    for (let i = 0; i < comentarios.length; i++) {
+      let user = await dao.getUserByData(
+        data.alumno,
+        data.idUsuario,
+        comentarios[i].IdUsuario
+      );
+      [user] = user;
+      comentariosObj[i] = {
+        comentario: comentarios[i].comentario,
+        idUsuario: comentarios[i].IdUsuario,
+        idTarjeta: comentarios[i].IdTarjeta,
+        rating: comentarios[i].rating,
+        nombre: user.nombre,
+        apellidos: user.apellidos,
+        email: user.email,
+        avatar: user.avatar,
+        telefono: user.telefono,
+      };
+    }
+    return res.status(200).send(comentariosObj);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+//Traer comentarios por idUsuario
+controller.getComentariosByIdUsuario = async (req, res) => {
+  const { id } = req.params;
+  try {
+    let comentarios = await dao.getUserByData(
+      data.comentarios,
+      data.idUsuario,
+      id
+    );
+    return res.status(200).send(comentarios);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+//Traer alumnos por idTarjeta
+controller.getUsersByidTarjeta = async (req, res) => {
+  const { id } = req.params;
+  try {
+    let users = await dao.getUserByData(data.alumno, data.idTarjeta, id);
+    return res.status(200).send(users);
+  } catch (e) {}
 };
 export default controller;

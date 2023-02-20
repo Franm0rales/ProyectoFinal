@@ -242,7 +242,6 @@ export default function Navbar() {
                       {" "}
                       {authorization.email}
                       <ul className="dropdown-menu text-small">
-                        
                         <li>
                           <Link className="dropdown-item" to="editarempresa">
                             Perfil Empresa

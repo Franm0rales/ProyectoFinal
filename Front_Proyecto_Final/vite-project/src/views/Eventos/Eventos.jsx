@@ -50,7 +50,7 @@ export default function Eventos() {
           const response = await fetch(
             `http://localhost:3000/user/getTarjetaByNombre/${empresaABuscar}`
           );
-            console.log(data);
+          console.log(data);
           const data = await response.json();
           setEventos(data);
           setError(null);
@@ -69,7 +69,6 @@ export default function Eventos() {
     }
   }, [unirse, empresaABuscar]);
 
-  
   return (
     <>
       <div id="fondo" className="pb-5">
@@ -124,7 +123,7 @@ export default function Eventos() {
                 </a>
               </div> */}
             </div>
-            <p>{}</p>
+
             <div className="pb-2 text-center">
               {contadorPersonas && (
                 <ContadorVisitas
