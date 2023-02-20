@@ -20,6 +20,7 @@ export default function ComentariosPerfilEmpresa({
   }
   return (
     <>
+    
       <div class="container pt-5 eventoscard position-relative pb-5 ">
         <div class="row row-striped">
           <div class="col-10">
@@ -29,7 +30,7 @@ export default function ComentariosPerfilEmpresa({
             <ul class="list-inline d-flex">
               <li class="list-inline-item">
                 <i class="bi bi-people-fill text-primary fs-4 px-1"></i>{" "}
-                {evento.alumnos} / {evento.plazas}{" "}
+                {comentarios.alumnos} / {evento.plazas}{" "}
               </li>{" "}
               <li>
                 {" "}

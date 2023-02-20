@@ -19,7 +19,7 @@ export default function CardIdEmpresa({ users }) {
 
   return (
     <>
-     <div id="card">
+     <div id="card" className="mb-5">
      <div class="left">
          <img src={galeria1} alt=""/>
      </div>
