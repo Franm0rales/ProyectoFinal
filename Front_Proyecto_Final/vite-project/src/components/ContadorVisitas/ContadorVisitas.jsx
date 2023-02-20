@@ -23,7 +23,6 @@ export default function ContadorVisitas({
   const [rating, setRating] = useState(null);
   const maxVisitors = plazas;
 
-
   async function onSubmit(x) {
     try {
       setUnirse(!unirse);
@@ -67,7 +66,7 @@ export default function ContadorVisitas({
           position: "center",
           icon: "success",
           title: "Comentario enviado correctamente ",
-          showConfirmButton: false,   
+          showConfirmButton: false,
           timer: 1500,
         });
       }
@@ -107,14 +106,13 @@ export default function ContadorVisitas({
     if (rating === null) {
       setRating(starIndex + 1);
     } else {
-      setRating(prevRating => {
+      setRating((prevRating) => {
         if (prevRating === starIndex + 1) {
           return null;
         } else {
           return starIndex + 1;
         }
       });
-      
     }
   }
   useEffect(() => {
@@ -125,11 +123,10 @@ export default function ContadorVisitas({
         star.classList.add("selected");
       } else {
         star.classList.remove("selected");
-        
       }
     });
   }, [rating]);
-  
+
   const fechaActual = new Date();
   const anio = fechaActual.getFullYear();
   const mes = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
@@ -139,7 +136,6 @@ export default function ContadorVisitas({
   let diaEmpiezaEvento = fechaInicio.split("T")[0];
 
   return (
-    
     <>
       <div>
         <p>
@@ -180,15 +176,15 @@ export default function ContadorVisitas({
                       <div class=" fst-italic text-start">{correo}</div>
 
                       <div className="star-rating">
-                          {[...Array(5)].map((star, index) => {
-                            return (
-                              <i
-                                key={index}
-                                className=" bi bi-star-fill"
-                                onClick={() => handleStarClick(index)}
-                              ></i>
-                            );
-                          })}
+                        {[...Array(5)].map((star, index) => {
+                          return (
+                            <i
+                              key={index}
+                              className=" bi bi-star-fill"
+                              onClick={() => handleStarClick(index)}
+                            ></i>
+                          );
+                        })}
                       </div>
 
                       <div class="customer_status"></div>
