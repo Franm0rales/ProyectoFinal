@@ -19,11 +19,8 @@ export default function CardIdEmpresa({ users }) {
 
   return (
     <>
-      <div className="container-fluid">
-        <div
-          className="card mb-3 mt-4 ml-4 d-flex  flex-wrap d-grip gap-5"
-          style={{ width: "90%" }}
-        >
+      <div className="container d-flex justify-content-center">
+        <div className=" mb-3 mt-5 ml-4 " style={{ width: "90%" }}>
           <div className="row no-gutters ">
             <div className="col-md-4">
               <img className="img-fluid" src={galeria1} />
@@ -31,9 +28,9 @@ export default function CardIdEmpresa({ users }) {
             <div className="col-md-8 d-flex">
               <div className="card-body">
                 <h5 className="card-title">{users.nombre}</h5>
-                <p className="card-text">{users.CIF}</p>
-                <p className="card-text">{users.ciudad}</p>
-                <p className="card-text">{users.email}</p>
+                <p className="card-text">CIF: {users.CIF}</p>
+                <p className="card-text">Ciudad: {users.ciudad}</p>
+                <p className="card-text">Email: {users.email}</p>
                 <p className="card-text">{users.descripcion}</p>
 
                 <p className="card-text">
