@@ -899,9 +899,8 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
       id
     );
     if (comentarios.length <= 0) {
-      return res.status(404).send("No hay comentarios");
+      return res.status(404).send();
     }
-    console.log(comentarios[0]);
     let comentariosObj = [];
     for (let i = 0; i < comentarios.length; i++) {
       let user = await dao.getUserByData(
@@ -918,6 +917,7 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
         nombre: user.nombre,
         apellidos: user.apellidos,
         email: user.email,
+        avatar: user.avatar,
       };
     }
     return res.status(200).send(comentariosObj);
