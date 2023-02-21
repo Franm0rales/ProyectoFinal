@@ -882,7 +882,7 @@ controller.addComentario = async (req, res) => {
     const comentarioObj = {
       idUsuario: idUsuario,
       idTarjeta: idTarjeta,
-      comentario: comentario,
+      comentario: comentario.comentario,
       rating: rating,
     };
     await dao.addUser(comentarioObj, data.comentarios);
@@ -903,7 +903,6 @@ controller.addComentario = async (req, res) => {
       mediaRating: suma.suma / contador.contador,
       comentariosAlumnos: contador.contador,
     };
-    console.log(ratingObj);
     await dao.updateUser(data.tarjeta, idTarjeta, ratingObj, data.id);
     return res.status(200).send();
   } catch (e) {
@@ -919,6 +918,7 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
       data.idTarjeta,
       id
     );
+    console.log(comentarios, "comentarios");
     let tarjeta = await dao.getUserByData(data.tarjeta, data.id, id);
     console.log(tarjeta);
     if (comentarios.length <= 0) {
@@ -944,6 +944,7 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
         telefono: user.telefono,
       };
     }
+    console.log(comentariosObj);
     return res.status(200).send(comentariosObj);
   } catch (e) {
     console.log(e.message);

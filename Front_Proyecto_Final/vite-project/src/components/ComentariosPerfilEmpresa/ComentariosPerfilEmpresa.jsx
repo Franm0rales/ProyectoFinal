@@ -15,8 +15,25 @@ export default function ComentariosPerfilEmpresa({
     } else {
       setDisplay("");
       setDisplayState(!displayState);
-      console.log(comentarios, evento, "holaa paco");
     }
+  }
+  function renderStars(rating) {
+    const stars = [];
+    const rate = rating % 1;
+    let starsRating;
+    if (rate >= 0.5) {
+      starsRating = parseInt(rating) + 1;
+    } else {
+      starsRating = parseInt(rating);
+    }
+    for (let i = 0; i < 5; i++) {
+      if (i < starsRating) {
+        stars.push(<i className="bi bi-star-fill text-warning" />);
+      } else {
+        stars.push(<i className="bi bi-star" />);
+      }
+    }
+    return stars;
   }
   return (
     <>
@@ -43,23 +60,31 @@ export default function ComentariosPerfilEmpresa({
                 {evento.horaInicio}{" "}
               </li>
             </ul>
+            <div class="list-inline-item ">
+              <span key={evento.id}>
+                {evento.mediaRating} {renderStars(evento.mediaRating)} (
+                {evento.comentariosAlumnos})
+              </span>
+            </div>
           </div>
         </div>
-        {displayState ? (
-          <button
-            onClick={() => (toggleComments(display), setIdTarjeta(evento.id))}
-            className="border-0 rounded bg-transparent text-primary d-flex position-absolute bottom-50 end-0 "
-          >
-            <i class="bi bi-chat-square-text-fill fs-1  "></i>
-          </button>
-        ) : (
-          <button
-            onClick={() => (toggleComments(display), setIdTarjeta(0))}
-            className="border-0 rounded bg-transparent text-primary  d-flex position-absolute bottom-50 end-0 "
-          >
-            <i class="bi bi-x-circle fs-1  "></i>
-          </button>
-        )}
+        <div className="border-0 rounded bg-transparent text-primary d-flex position-absolute bottom-50 end-0 me-2">
+          {displayState ? (
+            <button
+              onClick={() => (toggleComments(display), setIdTarjeta(evento.id))}
+              className="border-0 rounded bg-transparent text-primary"
+            >
+              <i class="bi bi-chat-square-text-fill fs-1  "></i>
+            </button>
+          ) : (
+            <button
+              onClick={() => (toggleComments(display), setIdTarjeta(0))}
+              className="border-0 rounded bg-transparent text-primary"
+            >
+              <i class="bi bi-x-circle fs-1  "></i>
+            </button>
+          )}
+        </div>
       </div>
 
       <section class={`section-primary t-bordered ${display}`}>
