@@ -22,6 +22,7 @@ import Empresa from "./views/Empresa/Empresa";
 import AgendaPerfilEmpresa from "./views/AgendaPerfilEmpresa/AgendaPerfilEmpresa";
 import Eventos from "./views/Eventos/Eventos";
 import Nosotros from "./views/Nosotros/Nosotros";
+import Cookies from "./components/Cookies/Cookies";
 const ROLES = {
   Admin: "1",
   User: "0",
@@ -29,8 +30,10 @@ const ROLES = {
 function App() {
   return (
     <AuthContextProvider>
+      <Cookies />
       <BrowserRouter>
       <ScrollToTop />
+      
         <Routes>
         
           <Route path="/" element={<Layout />}>
