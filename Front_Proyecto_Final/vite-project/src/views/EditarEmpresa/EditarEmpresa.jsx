@@ -20,7 +20,7 @@ export default function EditarEmpresa() {
       const json = await response.json();
       setUsers(json);
       const responseEventos = await fetch(
-        `http://localhost:3000/user/getTarjeta/${authorization.id}`
+        `http://localhost:3000/tarjeta/getTarjeta/${authorization.id}`
       );
       const jsoneventos = await responseEventos.json();
       setEventos(jsoneventos);
@@ -31,7 +31,7 @@ export default function EditarEmpresa() {
   useEffect(() => {
     const fetchDataComentarios = async () => {
       const responseComentarios = await fetch(
-        `http://localhost:3000/user/getComentariosByIdTarjeta/${idTarjeta}`
+        `http://localhost:3000/tarjeta/getComentariosByIdTarjeta/${idTarjeta}`
       );
       const jsonComentarios = await responseComentarios.json();
       setComentarios(jsonComentarios);
@@ -43,16 +43,16 @@ export default function EditarEmpresa() {
     <>
       <div className="container">
         <div className="bubbles">
-        <h1 className="pt-5  text-center"></h1>
+          <h1 className="pt-5  text-center"></h1>
         </div>
-      
+
         {users ? <CardIdEmpresa users={users} /> : <p>Cargando...</p>}
 
         {/* <SettingsEmpresa /> */}
         <div className="pt-5">
-        <h1 className="pt-5 pb-2 text-center">Eventos creados</h1>
+          <h1 className="pt-5 pb-2 text-center">Eventos creados</h1>
         </div>
-        
+
         {eventos ? (
           eventos.map((evento) => (
             <ComentariosPerfilEmpresa

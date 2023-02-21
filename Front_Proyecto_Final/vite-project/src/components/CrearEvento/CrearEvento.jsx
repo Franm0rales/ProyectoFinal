@@ -8,7 +8,7 @@ export default function CrearEvento(setEvento) {
   async function onSubmit(values, actions) {
     try {
       const response = await fetch(
-        `http://localhost:3000/user/tarjeta/${authorization.id}`,
+        `http://localhost:3000/tarjeta/tarjeta/${authorization.id}`,
         {
           method: "POST",
           headers: {

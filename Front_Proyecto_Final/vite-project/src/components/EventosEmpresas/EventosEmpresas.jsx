@@ -14,14 +14,13 @@ export default function EventoEmpresas() {
 
   async function fetchCalendario() {
     const response = await fetch(
-      `http://localhost:3000/user/getTarjeta/${authorization.id}`
+      `http://localhost:3000/tarjeta/getTarjeta/${authorization.id}`
     );
     const json = await response.json();
     setTest(json);
   }
 
   const onSelectEvent = (test) => {
-
     console.log(localizer);
     Swal.fire({
       title: `${test.title}`,
