@@ -82,15 +82,6 @@ export default function Navbar() {
                       </li>
                     </ul>
                   </li>
-                  <li>
-                    <Link
-                      to="contacto"
-                      className="nav-link scrollto text-dark"
-                      href="#contact"
-                    >
-                      Contacto
-                    </Link>
-                  </li>
                 </ul>
                 <i className="bi bi-list mobile-nav-toggle"></i>
                 {!authorization?.email ? (
@@ -213,15 +204,6 @@ export default function Navbar() {
                         <a href="#">Drop Down 4</a>
                       </li>
                     </ul>
-                  </li>
-                  <li>
-                    <Link
-                      to="contacto"
-                      className="nav-link scrollto text-dark"
-                      href="#contact"
-                    >
-                      Contacto
-                    </Link>
                   </li>
                 </ul>
                 <i className="bi bi-list mobile-nav-toggle"></i>

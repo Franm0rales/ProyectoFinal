@@ -8,35 +8,39 @@ import { useAuthContext } from "../../context/AuthContext/AuthContext";
 export default function LoginAcount() {
   const { view, setView } = useAuthContext();
   return (
-    <div className="d-flex  justify-content-around pt-5">
-      <nav className="col-4">
-        <ul className="nav nav-tabs px-5">
-          <li className="">
-            <a
-              type="button"
-              onClick={() => {
-                setView("Alumno");
-              }}
-              className="nav-link active text-white " id="botones"
-            >
-              Alumno
-            </a>
-          </li>
-          <li className="">
-            <a
-              type="button"
-              onClick={() => {
-                setView("Empresa");
-              }}
-              className="nav-link active text-white " id="botones"
-            >
-              Empresa
-            </a>
-          </li>
-        </ul>
-        {view === "Alumno" ? <LoginAlumno /> : <LoginEmpresa />}
-        {view === "Alumno" ? <Registro /> : <RegistroEmpresa />}
-      </nav>
+    <div id="fondo">
+      <div className="d-flex  justify-content-around pt-5">
+        <nav className="col-4">
+          <ul className="nav nav-tabs px-5">
+            <li className="">
+              <a
+                type="button"
+                onClick={() => {
+                  setView("Alumno");
+                }}
+                className="nav-link active text-white "
+                id="botones"
+              >
+                Alumno
+              </a>
+            </li>
+            <li className="">
+              <a
+                type="button"
+                onClick={() => {
+                  setView("Empresa");
+                }}
+                className="nav-link active text-white "
+                id="botones"
+              >
+                Empresa
+              </a>
+            </li>
+          </ul>
+          {view === "Alumno" ? <LoginAlumno /> : <LoginEmpresa />}
+          {view === "Alumno" ? <Registro /> : <RegistroEmpresa />}
+        </nav>
+      </div>
     </div>
   );
 }

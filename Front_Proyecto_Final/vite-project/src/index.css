@@ -2118,3 +2118,25 @@ img{
 /* Animate Background Image */
 
 }
+.page-contain {
+ 
+
+ 
+  padding: 2em;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+
+.link-text {
+  
+  color: #5e96ff;
+  font-size: 1.125em;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: auto 0 0;
+  transition: color .45s ease;
+  text-decoration: none;
+
+}
+
