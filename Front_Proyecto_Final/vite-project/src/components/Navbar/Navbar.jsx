@@ -161,9 +161,9 @@ export default function Navbar() {
                     </Link>
                   </li>
                   <li>
-                    <a href="#" className="nav-link scrollto text-dark">
+                    <Link to="nosotros" className="nav-link scrollto text-dark">
                       Nosotros
-                    </a>
+                    </Link>
                   </li>
 
                   <li>

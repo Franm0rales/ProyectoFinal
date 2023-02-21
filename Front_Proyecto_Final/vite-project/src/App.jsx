@@ -20,6 +20,7 @@ import TestUsuario from "./views/TestUsuario/TestUsuario";
 import Empresa from "./views/Empresa/Empresa";
 import AgendaPerfilEmpresa from "./views/AgendaPerfilEmpresa/AgendaPerfilEmpresa";
 import Eventos from "./views/Eventos/Eventos";
+import Nosotros from "./views/Nosotros/Nosotros";
 const ROLES = {
   Admin: "1",
   User: "0",
@@ -36,11 +37,11 @@ function App() {
             <Route path="editarempresa" element={<EditarEmpresa />} />
             <Route path="agendaeventos" element={<AgendaPerfilEmpresa />} />
 
-             
             <Route path="test" element={<TestUsuario />} />
             <Route path="contacto" element={<Contacto />} />
             <Route path="empresas" element={<Empresa />} />
-            <Route path="eventos" element={<Eventos/>} />
+            <Route path="eventos" element={<Eventos />} />
+            <Route path="nosotros" element={<Nosotros />} />
 
             {/* </Route>
 

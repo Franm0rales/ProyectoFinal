@@ -19,28 +19,43 @@ export default function CardIdEmpresa({ users }) {
 
   return (
     <>
-     <div id="card" className="mb-5">
-     <div class="left">
-         <img src={galeria1} alt=""/>
-     </div>
-     <div class="right">
-        <div className=" d-flex">
-              <div className="card-body">
-                <h5 className="text-start pt-2">{users.nombre}</h5>
-                <p className="text-start"><i class="bi bi-textarea-resize text-primary fs-5"></i> CIF: {users.CIF}</p>
-                <p className=""> <i class="bi bi-buildings text-primary fs-5"></i> Ciudad: {users.ciudad}</p>
-                <p className=""><i className="bi bi-geo-alt text-primary fs-5"/> Direccion: {users.direccion}</p>
-                <p className=""><i class="bi bi-envelope text-primary fs-5"></i>{" "} Email: {users.email}</p>
-                
+      <div id="card" className="mb-5">
+        <div class="left">
+          <img src={galeria1} alt="" />
+        </div>
+        <div class="right">
+          <div className=" d-flex">
+            <div className="card-body">
+              <h1 className="text-start pt-2 fs-3"> {users.nombre}</h1>
+              <p className="text-start">
+                <i class="bi bi-textarea-resize text-primary fs-5"></i> CIF:{" "}
+                {users.CIF}
+              </p>
+              <p className="">
+                {" "}
+                <i class="bi bi-buildings text-primary fs-5"></i> Ciudad:{" "}
+                {users.ciudad}
+              </p>
+              <p className="">
+                <i className="bi bi-geo-alt text-primary fs-5" /> Direccion:{" "}
+                {users.direccion}
+              </p>
+              <p className="">
+                <i class="bi bi-envelope text-primary fs-5"></i> Email:{" "}
+                {users.email}
+              </p>
 
-                <p className="card-text">
-                  <small className="text-start"><i class="bi bi-telephone text-primary fs-5"></i> {users.telefono}</small>
-                </p>
-              </div>
-     </div>
-     </div>
- </div>
-    
+              <p className="card-text">
+                <small className="text-start">
+                  <i class="bi bi-telephone text-primary fs-5"></i>{" "}
+                  {users.telefono}
+                </small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* <div className="container d-flex justify-content-center">
         <div className=" mb-3 mt-5 ml-4 " style={{ width: "90%" }}>
           <div className="row no-gutters ">
