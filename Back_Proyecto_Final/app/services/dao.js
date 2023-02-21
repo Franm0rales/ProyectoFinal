@@ -27,8 +27,11 @@ dao.getTarjetaByData = async (tabla, columna, data) =>
 //Contador usuarios por evento
 dao.contadorByData = async (tabla, columna, data) =>
   await tarjetaQueries.contadorByData(tabla, columna, data);
-//Suma de datos en una columna
+//Suma de datos en una columna filtrado
 dao.sumByData = async (tabla, columna, columnaData, data) =>
   await tarjetaQueries.sumByData(tabla, columna, columnaData, data);
+//Suma de datos en una columna sin filtrar
+dao.contadorByDataNoFilter = async (tabla) =>
+  await tarjetaQueries.contadorByDataNoFilter(tabla);
 
 export default dao;
