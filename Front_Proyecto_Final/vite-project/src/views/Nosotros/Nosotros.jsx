@@ -1,6 +1,30 @@
 import Contacto from "../../components/Contacto/Contacto";
+import { useEffect, useState } from "react";
 
 export default function Nosotros() {
+  const [alumnos, setAlumnos] = useState("");
+  const [eventos, setEventos] = useState("");
+  useEffect(() => {
+    async function fetchAlumnos() {
+      const response = await fetch(
+        `http://localhost:3000/user/getNumberOfUsers/all`
+      );
+      const json = await response.json();
+      setAlumnos(json);
+    }
+
+    async function fetchEventos() {
+      const response = await fetch(
+        `http://localhost:3000/tarjeta/getNumberOfEventos`
+      );
+      const json = await response.json();
+      setEventos(json);
+    }
+    fetchEventos();
+    fetchAlumnos();
+  }, []);
+  console.log(alumnos, "aleee");
+  console.log(eventos, "Holaaaaaaa");
   return (
     <div id="fondo">
       <div className="container">
@@ -21,23 +45,27 @@ export default function Nosotros() {
               prestan a intercambiar su dia a dia en sus trabajos.
             </h4>
           </div>
-          <div class="data-card col-5 mb-5">
-            <h3 className="text-primary">270</h3>
-            <h4>Eventos Disponibles</h4>
-            <p>Acude a cualquier evento y acalara tu futuro.</p>
-            <a href="http://127.0.0.1:5173/eventos" class="link-text">
-              Ver eventos
-            </a>
+          {eventos ? (
+            <div class="data-card col-5 mb-5">
+              <h3 className="text-primary">{eventos.contador}</h3>
+              <h4>Eventos creados</h4>
+              <p>Acude a cualquier evento y acalara tu futuro.</p>
+              <a href="http://127.0.0.1:5173/eventos" class="link-text">
+                Ver eventos
+              </a>
 
-            <hr />
+              <hr />
 
-            <h3 className="text-primary">12,000</h3>
-            <h4>Alumnos</h4>
-            <p>Muchos alumnos ya han decidido, y ¿Tú?.</p>
-            <a href="http://127.0.0.1:5173/login" class="link-text">
-              Registrate
-            </a>
-          </div>
+              <h3 className="text-primary">{alumnos.contador}</h3>
+              <h4>Alumnos</h4>
+              <p>Muchos alumnos ya han decidido, y ¿Tú?.</p>
+              <a href="http://127.0.0.1:5173/login" class="link-text">
+                Registrate
+              </a>
+            </div>
+          ) : (
+            <p>Cargando...</p>
+          )}
         </div>
         <div>
           <h1 className="text-center">Contactanos</h1>
