@@ -919,7 +919,7 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
       data.idTarjeta,
       id
     );
-    let tarjeta = await dao.getUserByData(data.tarjeta, data.idTarjeta, id);
+    let tarjeta = await dao.getUserByData(data.tarjeta, data.id, id);
     console.log(tarjeta);
     if (comentarios.length <= 0) {
       return res.status(200).send([]);
