@@ -11,8 +11,8 @@ export default function Quedadas() {
 
       <div className="row no-gutters modelo basico align-items-end mt-4">
         <div className="col-md-6">
-          <div className="contenido bg-white p-5 px-md-0">
-            <h3>Releevant</h3>
+          <div className="contenido bg-white p-5 px-md-0 rounded">
+            <h1>Releevant</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
               provident harum autem ratione esse fuga, officiis laboriosam.
@@ -32,8 +32,8 @@ export default function Quedadas() {
 
       <div className="row no-gutters modelo premier justify-content-end mt-4">
         <div className="col-md-6">
-          <div className="contenido bg-white p-5">
-            <h3>Plityx</h3>
+          <div className="contenido bg-white p-5 rounded-bottom">
+            <h1>Plityx</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
               provident harum autem ratione esse fuga, officiis laboriosam.
@@ -53,8 +53,8 @@ export default function Quedadas() {
 
       <div className="row no-gutters modelo elite mt-4">
         <div className="col-md-6">
-          <div className="contenido bg-white p-5 px-md-0">
-            <h3>Accenture</h3>
+          <div className="contenido bg-white p-5 px-md-0 rounded">
+            <h1>Accenture</h1>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
               provident harum autem ratione esse fuga, officiis laboriosam.

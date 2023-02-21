@@ -9,10 +9,10 @@ export default function Home() {
       <div>
         {/* <Link to="/admin">Dashboard</Link> */}
         <Descripcion />
-        <TablaHome/>
         <Quedadas />
+        <TablaHome />
+
         <LogosEmpresas />
-  
       </div>
     </>
   );

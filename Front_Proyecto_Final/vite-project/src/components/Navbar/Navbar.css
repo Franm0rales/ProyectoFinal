@@ -70,17 +70,20 @@ h3 {
 }
 .basico {
     background-image: url(img/modelo1.jpg);
-    background-position: top right;
+
+   
+    border-radius: 16px ;
 }
 
 .premier {
     background-image: url(img/modelo2.jpg);
-    background-position: top left;
+   
+    border-radius: 16px;
 }
 
 .elite {
     background-image: url(img/modelo3.jpg);
-    background-position: top right;
+    border-radius: 16px;
 }
 
 .text {
