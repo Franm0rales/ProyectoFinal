@@ -10,7 +10,7 @@ export default function CardEmpresa(user) {
       >
         <div className="row no-gutters">
           <div className="col-md-4 ">
-            <img className="img-fluid" src={galeria1} />
+            <img className="clase-prioridad" src={galeria1} />
           </div>
           <div className="col-md-8 d-flex">
             <div className="card-body">
