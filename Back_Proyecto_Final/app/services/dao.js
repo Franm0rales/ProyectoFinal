@@ -12,15 +12,12 @@ dao.getUserByData = async (tabla, columna, dato) =>
 // Modificar usuario por su id
 dao.updateUser = async (tabla, id, userData, columna) =>
   await userQueries.updateUser(tabla, id, userData, columna);
-// // Eliminar usuario por su id
-// dao.deleteUser = async (tabla, data, id, columna) =>
-//   await userQueries.deleteUser(tabla, data, id, columna);
 // Traer todos los usuarios
 dao.allUsers = async (tabla) => await userQueries.allUsers(tabla);
 //Traer paginas preguntas test
 dao.allTests = async (pagination) => await testQueries.allTests(pagination);
 // Traer todas las tarjetas de eventos
-dao.getAllTarjetas = async () => await tarjetaQueries.getAllTarjetas();
+dao.getAllData = async (tabla) => await tarjetaQueries.getAllData(tabla);
 //Filtrar tarjetas por datos
 dao.getTarjetaByData = async (tabla, columna, data) =>
   await tarjetaQueries.getTarjetaByData(tabla, columna, data);

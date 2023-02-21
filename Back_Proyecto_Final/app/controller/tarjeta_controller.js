@@ -124,7 +124,7 @@ controller.getTarjetaUsario = async (req, res) => {
 //Controlador para traer todas las tarjetas
 controller.getAllTarjetas = async (req, res) => {
   try {
-    let tarjetas = await dao.getAllTarjetas();
+    let tarjetas = await dao.getAllData(data.tarjeta);
     // Si no existe el producto respondemos con un 404 (not found)
     if (tarjetas.length <= 0) return res.status(404).send("No hay tarjetas");
     return res.send(tarjetas);
@@ -230,6 +230,15 @@ controller.addComentario = async (req, res) => {
     };
     await dao.updateUser(data.tarjeta, idTarjeta, ratingObj, data.id);
     return res.status(200).send();
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+//Traer todos los comentarios
+controller.getAllComentarios = async (req, res) => {
+  try {
+    let comentarios = await dao.getAllData(data.comentarios);
+    return res.status(200).send(comentarios);
   } catch (e) {
     console.log(e.message);
   }
