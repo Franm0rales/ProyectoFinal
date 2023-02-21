@@ -890,12 +890,19 @@ controller.addComentario = async (req, res) => {
       idTarjeta
     );
     [contador] = contador;
-
-    let contadorObj = {
+    let suma = await dao.sumByData(
+      data.comentarios,
+      data.rating,
+      data.idTarjeta,
+      idTarjeta
+    );
+    [suma] = suma;
+    let ratingObj = {
+      mediaRating: suma.suma / contador.contador,
       comentariosAlumnos: contador.contador,
     };
-    console.log(contadorObj);
-    await dao.updateUser(data.tarjeta, idTarjeta, contadorObj, data.id);
+    console.log(ratingObj);
+    await dao.updateUser(data.tarjeta, idTarjeta, ratingObj, data.id);
     return res.status(200).send();
   } catch (e) {
     console.log(e.message);
@@ -910,6 +917,8 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
       data.idTarjeta,
       id
     );
+    let tarjeta = await dao.getUserByData(data.tarjeta, data.idTarjeta, id);
+    console.log(tarjeta);
     if (comentarios.length <= 0) {
       return res.status(200).send([]);
     }
