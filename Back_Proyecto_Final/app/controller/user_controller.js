@@ -752,6 +752,8 @@ controller.getTarjetaEmpresa = async (req, res) => {
         plazas: tarjeta.plazas,
         alumnos: tarjeta.alumnos,
         horaInicio: tarjeta.horaInicio,
+        mediaRating: tarjeta.mediaRating,
+        comentariosAlumnos: tarjeta.comentariosAlumnos,
       };
       tarjetaObj[i] = tarjeta;
       i++;
