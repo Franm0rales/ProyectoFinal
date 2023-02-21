@@ -9,7 +9,7 @@ export default function CardEmpresa(user) {
         style={{ width: "90%" }}
       >
         <div className="row no-gutters">
-          <div className="col-md-4">
+          <div className="col-md-4 ">
             <img className="img-fluid" src={galeria1} />
           </div>
           <div className="col-md-8 d-flex">
