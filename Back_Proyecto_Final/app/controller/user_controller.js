@@ -880,10 +880,22 @@ controller.addComentario = async (req, res) => {
     const comentarioObj = {
       idUsuario: idUsuario,
       idTarjeta: idTarjeta,
-      comentario: comentario.comentario,
+      comentario: comentario,
       rating: rating,
     };
     await dao.addUser(comentarioObj, data.comentarios);
+    let contador = await dao.contadorByData(
+      data.comentarios,
+      data.idTarjeta,
+      idTarjeta
+    );
+    [contador] = contador;
+
+    let contadorObj = {
+      comentariosAlumnos: contador.contador,
+    };
+    console.log(contadorObj);
+    await dao.updateUser(data.tarjeta, idTarjeta, contadorObj, data.id);
     return res.status(200).send();
   } catch (e) {
     console.log(e.message);

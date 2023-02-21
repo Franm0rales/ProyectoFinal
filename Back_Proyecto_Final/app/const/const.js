@@ -15,6 +15,7 @@ export const data = {
   id: "id",
   test: "test",
   nombre: "nombre",
+  comentariosAlumnos: "comentariosAlumnos",
   comentarios: "comentarios",
   respuestastest: "respuestastest",
   idUsuario: "idUsuario",
