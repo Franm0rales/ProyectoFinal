@@ -24,8 +24,7 @@ export default function Nosotros() {
     fetchEventos();
     fetchAlumnos();
   }, []);
-  console.log(alumnos, "aleee");
-  console.log(eventos, "Holaaaaaaa");
+
   return (
     <div id="fondo">
       <div className="container">
