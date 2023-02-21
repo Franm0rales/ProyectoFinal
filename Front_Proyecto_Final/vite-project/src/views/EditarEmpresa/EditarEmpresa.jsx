@@ -42,10 +42,17 @@ export default function EditarEmpresa() {
   return (
     <>
       <div className="container">
+        <div className="bubbles">
+        <h1 className="pt-5  text-center"></h1>
+        </div>
+      
         {users ? <CardIdEmpresa users={users} /> : <p>Cargando...</p>}
 
         {/* <SettingsEmpresa /> */}
-        <h1 className="text-center pt-5">Eventos</h1>
+        <div className="pt-5">
+        <h1 className="pt-5 pb-2 text-center">Eventos creados</h1>
+        </div>
+        
         {eventos ? (
           eventos.map((evento) => (
             <ComentariosPerfilEmpresa

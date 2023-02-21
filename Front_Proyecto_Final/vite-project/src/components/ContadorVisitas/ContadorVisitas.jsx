@@ -25,7 +25,6 @@ export default function ContadorVisitas({
 
   async function onSubmit(x) {
     try {
-      setUnirse(!unirse);
       await fetch(`http://localhost:3000/user/unirseEvento`, {
         method: "PATCH",
         headers: {
@@ -36,6 +35,7 @@ export default function ContadorVisitas({
           idEvento: x,
         }),
       });
+      setUnirse(!unirse);
     } catch (e) {
       console.log(e);
     }

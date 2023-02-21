@@ -502,7 +502,6 @@ export default function CardEditarUsuario({ user, setUser }) {
           </div>
         </div>
       </div>
-      
     </section>
   );
 }

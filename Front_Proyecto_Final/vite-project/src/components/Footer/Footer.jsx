@@ -56,14 +56,14 @@ export default function Footer() {
             </div>
 
             <div class="col-lg-4 col-md-6 footer-newsletter">
-              <h4>Our Newsletter</h4>
+              <h4>Suscribete y recibe eventos diarios</h4>
               <p>
                 Tamen quem nulla quae legam multos aute sint culpa legam noster
                 magna
               </p>
               <form action="" method="post">
-                <input type="email" name="email" />
-                <input type="submit" value="Subscribe" />
+                <input className="rounded-r" type="email" name="email" />
+                <input className="rounded-right" type="submit" value="Subscribe" />
               </form>
             </div>
           </div>

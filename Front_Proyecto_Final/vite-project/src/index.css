@@ -1892,10 +1892,66 @@ div.rbc-event, .rbc-day-slot {
   color: gold;
   ;
 }
+.testimonial-four blockquote:hover::after, .section-arrow-primary-color.section-arrow--bottom-center:after {
+    border-right-color: #0cb4ce;
+}
+.section-arrow-primary-color.section-arrow--bottom-center:after {
+    background-color: #0cb4ce;
+    border-right-color: #0cb4ce;
+    border-bottom-color: #0cb4ce;
+}
+.section-arrow--bottom-center:after {
+    z-index: 1;
+    position: absolute;
+    left: 50%;
+    margin-left: -15px;
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    width: 30px;
+    height: 30px;
+    border-right: 1px solid #262626;
+    border-bottom: 1px solid #262626;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-color: #262626;
+}
+.text-white h1, .text-white h2, .text-white h3, .text-white h4, .text-white h5, .text-white h6 {
+    color: white !important;
+}
+.section-title {
+  
+    font-weight: 600;
+    margin-top: 0.45em;
+    margin-bottom: 0.35em;
+    color: #303133;
 
+    letter-spacing: -0.02em;
+}
+.section-sub-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 400;
+  
+}
+.section-arrow-primary-color.section-arrow--bottom-center:after {
+    border-bottom-color: #0cb4ce;
+}
+.section-arrow-primary-color.section-arrow--bottom-center:after{
+    background-color: #0cb4ce;
+}
+.special-heading.line span:before, .special-heading.line span:after, .footer.footer-minimal, .t-bordered {
+    border-top-color: #eaeaea;
+}
 
+.section-primary {
+    padding: 75px 0px;
+}
 .section-eventos{
-  background: #5e96ff;
+background:#5e96ff ;
 }
 
 .testimonial-three .testimonial-image {
@@ -1907,67 +1963,120 @@ div.rbc-event, .rbc-day-slot {
   overflow: hidden;
 }
 
+.img-coment {
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+
+.testimonial-three .testimonial-image {
+    float: left;
+    margin: 0 20px 0 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
 .testimonial-three .testimonial-content {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .testimonial-three .testimonial-meta {
-  position: relative;
-  overflow: hidden;
-  margin-left: 100px;
+    position: relative;
+    overflow: hidden;
+    margin-left: 100px;
 }
 
 
 .testimonial-three .testimonial-name {
-  display: block;
+    display: block;
 }
 
 
 .testimonial-three .testimonial-three-col {
-  padding-bottom: 35px;
+    padding-bottom: 35px;
 }
 
 .testimonial-three .testimonial-three-col {
-  border-right-style: dashed;
-  border-right-width: 1px;
-  border-bottom-width: 1px;
-  border-right-color: #ddd;
-  border-bottom-color: #ddd;
-  padding: 25px;
+    border-right-style: dashed;
+    border-right-width: 1px;
+    border-bottom-style: dashed;
+    border-bottom-width: 1px;
+    border-right-color: #ddd;
+    border-bottom-color: #ddd;
+    padding: 25px;
 }
 
 .testimonial-three .testimonial-three-col:hover {
- background-color:#f7f7f7;
+   background-color:#f7f7f7;
 }
 
 .alternate-color .testimonial-three .testimonial-three-col:hover {
- background-color:white;
+   background-color:white;
 }
 
 .testimonial-three.testimonial-three--col-two .testimonial-three-col:nth-child(2n) {
-  border-right: none;
+    border-right: none;
 }
 
 .testimonial-three.testimonial-three--col-two .testimonial-three-col:nth-last-child(-n+2),
 .testimonial-three.testimonial-three--col-two .testimonial-three-col:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .testimonial-three.testimonial-three--col-three .testimonial-three-col:nth-child(3n) {
-  border-right: none;
+    border-right: none;
 }
 
 .testimonial-three.testimonial-three--col-three .testimonial-three-col:nth-last-child(-n+3),
 .testimonial-three.testimonial-three--col-three .testimonial-three-col:nth-last-child(-n+2),
 .testimonial-three.testimonial-three--col-three .testimonial-three-col:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
-
-
-
-
-.img-coment {
-  max-width: 100%;
-  height: auto;
+#card{
+  width: 400px;
+  height: 300px;
+  margin: 0 auto;
+  overflow: hidden;
+  
+ border-radius:16px;
+  position: relative;
+  top: 100px !important;
+  background: white;
+  transition: all 0.7s;
+  box-shadow:(0px, 7px, 25px, -5px, rgba(0, 0, 0, 0.75));
 }
+ .left {
+  width: 400px;
+ 
+ }
+img {
+  float: left;
+  height: 300px;
+  border-radius: 16px;
+  }
+  
+ .right {
+ 
+  width: 290px;
+  float: right;
+ 
+ }
+ 
+#card .right button:hover {
+  box-shadow:(1px, 2px, 22px, 3px, rgba(0, 0, 0, 0.75));
+}
+
+#card:hover {
+  width: 870px;
+  cursor: pointer;
+ box-shadow:(0px, 7px, 25px, 1px, rgba(0, 0, 0, 0.75));
+}
+#card:hover .right {
+  display: block;
+}
+

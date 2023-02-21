@@ -6,7 +6,11 @@ import Empresa5 from "../../assets/clients/client-5.png"
 
 export default function LogosEmpresas(){
     return(
-      <div class="slider">
+      <>
+      <div>
+        <h1 className="text-center mt-5 mb-5">Empresas que colaboran</h1>
+      </div>
+      <div class="slider mb-5">
       <div class="slide-track">
         <div class="slide">
           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
@@ -52,5 +56,6 @@ export default function LogosEmpresas(){
     </div>
       </div>
     </div>
+    </>
     )
 }
