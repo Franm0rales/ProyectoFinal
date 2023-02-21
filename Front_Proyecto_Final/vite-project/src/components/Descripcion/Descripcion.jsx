@@ -16,15 +16,15 @@ export default function Descripcion() {
 
           <div className="col-lg-6 d-flex flex-column justify-content-center about-content">
             <div className="section-title">
-              <h2>¿Qué hacemos?</h2>
-              <p>
+              <h1>¿Qué hacemos?</h1>
+              <h5>
                 En Horizons estamos tratando de activar todo el potencial de los
                 jóvenes, enriquecer sus conocimientos, ayudarlos a adquirir
                 experiencia para poder decidir sobre su futuro trabajo, así como
                 ayudarlos a comprender las posibles posibilidades futuras de
                 carrera y educación. A la vez dar a conocer a las empresas que
                 se prestan a intercambiar su dia a dia en sus trabajos.
-              </p>
+              </h5>
             </div>
 
             <div className="icon-box" data-aos="fade-up" data-aos-delay="100">
