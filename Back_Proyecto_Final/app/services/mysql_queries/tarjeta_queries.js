@@ -67,5 +67,23 @@ tarjetaQueries.sumByData = async (tabla, columna, columnaData, data) => {
     conn && (await conn.end());
   }
 };
+//Contador eventos
+tarjetaQueries.contadorByDataNoFilter = async (tabla) => {
+  // Conectamos con la base de datos
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      `SELECT count(*) as contador FROM ${tabla}`,
+      [],
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 
 export default tarjetaQueries;
