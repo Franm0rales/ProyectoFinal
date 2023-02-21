@@ -4,6 +4,7 @@ import Home from "./views/Home/Home";
 import HomeAdmin from "./views/HomeAdmin/HomeAdmin";
 import { AuthContextProvider } from "./context/AuthContext/AuthContext";
 import "./App.css";
+import ScrollToTop from '../ScrollToTop';
 
 // import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AlumnosAdmin from "./views/AlumnosAdmin/AlumnosAdmin";
@@ -29,7 +30,9 @@ function App() {
   return (
     <AuthContextProvider>
       <BrowserRouter>
+      <ScrollToTop />
         <Routes>
+        
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="login" element={<LoginAcount />} />
