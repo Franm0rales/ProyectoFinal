@@ -13,6 +13,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import userRouter from "./routes/user_router.js";
 import testRouter from "./routes/test_router.js";
+import tarjetaRouter from "./routes/tarjeta_router.js";
 import fileUpload from "express-fileupload";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
@@ -39,6 +40,7 @@ app.use(cors());
 //Definir punto entrada rutas del proyecto
 app.use("/user", userRouter);
 app.use("/test", testRouter);
+app.use("/tarjeta", tarjetaRouter);
 
 // instanciamos la librería file upload y le añadimos propiedades.
 app.use(

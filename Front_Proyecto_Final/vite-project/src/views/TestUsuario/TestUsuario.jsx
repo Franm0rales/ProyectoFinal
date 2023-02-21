@@ -48,7 +48,7 @@ export default function TestUsuario() {
     resultadosTest();
 
     const response = await fetch(
-      `http://localhost:3000/user/aptitudes/${authorization.id}`,
+      `http://localhost:3000/test/aptitudes/${authorization.id}`,
       {
         method: "POST",
         headers: {

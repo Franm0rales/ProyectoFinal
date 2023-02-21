@@ -13,23 +13,23 @@ export default function Eventos() {
   const [contadorPersonas, setContadorPersonas] = useState(null);
   let jsoneventos;
 
-  useEffect(() => {
-    async function fetchData() {
-      const responseContador = await fetch(
-        `http://localhost:3000/user/contador/eventosUsuario`
-      );
-      const jsonContador = await responseContador.json();
-      setContadorPersonas(jsonContador);
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const responseContador = await fetch(
+  //       `http://localhost:3000/user/contador/eventosUsuario`
+  //     );
+  //     const jsonContador = await responseContador.json();
+  //     setContadorPersonas(jsonContador);
+  //   }
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
     if (!jsoneventos || jsoneventos !== eventos) {
       const fetchData = async () => {
         try {
           const responseEventos = await fetch(
-            `http://localhost:3000/user/getAllTarjetas/tarjetas`
+            `http://localhost:3000/tarjeta/getAllTarjetas/tarjetas`
           );
           jsoneventos = await responseEventos.json();
           setEventos(jsoneventos);
@@ -48,9 +48,8 @@ export default function Eventos() {
       const fetchRutaABuscar = async () => {
         try {
           const response = await fetch(
-            `http://localhost:3000/user/getTarjetaByNombre/${empresaABuscar}`
+            `http://localhost:3000/tarjeta/getTarjetaByNombre/${empresaABuscar}`
           );
-          console.log(data);
           const data = await response.json();
           setEventos(data);
           setError(null);
@@ -125,22 +124,20 @@ export default function Eventos() {
             </div>
 
             <div className="pb-2 text-center">
-              {contadorPersonas && (
-                <ContadorVisitas
-                  plazas={evento.plazas}
-                  setContadorPersonas={setContadorPersonas}
-                  contadorPersonas={evento.alumnos}
-                  idTarjeta={evento.id}
-                  setUnirse={setUnirse}
-                  unirse={unirse}
-                  data={data.idTarjeta}
-                  fechaInicio={evento.fechaInicio}
-                  avatar={data.avatar}
-                  nombre={data.nombre}
-                  apellidos={data.apellidos}
-                  correo={data.email}
-                />
-              )}
+              <ContadorVisitas
+                plazas={evento.plazas}
+                setContadorPersonas={setContadorPersonas}
+                contadorPersonas={evento.alumnos}
+                idTarjeta={evento.id}
+                setUnirse={setUnirse}
+                unirse={unirse}
+                data={data.idTarjeta}
+                fechaInicio={evento.fechaInicio}
+                avatar={data.avatar}
+                nombre={data.nombre}
+                apellidos={data.apellidos}
+                correo={data.email}
+              />
             </div>
           </div>
         ))}

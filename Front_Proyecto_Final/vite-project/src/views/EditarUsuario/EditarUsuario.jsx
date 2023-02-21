@@ -25,7 +25,7 @@ export default function EditarUsuario() {
   useEffect(() => {
     const fetchDataEvento = async () => {
       const responseCardEvento = await fetch(
-        `http://localhost:3000/user/getTarjetaUsuario/${authorization.id}`
+        `http://localhost:3000/tarjeta/getTarjetaUsuario/${authorization.id}`
       );
 
       const json = await responseCardEvento.json();
@@ -37,7 +37,7 @@ export default function EditarUsuario() {
   useEffect(() => {
     const fetchDataGrafica = async () => {
       const responseAptitudes = await fetch(
-        `http://localhost:3000/user/aptitudesUser/${authorization.id}`
+        `http://localhost:3000/test/aptitudesUser/${authorization.id}`
       );
 
       const jsonAptitudes = await responseAptitudes.json();

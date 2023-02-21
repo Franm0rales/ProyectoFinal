@@ -25,7 +25,7 @@ export default function ContadorVisitas({
 
   async function onSubmit(x) {
     try {
-      await fetch(`http://localhost:3000/user/unirseEvento`, {
+      await fetch(`http://localhost:3000/tarjeta/unirseEvento`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
@@ -48,18 +48,21 @@ export default function ContadorVisitas({
   async function enviarComentario() {
     try {
       setUnirse(!unirse);
-      const response = await fetch(`http://localhost:3000/user/addComentario`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          idUsuario: authorization.id,
-          idTarjeta: idTarjeta,
-          comentario: comentario,
-          rating: rating,
-        }),
-      });
+      const response = await fetch(
+        `http://localhost:3000/tarjeta/addComentario`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            idUsuario: authorization.id,
+            idTarjeta: idTarjeta,
+            comentario: comentario,
+            rating: rating,
+          }),
+        }
+      );
 
       if (response.status === 200) {
         Swal.fire({
