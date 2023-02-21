@@ -33,6 +33,17 @@ body {
     font-family: "Raleway", sans-serif;
   }
   
+                   
+    
+    img{
+      float: left;
+      height: 300px;
+      border-radius: 16px;
+    }
+    .avatar{
+      width: 50px;
+      height: 50px;
+    }
   /*--------------------------------------------------------------
   # Back to top button
   --------------------------------------------------------------*/
@@ -2054,12 +2065,7 @@ background:#5e96ff ;
   width: 400px;
  
  }
-img {
-  float: left;
-  height: 300px;
-  border-radius: 16px;
-  }
-  
+
  .right {
  
   width: 290px;

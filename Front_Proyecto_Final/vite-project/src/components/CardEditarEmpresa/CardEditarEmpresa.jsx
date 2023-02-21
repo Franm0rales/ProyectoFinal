@@ -119,7 +119,7 @@ export default function CardEditarEmpresa({ user, setUser }) {
           <div className="col-lg-6 d-flex justify-content-center">
             <div className="about-avatar">
               <img
-                className="rounded-circle color-sombra-avatar"
+                className="rounded-circle color-sombra-avatar slide"
                 src={`https://bootdey.com/img/Content/avatar/avatar${user.avatar}.png`}
                 title=""
                 alt=""
@@ -421,8 +421,8 @@ export default function CardEditarEmpresa({ user, setUser }) {
                             >
                               <img
                                 className="rounded-circle avatar"
-                                width="50"
-                                height="50"
+                                width="50 "
+                                height="50 "
                                 src="https://bootdey.com/img/Content/avatar/avatar2.png"
                               ></img>
                             </button>
@@ -431,7 +431,7 @@ export default function CardEditarEmpresa({ user, setUser }) {
                               onClick={() => matchAvatar(3)}
                             >
                               <img
-                                className="rounded-circle"
+                                className="  rounded-circle avatar1"
                                 width="50"
                                 height="50"
                                 src="https://bootdey.com/img/Content/avatar/avatar3.png"
@@ -442,7 +442,7 @@ export default function CardEditarEmpresa({ user, setUser }) {
                               onClick={() => matchAvatar(4)}
                             >
                               <img
-                                className="rounded-circle"
+                                className="rounded-circle avatar1"
                                 width="50"
                                 height="50"
                                 src="https://bootdey.com/img/Content/avatar/avatar4.png"
@@ -455,7 +455,7 @@ export default function CardEditarEmpresa({ user, setUser }) {
                               onClick={() => matchAvatar(5)}
                             >
                               <img
-                                className="rounded-circle"
+                                className="rounded-circle avatar1 "
                                 width="50"
                                 height="50"
                                 src="https://bootdey.com/img/Content/avatar/avatar5.png"
@@ -466,7 +466,7 @@ export default function CardEditarEmpresa({ user, setUser }) {
                               onClick={() => matchAvatar(8)}
                             >
                               <img
-                                className="rounded-circle"
+                                className="rounded-circle avatar1"
                                 width="50"
                                 height="50"
                                 src="https://bootdey.com/img/Content/avatar/avatar8.png"
@@ -477,7 +477,7 @@ export default function CardEditarEmpresa({ user, setUser }) {
                               onClick={() => matchAvatar(7)}
                             >
                               <img
-                                className="rounded-circle"
+                                className="rounded-circle avatar1"
                                 width="50"
                                 height="50"
                                 src="https://bootdey.com/img/Content/avatar/avatar7.png"
@@ -487,7 +487,7 @@ export default function CardEditarEmpresa({ user, setUser }) {
                         </div>
                       ) : (
                         <img
-                          className="rounded-circle"
+                          className="rounded-circle "
                           width="50"
                           height="50"
                           src={`https://bootdey.com/img/Content/avatar/avatar${user.avatar}.png`}
@@ -502,7 +502,6 @@ export default function CardEditarEmpresa({ user, setUser }) {
           </div>
         </div>
       </div>
-     
     </section>
   );
 }
