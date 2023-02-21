@@ -1,5 +1,6 @@
 import Contacto from "../../components/Contacto/Contacto";
 import { useEffect, useState } from "react";
+import CarouselOpiniones from "../../components/Carouselopiniones/CarouselOpiniones";
 
 export default function Nosotros() {
   const [alumnos, setAlumnos] = useState("");
@@ -67,6 +68,7 @@ export default function Nosotros() {
             <p>Cargando...</p>
           )}
         </div>
+        <CarouselOpiniones />
         <div>
           <h1 className="text-center">Contactanos</h1>
         </div>
