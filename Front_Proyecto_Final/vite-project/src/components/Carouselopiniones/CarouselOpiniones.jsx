@@ -3,7 +3,7 @@ export default function CarouselOpiniones() {
     <>
       <div class="container ">
         <h1 class="text-center mt-4">
-          Comentarios de clientes que ya han asistido a eventos
+          Comentarios de candidatos que ya han asistido a eventos
         </h1>
         <div className="d-flex justify-content-center">
           <div class="col-6">
