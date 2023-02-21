@@ -34,5 +34,7 @@ tarjetaRouter.get(
   "/getUsersByidTarjeta/:id",
   tarjetaController.getUsersByidTarjeta
 );
+//Traer numeros de eventos
+tarjetaRouter.get("/getNumberOfEventos", tarjetaController.getNumberOfEventos);
 
 export default tarjetaRouter;

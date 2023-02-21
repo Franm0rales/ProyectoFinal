@@ -297,4 +297,14 @@ controller.getUsersByidTarjeta = async (req, res) => {
     return res.status(200).send(users);
   } catch (e) {}
 };
+//Traer numero de eventos
+controller.getNumberOfEventos = async (req, res) => {
+  try {
+    let eventos = await dao.contadorByData(data.alumno, data.eliminado, 0);
+    [eventos] = eventos;
+    return res.status(200).send(eventos);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
 export default controller;
