@@ -653,7 +653,7 @@ body {
   }
   
   .about .about-content {
-    padding: 40px;
+    padding: 16px;
   }
   
   .about .icon-box+.icon-box {
@@ -2142,7 +2142,7 @@ img{
 
 .t-card {
 padding: 2rem ;
-background-color:#e3ecf9 ;
+background-color:#b6cffc ;
 border-radius: 1.25rem;
 color: black;
 
@@ -2153,5 +2153,5 @@ width: 0;
 height: 0;
 border-left: 1.5625rem solid transparent;
 border-right: 1.5625rem solid transparent;
-border-top: 1.25rem solid #e3ecf9;
+border-top: 1.25rem solid #b6cffc;
 }
