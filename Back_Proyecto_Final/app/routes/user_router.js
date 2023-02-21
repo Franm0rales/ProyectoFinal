@@ -19,51 +19,12 @@ userRouter.post("/loginempresa", validateLoginDto, userController.loginEmpresa);
 //Traer todos los usuarios
 userRouter.get("/allUsers", userController.allUsers);
 userRouter.get("/allEmpresa", userController.allEmpresa);
-// //Eliminar un usuario
-// userRouter.delete("/deleteUser", userController.deleteUser);
 //Traer un usuario
 userRouter.get("/:id", userController.getUser);
 userRouter.get("/empresa/:id", userController.getEmpresa);
 //Eliminar un usuario
 userRouter.patch("/deleteEmpresa/:id", userController.deleteEmpresa);
 userRouter.patch("/deleteUser/:id", userController.deleteUser);
-// //Crear tarjeta
-// userRouter.post("/addCard", userController.addCard);
-// //Para añadir aptitudes a la tabla
-// userRouter.post("/aptitudes/:id", userController.addAptitudes);
+userRouter.get("/getNumberOfUsers/all", userController.getNumberOfUsers);
 
-// //Añadir tarjetas
-// userRouter.post("/tarjeta/:id", userController.addTarjeta);
-// //Traer tarjetas por idEmpresa
-// userRouter.get("/getTarjeta/:id", userController.getTarjetaEmpresa);
-// //Traer tarjeta por alumno
-// userRouter.get("/getTarjetaUsuario/:id", userController.getTarjetaUsario);
-// //Traer tarjetas
-// userRouter.get("/getAllTarjetas/tarjetas", userController.getAllTarjetas);
-// //Buscar tarjetas por nombre
-// userRouter.get(
-//   "/getTarjetaByNombre/:nombre",
-//   userController.getTarjetaByNombre
-// );
-// //Unirse a evento
-// userRouter.patch("/unirseEvento", userController.unirseEvento);
-// //BORRAR???????
-// userRouter.get(
-//   "/contador/eventosUsuario",
-//   userController.contadorEventosUsuarios
-// );
-// //Añadir comentario
-// userRouter.post("/addComentario", userController.addComentario);
-// //Traer comentarios por idTarjeta
-// userRouter.get(
-//   "/getComentariosByIdTarjeta/:id",
-//   userController.getComentariosByIdTarjeta
-// );
-// //Traer comentarios por idUsuario
-// userRouter.get(
-//   "/getComentariosByIdUsuario/:id",
-//   userController.getComentariosByIdUsuario
-// );
-// //Traer usuarios por idTarjeta
-// userRouter.get("/getUsersByidTarjeta/:id", userController.getUsersByidTarjeta);
 export default userRouter;
