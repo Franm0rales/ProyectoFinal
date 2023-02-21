@@ -99,7 +99,16 @@ export default function EditarUsuario() {
       {cardEvento ? (
         <CardEventosPerfilUsuario cardEvento={cardEvento} />
       ) : (
-        <p>Cargando...</p>
+        <div className="d-flex justify-content-center">
+          <a
+            href="http://127.0.0.1:5173/eventos"
+            id="botones"
+            className="text-white rounded text-center"
+          >
+            {" "}
+            Apuntate a los eventos
+          </a>
+        </div>
       )}
 
       {aptitudes[0] === undefined ? (
