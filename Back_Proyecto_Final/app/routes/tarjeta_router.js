@@ -36,5 +36,7 @@ tarjetaRouter.get(
 );
 //Traer numeros de eventos
 tarjetaRouter.get("/getNumberOfEventos", tarjetaController.getNumberOfEventos);
+//Traer todos los comentarios
+tarjetaRouter.get("/getAllComentarios", tarjetaController.getAllComentarios);
 
 export default tarjetaRouter;

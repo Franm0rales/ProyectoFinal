@@ -2,12 +2,12 @@ import db from "../mysql.js";
 
 const tarjetaQueries = {};
 //Traer todas las tarjetas
-tarjetaQueries.getAllTarjetas = async () => {
+tarjetaQueries.getAllData = async (tabla) => {
   // Conectamos con la base de datos
   let conn = null;
   try {
     conn = await db.createConnection();
-    return await db.query(`SELECT * FROM tarjeta`, [], "select", conn);
+    return await db.query(`SELECT * FROM ${tabla}`, [], "select", conn);
   } catch (e) {
     throw new Error(e);
   } finally {
