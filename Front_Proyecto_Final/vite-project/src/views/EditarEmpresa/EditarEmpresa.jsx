@@ -43,7 +43,7 @@ export default function EditarEmpresa() {
     <>
       <div className="container">
         <div className="bubbles">
-          <h1 className="pt-5  text-center"></h1>
+          <h1 className="pt-5  text-center"> {users.nombre}</h1>
         </div>
 
         {users ? <CardIdEmpresa users={users} /> : <p>Cargando...</p>}

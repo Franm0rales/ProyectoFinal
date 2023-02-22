@@ -253,7 +253,6 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
       data.idTarjeta,
       id
     );
-    console.log(comentarios, "comentarios");
     let tarjeta = await dao.getUserByData(data.tarjeta, data.id, id);
     if (comentarios.length <= 0) {
       return res.status(200).send([]);
@@ -266,6 +265,7 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
         comentarios[i].IdUsuario
       );
       [user] = user;
+
       comentariosObj[i] = {
         comentario: comentarios[i].comentario,
         idUsuario: comentarios[i].IdUsuario,
@@ -278,6 +278,7 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
         telefono: user.telefono,
         idComentario: comentarios[i].id,
       };
+      console.log(comentariosObj);
     }
     return res.status(200).send(comentariosObj);
   } catch (e) {
