@@ -1614,46 +1614,6 @@ border-top: 1.25rem solid #b6cffc;
   transition: background-color .2s linear;
 }
 
-.media {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: start;
-  align-items: flex-start;
-}
-
-.tarjeta-body {
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  padding: 1.25rem;
-}
-
-.media .avatar {
-  flex-shrink: 0;
-}
-
-.no-radius {
-  border-radius: 0 !important;
-}
-
-.avatar-xl {
-  width: 64px;
-  height: 64px;
-  line-height: 64px;
-  font-size: 1.25rem;
-}
-
-.avatar {
-  position: relative;
-  display: inline-block;
-  width: 36px;
-  height: 36px;
-  line-height: 36px;
-  text-align: center;
-  border-radius: 100%;
-  background-color: #f5f6f7;
-  color: #8b95a5;
-  text-transform: uppercase;
-}
 
 
 
@@ -1827,7 +1787,7 @@ small, time, .small {
   font-size: 22px;
 }
 .text-theme-color {
-  color: #192f59;
+  color: #5e96ff;
 }
 .margin-10px-bottom {
   margin-bottom: 10px;
@@ -1835,3 +1795,97 @@ small, time, .small {
 .margin-10px-right {
   margin-right: 10px;
 }
+
+
+
+.event-list-content .crical {
+  position: absolute;
+  background: #5e96ff;
+  right: -66px;
+  bottom: -73px;
+  font-size: 30px;
+  color: #fff;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  padding: 50px;
+}
+.fix {
+  overflow: hidden;
+}
+
+
+
+.event .nav-content {
+  float: right;
+  width: 70%;
+}
+
+.event .btn {
+  background: #5e96ff;
+}
+
+
+
+
+
+
+
+.event-list-content {
+  margin-left: 50px;
+  margin-right: 20px;
+  padding: 50px;
+  position: relative;
+  border: 10px solid #edf5ff;
+  transition: all 0.3s ease 0s;
+  border-radius: 32px;
+}
+
+.event-list-content:hover {
+  border: 10px solid #5e96ff;
+}
+
+.event-list-content .crical {
+  position: absolute;
+  background: #5e96ff;
+  right: -66px;
+  bottom: -73px;
+  font-size: 30px;
+  color: #fff;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  padding: 50px;
+}
+
+.event-list-content h2 {
+  margin-bottom: 30px;
+}
+
+.event-list-content .btn {
+  background: none;
+  border: 2px solid #edf5ff;
+  color: #5e96ff;
+  font-weight: bold;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.event-list-content .btn:hover {
+  background: #5e96ff;
+  border: 2px solid #5e96ff;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  margin-right: 10px;
+  box-shadow: 0px 10px 19px 0px #5e96ff !important;
+}
+
+.event-list-content ul li {
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  color: #5e96ff;
+}
+
