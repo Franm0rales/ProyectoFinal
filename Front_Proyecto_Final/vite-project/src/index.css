@@ -1836,13 +1836,13 @@ small, time, .small {
   margin-right: 20px;
   padding: 50px;
   position: relative;
-  border: 10px solid #edf5ff;
+  border: 2px solid #edf5ff;
   transition: all 0.3s ease 0s;
-  border-radius: 32px;
+  border-radius: 16px;
 }
 
 .event-list-content:hover {
-  border: 10px solid #5e96ff;
+  border: 5px solid #5e96ff;
 }
 
 .event-list-content .crical {
