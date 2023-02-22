@@ -38,12 +38,28 @@ export default function EditarEmpresa() {
     };
     fetchDataComentarios();
   }, [idTarjeta]);
+  // Seleccionar el contenedor del loader
+  const loaderContainer = document.getElementById("loader-container");
+
+  // Esperar 2 segundos y agregar la clase "loaded"
+  setTimeout(function () {
+    loaderContainer.classList.add("loaded");
+  }, 2000);
 
   return (
     <>
       <div className="container">
         <div className="bubbles">
-          <h1 className="pt-5  text-center"> {users.nombre}</h1>
+          {users ? (
+            <h1 className="pt-3 pb-2 texto-contacto text-center">
+              {" "}
+              {users.nombre}
+            </h1>
+          ) : (
+            <div id="loader-container">
+              <div class="loader"></div>
+            </div>
+          )}
         </div>
 
         {users ? <CardIdEmpresa users={users} /> : <p>Cargando...</p>}
@@ -63,7 +79,9 @@ export default function EditarEmpresa() {
             />
           ))
         ) : (
-          <p>Cargando...</p>
+          <div id="loader-container">
+            <div class="loader"></div>
+          </div>
         )}
       </div>
     </>
