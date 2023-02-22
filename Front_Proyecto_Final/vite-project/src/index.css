@@ -40,6 +40,12 @@ body {
       width: 50px;
       height: 50px;
     }
+    @media only screen and (max-width: 600px) {
+      .avatar {
+        width: 30px;
+        height: 30px;
+      }
+    }
   /*--------------------------------------------------------------
   # Back to top button
   --------------------------------------------------------------*/
@@ -124,7 +130,30 @@ body {
   #topbar .social-links a:hover {
     color: #5e96ff;
   }
-  
+  @media only screen and (max-width: 600px) {
+  #topbar {
+    height: auto;
+    padding: 10px;
+  }
+
+  #topbar .contact-info {
+    margin-bottom: 10px;
+  }
+
+  #topbar .contact-info a {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  #topbar .social-links {
+    text-align: center;
+  }
+
+  #topbar .social-links a {
+    display: inline-block;
+    margin: 0 5px;
+  }
+}
   /*--------------------------------------------------------------
   # Header
   --------------------------------------------------------------*/
