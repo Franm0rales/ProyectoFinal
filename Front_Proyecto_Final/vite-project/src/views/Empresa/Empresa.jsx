@@ -18,11 +18,14 @@ export default function Empresa() {
 
   return (
     <>
+    
       {/* <Resultados resultados={resultados} /> */}
       <EmpresasParaVista />
 
+
       {/* <Webcam />
       <CrearEvento /> */}
+      
     </>
   );
 }

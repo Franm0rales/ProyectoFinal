@@ -1,5 +1,6 @@
 export default function EmpresasParaVista() {
   return (
+    
     <div class="container mt-5">
 
     <div class="row align-items-center event-block no-gutters margin-40px-bottom">
@@ -71,5 +72,6 @@ export default function EmpresasParaVista() {
         </div>
     </div>
 </div>
+
   );
 }
