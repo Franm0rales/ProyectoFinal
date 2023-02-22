@@ -15,9 +15,11 @@ dao.updateUser = async (tabla, id, userData, columna) =>
 // Traer todos los usuarios
 dao.allUsers = async (tabla) => await userQueries.allUsers(tabla);
 //Traer paginas preguntas test
-dao.allTests = async (pagination) => await testQueries.allTests(pagination);
+dao.allTests = async (tabla, pagination) =>
+  await testQueries.allTests(tabla, pagination);
 // Traer todas las tarjetas de eventos
-dao.getAllData = async (tabla) => await tarjetaQueries.getAllData(tabla);
+dao.getAllData = async (tabla, columna) =>
+  await tarjetaQueries.getAllData(tabla, columna);
 //Filtrar tarjetas por datos
 dao.getTarjetaByData = async (tabla, columna, data) =>
   await tarjetaQueries.getTarjetaByData(tabla, columna, data);
@@ -30,5 +32,7 @@ dao.sumByData = async (tabla, columna, columnaData, data) =>
 //Suma de datos en una columna sin filtrar
 dao.contadorByDataNoFilter = async (tabla) =>
   await tarjetaQueries.contadorByDataNoFilter(tabla);
+//Join
+dao.getJoin = async () => await tarjetaQueries.getJoin();
 
 export default dao;
