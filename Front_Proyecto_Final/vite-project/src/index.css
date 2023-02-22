@@ -40,12 +40,6 @@ body {
       width: 50px;
       height: 50px;
     }
-    @media only screen and (max-width: 600px) {
-      .avatar {
-        width: 30px;
-        height: 30px;
-      }
-    }
   /*--------------------------------------------------------------
   # Back to top button
   --------------------------------------------------------------*/
@@ -130,30 +124,7 @@ body {
   #topbar .social-links a:hover {
     color: #5e96ff;
   }
-  @media only screen and (max-width: 600px) {
-  #topbar {
-    height: auto;
-    padding: 10px;
-  }
-
-  #topbar .contact-info {
-    margin-bottom: 10px;
-  }
-
-  #topbar .contact-info a {
-    display: block;
-    margin-bottom: 5px;
-  }
-
-  #topbar .social-links {
-    text-align: center;
-  }
-
-  #topbar .social-links a {
-    display: inline-block;
-    margin: 0 5px;
-  }
-}
+  
   /*--------------------------------------------------------------
   # Header
   --------------------------------------------------------------*/
@@ -2243,38 +2214,4 @@ border-top: 1.25rem solid #b6cffc;
 
 .event-card:hover .card-overlay {
   opacity: 1;
-}
-#loader-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #f2f2f2;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.3s, transform 0.3s;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-#loader-container.loaded {
-  opacity: 0;
-  transform: translateY(-100%);
-}
-
-.loader {
-  border: 16px solid #f3f3f3;
-  border-top: 16px solid #3498db;
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
