@@ -198,7 +198,7 @@ controller.addAdmin = async (req, res) => {
 //Controlador para modificar datos de un alumno por el id
 controller.updateUser = async (req, res) => {
   const id = req.params.id;
-  const user = await dao.getUserByData(data.usuario, data.id, id);
+  let user = await dao.getUserByData(data.usuario, data.id, id);
   [user] = user;
   // Token hardcodeado para comprobar que funciona
   // const authorization =
@@ -220,7 +220,7 @@ controller.updateUser = async (req, res) => {
 
     // Actualizamos el usuario
     await dao.updateUser(tabla, id, req.body, data.idUsuario);
-    const userUp = await dao.getUserByData(tabla, data.idUsuario, id);
+    let userUp = await dao.getUserByData(tabla, data.idUsuario, id);
     [userUp] = userUp;
 
     // Devolvemos la respuesta
