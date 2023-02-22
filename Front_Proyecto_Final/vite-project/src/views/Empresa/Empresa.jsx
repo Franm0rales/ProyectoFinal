@@ -21,8 +21,8 @@ export default function Empresa() {
       {/* <Resultados resultados={resultados} /> */}
       <EmpresasParaVista />
 
-      <Webcam />
-      <CrearEvento />
+      {/* <Webcam />
+      <CrearEvento /> */}
     </>
   );
 }
