@@ -90,7 +90,7 @@ export default function ComentariosPerfilEmpresa({
       <section class={`section-primary t-bordered ${display}`}>
         <div class="row testimonial-three testimonial-three--col-three ">
           {comentarios.length > 0 && evento.id === comentarios[0].idTarjeta ? (
-            <ComentariosPerfil comentarios={comentarios} />
+            <ComentariosPerfil idEvento={evento.id} comentarios={comentarios} />
           ) : (
             <p></p>
           )}

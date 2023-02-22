@@ -1,5 +1,6 @@
 import dao from "../services/dao.js";
 import md5 from "md5";
+import utils from "../utils/utils.js";
 import { currentDir } from "../index.js";
 import { role, data, tables } from "../const/const.js";
 import { transporter } from "../config/mailer.js";
@@ -155,13 +156,11 @@ controller.unirseEvento = async (req, res) => {
     let user = await dao.getUserByData(tables[2], data.idUsuario, idUsuario);
     [user] = user;
     const oldIdTarjeta = user.idTarjeta;
-    console.log(oldIdTarjeta, "oldIdTarjeta");
     // if (oldIdTarjeta !== idEvento)
     //   return res.status(409).send("Usuario ya registrado en un evento");
     const eventoObj = {
       idTarjeta: idEvento,
     };
-    console.log(eventoObj, "eventoObj");
     await dao.updateUser(data.alumno, idUsuario, eventoObj, data.idUsuario);
 
     let contador = await dao.contadorByData(
@@ -173,7 +172,6 @@ controller.unirseEvento = async (req, res) => {
     const contadorObj = {
       alumnos: contador.contador,
     };
-    console.log(contadorObj, "contadorObj");
     await dao.updateUser(data.tarjeta, idEvento, contadorObj, data.id);
     let contadorAntiguo = await dao.contadorByData(
       data.alumno,
@@ -184,7 +182,6 @@ controller.unirseEvento = async (req, res) => {
     const contadorAntiguoObj = {
       alumnos: contadorAntiguo.contador,
     };
-    console.log(contadorAntiguoObj, "contadorAntiguoObj");
     await dao.updateUser(
       data.tarjeta,
       oldIdTarjeta,
@@ -199,20 +196,22 @@ controller.unirseEvento = async (req, res) => {
 //Añadir comentario a evento
 controller.addComentario = async (req, res) => {
   const { idUsuario, idTarjeta, comentario, rating, id } = req.body;
+  console.log(req.body);
   try {
     const eventoObj = {
       idTarjeta: 0,
     };
     await dao.updateUser(data.alumno, idUsuario, eventoObj, data.idUsuario);
-    const comentarioObj = {
+    let comentarioObj = {
       idUsuario: idUsuario,
       idTarjeta: idTarjeta,
       comentario: comentario.comentario,
       rating: rating,
-      idComentario: id,
+      idComentarios: id,
     };
-    const comentarioUpObj = await utils.removeUndefinedKeys(comentarioObj);
-    await dao.addUser(comentarioUpObj, data.comentarios);
+    comentarioObj = await utils.removeUndefinedKeys(comentarioObj);
+    console.log(comentarioObj);
+    await dao.addUser(comentarioObj, data.comentarios);
     let contador = await dao.contadorByData(
       data.comentarios,
       data.idTarjeta,
@@ -256,7 +255,6 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
     );
     console.log(comentarios, "comentarios");
     let tarjeta = await dao.getUserByData(data.tarjeta, data.id, id);
-    console.log(tarjeta);
     if (comentarios.length <= 0) {
       return res.status(200).send([]);
     }
@@ -281,7 +279,6 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
         idComentario: comentarios[i].id,
       };
     }
-    console.log(comentariosObj);
     return res.status(200).send(comentariosObj);
   } catch (e) {
     console.log(e.message);

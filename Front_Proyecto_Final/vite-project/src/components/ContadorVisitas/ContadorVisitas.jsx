@@ -47,7 +47,6 @@ export default function ContadorVisitas({
 
   async function enviarComentario() {
     try {
-      setUnirse(!unirse);
       const response = await fetch(
         `http://localhost:3000/tarjeta/addComentario`,
         {
@@ -63,7 +62,7 @@ export default function ContadorVisitas({
           }),
         }
       );
-
+      setUnirse(!unirse);
       if (response.status === 200) {
         Swal.fire({
           position: "center",

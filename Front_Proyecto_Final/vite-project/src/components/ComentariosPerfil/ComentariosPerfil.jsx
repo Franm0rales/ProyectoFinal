@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useAuthContext } from "../../context/AuthContext/AuthContext";
+import Swal from "sweetalert2";
 
-export default function ComentariosPerfil({ comentarios }) {
+export default function ComentariosPerfil({ comentarios, idEvento }) {
   const [id, setId] = useState(null);
+  const { authorization } = useAuthContext();
+  const [comentarioEmpresa, setComentarioEmpresa] = useState("");
   function renderStars(rating) {
     const stars = [];
-
     for (let i = 0; i < 5; i++) {
       if (i < rating) {
         stars.push(<i className="bi bi-star-fill text-warning" />);
@@ -13,6 +16,43 @@ export default function ComentariosPerfil({ comentarios }) {
       }
     }
     return stars;
+  }
+  function handleInput(e) {
+    let cambio = { ...comentarioEmpresa, [e.target.name]: e.target.value };
+    setComentarioEmpresa(cambio);
+  }
+
+  async function fecthComentario(comentario, idComentario) {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/tarjeta/addComentario`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            idUsuario: authorization.id,
+            idTarjeta: idEvento,
+            comentario: comentario,
+            id: idComentario,
+          }),
+        }
+      );
+
+      if (response.status === 200) {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Comentario enviado correctamente ",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+      setId(null);
+    } catch (e) {
+      console.log(e);
+    }
   }
   function toggleDisplay(idUser) {
     setId(idUser);
@@ -69,13 +109,19 @@ export default function ComentariosPerfil({ comentarios }) {
       {comentario.idComentario == id && (
         <>
           <textarea
-            name="descripcion"
-            //onChange={handleInput}
+            name="comentario"
+            onChange={(e) => handleInput(e)}
             className="form-control d-flex flex-fill"
             placeholder={`Escribe tu respuesta a ${comentario.nombre}`}
           ></textarea>
           <div className="d-flex justify-content-center mt-2">
-            <button id="botones" className="rounded">
+            <button
+              id="botones"
+              className="rounded"
+              onClick={() =>
+                fecthComentario(comentarioEmpresa, comentario.idComentario)
+              }
+            >
               Enviar
             </button>
           </div>
