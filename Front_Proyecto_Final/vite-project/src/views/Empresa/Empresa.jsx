@@ -1,6 +1,6 @@
 import CrearEvento from "../../components/CrearEvento/CrearEvento";
-import EventosEmpresas from "../../components/EventosEmpresas/EventosEmpresas";
-import Resultados from "../../components/grafica/Grafica";
+import EmpresasParaVista from "../../components/EmpresasParaVista/EmpresasParaVista";
+
 import Webcam from "../../components/Webcam/Webcam";
 
 export default function Empresa() {
@@ -19,7 +19,7 @@ export default function Empresa() {
   return (
     <>
       {/* <Resultados resultados={resultados} /> */}
-      <EventosEmpresas />
+      <EmpresasParaVista />
 
       <Webcam />
       <CrearEvento />
