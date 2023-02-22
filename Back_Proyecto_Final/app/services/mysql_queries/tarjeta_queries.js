@@ -2,12 +2,17 @@ import db from "../mysql.js";
 
 const tarjetaQueries = {};
 //Traer todas las tarjetas
-tarjetaQueries.getAllData = async (tabla) => {
+tarjetaQueries.getAllData = async (tabla, columna) => {
   // Conectamos con la base de datos
   let conn = null;
   try {
     conn = await db.createConnection();
-    return await db.query(`SELECT * FROM ${tabla}`, [], "select", conn);
+    return await db.query(
+      `SELECT * FROM ${tabla} order by ${columna}`,
+      [],
+      "select",
+      conn
+    );
   } catch (e) {
     throw new Error(e);
   } finally {
@@ -75,6 +80,24 @@ tarjetaQueries.contadorByDataNoFilter = async (tabla) => {
     conn = await db.createConnection();
     return await db.query(
       `SELECT count(*) as contador FROM ${tabla}`,
+      [],
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
+//GetJoin
+tarjetaQueries.getJoin = async () => {
+  // Conectamos con la base de datos
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      `SELECT nombre, apellidos, titulo, rating, avatar, comentario, comentarios.id FROM proyecto.comentarios join proyecto.alumno on comentarios.IdUsuario=alumno.idUsuario`,
       [],
       "select",
       conn

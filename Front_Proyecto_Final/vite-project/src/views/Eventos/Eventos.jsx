@@ -11,19 +11,10 @@ export default function Eventos() {
   const [error, setError] = useState("");
   const [data, setData] = useState({});
   const [contadorPersonas, setContadorPersonas] = useState(null);
+  const [paginationFin, setPaginationFin] = useState(2);
+  const [paginationInicio, setPaginationInicio] = useState(0);
   let jsoneventos;
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const responseContador = await fetch(
-  //       `http://localhost:3000/user/contador/eventosUsuario`
-  //     );
-  //     const jsonContador = await responseContador.json();
-  //     setContadorPersonas(jsonContador);
-  //   }
-  //   fetchData();
-  // }, []);
-
+  const pag = 2;
   useEffect(() => {
     if (!jsoneventos || jsoneventos !== eventos) {
       const fetchData = async () => {
@@ -67,6 +58,10 @@ export default function Eventos() {
       }
     }
   }, [unirse, empresaABuscar]);
+  function paginationFunct(pagin) {
+    setPaginationFin(pagin + pag);
+    setPaginationInicio(pagin);
+  }
 
   return (
     <>
@@ -78,68 +73,71 @@ export default function Eventos() {
           />
         </div>
         <div className="container col-10 "></div>
-        {eventos.map((evento) => (
-          <div className="container meetup-card mb-5 col-6" key={evento.id}>
-            <div className=" mb-3 ">
-              <img
-                src="https://d1.awsstatic.com/aws-cloud-financial-managment/600x400_Verisk_Logo_Transparent.9b8b98cb92c3642aecfa51f38351d258ef0590e0.png"
-                className="card-img-top"
-                alt="Meetup event image"
-              />
-              <div className="card-body text-start">
-                <h2 className="card-title fs-1">{evento.nombre}</h2>
-                <p className="card-text ">
-                  <i class="bi bi-calendar3 text-primary fs-3"></i> Fecha inico:{" "}
-                  {evento.fechaInicio.split("T")[0].split("-")[2]}-
-                  {evento.fechaInicio.split("T")[0].split("-")[1]}-
-                  {evento.fechaInicio.split("T")[0].split("-")[0]}
-                </p>
-                <p className="card-text ">
-                  <i class="bi bi-calendar3 text-primary fs-3"></i> Fecha fin:{" "}
-                  {evento.fechaFin.split("T")[0].split("-")[2]}-
-                  {evento.fechaFin.split("T")[0].split("-")[1]}-
-                  {evento.fechaFin.split("T")[0].split("-")[0]}
-                </p>
-                <p className="card-text">
-                  <i class="bi bi-clock text-primary fs-3 "></i> Hora:{" "}
-                  {evento.horaInicio}
-                </p>
-                <p className="card-text">
-                  <i class="bi bi-buildings text-primary fs-3"></i> Ciudad:{" "}
-                  {evento.ciudad}
-                </p>
-                <p className="card-text">
-                  <i className="bi bi-geo-alt text-primary fs-3"></i> Dirección:{" "}
-                  {evento.direccion}
-                </p>
-                <p className="card-text ">
-                  <b> Descripción:</b> {evento.descripcion}
-                </p>
+        {eventos.slice(0, 2).map((evento, index) => (
+          <>
+            <div className="container meetup-card mb-5 col-6" key={evento.id}>
+              <div className=" mb-3 ">
+                <img
+                  src="https://d1.awsstatic.com/aws-cloud-financial-managment/600x400_Verisk_Logo_Transparent.9b8b98cb92c3642aecfa51f38351d258ef0590e0.png"
+                  className="card-img-top"
+                  alt="Meetup event image"
+                />
+                <div className="card-body text-start ">
+                  <h2 className="card-title fs-1">{evento.nombre}</h2>
+                  <p className="card-text ">
+                    <i class="bi bi-calendar3 text-primary fs-3"></i> Fecha
+                    inico: {evento.fechaInicio.split("T")[0].split("-")[2]}-
+                    {evento.fechaInicio.split("T")[0].split("-")[1]}-
+                    {evento.fechaInicio.split("T")[0].split("-")[0]}
+                  </p>
+                  <p className="card-text ">
+                    <i class="bi bi-calendar3 text-primary fs-3"></i> Fecha fin:{" "}
+                    {evento.fechaFin.split("T")[0].split("-")[2]}-
+                    {evento.fechaFin.split("T")[0].split("-")[1]}-
+                    {evento.fechaFin.split("T")[0].split("-")[0]}
+                  </p>
+                  <p className="card-text">
+                    <i class="bi bi-clock text-primary fs-3 "></i> Hora:{" "}
+                    {evento.horaInicio}
+                  </p>
+                  <p className="card-text">
+                    <i class="bi bi-buildings text-primary fs-3"></i> Ciudad:{" "}
+                    {evento.ciudad}
+                  </p>
+                  <p className="card-text">
+                    <i className="bi bi-geo-alt text-primary fs-3"></i>{" "}
+                    Dirección: {evento.direccion}
+                  </p>
+                  <p className="card-text ">
+                    <b> Descripción:</b> {evento.descripcion}
+                  </p>
+                </div>
+                {/* <div className="card-footer">
+                  <a href="#" id="botones" className="btn text-white col-4 ">
+                    Ver más
+                  </a>
+                </div> */}
               </div>
-              {/* <div className="card-footer">
-                <a href="#" id="botones" className="btn text-white col-4 ">
-                  Ver más
-                </a>
-              </div> */}
-            </div>
 
-            <div className="pb-2 text-center">
-              <ContadorVisitas
-                plazas={evento.plazas}
-                setContadorPersonas={setContadorPersonas}
-                contadorPersonas={evento.alumnos}
-                idTarjeta={evento.id}
-                setUnirse={setUnirse}
-                unirse={unirse}
-                data={data.idTarjeta}
-                fechaInicio={evento.fechaInicio}
-                avatar={data.avatar}
-                nombre={data.nombre}
-                apellidos={data.apellidos}
-                correo={data.email}
-              />
+              <div className="pb-2 text-center">
+                <ContadorVisitas
+                  plazas={evento.plazas}
+                  setContadorPersonas={setContadorPersonas}
+                  contadorPersonas={evento.alumnos}
+                  idTarjeta={evento.id}
+                  setUnirse={setUnirse}
+                  unirse={unirse}
+                  data={data.idTarjeta}
+                  fechaInicio={evento.fechaInicio}
+                  avatar={data.avatar}
+                  nombre={data.nombre}
+                  apellidos={data.apellidos}
+                  correo={data.email}
+                />
+              </div>
             </div>
-          </div>
+            <button onClick={paginationFunct(paginationFin)}></button>
+          </>
         ))}
       </div>
     </>

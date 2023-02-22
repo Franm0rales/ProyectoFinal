@@ -5,6 +5,7 @@ import CarouselOpiniones from "../../components/Carouselopiniones/CarouselOpinio
 export default function Nosotros() {
   const [alumnos, setAlumnos] = useState("");
   const [eventos, setEventos] = useState("");
+  const [comentarios, setComentarios] = useState("");
   useEffect(() => {
     async function fetchAlumnos() {
       const response = await fetch(
@@ -21,8 +22,17 @@ export default function Nosotros() {
       const json = await response.json();
       setEventos(json);
     }
+
+    async function fetchComentarios() {
+      const response = await fetch(
+        `http://localhost:3000/tarjeta/getAllComentarios`
+      );
+      const json = await response.json();
+      setComentarios(json);
+    }
     fetchEventos();
     fetchAlumnos();
+    fetchComentarios();
   }, []);
 
   return (
@@ -67,7 +77,12 @@ export default function Nosotros() {
             <p>Cargando...</p>
           )}
         </div>
-        <CarouselOpiniones />
+        {comentarios ? (
+          <CarouselOpiniones comentarios={comentarios} />
+        ) : (
+          <p>Cargando...</p>
+        )}
+
         <div>
           <h1 className="text-center">Contactanos</h1>
         </div>

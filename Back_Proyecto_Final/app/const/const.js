@@ -16,6 +16,7 @@ export const data = {
   test: "test",
   nombre: "nombre",
   comentariosAlumnos: "comentariosAlumnos",
+  fechaInicio: "fechaInicio",
   rating: "rating",
   comentarios: "comentarios",
   respuestastest: "respuestastest",
