@@ -198,7 +198,7 @@ controller.unirseEvento = async (req, res) => {
 };
 //Añadir comentario a evento
 controller.addComentario = async (req, res) => {
-  const { idUsuario, idTarjeta, comentario, rating } = req.body;
+  const { idUsuario, idTarjeta, comentario, rating, id } = req.body;
   try {
     const eventoObj = {
       idTarjeta: 0,
@@ -209,8 +209,10 @@ controller.addComentario = async (req, res) => {
       idTarjeta: idTarjeta,
       comentario: comentario.comentario,
       rating: rating,
+      idComentario: id,
     };
-    await dao.addUser(comentarioObj, data.comentarios);
+    const comentarioUpObj = await utils.removeUndefinedKeys(comentarioObj);
+    await dao.addUser(comentarioUpObj, data.comentarios);
     let contador = await dao.contadorByData(
       data.comentarios,
       data.idTarjeta,
