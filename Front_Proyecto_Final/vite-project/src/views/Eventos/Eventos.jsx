@@ -11,10 +11,15 @@ export default function Eventos() {
   const [error, setError] = useState("");
   const [data, setData] = useState({});
   const [contadorPersonas, setContadorPersonas] = useState(null);
-  const [paginationFin, setPaginationFin] = useState(2);
-  const [paginationInicio, setPaginationInicio] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const EVENTS_PER_PAGE = 5;
+  const eventsToShow = eventos.slice(
+    (currentPage - 1) * EVENTS_PER_PAGE,
+    currentPage * EVENTS_PER_PAGE
+  );
+
   let jsoneventos;
-  const pag = 2;
+
   useEffect(() => {
     if (!jsoneventos || jsoneventos !== eventos) {
       const fetchData = async () => {
@@ -58,10 +63,6 @@ export default function Eventos() {
       }
     }
   }, [unirse, empresaABuscar]);
-  function paginationFunct(pagin) {
-    setPaginationFin(pagin + pag);
-    setPaginationInicio(pagin);
-  }
 
   return (
     <>
@@ -73,7 +74,7 @@ export default function Eventos() {
           />
         </div>
         <div className="container col-10 "></div>
-        {eventos.slice(0, 2).map((evento, index) => (
+        {eventsToShow.map((evento, index) => (
           <>
             <div className="container meetup-card mb-5 col-6" key={evento.id}>
               <div className=" mb-3 ">
@@ -136,9 +137,24 @@ export default function Eventos() {
                 />
               </div>
             </div>
-            <button onClick={paginationFunct(paginationFin)}></button>
           </>
         ))}
+        <div className="d-flex justify-content-center">
+          <button
+            className="btn btn-outline-primary"
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            Anterior
+          </button>
+          <button
+            className="btn btn-outline-primary"
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentPage * EVENTS_PER_PAGE >= eventos.length}
+          >
+            Siguiente
+          </button>
+        </div>
       </div>
     </>
   );

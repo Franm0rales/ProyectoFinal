@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 export default function ComentariosPerfil({ comentarios }) {
+  const [id, setId] = useState(null);
   function renderStars(rating) {
     const stars = [];
 
@@ -11,10 +14,14 @@ export default function ComentariosPerfil({ comentarios }) {
     }
     return stars;
   }
+  function toggleDisplay(idUser) {
+    setId(idUser);
+  }
+
   return comentarios.map((comentario) => (
     <div
       key={comentario.id}
-      className="col-md-4 testimonial-three-col overflow-auto "
+      className="col-md-4 testimonial-three-col overflow-auto position-relative"
     >
       <div className="testimonial-inner">
         <div className="testimonial-image" itemprop="image">
@@ -32,9 +39,8 @@ export default function ComentariosPerfil({ comentarios }) {
           <div className="testimonial-meta">
             <span className="testimonial-job-title" itemprop="jobTitle">
               {comentario.nombre} {comentario.apellidos}
-            </span>{" "}
+            </span>
           </div>
-
           <div>
             <small className="text-start fst-italic" itemprop="jobTitle">
               {comentario.email}
@@ -52,6 +58,29 @@ export default function ComentariosPerfil({ comentarios }) {
           </div>
         </div>
       </div>
+      <div className="d-flex justify-content-end">
+        <button
+          className="border-0 bg-transparent "
+          onClick={() => toggleDisplay(comentario.idComentario)}
+        >
+          <i class="bi bi-send-plus text-primary fs-3 text-end"></i>
+        </button>
+      </div>
+      {comentario.idComentario == id && (
+        <>
+          <textarea
+            name="descripcion"
+            //onChange={handleInput}
+            className="form-control d-flex flex-fill"
+            placeholder={`Escribe tu respuesta a ${comentario.nombre}`}
+          ></textarea>
+          <div className="d-flex justify-content-center mt-2">
+            <button id="botones" className="rounded">
+              Enviar
+            </button>
+          </div>
+        </>
+      )}
     </div>
   ));
 }

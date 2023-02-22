@@ -278,6 +278,7 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
         email: user.email,
         avatar: user.avatar,
         telefono: user.telefono,
+        idComentario: comentarios[i].id,
       };
     }
     console.log(comentariosObj);
