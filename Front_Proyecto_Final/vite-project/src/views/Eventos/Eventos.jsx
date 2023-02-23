@@ -76,51 +76,44 @@ export default function Eventos() {
         <div className="container col-10 "></div>
         {eventsToShow.map((evento, index) => (
           <>
-            <div className="container meetup-card mb-5 col-6" key={evento.id}>
-              <div className=" mb-3 ">
-                <img
-                  src="https://d1.awsstatic.com/aws-cloud-financial-managment/600x400_Verisk_Logo_Transparent.9b8b98cb92c3642aecfa51f38351d258ef0590e0.png"
-                  className="card-img-top"
-                  alt="Meetup event image"
-                />
+            <div className="container meetup-card col-6" key={evento.id}>
+              <div className=" mb-3 d-flex">
                 <div className="card-body text-start ">
-                  <h2 className="card-title fs-1">{evento.nombre}</h2>
-                  <p className="card-text ">
-                    <i class="bi bi-calendar3 text-primary fs-3"></i> Fecha
-                    inico: {evento.fechaInicio.split("T")[0].split("-")[2]}-
-                    {evento.fechaInicio.split("T")[0].split("-")[1]}-
-                    {evento.fechaInicio.split("T")[0].split("-")[0]}
+                  <p className="card-text mb-4 ">
+                    <i class="bi bi-buildings text-primary fs-5"></i>{" "}
+                    <small>{evento.ciudad} </small>
+                    <i className="bi bi-geo-alt text-primary fs-5"></i>{" "}
+                    <small>{evento.direccion} </small>
+                    <i class="bi bi-clock text-primary fs-5"></i>{" "}
+                    <small>{evento.horaInicio}</small>
                   </p>
-                  <p className="card-text ">
-                    <i class="bi bi-calendar3 text-primary fs-3"></i> Fecha fin:{" "}
-                    {evento.fechaFin.split("T")[0].split("-")[2]}-
-                    {evento.fechaFin.split("T")[0].split("-")[1]}-
-                    {evento.fechaFin.split("T")[0].split("-")[0]}
-                  </p>
+
+                  <h2 className="card-title fs-1 mb-3">{evento.nombre}</h2>
                   <p className="card-text">
-                    <i class="bi bi-clock text-primary fs-3 "></i> Hora:{" "}
-                    {evento.horaInicio}
+                    <i class="bi bi-calendar3 text-primary fs-5"></i>
+                    <b className="text-primary">
+                      {" "}
+                      {evento.fechaInicio.split("T")[0].split("-")[2]}-
+                      {evento.fechaInicio.split("T")[0].split("-")[1]}-
+                      {evento.fechaInicio.split("T")[0].split("-")[0]} /{" "}
+                      {evento.fechaFin.split("T")[0].split("-")[2]}-
+                      {evento.fechaFin.split("T")[0].split("-")[1]}-
+                      {evento.fechaFin.split("T")[0].split("-")[0]}
+                    </b>
                   </p>
-                  <p className="card-text">
-                    <i class="bi bi-buildings text-primary fs-3"></i> Ciudad:{" "}
-                    {evento.ciudad}
-                  </p>
-                  <p className="card-text">
-                    <i className="bi bi-geo-alt text-primary fs-3"></i>{" "}
-                    Dirección: {evento.direccion}
-                  </p>
-                  <p className="card-text ">
-                    <b> Descripción:</b> {evento.descripcion}
-                  </p>
+
+                  <p className="card-text ">{evento.descripcion}</p>
                 </div>
-                {/* <div className="card-footer">
-                  <a href="#" id="botones" className="btn text-white col-4 ">
-                    Ver más
-                  </a>
-                </div> */}
+                <div>
+                  <img
+                    src="https://th.bing.com/th/id/R.56c89c2ad6c82928267ca022f2263330?rik=oNlKf%2f8%2bhzGomw&riu=http%3a%2f%2f1000marcas.net%2fwp-content%2fuploads%2f2020%2f08%2flogo-PwC.png&ehk=NNuoGldSLardTBboRhUAPxO4snV8EHNRRoYMQ64ri%2bY%3d&risl=&pid=ImgRaw&r=0"
+                    alt=""
+                    style={{ height: "8rem", width: "10rem" }}
+                  />
+                </div>
               </div>
 
-              <div className="pb-2 text-center">
+              <div className="pb-2 text-center ">
                 <ContadorVisitas
                   plazas={evento.plazas}
                   setContadorPersonas={setContadorPersonas}
@@ -139,7 +132,7 @@ export default function Eventos() {
             </div>
           </>
         ))}
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center pt-5">
           <button
             className="btn btn-outline-primary"
             onClick={() => setCurrentPage(currentPage - 1)}
