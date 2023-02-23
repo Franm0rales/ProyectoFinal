@@ -13,10 +13,8 @@ export default function CrearEvento(setEvento) {
         `http://localhost:3000/tarjeta/tarjeta/${authorization.id}`,
         {
           method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(formdata),
+
+          body: formdata,
         }
       );
       const json = await response.json();
