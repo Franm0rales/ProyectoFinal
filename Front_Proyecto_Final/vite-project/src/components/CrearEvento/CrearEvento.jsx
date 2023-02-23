@@ -54,24 +54,30 @@ export default function CrearEvento(setEvento) {
     actions.resetForm();
   }
 
-  const { values, handleBlur, handleChange, handleSubmit, isSubmitting } =
-    useFormik({
-      initialValues: {
-        nombre: "",
-        fechaInicio: "",
-        fechaFin: "",
-        horaInicio: "",
-        plazas: "",
-        descripcion: "",
-        email: "",
-        telefono: "",
-        direccion: "",
-        ciudad: "",
-        imagen: "",
-      },
+  const {
+    values,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    setFieldValue,
+    isSubmitting,
+  } = useFormik({
+    initialValues: {
+      nombre: "",
+      fechaInicio: "",
+      fechaFin: "",
+      horaInicio: "",
+      plazas: "",
+      descripcion: "",
+      email: "",
+      telefono: "",
+      direccion: "",
+      ciudad: "",
+      imagen: "",
+    },
 
-      onSubmit,
-    });
+    onSubmit,
+  });
 
   return (
     <>
@@ -201,7 +207,7 @@ export default function CrearEvento(setEvento) {
             <input
               name="imagen"
               value={undefined}
-              onChange={handleChange}
+              onChange={(e) => setFieldValue("imagen", e.target.files[0])}
               onBlur={handleBlur}
               class="form-control "
               type="file"
