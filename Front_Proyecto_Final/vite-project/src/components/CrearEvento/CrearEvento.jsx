@@ -7,13 +7,12 @@ export default function CrearEvento(setEvento) {
 
   async function onSubmit(values, actions) {
     let formdata = new FormData();
-    formdata.append("file", values.imagen);
+    formdata.append("imagen", values.imagen);
     try {
       const response = await fetch(
         `http://localhost:3000/tarjeta/tarjeta/${authorization.id}`,
         {
           method: "POST",
-
           body: formdata,
         }
       );
@@ -204,8 +203,9 @@ export default function CrearEvento(setEvento) {
             </label>
             <input
               name="imagen"
+              accept="image/*"
               value={undefined}
-              onChange={(e) => setFieldValue("imagen", e.target.files[0])}
+              onChange={(e) => console.log(e.target.files)}
               onBlur={handleBlur}
               class="form-control "
               type="file"
@@ -225,7 +225,7 @@ export default function CrearEvento(setEvento) {
           </div>
           <div className="text-center">
             <button
-              onClick={isSubmitting}
+              disabled={isSubmitting}
               id="botones"
               className="btn text-white mt-3  "
               type="submit"
