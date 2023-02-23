@@ -9,33 +9,6 @@ const __dirname = currentDir().__dirname;
 
 const controller = {};
 
-controller.addImage = async (req, res) => {
-  try {
-    if (req.files === null) return res.status(400).send("Error");
-    console.log("hola");
-    if (!req.files || Object.keys(req.files).length === 0) {
-      return res.status(400).send("No hay archivos");
-    }
-    if (!req.query) {
-      return res.status(400).send("NO SE HA INDICADO EL ID");
-    }
-
-    const images = !req.files.length ? [req.files.file] : req.files.file;
-
-    images.forEach(async (image) => {
-      let uploadPath = __dirname + "/public/images/images/" + image.name;
-      let bbddPath = "images/images" + image.name;
-      image.mv(uploadPath, (err) => {
-        if (err) return res.status(500).send(err);
-      });
-      await dao.addUser(data.imagenprueba, bbddPath);
-    });
-    return res.send("Todo OK");
-  } catch (e) {
-    console.log(e.message);
-  }
-};
-
 //Añadir tarjetas
 controller.addTarjeta = async (req, res) => {
   const { id } = req.params;
@@ -51,7 +24,7 @@ controller.addTarjeta = async (req, res) => {
     horaInicio,
     fechaInicio,
   } = req.body;
-  console.log(req.body);
+  console.log(req.files);
   try {
     // Controlamos cuando el objeto files sea null
     if (req.files === null) return res.status(400).send("Error");
@@ -61,7 +34,7 @@ controller.addTarjeta = async (req, res) => {
     }
     // 1 archivo [{}] , >1 archivo [[{},{},...]]
     // Obtenemos un array de objetos con todas las imagenes
-    const images = !req.files.length ? [req.files.file] : req.files.file;
+    const images = !req.files.length ? [req.files.imagen] : req.files.imagen;
     // Recorremos el array para procesar cada imagen
     images.forEach(async (image) => {
       // Ya podemos acceder a las propiedades del objeto image.
@@ -79,14 +52,13 @@ controller.addTarjeta = async (req, res) => {
         telefono: telefono,
         direccion: direccion,
         ciudad: ciudad,
-        pathLogo: bbddPath,
+        imagen: bbddPath,
         idEmpresa: id,
         plazas: plazas,
         fechaInicio: `${fechaInicio}T${horaInicio}:00Z`,
         fechaFin: `${fechaFin}T24:00:00Z`,
         horaInicio: horaInicio,
       };
-      console.log(tarjetaObj);
 
       await dao.addUser(tarjetaObj, data.tarjeta);
     });
