@@ -28,7 +28,8 @@ export default function Nosotros() {
         `http://localhost:3000/tarjeta/getAllComentarios`
       );
       const json = await response.json();
-      setComentarios(json);
+      const shuffledArray = json.sort(() => Math.random() - 0.5);
+      setComentarios(shuffledArray);
     }
     fetchEventos();
     fetchAlumnos();

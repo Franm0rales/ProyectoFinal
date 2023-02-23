@@ -9,6 +9,15 @@ dao.addUser = async (data, tabla) => await userQueries.addUser(data, tabla);
 // Buscar un usuario por el email
 dao.getUserByData = async (tabla, columna, dato) =>
   await userQueries.getUserByData(tabla, columna, dato);
+//Buscar info con dos filtros
+// dao.getInfoBy2Filters = async (tabla, columna1, dato1, columna2, dato2) =>
+//   await tarjetaQueries.getInfoBy2Filters(
+//     tabla,
+//     columna1,
+//     dato1,
+//     columna2,
+//     dato2
+//   );
 // Modificar usuario por su id
 dao.updateUser = async (tabla, id, userData, columna) =>
   await userQueries.updateUser(tabla, id, userData, columna);
@@ -34,5 +43,8 @@ dao.contadorByDataNoFilter = async (tabla) =>
   await tarjetaQueries.contadorByDataNoFilter(tabla);
 //Join
 dao.getJoin = async () => await tarjetaQueries.getJoin();
+//Traer las respuestas con join a comentarios
+dao.getRespuestasWithData = async (id) =>
+  await tarjetaQueries.getRespuestasWithData(id);
 
 export default dao;

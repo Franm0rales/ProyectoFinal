@@ -38,13 +38,6 @@ export default function EditarEmpresa() {
     };
     fetchDataComentarios();
   }, [idTarjeta]);
-  // Seleccionar el contenedor del loader
-  const loaderContainer = document.getElementById("loader-container");
-
-  // Esperar 2 segundos y agregar la clase "loaded"
-  setTimeout(function () {
-    loaderContainer.classList.add("loaded");
-  }, 2000);
 
   return (
     <>

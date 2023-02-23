@@ -2,10 +2,23 @@ import { useState } from "react";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 
-export default function ComentariosPerfil({ comentarios, idEvento }) {
+export default function ComentariosPerfil({ comentario }) {
   const [id, setId] = useState(null);
   const { authorization } = useAuthContext();
-  const [comentarioEmpresa, setComentarioEmpresa] = useState("");
+  const [respuestaEmpresa, setRespuestaEmpresa] = useState("");
+  const [respuesta, setRespuesta] = useState(null);
+
+  useEffect(() => {
+    console.log(comentario);
+    const fetchDataRespuesta = async () => {
+      const responseRespuesta = await fetch(
+        `http://localhost:3000/tarjeta/getRespuestasByIdComentario/${id}`
+      );
+      const jsonRespuesta = await responseRespuesta.json();
+      setRespuesta(jsonRespuesta);
+    };
+    fetchDataRespuesta();
+  }, []);
   function renderStars(rating) {
     const stars = [];
     for (let i = 0; i < 5; i++) {
@@ -18,27 +31,27 @@ export default function ComentariosPerfil({ comentarios, idEvento }) {
     return stars;
   }
   function handleInput(e) {
-    let cambio = { ...comentarioEmpresa, [e.target.name]: e.target.value };
-    setComentarioEmpresa(cambio);
+    let cambio = { ...respuestaEmpresa, [e.target.name]: e.target.value };
+    setRespuestaEmpresa(cambio);
   }
+  console.log(respEmpr);
 
-  async function fecthComentario(comentario, idComentario) {
+  async function fecthComentario(respuesta, idComentario) {
     try {
       const response = await fetch(
-        `http://localhost:3000/tarjeta/addComentario`,
+        `http://localhost:3000/tarjeta/addRespuesta`,
         {
           method: "POST",
           headers: {
             "content-type": "application/json",
           },
           body: JSON.stringify({
-            idUsuario: authorization.id,
-            idTarjeta: idEvento,
-            comentario: comentario,
-            id: idComentario,
+            idComentario: idComentario,
+            respuesta: respuesta.respuesta,
           }),
         }
       );
+      setIdComentario(idComentario);
 
       if (response.status === 200) {
         Swal.fire({
@@ -58,7 +71,7 @@ export default function ComentariosPerfil({ comentarios, idEvento }) {
     setId(idUser);
   }
 
-  return comentarios.map((comentario) => (
+  return (
     <div
       key={comentario.id}
       className="col-md-4 testimonial-three-col overflow-auto position-relative"
@@ -101,32 +114,43 @@ export default function ComentariosPerfil({ comentarios, idEvento }) {
       <div className="d-flex justify-content-end">
         <button
           className="border-0 bg-transparent "
-          onClick={() => toggleDisplay(comentario.idComentario)}
+          onClick={() => toggleDisplay(comentario.id)}
         >
           <i class="bi bi-send-plus text-primary fs-3 text-end"></i>
         </button>
       </div>
       {comentario.idComentario == id && (
         <>
-          <textarea
-            name="comentario"
-            onChange={(e) => handleInput(e)}
-            className="form-control d-flex flex-fill"
-            placeholder={`Escribe tu respuesta a ${comentario.nombre}`}
-          ></textarea>
           <div className="d-flex justify-content-center mt-2">
-            <button
-              id="botones"
-              className="rounded"
-              onClick={() =>
-                fecthComentario(comentarioEmpresa, comentario.idComentario)
-              }
-            >
-              Enviar
-            </button>
+            {respuesta ? (
+              <>
+                <u>Respuesta:</u>
+                <i>
+                  <p>"{respuesta.respuesta}"</p>
+                </i>
+              </>
+            ) : (
+              <>
+                <textarea
+                  name="respuesta"
+                  onChange={(e) => handleInput(e)}
+                  className="form-control d-flex flex-fill"
+                  placeholder={`Escribe tu respuesta a ${comentario.nombre}`}
+                ></textarea>
+                <button
+                  id="botones"
+                  className="rounded"
+                  onClick={() =>
+                    fecthComentario(respuestaEmpresa, comentario.idComentario)
+                  }
+                >
+                  Enviar
+                </button>
+              </>
+            )}
           </div>
         </>
       )}
     </div>
-  ));
+  );
 }

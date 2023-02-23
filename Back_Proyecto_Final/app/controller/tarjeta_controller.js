@@ -195,8 +195,7 @@ controller.unirseEvento = async (req, res) => {
 };
 //Añadir comentario a evento
 controller.addComentario = async (req, res) => {
-  const { idUsuario, idTarjeta, comentario, rating, id } = req.body;
-  console.log(req.body);
+  const { idUsuario, idTarjeta, comentario, rating } = req.body;
   try {
     const eventoObj = {
       idTarjeta: 0,
@@ -207,10 +206,7 @@ controller.addComentario = async (req, res) => {
       idTarjeta: idTarjeta,
       comentario: comentario.comentario,
       rating: rating,
-      idComentarios: id,
     };
-    comentarioObj = await utils.removeUndefinedKeys(comentarioObj);
-    console.log(comentarioObj);
     await dao.addUser(comentarioObj, data.comentarios);
     let contador = await dao.contadorByData(
       data.comentarios,
@@ -278,7 +274,6 @@ controller.getComentariosByIdTarjeta = async (req, res) => {
         telefono: user.telefono,
         idComentario: comentarios[i].id,
       };
-      console.log(comentariosObj);
     }
     return res.status(200).send(comentariosObj);
   } catch (e) {
@@ -313,6 +308,32 @@ controller.getNumberOfEventos = async (req, res) => {
     let eventos = await dao.contadorByDataNoFilter(data.tarjeta);
     [eventos] = eventos;
     return res.status(200).send(eventos);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+//Añadir respuesta
+controller.addRespuesta = async (req, res) => {
+  const { respuesta, idComentario } = req.body;
+  try {
+    let respuestaObj = {
+      idComentario: idComentario,
+      respuesta: respuesta,
+    };
+    await dao.addUser(respuestaObj, data.respuestascomentarios);
+    return res.status(200).send();
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+//Traer respuestas a comentarios por idEmpresa
+controller.getRespuestasByIdComentario = async (req, res) => {
+  const { id } = req.params;
+  try {
+    let respuesta = await dao.getRespuestasWithData(id);
+    if (respuesta.length <= 0) return res.status(404).send();
+    [respuesta] = respuesta;
+    return res.status(200).send(respuesta);
   } catch (e) {
     console.log(e.message);
   }

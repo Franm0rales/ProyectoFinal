@@ -38,5 +38,12 @@ tarjetaRouter.get(
 tarjetaRouter.get("/getNumberOfEventos", tarjetaController.getNumberOfEventos);
 //Traer todos los comentarios
 tarjetaRouter.get("/getAllComentarios", tarjetaController.getAllComentarios);
+//Añadir respuesta del comentario
+tarjetaRouter.post("/addRespuesta", tarjetaController.addRespuesta);
+//Traer respuestas con comentarios
+tarjetaRouter.get(
+  "/getRespuestasByIdComentario/:id",
+  tarjetaController.getRespuestasByIdComentario
+);
 
 export default tarjetaRouter;

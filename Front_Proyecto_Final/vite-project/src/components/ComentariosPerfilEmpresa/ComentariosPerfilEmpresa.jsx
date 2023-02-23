@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ComentariosPerfil from "../ComentariosPerfil/ComentariosPerfil";
 
 export default function ComentariosPerfilEmpresa({
@@ -8,6 +8,7 @@ export default function ComentariosPerfilEmpresa({
 }) {
   const [display, setDisplay] = useState("d-none");
   const [displayState, setDisplayState] = useState(true);
+
   function toggleComments(state) {
     if ((state = "")) {
       setDisplay("d-none");
@@ -90,7 +91,9 @@ export default function ComentariosPerfilEmpresa({
       <section class={`section-primary t-bordered ${display}`}>
         <div class="row testimonial-three testimonial-three--col-three ">
           {comentarios.length > 0 && evento.id === comentarios[0].idTarjeta ? (
-            <ComentariosPerfil idEvento={evento.id} comentarios={comentarios} />
+            comentarios.map((comentario) => {
+              <ComentariosPerfil comentario={comentario} />;
+            })
           ) : (
             <p></p>
           )}

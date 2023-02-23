@@ -108,5 +108,41 @@ tarjetaQueries.getJoin = async () => {
     conn && (await conn.end());
   }
 };
+// //Info con dos filtros
+// tarjetaQueries.getInfoBy2Filters = async (tabla, columna1, dato1, columna2, dato2) =>{
+//   // Conectamos con la base de datos
+//   let conn = null;
+//   try {
+//     conn = await db.createConnection();
+//     return await db.query(
+//       `SELECT * FROM ${tabla} where ${columna1} = `,
+//       [],
+//       "select",
+//       conn
+//     );
+//   } catch (e) {
+//     throw new Error(e);
+//   } finally {
+//     conn && (await conn.end());
+//   }
+// }
+//Traer respuestas con join con comentarios
+tarjetaQueries.getRespuestasWithData = async (id) => {
+  // Conectamos con la base de datos
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      `SELECT * FROM respuestascomentarios join comentarios on respuestascomentarios.idComentario = comentarios.id where idComentario = ?`,
+      [id],
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 
 export default tarjetaQueries;
