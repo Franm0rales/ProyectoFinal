@@ -4,13 +4,21 @@ import Swal from "sweetalert2";
 export default function RegistroEmpresa() {
   async function onSubmit(values, actions) {
     let formdata = new FormData();
-    formdata.append("file", values.imagen);
+    formdata.append("imagen", values.imagen);
+    formdata.append("email", values.email);
+    formdata.append("nombre", values.nombre);
+    formdata.append("CIF", values.CIF);
+    formdata.append("password", values.password);
+    formdata.append("passwordRepeat", values.passwordRepeat);
+    formdata.append("telefono", values.telefono);
+    formdata.append("ciudad", values.ciudad);
+    formdata.append("direccion", values.direccion);
+    formdata.append("descripcion", values.descripcion);
+
     fetch("http://localhost:3000/user/signUpEmpresa", {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(values, formdata),
+
+      body: formdata,
     });
 
     if (response.status === 400) {
