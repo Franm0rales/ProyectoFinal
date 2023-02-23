@@ -16,7 +16,7 @@ export default function CrearEvento(setEvento) {
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify(values, formdata),
+          body: JSON.stringify({ values, formdata }),
         }
       );
       const json = await response.json();
