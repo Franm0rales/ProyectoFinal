@@ -6,6 +6,8 @@ export default function CrearEvento(setEvento) {
   const { authorization } = useAuthContext();
 
   async function onSubmit(values, actions) {
+    let formdata = new FormData();
+    formdata.append("file", values.imagen);
     try {
       const response = await fetch(
         `http://localhost:3000/tarjeta/tarjeta/${authorization.id}`,
@@ -14,7 +16,7 @@ export default function CrearEvento(setEvento) {
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify(values),
+          body: JSON.stringify(values, formdata),
         }
       );
       const json = await response.json();
@@ -65,6 +67,7 @@ export default function CrearEvento(setEvento) {
         telefono: "",
         direccion: "",
         ciudad: "",
+        imagen: "",
       },
 
       onSubmit,
@@ -196,8 +199,8 @@ export default function CrearEvento(setEvento) {
               Logo Empresa png:
             </label>
             <input
-              name="eventImagen"
-              value={values.eventImagen}
+              name="imagen"
+              value={undefined}
               onChange={handleChange}
               onBlur={handleBlur}
               class="form-control "
