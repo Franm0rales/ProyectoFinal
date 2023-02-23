@@ -32,8 +32,8 @@ export const data = {
   telefono: "telefono",
   CIF: "CIF",
   eliminado: "eliminado",
-  eliminadoSi: 1,
-  eliminadoNo: 0,
+  eliminadoSi: "1",
+  eliminadoNo: "0",
   alumno: "alumno",
   tarjeta: "tarjeta",
 };
