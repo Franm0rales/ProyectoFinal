@@ -138,27 +138,50 @@ controller.addEmpresa = async (req, res) => {
       role: role.empresa,
     };
     const idUser = await dao.addUser(usuarioObj, data.usuario);
-    let empresaObj = {
-      nombre: nombre,
-      idUsuario: idUser,
-      CIF: CIF,
-      telefono: telefono,
-      ciudad: ciudad,
-      direccion: direccion,
-      email: email,
-      password: md5(password),
-      descripcion: descripcion,
-    };
-    const addEmpresa = await dao.addUser(empresaObj, data.empresa);
-    if (addEmpresa) {
-      await transporter.sendMail({
-        from: '"Bienvenido a proyeto" <picassomorales@gmail.com>', // sender address
-        to: email, // list of receivers
-        subject: "Hello ✔", // Subject line
-        // text: "Hello world?", // plain text body
-        html: "<b>Bienvenido a Canteen design,espero disfrutes de nuestros productos para cualquier consulta contactanos, gracias por registrarte!! Enlace de la web: http://127.0.0.1:5173/login</b>", // html body
-      });
+    // Controlamos cuando el objeto files sea null
+    if (req.files === null) return res.status(400).send("Error");
+    // Controlamos si nos viene algún tipo de archivo en el objeto files
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).send("No hay archivos");
     }
+    // 1 archivo [{}] , >1 archivo [[{},{},...]]
+    // Obtenemos un array de objetos con todas las imagenes
+    const images = !req.files.length ? [req.files.file] : req.files.file;
+    // Recorremos el array para procesar cada imagen
+    images.forEach(async (image) => {
+      // Ya podemos acceder a las propiedades del objeto image.
+      // Obtenemos la ruta de la imagen.
+      let uploadPath = __dirname + "/public/images/images/" + image.name;
+      let bbddPath = "images/images" + image.name;
+      // Usamos el método mv() para ubicar el archivo en nuestro servidor
+      image.mv(uploadPath, (err) => {
+        if (err) return res.status(500).send(err);
+      });
+
+      let empresaObj = {
+        nombre: nombre,
+        idUsuario: idUser,
+        CIF: CIF,
+        pathLogo: bbddPath,
+        telefono: telefono,
+        ciudad: ciudad,
+        direccion: direccion,
+        email: email,
+        password: md5(password),
+        descripcion: descripcion,
+      };
+      const addEmpresa = await dao.addUser(empresaObj, data.empresa);
+
+      if (addEmpresa) {
+        await transporter.sendMail({
+          from: '"Bienvenido a proyeto" <picassomorales@gmail.com>', // sender address
+          to: email, // list of receivers
+          subject: "Hello ✔", // Subject line
+          // text: "Hello world?", // plain text body
+          html: "<b>Bienvenido a Canteen design,espero disfrutes de nuestros productos para cualquier consulta contactanos, gracias por registrarte!! Enlace de la web: http://127.0.0.1:5173/login</b>", // html body
+        });
+      }
+    });
     return res.send(`Empresa: ${nombre} con id: ${addEmpresa} registrado`);
   } catch (e) {
     console.log(e.message);

@@ -71,23 +71,23 @@ controller.addTarjeta = async (req, res) => {
       image.mv(uploadPath, (err) => {
         if (err) return res.status(500).send(err);
       });
+      const tarjetaObj = {
+        nombre: nombre,
+        descripcion: descripcion,
+        email: email,
+        telefono: telefono,
+        direccion: direccion,
+        ciudad: ciudad,
+        pathLogo: bbddPath,
+        idEmpresa: id,
+        plazas: plazas,
+        fechaInicio: `${fechaInicio}T${horaInicio}:00Z`,
+        fechaFin: `${fechaFin}T24:00:00Z`,
+        horaInicio: horaInicio,
+      };
+
+      await dao.addUser(tarjetaObj, data.tarjeta);
     });
-    const tarjetaObj = {
-      nombre: nombre,
-      descripcion: descripcion,
-      email: email,
-      telefono: telefono,
-      direccion: direccion,
-      ciudad: ciudad,
-      imagen: bbddPath,
-      idEmpresa: id,
-      plazas: plazas,
-      fechaInicio: `${fechaInicio}T${horaInicio}:00Z`,
-      fechaFin: `${fechaFin}T24:00:00Z`,
-      horaInicio: horaInicio,
-    };
-    await dao.addUser(tarjetaObj, data.tarjeta);
-    // });
     return res.send("Tarjeta subida!");
   } catch (e) {
     console.log(e.message);
