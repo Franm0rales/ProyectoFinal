@@ -54,24 +54,30 @@ export default function CrearEvento(setEvento) {
     actions.resetForm();
   }
 
-  const { values, handleBlur, handleChange, handleSubmit, isSubmitting } =
-    useFormik({
-      initialValues: {
-        nombre: "",
-        fechaInicio: "",
-        fechaFin: "",
-        horaInicio: "",
-        plazas: "",
-        descripcion: "",
-        email: "",
-        telefono: "",
-        direccion: "",
-        ciudad: "",
-        imagen: "",
-      },
+  const {
+    values,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    setFieldValue,
+    isSubmitting,
+  } = useFormik({
+    initialValues: {
+      nombre: "",
+      fechaInicio: "",
+      fechaFin: "",
+      horaInicio: "",
+      plazas: "",
+      descripcion: "",
+      email: "",
+      telefono: "",
+      direccion: "",
+      ciudad: "",
+      imagen: "",
+    },
 
-      onSubmit,
-    });
+    onSubmit,
+  });
 
   return (
     <>
