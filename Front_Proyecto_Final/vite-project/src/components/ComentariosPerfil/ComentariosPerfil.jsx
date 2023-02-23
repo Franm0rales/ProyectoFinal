@@ -120,26 +120,30 @@ export default function ComentariosPerfil({
       </div>
       {comentario.idComentario == id && (
         <>
-          <textarea
-            name="respuesta"
-            onChange={(e) => handleInput(e)}
-            className="form-control d-flex flex-fill"
-            placeholder={`Escribe tu respuesta a ${comentario.nombre}`}
-          ></textarea>
-          {respuestaEmpresa ? (
-            <p>Hay una respuesta</p>
+          {respuestaEmpresa.idComentario == id ? (
+            <i>
+              <p>"{respuestaEmpresa.respuesta}"</p>
+            </i>
           ) : (
-            <div className="d-flex justify-content-center mt-2">
-              <button
-                id="botones"
-                className="rounded"
-                onClick={() =>
-                  fecthComentario(respuestaEmpresa, comentario.idComentario)
-                }
-              >
-                Enviar
-              </button>
-            </div>
+            <>
+              <textarea
+                name="respuesta"
+                onChange={(e) => handleInput(e)}
+                className="form-control d-flex flex-fill"
+                placeholder={`Escribe tu respuesta a ${comentario.nombre}`}
+              ></textarea>
+              <div className="d-flex justify-content-center mt-2">
+                <button
+                  id="botones"
+                  className="rounded"
+                  onClick={() =>
+                    fecthComentario(respuestaEmpresa, comentario.idComentario)
+                  }
+                >
+                  Enviar
+                </button>
+              </div>
+            </>
           )}
         </>
       )}
