@@ -3,12 +3,14 @@ import { BasicFormSchema } from "./BasicFormSchema";
 import Swal from "sweetalert2";
 export default function RegistroEmpresa() {
   async function onSubmit(values, actions) {
+    let formdata = new FormData();
+    formdata.append("file", values.imagen);
     fetch("http://localhost:3000/user/signUpEmpresa", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(values),
+      body: JSON.stringify(values, formdata),
     });
 
     if (response.status === 400) {
@@ -49,6 +51,7 @@ export default function RegistroEmpresa() {
       ciudad: "",
       direccion: "",
       descripcion: "",
+      imagen: "",
     },
     validationSchema: BasicFormSchema,
     onSubmit,
@@ -267,6 +270,20 @@ export default function RegistroEmpresa() {
           >
             {errors.password}
           </div>{" "}
+        </div>
+        <div>
+          <label htmlFor="validationCustom01" className="form-label">
+            Subir imagen:
+          </label>
+          <input
+            className="form-control mb-2"
+            onChange={(e) => setFieldValue("imagen", e.target.files[0])}
+            onBlur={handleBlur}
+            name="imagen"
+            id="imagen"
+            value={undefined}
+            type="file"
+          />
         </div>
         <div className="col-md-7">
           <label htmlFor="validationCustom01" className="form-label">
