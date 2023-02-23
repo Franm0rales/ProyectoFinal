@@ -397,7 +397,13 @@ controller.loginEmpresa = async (req, res) => {
   if (!email || !password)
     return res.status(400).send("Error al recibir el body");
   try {
-    let userData = await dao.getUserByData(tabla, data.email, email); // Si no existe el usuario respondemos con un 404 (not found)
+    let userData = await dao.getInfoBy2Filters(
+      tabla,
+      data.email,
+      email,
+      data.eliminado,
+      data.eliminadoNo
+    ); // Si no existe el usuario respondemos con un 404 (not found)
     if (userData.length <= 0)
       return res.status(404).send("usuario no registrado");
     // Pasamos md5 a la paswword recibida del cliente
