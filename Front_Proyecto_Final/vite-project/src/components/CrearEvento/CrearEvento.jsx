@@ -193,7 +193,7 @@ export default function CrearEvento(setEvento) {
 
           <div className="col-10">
             <label for="formFileLg" class="form-label ">
-              Imagen evento:
+              Logo Empresa png:
             </label>
             <input
               name="eventImagen"
