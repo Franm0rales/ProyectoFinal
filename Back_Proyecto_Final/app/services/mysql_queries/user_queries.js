@@ -93,5 +93,28 @@ userQueries.allUsers = async (tabla) => {
     conn && (await conn.end());
   }
 };
-
+//Info con dos filtros
+userQueries.getInfoBy2Filters = async (
+  tabla,
+  columna1,
+  dato1,
+  columna2,
+  dato2
+) => {
+  // Conectamos con la base de datos
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      `SELECT * FROM ${tabla} where ${columna1} = ? and ${columna2} = ?`,
+      [dato1, dato2],
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 export default userQueries;
