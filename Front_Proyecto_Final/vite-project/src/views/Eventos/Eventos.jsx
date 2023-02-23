@@ -104,11 +104,10 @@ export default function Eventos() {
 
                   <p className="card-text ">{evento.descripcion}</p>
                 </div>
-                <div>
+                <div className="">
                   <img
-                    src="https://th.bing.com/th/id/R.56c89c2ad6c82928267ca022f2263330?rik=oNlKf%2f8%2bhzGomw&riu=http%3a%2f%2f1000marcas.net%2fwp-content%2fuploads%2f2020%2f08%2flogo-PwC.png&ehk=NNuoGldSLardTBboRhUAPxO4snV8EHNRRoYMQ64ri%2bY%3d&risl=&pid=ImgRaw&r=0"
-                    alt=""
-                    style={{ height: "8rem", width: "10rem" }}
+                    className="mw-100"
+                    src={`http://localhost:3000/${evento.imagen}`}
                   />
                 </div>
               </div>

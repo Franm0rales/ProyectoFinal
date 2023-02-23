@@ -40,7 +40,7 @@ controller.addTarjeta = async (req, res) => {
       // Ya podemos acceder a las propiedades del objeto image.
       // Obtenemos la ruta de la imagen.
       let uploadPath = __dirname + "/public/images/images/" + image.name;
-      let bbddPath = "images/images" + image.name;
+      let bbddPath = "images/images/" + image.name;
       // Usamos el método mv() para ubicar el archivo en nuestro servidor
       image.mv(uploadPath, (err) => {
         if (err) return res.status(500).send(err);
