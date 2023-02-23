@@ -154,7 +154,7 @@ controller.addEmpresa = async (req, res) => {
       // Ya podemos acceder a las propiedades del objeto image.
       // Obtenemos la ruta de la imagen.
       let uploadPath = __dirname + "/public/images/images/" + image.name;
-      let bbddPath = "images/images" + image.name;
+      let bbddPath = "images/images/" + image.name;
       // Usamos el método mv() para ubicar el archivo en nuestro servidor
       image.mv(uploadPath, (err) => {
         if (err) return res.status(500).send(err);
@@ -351,7 +351,7 @@ controller.loginUser = async (req, res) => {
       data.idTarjeta,
       data.eliminadoNo
     );
-    console.log(userData);
+
     // Si no existe el usuario respondemos con un 404 (not found)
     if (userData.length <= 0)
       return res.status(404).send("usuario no registrado");
