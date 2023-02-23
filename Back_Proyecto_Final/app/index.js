@@ -18,8 +18,6 @@ import fileUpload from "express-fileupload";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
-const app = express();
-
 dotenv.config();
 
 // Función para utilizar path en ES Modules (exportamos para utilizarla globalmente)
@@ -31,6 +29,7 @@ export function currentDir() {
 
 const { __dirname } = currentDir();
 
+const app = express();
 // --- middlewares de express ---
 app.use(express.json());
 app.use(express.text());

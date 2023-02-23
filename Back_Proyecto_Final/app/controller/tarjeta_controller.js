@@ -51,6 +51,7 @@ controller.addTarjeta = async (req, res) => {
     horaInicio,
     fechaInicio,
   } = req.body;
+  console.log(req.body);
   try {
     // Controlamos cuando el objeto files sea null
     if (req.files === null) return res.status(400).send("Error");
@@ -85,6 +86,7 @@ controller.addTarjeta = async (req, res) => {
         fechaFin: `${fechaFin}T24:00:00Z`,
         horaInicio: horaInicio,
       };
+      console.log(tarjetaObj);
 
       await dao.addUser(tarjetaObj, data.tarjeta);
     });
