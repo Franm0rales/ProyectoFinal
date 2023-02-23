@@ -1194,9 +1194,10 @@ body {
   max-width: 200px;
   margin: 1rem auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background: #ffffffb5;
   border-radius: 10px;
   overflow: hidden;
-  background: #ffffffb5;
+ 
   position: relative;
 }
 
@@ -1470,7 +1471,7 @@ background:#5e96ff ;
 }
 
 #card{
-  width: 400px;
+  width: 420px;
   height: 300px;
   margin: 0 auto;
   overflow: hidden;
@@ -1478,9 +1479,10 @@ background:#5e96ff ;
  border-radius:16px;
   position: relative;
   top: 100px !important;
-  background: white;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+  background: #ffffffb5;
   transition: all 0.7s;
-  box-shadow:(0px, 7px, 25px, -5px, rgba(0, 0, 0, 0.75));
+
 }
  .left {
   width: 400px;
