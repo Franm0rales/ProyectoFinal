@@ -16,7 +16,7 @@ export default function CrearEvento(setEvento) {
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify(values, formdata),
+          body: JSON.stringify({ values, formdata }),
         }
       );
       const json = await response.json();
@@ -201,7 +201,7 @@ export default function CrearEvento(setEvento) {
             <input
               name="imagen"
               value={undefined}
-              onChange={handleChange}
+              onChange={(e) => setFieldValue("imagen", e.target.files[0])}
               onBlur={handleBlur}
               class="form-control "
               type="file"
