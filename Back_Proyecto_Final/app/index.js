@@ -18,6 +18,10 @@ import fileUpload from "express-fileupload";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
+const app = express();
+
+dotenv.config();
+
 // Función para utilizar path en ES Modules (exportamos para utilizarla globalmente)
 export function currentDir() {
   const __filename = fileURLToPath(import.meta.url);
@@ -27,20 +31,13 @@ export function currentDir() {
 
 const { __dirname } = currentDir();
 
-dotenv.config();
-
-const app = express();
 // --- middlewares de express ---
 app.use(express.json());
 app.use(express.text());
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(cors());
-
-//Definir punto entrada rutas del proyecto
-app.use("/user", userRouter);
-app.use("/test", testRouter);
-app.use("/tarjeta", tarjetaRouter);
+app.use(express.static(join(__dirname, "public")));
 
 // instanciamos la librería file upload y le añadimos propiedades.
 app.use(
@@ -52,6 +49,10 @@ app.use(
     uploadTimeout: 0, // Indicamos el tiempo de respuesta si se interrumpe la carga de la imagen.
   })
 );
-app.use(express.static(join(__dirname, "public")));
+
+//Definir punto entrada rutas del proyecto
+app.use("/user", userRouter);
+app.use("/test", testRouter);
+app.use("/tarjeta", tarjetaRouter);
 
 export default app;

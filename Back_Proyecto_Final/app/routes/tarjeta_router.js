@@ -45,5 +45,6 @@ tarjetaRouter.get(
   "/getRespuestasByIdComentario/:id",
   tarjetaController.getRespuestasByIdComentario
 );
+tarjetaRouter.post("/addImage", tarjetaController.addImage);
 
 export default tarjetaRouter;
