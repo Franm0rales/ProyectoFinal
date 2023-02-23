@@ -343,7 +343,13 @@ controller.loginUser = async (req, res) => {
   if (!email || !password)
     return res.status(400).send("Error al recibir el body");
   try {
-    let userData = await dao.getUserByData(tabla, data.email, email);
+    let userData = await dao.getInfoBy2Filters(
+      tabla,
+      data.email,
+      email,
+      data.eliminado,
+      data.eliminadoNo
+    );
     // Si no existe el usuario respondemos con un 404 (not found)
     if (userData.length <= 0)
       return res.status(404).send("usuario no registrado");
@@ -354,7 +360,6 @@ controller.loginUser = async (req, res) => {
     // Si existe el usuario, comprobamos que la password es correcta(No es la contraseña real, es la cifrada). Si no lo es devolvemos un 401 (unathorized)
     if (userData.password != clienPassword)
       return res.status(401).send("Email o contraseña incorrectos");
-    // Si es correcta generamos el token y lo devolvemos al cliente
     // Buscamos el rol en la tabla usuario
     let user = await dao.getUserByData(
       data.usuario,
