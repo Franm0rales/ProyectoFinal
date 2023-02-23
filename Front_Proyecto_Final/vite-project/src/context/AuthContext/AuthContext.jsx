@@ -99,7 +99,16 @@ export function AuthContextProvider({ children }) {
         },
       });
     } else {
-      setErrorMessage(alert("Error al introducir password o usuario"));
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Fallo en el registro",
+        showConfirmButton: false,
+        timer: 1500,
+        didOpen: () => {
+          Swal.showLoading();
+        },
+      });
     }
   }
   function logout() {
