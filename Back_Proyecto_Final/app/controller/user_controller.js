@@ -85,7 +85,6 @@ controller.addAlumno = async (req, res) => {
 };
 // Controlador para añadir una empresa
 controller.addEmpresa = async (req, res) => {
-  console.log(req.files);
   const {
     nombre,
     email,
@@ -111,10 +110,12 @@ controller.addEmpresa = async (req, res) => {
 
   // Buscamos el usuario en la base de datos
   try {
-    const empresaEmail = await dao.getUserByData(
+    const empresaEmail = await dao.getInfoBy2Filters(
       tables[role.empresa],
       data.email,
-      email
+      email,
+      data.eliminado,
+      data.eliminadoNo
     );
     // Si existe el usuario respondemos con un 409 (conflict)
     if (empresaEmail.length > 0)
@@ -347,9 +348,10 @@ controller.loginUser = async (req, res) => {
       tabla,
       data.email,
       email,
-      data.eliminado,
+      data.idTarjeta,
       data.eliminadoNo
     );
+    console.log(userData);
     // Si no existe el usuario respondemos con un 404 (not found)
     if (userData.length <= 0)
       return res.status(404).send("usuario no registrado");
