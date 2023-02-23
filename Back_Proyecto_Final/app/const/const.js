@@ -26,6 +26,7 @@ export const data = {
   idAlumno: "idAlumno",
   usuario: "usuario",
   respuestascomentarios: "respuestascomentarios",
+  imagenprueba: "imagenprueba",
   empresa: "empresa",
   email: "email",
   telefono: "telefono",
