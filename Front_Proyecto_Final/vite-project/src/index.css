@@ -1197,12 +1197,17 @@ body {
   border-radius: 10px;
   overflow: hidden;
   background: #ffffffb5;
+  position: relative;
 }
 
-.meetup-card img {
-  width: 80%;
-  height: 200px;
-  object-fit: cover;
+.meetup-card .eventos-img {
+  position: absolute; /* Establecer la posición de la imagen como absoluta */
+  top: 0; /* Alinear la imagen en la parte superior del contenedor */
+  right: 0; /* Alinear la imagen en la parte derecha del contenedor */
+  width: 150px; 
+  height: auto;/* Establecer el ancho máximo de la imagen al 100% del contenedor */
+  /* max-height: auto; Establecer la altura máxima de la imagen al 100% del contenedor */
+  padding: 1rem;
 }
 
 .meetup-card .card-body {

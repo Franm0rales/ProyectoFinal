@@ -106,7 +106,7 @@ export default function Eventos() {
                 </div>
                 <div className="">
                   <img
-                    className="mw-100"
+                    className="eventos-img"
                     src={`http://localhost:3000/${evento.imagen}`}
                   />
                 </div>
