@@ -195,7 +195,7 @@ export default function RegistroEmpresa() {
         </div>
         <div className="mb-3">
           <label for="exampleFormControlTextarea1" className="form-label">
-            Descripción tarjeta
+            Descripción empresa
           </label>
           <textarea
             type="text"
@@ -271,31 +271,6 @@ export default function RegistroEmpresa() {
             {errors.password}
           </div>{" "}
         </div>
-        <div>
-          <label htmlFor="validationCustom01" className="form-label">
-            Subir imagen:
-          </label>
-          <input
-            className="form-control mb-2"
-            onChange={(e) => setFieldValue("imagen", e.target.files[0])}
-            onBlur={handleBlur}
-            name="imagen"
-            id="imagen"
-            value={undefined}
-            type="file"
-          />
-        </div>
-        <div className="col-md-7">
-          <label htmlFor="validationCustom01" className="form-label">
-            Avatar
-          </label>
-
-          <select class="form-select " aria-label="Default select example">
-            <option selected>Selecciona avatar</option>
-            <option value="8">Mujer</option>
-            <option value="7">Hombre</option>
-          </select>
-        </div>
         <div className="col-md-6">
           <label htmlFor="exampleInputPassword1" className="form-label">
             Repetir contraseña
@@ -322,6 +297,32 @@ export default function RegistroEmpresa() {
             {errors.passwordRepeat}
           </div>{" "}
         </div>
+        <div className="col-7">
+          <label htmlFor="validationCustom01" className="form-label">
+            Subir imagen:
+          </label>
+          <input
+            className="form-control mb-2"
+            onChange={(e) => setFieldValue("imagen", e.target.files[0])}
+            onBlur={handleBlur}
+            name="imagen"
+            id="imagen"
+            value={undefined}
+            type="file"
+          />
+        </div>
+        <div className="col-md-7">
+          <label htmlFor="validationCustom01" className="form-label">
+            Avatar
+          </label>
+
+          <select class="form-select " aria-label="Default select example">
+            <option selected>Selecciona avatar</option>
+            <option value="8">Mujer</option>
+            <option value="7">Hombre</option>
+          </select>
+        </div>
+
         <div className="mb-3  form-check">
           <input type="checkbox" className="form-check-input" required />
           <label className="form-check-label" htmlFor="exampleCheck1">
