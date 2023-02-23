@@ -17,7 +17,6 @@ export default function RegistroEmpresa() {
 
     fetch("http://localhost:3000/user/signUpEmpresa", {
       method: "POST",
-
       body: formdata,
     });
 
@@ -318,6 +317,7 @@ export default function RegistroEmpresa() {
             id="imagen"
             value={undefined}
             type="file"
+            accept="image/*"
           />
         </div>
         <div className="col-md-7">

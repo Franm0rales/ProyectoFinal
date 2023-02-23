@@ -8,6 +8,17 @@ export default function CrearEvento(setEvento) {
   async function onSubmit(values, actions) {
     let formdata = new FormData();
     formdata.append("imagen", values.imagen);
+    formdata.append("nombre", values.nombre);
+    formdata.append("fechaInicio", values.fechaInicio);
+    formdata.append("fechaFin", values.fechaFin);
+    formdata.append("horaInicio", values.horaInicio);
+    formdata.append("plazas", values.plazas);
+    formdata.append("descripcion", values.descripcion);
+    formdata.append("email", values.email);
+    formdata.append("ciudad", values.ciudad);
+    formdata.append("direccion", values.direccion);
+    formdata.append("telefono", values.telefono);
+    console.log(formdata);
     try {
       const response = await fetch(
         `http://localhost:3000/tarjeta/tarjeta/${authorization.id}`,
@@ -48,7 +59,7 @@ export default function CrearEvento(setEvento) {
       console.log(e);
     }
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    actions.resetForm();
+    //actions.resetForm();
   }
 
   const {
@@ -205,9 +216,9 @@ export default function CrearEvento(setEvento) {
               name="imagen"
               accept="image/*"
               value={undefined}
-              onChange={(e) => console.log(e.target.files)}
+              onChange={(e) => setFieldValue("imagen", e.target.files[0])}
               onBlur={handleBlur}
-              class="form-control "
+              class="form-control"
               type="file"
             />
           </div>

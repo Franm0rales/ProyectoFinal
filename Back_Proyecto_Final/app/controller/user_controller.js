@@ -85,6 +85,7 @@ controller.addAlumno = async (req, res) => {
 };
 // Controlador para añadir una empresa
 controller.addEmpresa = async (req, res) => {
+  console.log(req.files);
   const {
     nombre,
     email,
@@ -146,7 +147,7 @@ controller.addEmpresa = async (req, res) => {
     }
     // 1 archivo [{}] , >1 archivo [[{},{},...]]
     // Obtenemos un array de objetos con todas las imagenes
-    const images = !req.files.length ? [req.files.file] : req.files.file;
+    const images = !req.files.length ? [req.files.imagen] : req.files.imagen;
     // Recorremos el array para procesar cada imagen
     images.forEach(async (image) => {
       // Ya podemos acceder a las propiedades del objeto image.
@@ -170,19 +171,20 @@ controller.addEmpresa = async (req, res) => {
         password: md5(password),
         descripcion: descripcion,
       };
-      const addEmpresa = await dao.addUser(empresaObj, data.empresa);
+      let addEmpresa = await dao.addUser(empresaObj, data.empresa);
+      console.log(addEmpresa);
 
-      if (addEmpresa) {
-        await transporter.sendMail({
-          from: '"Bienvenido a proyeto" <picassomorales@gmail.com>', // sender address
-          to: email, // list of receivers
-          subject: "Hello ✔", // Subject line
-          // text: "Hello world?", // plain text body
-          html: "<b>Bienvenido a Canteen design,espero disfrutes de nuestros productos para cualquier consulta contactanos, gracias por registrarte!! Enlace de la web: http://127.0.0.1:5173/login</b>", // html body
-        });
-      }
+      // if (addEmpresa) {
+      //   await transporter.sendMail({
+      //     from: '"Bienvenido a proyeto" <picassomorales@gmail.com>', // sender address
+      //     to: email, // list of receivers
+      //     subject: "Hello ✔", // Subject line
+      //     // text: "Hello world?", // plain text body
+      //     html: "<b>Bienvenido a Canteen design,espero disfrutes de nuestros productos para cualquier consulta contactanos, gracias por registrarte!! Enlace de la web: http://127.0.0.1:5173/login</b>", // html body
+      //   });
+      // }
     });
-    return res.send(`Empresa: ${nombre} con id: ${addEmpresa} registrado`);
+    return res.send(`Empresa: ${nombre} con id:  registrado`);
   } catch (e) {
     console.log(e.message);
   }
