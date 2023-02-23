@@ -1,24 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 
-export default function ComentariosPerfil({ comentario }) {
+export default function ComentariosPerfil({
+  comentarios,
+
+  setIdComentario,
+}) {
   const [id, setId] = useState(null);
   const { authorization } = useAuthContext();
   const [respuestaEmpresa, setRespuestaEmpresa] = useState("");
-  const [respuesta, setRespuesta] = useState(null);
-
-  useEffect(() => {
-    console.log(comentario);
-    const fetchDataRespuesta = async () => {
-      const responseRespuesta = await fetch(
-        `http://localhost:3000/tarjeta/getRespuestasByIdComentario/${id}`
-      );
-      const jsonRespuesta = await responseRespuesta.json();
-      setRespuesta(jsonRespuesta);
-    };
-    fetchDataRespuesta();
-  }, []);
   function renderStars(rating) {
     const stars = [];
     for (let i = 0; i < 5; i++) {
@@ -34,8 +25,16 @@ export default function ComentariosPerfil({ comentario }) {
     let cambio = { ...respuestaEmpresa, [e.target.name]: e.target.value };
     setRespuestaEmpresa(cambio);
   }
-  console.log(respEmpr);
-
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `http://localhost:3000/tarjeta/getRespuestasByIdComentario/${id}`
+      );
+      const json = await response.json();
+      setRespuestaEmpresa(json);
+    };
+    fetchData();
+  }, [id]);
   async function fecthComentario(respuesta, idComentario) {
     try {
       const response = await fetch(
@@ -71,7 +70,7 @@ export default function ComentariosPerfil({ comentario }) {
     setId(idUser);
   }
 
-  return (
+  return comentarios.map((comentario) => (
     <div
       key={comentario.id}
       className="col-md-4 testimonial-three-col overflow-auto position-relative"
@@ -114,43 +113,36 @@ export default function ComentariosPerfil({ comentario }) {
       <div className="d-flex justify-content-end">
         <button
           className="border-0 bg-transparent "
-          onClick={() => toggleDisplay(comentario.id)}
+          onClick={() => toggleDisplay(comentario.idComentario)}
         >
           <i class="bi bi-send-plus text-primary fs-3 text-end"></i>
         </button>
       </div>
       {comentario.idComentario == id && (
         <>
-          <div className="d-flex justify-content-center mt-2">
-            {respuesta ? (
-              <>
-                <u>Respuesta:</u>
-                <i>
-                  <p>"{respuesta.respuesta}"</p>
-                </i>
-              </>
-            ) : (
-              <>
-                <textarea
-                  name="respuesta"
-                  onChange={(e) => handleInput(e)}
-                  className="form-control d-flex flex-fill"
-                  placeholder={`Escribe tu respuesta a ${comentario.nombre}`}
-                ></textarea>
-                <button
-                  id="botones"
-                  className="rounded"
-                  onClick={() =>
-                    fecthComentario(respuestaEmpresa, comentario.idComentario)
-                  }
-                >
-                  Enviar
-                </button>
-              </>
-            )}
-          </div>
+          <textarea
+            name="respuesta"
+            onChange={(e) => handleInput(e)}
+            className="form-control d-flex flex-fill"
+            placeholder={`Escribe tu respuesta a ${comentario.nombre}`}
+          ></textarea>
+          {respuestaEmpresa ? (
+            <p>Hay una respuesta</p>
+          ) : (
+            <div className="d-flex justify-content-center mt-2">
+              <button
+                id="botones"
+                className="rounded"
+                onClick={() =>
+                  fecthComentario(respuestaEmpresa, comentario.idComentario)
+                }
+              >
+                Enviar
+              </button>
+            </div>
+          )}
         </>
       )}
     </div>
-  );
+  ));
 }

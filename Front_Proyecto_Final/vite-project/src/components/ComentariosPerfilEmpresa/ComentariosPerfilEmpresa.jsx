@@ -91,9 +91,7 @@ export default function ComentariosPerfilEmpresa({
       <section class={`section-primary t-bordered ${display}`}>
         <div class="row testimonial-three testimonial-three--col-three ">
           {comentarios.length > 0 && evento.id === comentarios[0].idTarjeta ? (
-            comentarios.map((comentario) => {
-              <ComentariosPerfil comentario={comentario} />;
-            })
+            <ComentariosPerfil idEvento={evento.id} comentarios={comentarios} />
           ) : (
             <p></p>
           )}
