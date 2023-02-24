@@ -64,7 +64,7 @@ describe('example Login to app', () => {
       cy.visit('http://127.0.0.1:5173/editar').wait(5000)
       cy.get(':nth-child(1) > .text-start').click()
       cy.wait(10000); 
-      //Vamos a navegar a los eventos y nos vamos a registrar en un evento
+      //Vamos a navegar a los eventos vamos a filtrar y nos vamos a registrar en un evento
       cy.get(':nth-child(3) > .nav-link').click().wait(5000)
       cy.get('.form-control').type('PYTHON{enter}')
       
