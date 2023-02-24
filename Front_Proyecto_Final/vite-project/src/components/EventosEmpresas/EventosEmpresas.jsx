@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
@@ -11,7 +11,9 @@ const localizer = momentLocalizer(moment);
 export default function EventoEmpresas() {
   const [test, setTest] = useState([]);
   const { authorization } = useAuthContext();
-
+  useEffect(() => {
+    fetchCalendario();
+  }, []);
   async function fetchCalendario() {
     const response = await fetch(
       `http://localhost:3000/tarjeta/getTarjeta/${authorization.id}`
