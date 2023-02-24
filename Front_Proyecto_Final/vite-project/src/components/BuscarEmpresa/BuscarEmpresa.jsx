@@ -1,6 +1,6 @@
 export default function BuscarEmpresa({ empresaABuscar, setEmpresaABuscar }) {
   return (
-    <div class="container col-4">
+    <div class="col-2">
       <div>
         <input
           onChange={(e) => setEmpresaABuscar(e.target.value)}

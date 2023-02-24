@@ -88,33 +88,33 @@ export default function Eventos() {
   return (
     <>
       <div id="fondo" className="pb-5">
-        <div className="pt-5">
+        <div className="pt-5 d-flex justify-content-center">
           <BuscarEmpresa
             empresaABuscar={empresaABuscar}
             setEmpresaABuscar={setEmpresaABuscar}
           />
-        </div>
-        <div className="form-label col-6">
-          <label className="">Ciudad:</label>
-          <select
-            name="ciudad"
-            onChange={(e) => handleChange(e)}
-            value={selectedCiudades}
-            className="form-select "
-            aria-label="Default select exampl e"
-          >
-            <option value="">Selecciona ciudades</option>
-            <option value="alumnos<plazas">Plazas disponibles</option>
-            <option name="fecha" value="fecha">
-              fecha
-            </option>
-            <option value="Cordoba">Cordaba</option>
-            <option value="Granada">Granada</option>
-            <option value="Huelva">Huelva</option>
-            <option value="Jaen">Jaen</option>
-            <option value="Malaga">Malaga</option>
-            <option value="Sevilla">Sevilla</option>
-          </select>
+
+          <div className="form-label col-1 pt-5">
+            <select
+              name="ciudad"
+              onChange={(e) => handleChange(e)}
+              value={selectedCiudades}
+              className="form-select "
+              aria-label="Default select exampl e"
+            >
+              <option value="">Selecciona ciudades</option>
+              <option value="alumnos<plazas">Plazas disponibles</option>
+              <option name="fecha" value="fecha">
+                fecha
+              </option>
+              <option value="Cordoba">Cordaba</option>
+              <option value="Granada">Granada</option>
+              <option value="Huelva">Huelva</option>
+              <option value="Jaen">Jaen</option>
+              <option value="Malaga">Malaga</option>
+              <option value="Sevilla">Sevilla</option>
+            </select>
+          </div>
         </div>
         <div className="container col-10 "></div>
         {eventsToShow.map((evento) => (

@@ -9,14 +9,15 @@ export default function EmpresasParaVista({ empresas }) {
                 <div className="d-flex flex-column">
                   <h5 className="card-title  ">{empresa.nombre}</h5>
                   <p className="card-text  ">
+                    {" "}
                     <i class="bi bi-buildings text-primary fs-5"></i>{" "}
-                    <small>{empresa.ciudad} </small>
+                    <small>{empresa.ciudad}</small>{" "}
                     <i className="bi bi-geo-alt text-primary fs-5"></i>{" "}
-                    <small>{empresa.direccion} </small>
+                    <small>{empresa.direccion} </small>{" "}
                     <i class="bi bi-envelope text-primary fs-5"></i>{" "}
-                    <small>{empresa.email}</small>
-                    <i class="bi bi-telephone-fill  text-primary fs-4"></i>{" "}
-                    <small>{empresa.telefono}</small>
+                    <small>{empresa.email}</small>{" "}
+                    <i class="bi bi-telephone  text-primary fs-5"></i>{" "}
+                    <small>{empresa.telefono}</small>{" "}
                   </p>
 
                   <p className="card-text ">{empresa.descripcion}</p>

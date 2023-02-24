@@ -12,23 +12,14 @@ export default function LoginAcount() {
   function BotonRegistro() {
     return (
       <div className="container text-center">
-        <p>Todavía no te has registrado. Regístrate</p>
-        <button
-          type="button"
-          id="botones"
-          className="btn mb-5"
-          onClick={() => setShowRegistration(true)}
-        >
-          Registrarse
-        </button>
-        <button
-          type="button"
-          id="botones"
-          className="btn mb-5 "
-          onClick={() => setView("Alumno")}
-        >
-          Volver
-        </button>
+        {" "}
+        <p>
+          {" "}
+          Todavía no te has registrado.
+          <a onClick={() => setShowRegistration(true)} className="mb-5 cursor">
+            Regístrate
+          </a>
+        </p>{" "}
       </div>
     );
   }
