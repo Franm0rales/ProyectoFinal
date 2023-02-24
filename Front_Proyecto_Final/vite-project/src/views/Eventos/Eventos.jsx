@@ -7,6 +7,7 @@ export default function Eventos() {
   const [eventos, setEventos] = useState([]);
   const [unirse, setUnirse] = useState(false);
   const { authorization } = useAuthContext();
+  const [filtro, setFiltro] = useState(null);
   const [selectedCiudades, setSelectedCiudades] = useState([]);
   const [empresaABuscar, setEmpresaABuscar] = useState("");
   const [error, setError] = useState("");
@@ -22,49 +23,53 @@ export default function Eventos() {
   let jsoneventos;
 
   useEffect(() => {
-    if (!jsoneventos || jsoneventos !== eventos) {
-      const fetchData = async () => {
-        try {
-          const responseEventos = await fetch(
-            `http://localhost:3000/tarjeta/getAllTarjetas/tarjetas`
-          );
-          jsoneventos = await responseEventos.json();
-          setEventos(jsoneventos);
-          setError(null);
+    const fetchData = async () => {
+      try {
+        const responseEventos = await fetch(
+          `http://localhost:3000/tarjeta/getAllTarjetas/tarjetas`
+        );
+        jsoneventos = await responseEventos.json();
+        setEventos(jsoneventos);
+        setError(null);
 
-          const responseData = await fetch(
-            `http://localhost:3000/user/${authorization.id}`
-          );
-          const json = await responseData.json();
-          setData(json);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-      const fetchRutaABuscar = async () => {
-        try {
-          const response = await fetch(
-            `http://localhost:3000/tarjeta/getTarjetaByNombre/${empresaABuscar}`
-          );
-          const data = await response.json();
-          setEventos(data);
-          setError(null);
-          setCurrentPage(1);
-        } catch (error) {
-          console.log(error);
-          setError("La ruta no existe");
-          setEventos([]);
-        }
-      };
-
-      if (empresaABuscar !== "") {
-        fetchRutaABuscar();
-      } else {
-        fetchData();
+        const responseData = await fetch(
+          `http://localhost:3000/user/${authorization.id}`
+        );
+        const json = await responseData.json();
+        setData(json);
+      } catch (error) {
+        console.log(error);
       }
+    };
+    const fetchRutaABuscar = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3000/tarjeta/getTarjetaFilters`,
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify([selectedCiudades, empresaABuscar]),
+          }
+        );
+        const data = await response.json();
+        setEventos(data);
+        setError(null);
+        setCurrentPage(1);
+      } catch (error) {
+        console.log(error);
+        setError("La ruta no existe");
+        setEventos([]);
+      }
+    };
+    if (empresaABuscar !== "" || selectedCiudades.length > 0) {
+      fetchRutaABuscar();
+    } else {
+      setEmpresaABuscar("");
+      fetchData();
     }
-  }, [unirse, empresaABuscar]);
+  }, [unirse, empresaABuscar, filtro]);
 
   function handleChange(event) {
     const fechaActual = new Date();
@@ -83,7 +88,7 @@ export default function Eventos() {
       }
     }
     selectedCiudades[selectedCiudades.length] = options;
-    console.log(selectedCiudades);
+    setFiltro(options);
   }
   return (
     <>
