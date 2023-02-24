@@ -105,31 +105,26 @@ export default function CrearEvento(setEvento) {
             </label>
           </div>
 
-          <div className="">
-            <label className="form-label col-6">
-              Email
-              <input
-                className="form-control "
-                type="text"
-                name="email"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </label>
-          </div>
-          <div className="">
-            <label className="form-label col-10">
-              Ciudad:
-              <input
-                className="form-control "
-                type="text"
-                name="ciudad"
-                value={values.ciudad}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </label>
+          <div className="form-label col-6">
+            <label className="">Ciudad:</label>
+            <select
+              name="ciudad"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.ciudad}
+              className="form-select "
+              aria-label="Default select example"
+            >
+              <option value="">Selecciona una ciudad</option>
+              <option value="Almeria">Almeria</option>
+              <option value="Cadiz">Cadiz</option>
+              <option value="Cordoba">Cordaba</option>
+              <option value="Granada">Granada</option>
+              <option value="Huelva">Huelva</option>
+              <option value="Jaen">Jaen</option>
+              <option value="Malaga">Malaga</option>
+              <option value="Sevilla">Sevilla</option>
+            </select>
           </div>
           <div className="">
             <label className="form-label col-10">
@@ -144,21 +139,30 @@ export default function CrearEvento(setEvento) {
               />
             </label>
           </div>
-          <div className="">
-            <label className="form-label col-6">
-              Telefono:
-              <input
-                className="form-control "
-                type="number"
-                name="telefono"
-                value={values.telefono}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
-            </label>
+          <div className="form-label col-6">
+            <label className="">Telefono:</label>
+            <input
+              className="form-control "
+              type="number"
+              name="telefono"
+              value={values.telefono}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
           </div>
-          <div className="">
-            <label className="form-label col-5">
+          <div className="form-label col-6">
+            <label className="">Email</label>
+            <input
+              className="form-control "
+              type="text"
+              name="email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </div>
+          <div className="d-flex gap-2">
+            <label className="form-label col-5 gap-3">
               Fecha inicio del evento:
               <input
                 className="form-control"
@@ -170,7 +174,7 @@ export default function CrearEvento(setEvento) {
               />
             </label>
 
-            <label className="form-label col-5">
+            <label className="form-label col-5 gap-3">
               Fecha fin del evento:
               <input
                 className="form-control"
@@ -182,11 +186,11 @@ export default function CrearEvento(setEvento) {
               />
             </label>
           </div>
-          <div className="">
-            <label className="form-label col-4">
+          <div className="d-flex gap-2">
+            <label className="form-label col-3">
               Hora del evento:
               <input
-                className="form-control "
+                className="form-control"
                 type="time"
                 name="horaInicio"
                 value={values.horaInicio}
