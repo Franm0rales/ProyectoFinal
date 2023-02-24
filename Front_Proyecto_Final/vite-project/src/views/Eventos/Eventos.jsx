@@ -7,6 +7,7 @@ export default function Eventos() {
   const [eventos, setEventos] = useState([]);
   const [unirse, setUnirse] = useState(false);
   const { authorization } = useAuthContext();
+  const [selectedCiudades, setSelectedCiudades] = useState([]);
   const [empresaABuscar, setEmpresaABuscar] = useState("");
   const [error, setError] = useState("");
   const [data, setData] = useState({});
@@ -49,6 +50,7 @@ export default function Eventos() {
           const data = await response.json();
           setEventos(data);
           setError(null);
+          setCurrentPage(1);
         } catch (error) {
           console.log(error);
           setError("La ruta no existe");
@@ -64,6 +66,25 @@ export default function Eventos() {
     }
   }, [unirse, empresaABuscar]);
 
+  function handleChange(event) {
+    const fechaActual = new Date();
+    const anio = fechaActual.getFullYear();
+    const mes = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
+    const dia = ("0" + fechaActual.getDate()).slice(-2);
+    const fechaEnFormatoYYYYMMDD = `${anio}-${mes}-${dia}`;
+    let options = event.target.value;
+
+    if (options === "fecha") {
+      options = `"${fechaEnFormatoYYYYMMDD}"<fechaInicio`;
+    }
+    for (let i = 0; i < selectedCiudades.length; i++) {
+      if (selectedCiudades[i] == options) {
+        return;
+      }
+    }
+    selectedCiudades[selectedCiudades.length] = options;
+    console.log(selectedCiudades);
+  }
   return (
     <>
       <div id="fondo" className="pb-5">
@@ -73,8 +94,30 @@ export default function Eventos() {
             setEmpresaABuscar={setEmpresaABuscar}
           />
         </div>
+        <div className="form-label col-6">
+          <label className="">Ciudad:</label>
+          <select
+            name="ciudad"
+            onChange={(e) => handleChange(e)}
+            value={selectedCiudades}
+            className="form-select "
+            aria-label="Default select exampl e"
+          >
+            <option value="">Selecciona ciudades</option>
+            <option value="alumnos<plazas">Plazas disponibles</option>
+            <option name="fecha" value="fecha">
+              fecha
+            </option>
+            <option value="Cordoba">Cordaba</option>
+            <option value="Granada">Granada</option>
+            <option value="Huelva">Huelva</option>
+            <option value="Jaen">Jaen</option>
+            <option value="Malaga">Malaga</option>
+            <option value="Sevilla">Sevilla</option>
+          </select>
+        </div>
         <div className="container col-10 "></div>
-        {eventsToShow.map((evento, index) => (
+        {eventsToShow.map((evento) => (
           <>
             <div className="container meetup-card col-6" key={evento.id}>
               <div className=" mb-3 d-flex">

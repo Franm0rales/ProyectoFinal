@@ -126,5 +126,18 @@ tarjetaQueries.getRespuestasWithData = async (id) => {
     conn && (await conn.end());
   }
 };
+//Traer tarjetas con filtros
+tarjetaQueries.getTarjetaFilters = async (tabla, data) => {
+  // Conectamos con la base de datos
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(`SELECT * FROM ${tabla} ${data}`, [], "select", conn);
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 
 export default tarjetaQueries;

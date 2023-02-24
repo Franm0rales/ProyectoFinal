@@ -40,5 +40,8 @@ dao.getJoin = async () => await tarjetaQueries.getJoin();
 //Traer las respuestas con join a comentarios
 dao.getRespuestasWithData = async (id) =>
   await tarjetaQueries.getRespuestasWithData(id);
+//Traer tarjetas por filtros
+dao.getTarjetaFilters = async (tabla, data) =>
+  await tarjetaQueries.getTarjetaFilters(tabla, data);
 
 export default dao;

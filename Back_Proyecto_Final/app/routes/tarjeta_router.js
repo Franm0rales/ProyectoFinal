@@ -45,5 +45,7 @@ tarjetaRouter.get(
   "/getRespuestasByIdComentario/:id",
   tarjetaController.getRespuestasByIdComentario
 );
+//Traer tarjetas por filtros
+tarjetaRouter.get("/getTarjetaFilters", tarjetaController.getTarjetasFilters);
 
 export default tarjetaRouter;

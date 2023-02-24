@@ -407,7 +407,6 @@ controller.loginEmpresa = async (req, res) => {
       data.eliminado,
       data.eliminadoNo
     ); // Si no existe el usuario respondemos con un 404 (not found)
-    console.log(userData);
     if (userData.length <= 0)
       return res.status(404).send("usuario no registrado");
     // Pasamos md5 a la paswword recibida del cliente

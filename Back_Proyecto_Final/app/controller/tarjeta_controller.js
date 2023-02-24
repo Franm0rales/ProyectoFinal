@@ -24,7 +24,6 @@ controller.addTarjeta = async (req, res) => {
     horaInicio,
     fechaInicio,
   } = req.body;
-  console.log(req.files);
   try {
     // Controlamos cuando el objeto files sea null
     if (req.files === null) return res.status(400).send("Error");
@@ -334,6 +333,21 @@ controller.getRespuestasByIdComentario = async (req, res) => {
     if (respuesta.length <= 0) return res.status(404).send();
     [respuesta] = respuesta;
     return res.status(200).send(respuesta);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+//Traer tarjetas a través de filtros
+controller.getTarjetasFilters = async (req, res) => {
+  try {
+    let query;
+    query = `where ${req.body[0]} `;
+    for (let i = 1; i < req.body.length; i++) {
+      query += "and " + req.body[i];
+    }
+    let tarjetas = await dao.getTarjetaFilters(data.tarjeta, query);
+    console.log(query);
+    return res.send(tarjetas);
   } catch (e) {
     console.log(e.message);
   }
