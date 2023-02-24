@@ -69,7 +69,7 @@ export default function Navbar() {
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to="test">
+                          <Link className="dropdown-item" to="test" aria-current="page">
                             Test aptitudes
                           </Link>
                         </li>

@@ -62,17 +62,17 @@ export default function TestUsuario() {
     } else if (response.status === 200) {
     } else if (response.status === 409) {
     }
-    Swal.fire({
-      title: "<strong>El resultado de tu test <u>es:</u></strong>",
-      icon: "success",
-      html:
-        "Lo tienes disponible <b> en tu perfil</b> " +
-        '<a href="http://127.0.0.1:5173/editar">links</a> ' +
-        "Enlace a tu perfil",
-      showCloseButton: true,
-      showCancelButton: true,
-      focusConfirm: false,
-    });
+    // Swal.fire({
+    //   title: "<strong>El resultado de tu test <u>es:</u></strong>",
+    //   icon: "success",
+    //   html:
+    //     "Lo tienes disponible <b> en tu perfil</b> " +
+    //     '<a href="http://127.0.0.1:5173/editar">links</a> ' +
+    //     "Enlace a tu perfil",
+    //   showCloseButton: true,
+    //   showCancelButton: true,
+    //   focusConfirm: false,
+    // });
     navigate("/editar");
   }
 
