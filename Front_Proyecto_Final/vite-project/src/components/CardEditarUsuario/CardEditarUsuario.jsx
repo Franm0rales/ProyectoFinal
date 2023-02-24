@@ -126,7 +126,7 @@ export default function CardEditarUsuario({ user, setUser }) {
               />
             </div>
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-4">
             <div className="about-text go-to">
               <h1 className="dark-color eventos">Perfil</h1>
               <div className="d-flex">
@@ -210,7 +210,9 @@ export default function CardEditarUsuario({ user, setUser }) {
               <div className="row about-list">
                 <div className="col-md-6">
                   <div className="media">
-                    <label>Nombre</label>
+                    <label>
+                      <b>Nombre</b>
+                    </label>
                     <button
                       className="btn "
                       onClick={() => setInputNombre(!inputNombre)}
@@ -244,7 +246,9 @@ export default function CardEditarUsuario({ user, setUser }) {
                     </div>
                   </div>
                   <div className="media">
-                    <label>Apellidos</label>
+                    <label>
+                      <b>Apellidos</b>
+                    </label>
                     <button
                       className="btn "
                       onClick={() => setInputApellido(!inputApellido)}
@@ -278,7 +282,9 @@ export default function CardEditarUsuario({ user, setUser }) {
                     </div>
                   </div>
                   <div className="media">
-                    <label>Ciudad</label>
+                    <label>
+                      <b>Ciudad</b>
+                    </label>
                     <button
                       className="btn "
                       onClick={() => setInputCiudad(!inputCiudad)}
@@ -323,7 +329,9 @@ export default function CardEditarUsuario({ user, setUser }) {
                 </div>
                 <div className="col-md-6">
                   <div className="media">
-                    <label>Correo</label>
+                    <label>
+                      <b>Correo</b>
+                    </label>
                     <button
                       className="btn "
                       onClick={() => setInputEmail(!inputEmail)}
@@ -357,7 +365,9 @@ export default function CardEditarUsuario({ user, setUser }) {
                     </div>
                   </div>
                   <div className="media">
-                    <label>Telefono</label>
+                    <label>
+                      <b>Telefono</b>
+                    </label>
                     <button
                       className="btn "
                       onClick={() => setInputTelefono(!inputTelefono)}
@@ -391,7 +401,9 @@ export default function CardEditarUsuario({ user, setUser }) {
                     </div>
                   </div>
                   <div className="media">
-                    <label>Avatar</label>
+                    <label>
+                      <b>Avatar</b>
+                    </label>
                     <button
                       className="btn "
                       onClick={() => setInputAvatar(!inputAvatar)}

@@ -60,7 +60,7 @@ export default function Nosotros() {
             <div class="data-card col-5 mb-5">
               <h3 className="text-primary">{eventos.contador}</h3>
               <h4>Eventos creados</h4>
-              <p>Acude a cualquier evento y acalara tu futuro.</p>
+              <p>Acude a cualquier evento y aclara tu futuro.</p>
               <a href="http://127.0.0.1:5173/eventos" class="link-text">
                 Ver eventos
               </a>

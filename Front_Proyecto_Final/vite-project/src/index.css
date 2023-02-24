@@ -1803,3 +1803,15 @@ small, time, .small {
 .cursor{
  cursor: pointer;
 }
+
+.table{
+  background:#ffffff8f;
+  box-shadow: 0 15px 30px 1px grey;
+  border-radius: 8px;
+}
+svg {
+  vertical-align: middle;
+  background: #ffffff8f;
+  box-shadow: 0 15px 30px 1px grey;
+  border-radius: 8px;
+}
