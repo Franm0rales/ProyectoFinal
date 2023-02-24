@@ -40,14 +40,11 @@ export function AuthContextProvider({ children }) {
     } else {
       setAlumnoEmpresa(1);
     }
-    const response = await fetch(
-      `http://localhost:3000/user/login/${alumnoEmpresa}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
-      }
-    );
+    const response = await fetch(`http://localhost:3000/user/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    });
 
     if (response.status === 200) {
       const token = await response.json();
