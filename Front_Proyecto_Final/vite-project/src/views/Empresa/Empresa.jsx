@@ -18,7 +18,7 @@ export default function Empresa() {
   return (
     <>
       {/* <Resultados resultados={resultados} /> */}
-      <EmpresasParaVista empresa={empresa} />
+      {empresa && <EmpresasParaVista empresas={empresa} />}
 
       {/* <Webcam />
       <CrearEvento /> */}
