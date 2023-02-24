@@ -320,17 +320,6 @@ export default function RegistroEmpresa() {
             accept="image/*"
           />
         </div>
-        <div className="col-md-7">
-          <label htmlFor="validationCustom01" className="form-label">
-            Avatar
-          </label>
-
-          <select class="form-select " aria-label="Default select example">
-            <option selected>Selecciona avatar</option>
-            <option value="8">Mujer</option>
-            <option value="7">Hombre</option>
-          </select>
-        </div>
 
         <div className="mb-3  form-check">
           <input type="checkbox" className="form-check-input" required />

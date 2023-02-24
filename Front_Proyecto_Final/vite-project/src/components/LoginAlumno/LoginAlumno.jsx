@@ -31,7 +31,7 @@ export default function LoginAlumno() {
   }, [authorization]);
   return (
     <div className="m-5 mb-5 ">
-      <h1>Login Alumno</h1>
+      <h1>Login Candidato</h1>
       <form onSubmit={handleSubmit} className="row g-3 needs-validation">
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">

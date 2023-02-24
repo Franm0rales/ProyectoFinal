@@ -348,9 +348,10 @@ controller.loginUser = async (req, res) => {
       tabla,
       data.email,
       email,
-      data.idTarjeta,
+      data.eliminado,
       data.eliminadoNo
     );
+    console.log(userData);
 
     // Si no existe el usuario respondemos con un 404 (not found)
     if (userData.length <= 0)

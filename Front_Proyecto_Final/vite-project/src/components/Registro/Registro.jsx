@@ -69,7 +69,7 @@ export default function Registro() {
   });
   return (
     <div className="m-5">
-      <h1>Regístrate</h1>
+      <h1>Regístro Candidato</h1>
 
       <form onSubmit={handleSubmit} className="row g-3 needs-validation">
         <div className="col-md-4">
@@ -298,7 +298,6 @@ export default function Registro() {
           Crea una cuenta ahora
         </button>
       </form>
-     
     </div>
   );
 }

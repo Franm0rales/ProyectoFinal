@@ -13,7 +13,7 @@ userRouter.post("/signUpAdmin", userController.addAdmin);
 userRouter.patch("/updateUser/:id", userController.updateUser);
 userRouter.patch("/updateEmpresa/:id", userController.updateEmpresa);
 //Login de un usuario
-userRouter.post("/login/:id", validateLoginDto, userController.loginUser);
+userRouter.post("/login", validateLoginDto, userController.loginUser);
 //Login de un usuario
 userRouter.post("/loginempresa", validateLoginDto, userController.loginEmpresa);
 //Traer todos los usuarios
