@@ -8,7 +8,7 @@ export default function BuscarEmpresa({ empresaABuscar, setEmpresaABuscar }) {
           class="form-control  col-6 mt-5 d-flex mb-5"
           placeholder="Search"
           name="nombre"
-          value={empresaABuscar}
+          // value={empresaABuscar}
         />
       </div>
     </div>
