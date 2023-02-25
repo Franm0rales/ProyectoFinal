@@ -9,10 +9,10 @@ export default function Descripcion() {
       <div className="container rounded " data-aos="fade-up">
         <div className="row no-gutters">
           <div className="col-lg-12 d-flex   ">
-            <div className="imagen">
+            <div className="pt-5 ">
             
             
-            <video src={Video} loop  controls autoPlay muted playsInline style={{width:"600px", height:"auto",borderRadius:"8px"}} className="pt-5"></video>
+            <video src={Video} loop  controls autoPlay muted playsInline style={{maxWidth:"100%", maxHeight:"100%",borderRadius:"8px"}} className=""></video>
 
             </div>
             <div className="col-lg-6 d-flex  about-content">
