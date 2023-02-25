@@ -659,7 +659,9 @@ body {
     line-height: 24px;
     font-size: 14px;
   }
-  
+  .img-releevant{
+opacity: 0.9;
+  }
   .about .video-box {
     position: relative;
   }

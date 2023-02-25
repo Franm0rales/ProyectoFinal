@@ -10,6 +10,7 @@
 .basico {
     background-image: url(../../assets/modelo1.jpg);
     background-position: top right;
+    border-radius: 16px;
 }
 
 .premier {

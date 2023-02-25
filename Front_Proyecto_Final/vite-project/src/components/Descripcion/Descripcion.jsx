@@ -1,17 +1,12 @@
-import imgvideo from "../../assets/modelo1.jpg";
+import imgvideo from "../../assets/releevant.jpeg";
 export default function Descripcion() {
   return (
     <section id="about" className="about">
       <div className="container" data-aos="fade-up">
-        <div className="row no-gutters">
-          <div className="col-lg-6 video-box">
-            <img src={imgvideo} className="img-fluid pt-4" alt="" />
-            <a
-              href="https://youtu.be/kK7LeYwpoQ8"
-              className="venobox play-btn mb-4"
-              data-vbtype="video"
-              data-autoplay="true"
-            ></a>
+        <div className="row no-gutters rounded">
+          <div className="col-lg-6 ">
+            <img src={imgvideo} className="img-fluid pt-5 pb-5 img-releevant" alt="" />
+            
             <div className="col-12 d-flex justify-content-between">
             <div className="icon-box pb-5 pt-2" data-aos="fade-up" data-aos-delay="100">
               <div className="icon">
