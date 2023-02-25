@@ -35,13 +35,12 @@ export default function Descripcion() {
           <div className="col-lg-6 d-flex  about-content">
             <div className="section-title">
               <h1>¿Qué es Horizons?</h1>
-              <p>
-              <b>¡Bienvenidos a nuestra página web de empresas que reciben días de voluntariado!</b> Aquí encontrarás una gran variedad de oportunidades para que los estudiantes puedan conocer y experimentar diferentes puestos de trabajo antes de decidir qué estudiar. En nuestro sitio web, podrás encontrar una lista detallada de empresas que ofrecen días de voluntariado, con información sobre las áreas de trabajo, los proyectos en los que se puede participar, los requisitos y los beneficios que se obtienen al realizar estas actividades. Creemos que esta experiencia puede ser una excelente oportunidad para que los estudiantes puedan explorar sus intereses, descubrir nuevas habilidades y conocer el mundo laboral desde una perspectiva práctica. ¡Esperamos que disfruten navegando por nuestra página y encuentren la oportunidad perfecta para ustedes!
+              <p className="mt-1 fs-5">
+               Nuestra página web ofrece a los estudiantes oportunidades para conocer y experimentar diferentes puestos de trabajo a través de días de voluntariado en empresas. Proporcionamos información detallada sobre las empresas que ofrecen estas oportunidades, los proyectos en los que se puede participar y los beneficios que se obtienen. Creemos que esta experiencia puede ser valiosa para los estudiantes para explorar sus intereses, descubrir nuevas habilidades y conocer el mundo laboral desde una perspectiva práctica. También ofrecemos un feedback con las empresas para mejorar los programas de voluntariado y ayudar a los estudiantes a encontrar oportunidades de trabajo y desarrollar habilidades valiosas.
               </p>
+              <hr></hr>
               <div>
-                <p>
-                Además, crear un feedback con las empresas que ofrecen oportunidades de voluntariado puede ser una herramienta poderosa para mejorar los programas de voluntariado y promover el trabajo de las empresas, al mismo tiempo que ayuda a los estudiantes a encontrar oportunidades de trabajo y desarrollar habilidades valiosas.
-                </p>
+               
               </div>
               <table className="mt-5" style={{borderCollapse: 'collapse'}}>
   <thead>

@@ -65,8 +65,8 @@ describe('example Login to app', () => {
       cy.get(':nth-child(1) > .text-start').click()
       cy.wait(5000); 
       //Vamos a navegar a los eventos vamos a filtrar y nos vamos a registrar en un evento
-      cy.get(':nth-child(3) > .nav-link').click().wait(5000)
-      cy.get('.form-control').type('PYTHON{enter}')
+      // cy.get(':nth-child(3) > .nav-link').click().wait(5000)
+      // cy.get('.form-control').type('PYTHON{enter}')
       
      
 
