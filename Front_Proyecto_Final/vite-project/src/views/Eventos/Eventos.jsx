@@ -14,21 +14,32 @@ export default function Eventos() {
   const [data, setData] = useState({});
   const [contadorPersonas, setContadorPersonas] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isCheckedPlazas, setIsCheckedPlazas] = useState(false);
+  const [isCheckedFecha, setIsCheckedFecha] = useState(false);
   const EVENTS_PER_PAGE = 5;
+  const [allUndefined, setAllUndefined] = useState(true);
   const eventsToShow = eventos.slice(
     (currentPage - 1) * EVENTS_PER_PAGE,
     currentPage * EVENTS_PER_PAGE
   );
-
-  let jsoneventos;
-
+  let query;
+  useEffect(() => {
+    let undefinedTrueFalse = 0;
+    for (let i = 0; i < selectedCiudades.length; i++) {
+      if (selectedCiudades[i] !== undefined) {
+        undefinedTrueFalse = allUndefined + 1;
+        break;
+      }
+    }
+    setAllUndefined(undefinedTrueFalse);
+  }, [selectedCiudades]);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const responseEventos = await fetch(
-          `http://localhost:3000/tarjeta/getAllTarjetas/tarjetas`
+          "http://localhost:3000/tarjeta/getAllTarjetas/tarjetas"
         );
-        jsoneventos = await responseEventos.json();
+        let jsoneventos = await responseEventos.json();
         setEventos(jsoneventos);
         setError(null);
 
@@ -41,17 +52,31 @@ export default function Eventos() {
         console.log(error);
       }
     };
+    const crearQuery = async () => {
+      try {
+        let x = 20;
+        for (let i = 0; i < selectedCiudades.length; i++) {
+          if (selectedCiudades[i] !== undefined && x == 20) {
+            x = i;
+          }
+        }
+        query = `where ${selectedCiudades[x]}`;
+        for (let i = x + 1; i < selectedCiudades.length; i++) {
+          if (selectedCiudades[i] !== undefined)
+            query += " and " + selectedCiudades[i] + " ";
+        }
+        if (query === `where ${undefined}`) {
+          query = " ";
+        }
+      } catch (e) {
+        console.log(e.message);
+      }
+    };
     const fetchRutaABuscar = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3000/tarjeta/getTarjetaFilters`,
-          {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify([selectedCiudades, empresaABuscar]),
-          }
+          `http://localhost:3000/tarjeta/getTarjetaFilters/${query}`,
+          {}
         );
         const data = await response.json();
         setEventos(data);
@@ -63,37 +88,55 @@ export default function Eventos() {
         setEventos([]);
       }
     };
-    if (empresaABuscar !== "" || selectedCiudades.length > 0) {
-      fetchRutaABuscar();
-    } else {
-      setEmpresaABuscar("");
+    if (allUndefined == 0) {
       fetchData();
+    } else {
+      crearQuery();
+      fetchRutaABuscar();
     }
-  }, [unirse, empresaABuscar, filtro]);
+  }, [allUndefined]);
 
-  function handleChange(event) {
+  function handleCheckBoxFecha(x) {
     const fechaActual = new Date();
     const anio = fechaActual.getFullYear();
     const mes = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
     const dia = ("0" + fechaActual.getDate()).slice(-2);
     const fechaEnFormatoYYYYMMDD = `${anio}-${mes}-${dia}`;
+    if (isCheckedFecha) {
+      selectedCiudades[x] = undefined;
+      setIsCheckedFecha(!isCheckedFecha);
+    } else {
+      selectedCiudades[x] = `"${fechaEnFormatoYYYYMMDD}"<fechaInicio`;
+      setIsCheckedFecha(!isCheckedFecha);
+    }
+    setSelectedCiudades([...selectedCiudades]);
+  }
+  function handleCheckBoxPlazas(event, x) {
     let options = event.target.value;
-
-    if (options === "fecha") {
-      options = `"${fechaEnFormatoYYYYMMDD}"<fechaInicio`;
+    if (isCheckedPlazas) {
+      selectedCiudades[x] = undefined;
+      setIsCheckedPlazas(!isCheckedPlazas);
+    } else {
+      selectedCiudades[x] = options;
+      setIsCheckedPlazas(!isCheckedPlazas);
     }
-    for (let i = 0; i < selectedCiudades.length; i++) {
-      if (selectedCiudades[i] == options) {
-        return;
-      }
-    }
-    selectedCiudades[selectedCiudades.length] = options;
-    setFiltro(options);
+    setSelectedCiudades([...selectedCiudades]);
+  }
+  function handleChangeCiudad(event, x) {
+    let options = event.target.value;
+    selectedCiudades[x] = options;
+    setSelectedCiudades([...selectedCiudades]);
+  }
+  function deleteFilters(e) {
+    e.preventDefault();
+    setSelectedCiudades([undefined]);
+    setIsCheckedPlazas(false);
+    setIsCheckedFecha(false);
   }
   return (
     <>
       <div id="fondo" className="pb-5">
-        <div className="pt-5 d-flex justify-content-center">
+        <div className="pt-5 d-flex justify-content-center gap-3">
           <BuscarEmpresa
             empresaABuscar={empresaABuscar}
             setEmpresaABuscar={setEmpresaABuscar}
@@ -102,24 +145,47 @@ export default function Eventos() {
           <div className="form-label col-1 pt-5">
             <select
               name="ciudad"
-              onChange={(e) => handleChange(e)}
+              onChange={(e) => handleChangeCiudad(e, 0)}
               value={selectedCiudades}
-              className="form-select "
-              aria-label="Default select exampl e"
+              className="form-select col-2"
+              aria-label="Default select example"
             >
               <option value="">Selecciona ciudades</option>
-              <option value="alumnos<plazas">Plazas disponibles</option>
-              <option name="fecha" value="fecha">
-                fecha
-              </option>
-              <option value="Cordoba">Cordaba</option>
-              <option value="Granada">Granada</option>
-              <option value="Huelva">Huelva</option>
-              <option value="Jaen">Jaen</option>
-              <option value="Malaga">Malaga</option>
-              <option value="Sevilla">Sevilla</option>
+              <option value="ciudad = 'Almeria'">Almeria</option>
+              <option value="ciudad = 'Cadiz'">Cadiz</option>
+              <option value="ciudad = 'Cordoba'">Cordaba</option>
+              <option value="ciudad = 'Granada'">Granada</option>
+              <option value="ciudad = 'Huelva'">Huelva</option>
+              <option value="ciudad = 'Jaen'">Jaen</option>
+              <option value="ciudad = 'Malaga'">Malaga</option>
+              <option value="ciudad = 'Sevilla'">Sevilla</option>
             </select>
           </div>
+          <div className="d-flex align-items-center gap-2">
+            <label>Plazas disponibles</label>
+            <input
+              type="checkbox"
+              name="plazas"
+              value="alumnos<plazas"
+              checked={isCheckedPlazas}
+              onClick={(e) => handleCheckBoxPlazas(e, 1)}
+            />
+          </div>
+
+          <div className="d-flex align-items-center gap-2">
+            <label>Fecha disponible</label>
+            <input
+              type="checkbox"
+              id="scales"
+              name="scales"
+              value="fecha"
+              checked={isCheckedFecha}
+              onClick={() => handleCheckBoxFecha(2)}
+            />
+          </div>
+          <button id="botones" onClick={(e) => deleteFilters(e)}>
+            Elimnar filtros
+          </button>
         </div>
         <div className="container col-10 "></div>
         {eventsToShow.map((evento) => (

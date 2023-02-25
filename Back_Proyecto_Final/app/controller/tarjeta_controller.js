@@ -339,18 +339,9 @@ controller.getRespuestasByIdComentario = async (req, res) => {
 };
 //Traer tarjetas a través de filtros
 controller.getTarjetasFilters = async (req, res) => {
-  console.log("entro");
+  const { query } = req.params;
   try {
-    let query;
-    query = `where ${req.body[0][0]} `;
-    for (let i = 1; i < req.body.length; i++) {
-      query += "and " + req.body[0][i];
-    }
-    // if (nombre !== "combinacionNo") {
-    //   query += ` nombre like'%${nombre}%'`;
-    // }
     let tarjetas = await dao.getTarjetaFilters(data.tarjeta, query);
-    console.log(tarjetas);
     return res.send(tarjetas);
   } catch (e) {
     console.log(e.message);
