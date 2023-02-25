@@ -3,9 +3,9 @@ export default function Descripcion() {
   return (
   <>
     <h1 className="text-center pt-5 texto-contacto">¿Qué es Horizons?</h1>
-    <section id="about" className="about">
-      <div className="container" data-aos="fade-up">
-        <div className="row no-gutters rounded">
+    <section id="about" className="about ">
+      <div className="container rounded" data-aos="fade-up">
+        <div className="row no-gutters ">
           <div className="col-lg-12 d-flex">
             <div className="imagen">
             <img src={imgvideo} className="img-fluid pt-3 pb-5 img-releevant" alt="" />
