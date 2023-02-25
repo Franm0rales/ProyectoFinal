@@ -12,7 +12,7 @@ export default function Descripcion() {
             <div className="imagen">
             
             
-            <video src={Video} loop  controls autoPlay muted playsInline style={{width:"600px"}} className="pt-5"></video>
+            <video src={Video} loop  controls autoPlay muted playsInline style={{width:"600px", height:"auto",borderRadius:"8px"}} className="pt-5"></video>
 
             </div>
             <div className="col-lg-6 d-flex  about-content">
