@@ -665,7 +665,9 @@ opacity: 0.9;
   .about .video-box {
     position: relative;
   }
-  
+  .rounded{
+    border-radius: 8px;
+  }
   .about .play-btn {
     width: 94px;
     height: 94px;
@@ -1358,7 +1360,6 @@ div.rbc-event, .rbc-day-slot {
 }
 .section-title {
   
-    font-weight: 600;
     margin-top: 0.45em;
     margin-bottom: 0.35em;
     color: #303133;

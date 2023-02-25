@@ -30,9 +30,7 @@ body {
   h4,
   h5,
   h6,
-  .font-primary {
-    font-family: "Raleway", sans-serif;
-  }
+  
   
                    
     
@@ -1716,7 +1714,6 @@ div.rbc-event, .rbc-day-slot {
 }
 .section-title {
   
-    font-weight: 600;
     margin-top: 0.45em;
     margin-bottom: 0.35em;
     color: #303133;
