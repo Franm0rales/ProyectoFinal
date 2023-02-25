@@ -596,7 +596,7 @@ body {
   
   
   .about .container {
-    box-shadow: 0 5px 25px 0 rgba(214, 215, 216, 0.6);
+    box-shadow: 0 15px 30px 1px grey;
   }
   
  
@@ -1817,4 +1817,8 @@ svg {
   background: #ffffff8f;
   box-shadow: 0 15px 30px 1px grey;
   border-radius: 8px;
+}
+.sombra-home{
+  background: #ffffff8f;
+  box-shadow: 0 15px 30px 1px grey;
 }

@@ -7,9 +7,9 @@ export default function Descripcion() {
   <>
     <h1 className="text-center pt-5 texto-contacto">¿Qué es Horizons?</h1>
     <section id="about" className="about ">
-      <div className="container rounded" data-aos="fade-up">
-        <div className="row no-gutters ">
-          <div className="col-lg-12 d-flex">
+      <div className="container rounded " data-aos="fade-up">
+        <div className="row no-gutters">
+          <div className="col-lg-12 d-flex   ">
             <div className="imagen">
             
             <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
