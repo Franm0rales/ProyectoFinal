@@ -25,7 +25,7 @@ export default function TestUsuario() {
   const actualizarNumero = (index, event) => {
     const nuevoValor = parseInt(event.target.value);
     numeros[index] = nuevoValor;
-
+    console.log(numeros);
     if (numeros.length > 39) {
       setDisable("");
     }
@@ -62,17 +62,6 @@ export default function TestUsuario() {
     } else if (response.status === 200) {
     } else if (response.status === 409) {
     }
-    // Swal.fire({
-    //   title: "<strong>El resultado de tu test <u>es:</u></strong>",
-    //   icon: "success",
-    //   html:
-    //     "Lo tienes disponible <b> en tu perfil</b> " +
-    //     '<a href="http://127.0.0.1:5173/editar">links</a> ' +
-    //     "Enlace a tu perfil",
-    //   showCloseButton: true,
-    //   showCancelButton: true,
-    //   focusConfirm: false,
-    // });
     navigate("/editar");
   }
 
@@ -133,19 +122,21 @@ export default function TestUsuario() {
                     <b>{pregunta.pregunta}</b>
                   </div>
                   <div
-                    className="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3"
+                    className="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3 d-flex"
                     id="options"
                   >
-                    <label className="options">
-                      0
-                      <input
-                        value={value[0]}
-                        type="radio"
-                        name={pregunta.id}
-                        onChange={(e) => actualizarNumero(pregunta.id, e)}
-                      />
-                      <span className="checkmark"></span>
-                    </label>
+                    <div className="d-flex flex-column">
+                      <label className="options ">
+                        0
+                        <input
+                          value={value[0]}
+                          type="radio"
+                          name={pregunta.id}
+                          onChange={(e) => actualizarNumero(pregunta.id, e)}
+                        />
+                        <span className="checkmark"></span>
+                      </label>
+                    </div>
                     <label className="options">
                       1
                       <input
@@ -156,6 +147,7 @@ export default function TestUsuario() {
                       />
                       <span className="checkmark"></span>
                     </label>
+
                     <label className="options">
                       2
                       <input
