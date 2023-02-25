@@ -139,7 +139,7 @@ export default function CrearEvento(setEvento) {
               />
             </label>
           </div>
-          <div className="form-label col-6">
+          <div className="form-label col-4">
             <label className="">Telefono:</label>
             <input
               className="form-control "
