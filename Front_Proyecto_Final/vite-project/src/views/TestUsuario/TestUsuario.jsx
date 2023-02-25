@@ -133,10 +133,11 @@ export default function TestUsuario() {
                   <b>{pregunta.pregunta}</b>
                 </div>
                 <div
-                  className="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3"
+                  className="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3 d-flex"
                   id="options"
                 >
-                  <label className="options">
+                  <div className="d-flex flex-column">
+                  <label className="options ">
                     0
                     <input
                       value={value[0]}
@@ -146,6 +147,7 @@ export default function TestUsuario() {
                     />
                     <span className="checkmark"></span>
                   </label>
+                  </div>
                   <label className="options">
                     1
                     <input
@@ -156,6 +158,7 @@ export default function TestUsuario() {
                     />
                     <span className="checkmark"></span>
                   </label>
+                 
                   <label className="options">
                     2
                     <input
@@ -176,6 +179,7 @@ export default function TestUsuario() {
                     />
                     <span className="checkmark"></span>
                   </label>
+                 
                 </div>
               </div>
             </form>

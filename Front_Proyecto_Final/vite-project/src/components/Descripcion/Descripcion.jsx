@@ -1,8 +1,7 @@
-import imgvideo from "../../assets/releevant.jpeg";
-import img2 from "../../assets/Carousel2.jpg"
-import img3 from "../../assets/Carousel3.jpg"
+import Video from "../../assets/Video.mp4"
 
 export default function Descripcion() {
+  
   return (
   <>
     <h1 className="text-center pt-5 texto-contacto">¿Qué es Horizons?</h1>
@@ -12,26 +11,9 @@ export default function Descripcion() {
           <div className="col-lg-12 d-flex   ">
             <div className="imagen">
             
-            <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="10000">
-    <img src={imgvideo} className="img-fluid pt-3 pb-5 img-releevant" alt="" />    </div>
-    <div class="carousel-item" data-bs-interval="2000">
-    <img src={img2} className="img-fluid pt-3 pb-5 img-releevant" alt="" />    </div>
+            
+            <video src={Video} loop  controls autoPlay muted playsInline style={{width:"600px"}} className="pt-5"></video>
 
-    <div class="carousel-item">
-    <img src={img3} className="img-fluid pt-3 pb-5 img-releevant" alt="" />    </div>
-
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
             </div>
             <div className="col-lg-6 d-flex  about-content">
             <div className="section-title  ">
