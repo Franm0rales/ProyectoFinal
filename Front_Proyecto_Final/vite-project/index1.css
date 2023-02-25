@@ -10,7 +10,8 @@
 --------------------------------------------------------------*/
 body {
   font-family: Roboto,sans-serif;
-    color: #444;
+   
+  color: #444;
   }
   
   a {
@@ -705,16 +706,14 @@ body {
   .about .container {
     box-shadow: 0 5px 25px 0 rgba(214, 215, 216, 0.6);
   }
-  
+  .tabla-home{
+border-right:dashed
+  }
   .about .video-box img {
     padding: 15px 0;
   }
   
-  .about .section-title p {
-    text-align: left;
-    font-style: italic;
-    color: #666;
-  }
+  
   
   .about .about-content {
     padding: 16px;
