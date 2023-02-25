@@ -1147,7 +1147,8 @@ opacity: 0.9;
 }
 
 .row-striped:nth-of-type(odd){
-  /* background-color: #eef2f3; */
+  background:#ffffff8f;
+  box-shadow: 0 15px 30px 1px grey;
  
   border: 1px #5e96ff solid;
   border-left: 32px #5e96ff solid;
