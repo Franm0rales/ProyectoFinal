@@ -183,8 +183,8 @@ export default function Eventos() {
               onClick={() => handleCheckBoxFecha(2)}
             />
           </div>
-          <button id="botones" onClick={(e) => deleteFilters(e)}>
-            Elimnar filtros
+          <button className="border-0 bg-transparent" onClick={(e) => deleteFilters(e)}>
+          <i class="bi bi-x-square-fill text-danger fs-4"></i>
           </button>
         </div>
         <div className="container col-10 "></div>
