@@ -124,7 +124,11 @@ body {
   #topbar .social-links a:hover {
     color: #5e96ff;
   }
-  
+  /* contacto */
+  .shadow{
+    background:#ffffff8f;
+  box-shadow: 0 15px 30px 1px grey;
+  }
   /*--------------------------------------------------------------
   # Header
   --------------------------------------------------------------*/

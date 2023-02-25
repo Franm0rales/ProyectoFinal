@@ -4,8 +4,8 @@ export default function Quedadas() {
   return (
     <div className="container mt-5">
       <div className="row">
-        <div className="col-md-6">
-          <h1 className="pt-5 ">Conoce nuestras quedadas</h1>
+        <div className="col-md-12">
+          <h1 className="pt-5 pb-5 text-center ">Conoce nuestras quedadas</h1>
         </div>
       </div>
 

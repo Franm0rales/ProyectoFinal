@@ -84,9 +84,10 @@ export default function TestUsuario() {
 
   return (
     <>
-      <h2 id="test" className="section-title mt-5">
+    <div id="fondo" className=" pb-5 pt-5">
+      <h1 id="test" className="section-title mt-5">
         Test aptitudes
-      </h2>
+      </h1>
       <table class="table container col-8">
         <thead>
           <tr>
@@ -231,6 +232,7 @@ export default function TestUsuario() {
           </li>
         </ul>
       </nav>
+      </div>
     </>
   );
 }

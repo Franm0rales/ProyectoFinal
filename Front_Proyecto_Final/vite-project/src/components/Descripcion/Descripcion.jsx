@@ -7,7 +7,7 @@ export default function Descripcion() {
           <div className="col-lg-6 ">
             <img src={imgvideo} className="img-fluid pt-5 pb-5 img-releevant" alt="" />
             
-            <div className="col-12 d-flex justify-content-between">
+            <div className="col-12 d-flex justify-content-between align-items-center">
             <div className="icon-box pb-5 pt-2" data-aos="fade-up" data-aos-delay="100">
               <div className="icon">
                 <i className="bi bi-person-circle"></i>

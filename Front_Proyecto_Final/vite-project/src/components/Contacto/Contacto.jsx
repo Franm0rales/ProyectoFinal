@@ -2,7 +2,7 @@ export default function Contacto() {
   return (
     <>
       <div className="d-flex justify-content-center">
-        <div className="col-4 shadow p-3 mt-5 mb-5">
+        <div className="col-4 shadow p-3 mt-5 mb-5 rounded">
           <h2 id="test">Enviar formulario</h2>
           <form>
             <div className="border rounded p-3 ">
