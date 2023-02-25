@@ -1253,6 +1253,9 @@ opacity: 0.9;
   font-size:24px ;
   color: #5e96ff;
 }
+.rbc-btn-group{
+  padding: 8px;
+}
 div.rbc-event, .rbc-day-slot {
   background-color: #5e96ff;
 }
