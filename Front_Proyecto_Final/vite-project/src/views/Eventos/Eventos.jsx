@@ -33,6 +33,7 @@ export default function Eventos() {
     }
     setAllUndefined(undefinedTrueFalse);
   }, [selectedCiudades]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,12 +56,14 @@ export default function Eventos() {
     const crearQuery = async () => {
       try {
         let x = 20;
-        for (let i = 0; i < selectedCiudades.length; i++) {
+        for (let i = 0; i < 3; i++) {
           if (selectedCiudades[i] !== undefined && x == 20) {
             x = i;
           }
         }
-        query = `where ${selectedCiudades[x]}`;
+        if (selectedCiudades[x] !== undefined) {
+          query = `where ${selectedCiudades[x]}`;
+        }
         for (let i = x + 1; i < selectedCiudades.length; i++) {
           if (selectedCiudades[i] !== undefined)
             query += " and " + selectedCiudades[i] + " ";
@@ -82,17 +85,28 @@ export default function Eventos() {
         setEventos(data);
         setError(null);
         setCurrentPage(1);
+        console.log(eventos);
       } catch (error) {
         console.log(error);
         setError("La ruta no existe");
         setEventos([]);
       }
     };
+    const fetchBuscarNombre = async () => {
+      const objetosFiltrados = eventos.filter((evento) =>
+        evento.nombre.toLowerCase().includes(empresaABuscar.toLocaleLowerCase())
+      );
+      console.log(objetosFiltrados);
+      setEventos(objetosFiltrados);
+    };
     if (allUndefined == 0) {
       fetchData();
     } else {
       crearQuery();
       fetchRutaABuscar();
+      if (selectedCiudades[3] !== undefined) {
+        fetchBuscarNombre();
+      }
     }
   }, [allUndefined]);
 
@@ -124,6 +138,9 @@ export default function Eventos() {
   }
   function handleChangeCiudad(event, x) {
     let options = event.target.value;
+    if (options == "Selecciona ciudades") {
+      options = undefined;
+    }
     selectedCiudades[x] = options;
     setSelectedCiudades([...selectedCiudades]);
   }
@@ -133,31 +150,46 @@ export default function Eventos() {
     setIsCheckedPlazas(false);
     setIsCheckedFecha(false);
   }
+  function handleInputNombre(nombre) {
+    if (nombre === "") {
+      nombre = undefined;
+    }
+    let cambio = { ...selectedCiudades[3], nombre };
+    selectedCiudades[3] = cambio.nombre;
+    setEmpresaABuscar(selectedCiudades[3]);
+    setSelectedCiudades([...selectedCiudades]);
+  }
+
   return (
     <>
       <div id="fondo" className="pb-5">
         <div className="pt-5 d-flex justify-content-center gap-3">
-          <BuscarEmpresa
-            empresaABuscar={empresaABuscar}
-            setEmpresaABuscar={setEmpresaABuscar}
-          />
-
+          {/* <BuscarEmpresa handleInputNombre={handleInputNombre} /> */}
+          <div class="col-2">
+            <input
+              onChange={(e) => handleInputNombre(e.target.value)}
+              type="text"
+              class="form-control  col-6 mt-5 d-flex mb-5"
+              placeholder="Search"
+              name="nombre"
+            />
+          </div>
           <div className="form-label col-1 pt-5">
             <select
               name="ciudad"
               onChange={(e) => handleChangeCiudad(e, 0)}
-              value={selectedCiudades}
+              value={selectedCiudades[0]}
               className="form-select col-2"
               aria-label="Default select example"
             >
-              <option value="">Selecciona ciudades</option>
-              <option value="ciudad = 'Almeria'">Almeria</option>
+              <option value={undefined}>Selecciona ciudades</option>
+              <option value="ciudad = 'Almeria'">Almería</option>
               <option value="ciudad = 'Cadiz'">Cadiz</option>
-              <option value="ciudad = 'Cordoba'">Cordaba</option>
+              <option value="ciudad = 'Cordoba'">Córdoba</option>
               <option value="ciudad = 'Granada'">Granada</option>
               <option value="ciudad = 'Huelva'">Huelva</option>
               <option value="ciudad = 'Jaen'">Jaen</option>
-              <option value="ciudad = 'Malaga'">Malaga</option>
+              <option value="ciudad = 'Malaga'">Málaga</option>
               <option value="ciudad = 'Sevilla'">Sevilla</option>
             </select>
           </div>
@@ -176,15 +208,17 @@ export default function Eventos() {
             <label>Fecha disponible</label>
             <input
               type="checkbox"
-              id="scales"
               name="scales"
               value="fecha"
               checked={isCheckedFecha}
               onClick={() => handleCheckBoxFecha(2)}
             />
           </div>
-          <button id="botones" onClick={(e) => deleteFilters(e)}>
-            Elimnar filtros
+          <button
+            className="border-0 bg-transparent"
+            onClick={(e) => deleteFilters(e)}
+          >
+            <i class="bi bi-x-square-fill text-danger fs-4"></i>
           </button>
         </div>
         <div className="container col-10 "></div>
