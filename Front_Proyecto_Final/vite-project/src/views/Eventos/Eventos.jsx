@@ -153,7 +153,7 @@ export default function Eventos() {
               <option value="">Selecciona ciudades</option>
               <option value="ciudad = 'Almeria'">Almeria</option>
               <option value="ciudad = 'Cadiz'">Cadiz</option>
-              <option value="ciudad = 'Cordoba'">Cordaba</option>
+              <option value="ciudad = 'Cordoba'">Córdoba</option>
               <option value="ciudad = 'Granada'">Granada</option>
               <option value="ciudad = 'Huelva'">Huelva</option>
               <option value="ciudad = 'Jaen'">Jaen</option>
