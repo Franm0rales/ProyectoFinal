@@ -308,7 +308,7 @@ export default function CardEditarEmpresa({ user, setUser }) {
                           <option value="">Selecciona una ciudad</option>
                           <option value="Almería">Almería</option>
                           <option value="Cádiz">Cádiz</option>
-                          <option value="Cordoba">Cordaba</option>
+                          <option value="Cordoba">Córdoba</option>
                           <option value="Granada">Granada</option>
                           <option value="Huelva">Huelva</option>
                           <option value="Jaen">Jaen</option>
