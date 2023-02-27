@@ -86,12 +86,6 @@ export default function LoginEmpresa() {
           </div>{" "}
         </div>
 
-        <div className="mb-3  form-check col-">
-          <input type="checkbox" className="form-check-input" required />
-          <label className="form-check-label" htmlFor="exampleCheck1">
-            Aceptar política de privacidad
-          </label>
-        </div>
         <button
           id="botones"
           disabled={isSubmitting}
