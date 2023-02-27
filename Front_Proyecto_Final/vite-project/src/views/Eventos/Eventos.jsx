@@ -85,7 +85,6 @@ export default function Eventos() {
         setEventos(data);
         setError(null);
         setCurrentPage(1);
-        console.log(eventos);
       } catch (error) {
         console.log(error);
         setError("La ruta no existe");
@@ -96,7 +95,6 @@ export default function Eventos() {
       const objetosFiltrados = eventos.filter((evento) =>
         evento.nombre.toLowerCase().includes(empresaABuscar.toLocaleLowerCase())
       );
-      console.log(objetosFiltrados);
       setEventos(objetosFiltrados);
     };
     if (allUndefined == 0) {
@@ -214,8 +212,11 @@ export default function Eventos() {
               onClick={() => handleCheckBoxFecha(2)}
             />
           </div>
-          <button id="botones" onClick={(e) => deleteFilters(e)}>
-            Elimnar filtros
+          <button
+            className="border-0 bg-transparent"
+            onClick={(e) => deleteFilters(e)}
+          >
+            <i class="bi bi-x-square-fill text-danger fs-4"></i>
           </button>
         </div>
         <div className="container col-10 "></div>
