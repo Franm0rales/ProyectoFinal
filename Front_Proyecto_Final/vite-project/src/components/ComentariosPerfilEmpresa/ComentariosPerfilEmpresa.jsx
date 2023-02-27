@@ -75,7 +75,7 @@ export default function ComentariosPerfilEmpresa({
               onClick={() => (toggleComments(display), setIdTarjeta(evento.id))}
               className="border-0 rounded bg-transparent text-primary"
             >
-              <i class="bi bi-chat-square-text-fill fs-1  "></i>
+              <i class="bi bi-chat-square-text-fill fs-1"></i>
             </button>
           ) : (
             <button
