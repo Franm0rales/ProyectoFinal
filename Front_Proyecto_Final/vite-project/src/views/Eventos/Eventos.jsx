@@ -106,7 +106,7 @@ export default function Eventos() {
         fetchBuscarNombre();
       }
     }
-  }, [allUndefined]);
+  }, [allUndefined, unirse]);
 
   function handleCheckBoxFecha(x) {
     const fechaActual = new Date();
@@ -257,23 +257,33 @@ export default function Eventos() {
                   />
                 </div>
               </div>
-
-              <div className="pb-2 text-center ">
-                <ContadorVisitas
-                  plazas={evento.plazas}
-                  setContadorPersonas={setContadorPersonas}
-                  contadorPersonas={evento.alumnos}
-                  idTarjeta={evento.id}
-                  setUnirse={setUnirse}
-                  unirse={unirse}
-                  data={data.idTarjeta}
-                  fechaInicio={evento.fechaInicio}
-                  avatar={data.avatar}
-                  nombre={data.nombre}
-                  apellidos={data.apellidos}
-                  correo={data.email}
-                />
-              </div>
+              {authorization?.role ? (
+                authorization?.role == 2 ? (
+                  <div className="pb-2 text-center ">
+                    <ContadorVisitas
+                      plazas={evento.plazas}
+                      setContadorPersonas={setContadorPersonas}
+                      contadorPersonas={evento.alumnos}
+                      idTarjeta={evento.id}
+                      setUnirse={setUnirse}
+                      unirse={unirse}
+                      data={data.idTarjeta}
+                      fechaInicio={evento.fechaInicio}
+                      avatar={data.avatar}
+                      nombre={data.nombre}
+                      apellidos={data.apellidos}
+                      correo={data.email}
+                    />
+                  </div>
+                ) : (
+                  <p></p>
+                )
+              ) : (
+                <p>
+                  <a href="http://127.0.0.1:5173/login">Registrate</a> para
+                  poder apuntarte a los eventos.
+                </p>
+              )}
             </div>
           </>
         ))}
