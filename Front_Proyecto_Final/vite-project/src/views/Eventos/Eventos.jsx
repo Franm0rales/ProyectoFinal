@@ -106,7 +106,7 @@ export default function Eventos() {
         fetchBuscarNombre();
       }
     }
-  }, [allUndefined]);
+  }, [unirse, allUndefined]);
 
   function handleCheckBoxFecha(x) {
     const fechaActual = new Date();
