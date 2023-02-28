@@ -1,0 +1,26 @@
+.user-list tbody td > img {
+    position: relative;
+	max-width: 50px;
+	float: left;
+	margin-right: 15px;
+}
+.user-list tbody td .user-link {
+	display: block;
+	font-size: 1.25em;
+	padding-top: 3px;
+}
+
+
+/* TABLES */
+.table {
+    border-collapse: separate;
+}
+
+
+
+
+
+
+
+
+
