@@ -114,7 +114,7 @@ export default function Evento({
         <td>
           <div className="progress-bar rounded">
             {completed ? (
-              <div className="filler rounded " style={{ width: `100%` }}></div>
+              <div className="filler rounded " style={{ width: `100%`,background:"green" }}></div>
             ) : inProgress ? (
               <div
                 className="filler rounded "
