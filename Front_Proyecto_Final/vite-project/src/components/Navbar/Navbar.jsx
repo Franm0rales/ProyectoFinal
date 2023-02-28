@@ -24,7 +24,10 @@ export default function Navbar() {
               <nav id="navbar" className="navbar">
                 <ul>
                   <li>
-                    <Link to="/" className="nav-link scrollto active text-dark">
+                    <Link
+                      to="/admin"
+                      className="nav-link scrollto active text-dark"
+                    >
                       Panel administrador
                     </Link>
                   </li>

@@ -1,378 +1,465 @@
+import "./HomeAdmin.css";
 export default function HomeAdmin() {
   return (
     <>
-      <div className="grey-bg container-fluid">
-        <section id="minimal-statistics">
-          <div className="row">
-            <div className="col-12 mt-3 mb-1">
-              <h4 className="text-uppercase">Minimal Statistics Cards</h4>
-              <p>Statistics on minimal cards.</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="main-box clearfix">
+              <div class="table-responsive">
+                <table class="table user-list">
+                  <thead>
+                    <tr>
+                      <th>
+                        <span>User</span>
+                      </th>
+                      <th>
+                        <span>Created</span>
+                      </th>
+                      <th class="text-center">
+                        <span>Status</span>
+                      </th>
+                      <th>
+                        <span>Email</span>
+                      </th>
+                      <th>&nbsp;</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <img
+                          src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                          alt=""
+                          style={{ width: "5rem", height: "3rem" }}
+                        />
+                        <a href="#" class="user-link">
+                          Mila Kunis
+                        </a>
+                        <span class="user-subhead">Admin</span>
+                      </td>
+                      <td>2013/08/08</td>
+                      <td class="text-center">
+                        <span class="label label-default">Inactive</span>
+                      </td>
+                      <td>
+                        <a href="#">mila@kunis.com</a>
+                      </td>
+                      <td style={{ width: "20%" }}>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link danger">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img
+                          src="https://bootdey.com/img/Content/avatar/avatar2.png"
+                          alt=""
+                          style={{ width: "5rem", height: "3rem" }}
+                        />
+                        <a href="#" class="user-link">
+                          George Clooney
+                        </a>
+                        <span class="user-subhead">Member</span>
+                      </td>
+                      <td>2013/08/12</td>
+                      <td class="text-center">
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="#">marlon@brando.com</a>
+                      </td>
+                      <td style={{ width: "20%" }}>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link danger">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img
+                          src="https://bootdey.com/img/Content/avatar/avatar3.png"
+                          alt=""
+                          style={{ width: "5rem", height: "3rem" }}
+                        />
+                        <a href="#" class="user-link">
+                          Ryan Gossling
+                        </a>
+                        <span class="user-subhead">Registered</span>
+                      </td>
+                      <td>2013/03/03</td>
+                      <td class="text-center">
+                        <span class="label label-danger">Banned</span>
+                      </td>
+                      <td>
+                        <a href="#">jack@nicholson</a>
+                      </td>
+                      <td style={{ width: "20%" }}>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link danger">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img
+                          src="https://bootdey.com/img/Content/avatar/avatar4.png"
+                          alt=""
+                          style={{ width: "5rem", height: "3rem" }}
+                        />
+                        <a href="#" class="user-link">
+                          Emma Watson
+                        </a>
+                        <span class="user-subhead">Registered</span>
+                      </td>
+                      <td>2004/01/24</td>
+                      <td class="text-center">
+                        <span class="label label-warning">Pending</span>
+                      </td>
+                      <td>
+                        <a href="#">humphrey@bogart.com</a>
+                      </td>
+                      <td style={{ width: "20%" }}>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link danger">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img
+                          src="https://bootdey.com/img/Content/avatar/avatar5.png"
+                          alt=""
+                          style={{ width: "5rem", height: "3rem" }}
+                        />
+                        <a href="#" class="user-link">
+                          Robert Downey Jr.
+                        </a>
+                        <span class="user-subhead">Admin</span>
+                      </td>
+                      <td>2013/12/31</td>
+                      <td class="text-center">
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="#">spencer@tracy</a>
+                      </td>
+                      <td style={{ width: "20%" }}>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link danger">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img
+                          src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                          alt=""
+                          style={{ width: "5rem", height: "3rem" }}
+                        />
+                        <a href="#" class="user-link">
+                          Mila Kunis
+                        </a>
+                        <span class="user-subhead">Admin</span>
+                      </td>
+                      <td>2013/08/08</td>
+                      <td class="text-center">
+                        <span class="label label-default">Inactive</span>
+                      </td>
+                      <td>
+                        <a href="#">mila@kunis.com</a>
+                      </td>
+                      <td style={{ width: "20%" }}>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link danger">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img
+                          src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                          alt=""
+                          className="rounded"
+                          style={{ width: "5rem", height: "3rem" }}
+                        />
+                        <a href="#" class="user-link">
+                          George Clooney
+                        </a>
+                        <span class="user-subhead">Member</span>
+                      </td>
+                      <td>2013/08/12</td>
+                      <td class="text-center">
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="#">marlon@brando.com</a>
+                      </td>
+                      <td style={{ width: "20%" }}>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link danger">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img
+                          src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                          alt=""
+                          style={{ width: "5rem", height: "3rem" }}
+                        />
+                        <a href="#" class="user-link">
+                          Ryan Gossling
+                        </a>
+                        <span class="user-subhead">Registered</span>
+                      </td>
+                      <td>2013/03/03</td>
+                      <td class="text-center">
+                        <span class="label label-danger">Banned</span>
+                      </td>
+                      <td>
+                        <a href="#">jack@nicholson</a>
+                      </td>
+                      <td style={{ width: "20%" }}>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link danger">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img
+                          src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                          alt=""
+                          style={{ width: "5rem", height: "3rem" }}
+                        />
+                        <a href="#" class="user-link">
+                          Emma Watson
+                        </a>
+                        <span class="user-subhead">Registered</span>
+                      </td>
+                      <td>2004/01/24</td>
+                      <td class="text-center">
+                        <span class="label label-warning">Pending</span>
+                      </td>
+                      <td>
+                        <a href="#">humphrey@bogart.com</a>
+                      </td>
+                      <td style={{ width: "20%" }}>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link danger">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <img
+                          src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                          alt=""
+                          style={{ width: "5rem", height: "3rem" }}
+                        />
+                        <a href="#" class="user-link">
+                          Robert Downey Jr.
+                        </a>
+                        <span class="user-subhead">Admin</span>
+                      </td>
+                      <td>2013/12/31</td>
+                      <td class="text-center">
+                        <span class="label label-success">Active</span>
+                      </td>
+                      <td>
+                        <a href="#">spencer@tracy</a>
+                      </td>
+                      <td style={{ width: "20%" }}>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                        <a href="#" class="table-link danger">
+                          <span class="fa-stack">
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
+            <ul class="pagination pull-right">
+              <li>
+                <a href="#">
+                  <i class="fa fa-chevron-left"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">1</a>
+              </li>
+              <li>
+                <a href="#">2</a>
+              </li>
+              <li>
+                <a href="#">3</a>
+              </li>
+              <li>
+                <a href="#">4</a>
+              </li>
+              <li>
+                <a href="#">5</a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="fa fa-chevron-right"></i>
+                </a>
+              </li>
+            </ul>
           </div>
-          <div className="row">
-            <div className="col-xl-3 col-sm-6 col-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body">
-                    <div className="media d-flex">
-                      <div className="align-self-center">
-                        <i className="icon-pencil primary font-large-2 float-left"></i>
-                      </div>
-                      <div className="media-body text-right">
-                        <h3>278</h3>
-                        <span>New Posts</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-sm-6 col-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body">
-                    <div className="media d-flex">
-                      <div className="align-self-center">
-                        <i className="icon-speech warning font-large-2 float-left"></i>
-                      </div>
-                      <div className="media-body text-right">
-                        <h3>156</h3>
-                        <span>New Comments</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-sm-6 col-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body">
-                    <div className="media d-flex">
-                      <div className="align-self-center">
-                        <i className="icon-graph success font-large-2 float-left"></i>
-                      </div>
-                      <div className="media-body text-right">
-                        <h3>64.89 %</h3>
-                        <span>Bounce Rate</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-sm-6 col-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body">
-                    <div className="media d-flex">
-                      <div className="align-self-center">
-                        <i className="icon-pointer danger font-large-2 float-left"></i>
-                      </div>
-                      <div className="media-body text-right">
-                        <h3>423</h3>
-                        <span>Total Visits</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-xl-3 col-sm-6 col-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body">
-                    <div className="media d-flex">
-                      <div className="media-body text-left">
-                        <h3 className="danger">278</h3>
-                        <span>New Projects</span>
-                      </div>
-                      <div className="align-self-center">
-                        <i className="icon-rocket danger font-large-2 float-right"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-sm-6 col-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body">
-                    <div className="media d-flex">
-                      <div className="media-body text-left">
-                        <h3 className="success">156</h3>
-                        <span>New Clients</span>
-                      </div>
-                      <div className="align-self-center">
-                        <i className="icon-user success font-large-2 float-right"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-xl-3 col-sm-6 col-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body">
-                    <div className="media d-flex">
-                      <div className="media-body text-left">
-                        <h3 className="warning">64.89 %</h3>
-                        <span>Conversion Rate</span>
-                      </div>
-                      <div className="align-self-center">
-                        <i className="icon-pie-chart warning font-large-2 float-right"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-sm-6 col-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body">
-                    <div className="media d-flex">
-                      <div className="media-body text-left">
-                        <h3 className="primary">423</h3>
-                        <span>Support Tickets</span>
-                      </div>
-                      <div className="align-self-center">
-                        <i className="icon-support primary font-large-2 float-right"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-xl-3 col-sm-6 col-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body">
-                    <div className="media d-flex">
-                      <div className="media-body text-left">
-                        <h3 className="primary">278</h3>
-                        <span>New Posts</span>
-                      </div>
-                      <div className="align-self-center">
-                        <i className="icon-book-open primary font-large-2 float-right"></i>
-                      </div>
-                    </div>
-                    <div
-                      className="progress mt-1 mb-0"
-                      style={{ height: "7px" }}
-                    >
-                      <div
-                        className="progress-bar bg-primary"
-                        role="progressbar"
-                        style={{ width: "80%" }}
-                        aria-valuenow="80"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-sm-6 col-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body">
-                    <div className="media d-flex">
-                      <div className="media-body text-left">
-                        <h3 className="warning">156</h3>
-                        <span>New Comments</span>
-                      </div>
-                      <div className="align-self-center">
-                        <i className="icon-bubbles warning font-large-2 float-right"></i>
-                      </div>
-                    </div>
-                    <div
-                      className="progress mt-1 mb-0"
-                      style={{ height: "7px" }}
-                    >
-                      <div
-                        className="progress-bar bg-warning"
-                        role="progressbar"
-                        style={{ width: "35%" }}
-                        aria-valuenow="35"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-xl-3 col-sm-6 col-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body">
-                    <div className="media d-flex">
-                      <div className="media-body text-left">
-                        <h3 className="success">64.89 %</h3>
-                        <span>Bounce Rate</span>
-                      </div>
-                      <div className="align-self-center">
-                        <i className="icon-cup success font-large-2 float-right"></i>
-                      </div>
-                    </div>
-                    <div
-                      className="progress mt-1 mb-0"
-                      style={{ height: "7px" }}
-                    >
-                      <div
-                        className="progress-bar bg-success"
-                        role="progressbar"
-                        style={{ width: "60%" }}
-                        aria-valuenow="60"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-xl-3 col-sm-6 col-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body">
-                    <div className="media d-flex">
-                      <div className="media-body text-left">
-                        <h3 className="danger">423</h3>
-                        <span>Total Visits</span>
-                      </div>
-                      <div className="align-self-center">
-                        <i className="icon-direction danger font-large-2 float-right"></i>
-                      </div>
-                    </div>
-                    <div
-                      className="progress mt-1 mb-0"
-                      style={{ height: "7px" }}
-                    >
-                      <div
-                        className="progress-bar bg-danger"
-                        role="progressbar"
-                        style={{ width: "40%" }}
-                        aria-valuenow="40"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="stats-subtitle">
-          <div className="row">
-            <div className="col-12 mt-3 mb-1">
-              <h4 className="text-uppercase">Statistics With Subtitle</h4>
-              <p>Statistics on minimal cards with Title &amp; Sub Title.</p>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-xl-6 col-md-12">
-              <div className="card overflow-hidden">
-                <div className="card-content">
-                  <div className="card-body cleartfix">
-                    <div className="media align-items-stretch">
-                      <div className="align-self-center">
-                        <i className="icon-pencil primary font-large-2 mr-2"></i>
-                      </div>
-                      <div className="media-body">
-                        <h4>Total Posts</h4>
-                        <span>Monthly blog posts</span>
-                      </div>
-                      <div className="align-self-center">
-                        <h1>18,000</h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-xl-6 col-md-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body cleartfix">
-                    <div className="media align-items-stretch">
-                      <div className="align-self-center">
-                        <i className="icon-speech warning font-large-2 mr-2"></i>
-                      </div>
-                      <div className="media-body">
-                        <h4>Total Comments</h4>
-                        <span>Monthly blog comments</span>
-                      </div>
-                      <div className="align-self-center">
-                        <h1>84,695</h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-xl-6 col-md-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body cleartfix">
-                    <div className="media align-items-stretch">
-                      <div className="align-self-center">
-                        <h1 className="mr-2">$76,456.00</h1>
-                      </div>
-                      <div className="media-body">
-                        <h4>Total Sales</h4>
-                        <span>Monthly Sales Amount</span>
-                      </div>
-                      <div className="align-self-center">
-                        <i className="icon-heart danger font-large-2"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-xl-6 col-md-12">
-              <div className="card">
-                <div className="card-content">
-                  <div className="card-body cleartfix">
-                    <div className="media align-items-stretch">
-                      <div className="align-self-center">
-                        <h1 className="mr-2">$36,000.00</h1>
-                      </div>
-                      <div className="media-body">
-                        <h4>Total Cost</h4>
-                        <span>Monthly Cost</span>
-                      </div>
-                      <div className="align-self-center">
-                        <i className="icon-wallet success font-large-2"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        </div>
       </div>
     </>
   );
