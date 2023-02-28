@@ -7,7 +7,7 @@ export default function HomeAdmin() {
           <div class="col-lg-12">
             <div class="main-box clearfix">
               <div class="table-responsive">
-                <table class="table user-list" id="tabla-admin">
+                <table class="table user-list shadow-none ">
                   <thead>
                     <tr>
                       <th>
