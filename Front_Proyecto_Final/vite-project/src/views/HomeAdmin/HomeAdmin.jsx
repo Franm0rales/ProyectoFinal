@@ -125,7 +125,7 @@ export default function HomeAdmin() {
                               Inactivo
                             </span>
                           ) : (
-                            <span className="label label-default">Activo</span>
+                            <span className="label label-default text-success">Activo</span>
                           )}
                         </td>
                         <td>
