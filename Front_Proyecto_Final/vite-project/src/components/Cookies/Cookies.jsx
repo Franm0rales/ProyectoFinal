@@ -19,10 +19,10 @@ export default function Cookies() {
 
   return (
     <>
-      <div
-        className={`container fixed-bottom sombra-home rounded ${disable} pb-3 mb-3`}
-      >
-        {cookies.acceptedCookies ? null : (
+      {cookies.acceptedCookies ? null : (
+        <div
+          className={`container fixed-bottom sombra-home rounded ${disable} pb-3 mb-3`}
+        >
           <div className="cookie-notice ">
             <h3 className="text-center mt-2 text-primary">
               Este sitio web utiliza cookies para mejorar la experiencia del
@@ -40,8 +40,8 @@ export default function Cookies() {
               </button>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 }
