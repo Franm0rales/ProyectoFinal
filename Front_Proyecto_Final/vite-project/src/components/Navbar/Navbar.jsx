@@ -28,6 +28,11 @@ export default function Navbar() {
                       Panel administrador
                     </Link>
                   </li>
+                  <li>
+                    <Link onClick={logout} className="dropdown-item" to="/">
+                      Log Out
+                    </Link>
+                  </li>
                 </ul>
               </nav>
             </div>
