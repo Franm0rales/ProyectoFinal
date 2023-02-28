@@ -1,70 +1,225 @@
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../context/AuthContext/AuthContext";
+import NavbarSuperior from "../Navbar/NavbarSuperior";
+
 // import "./NavbarAdmin.css";
 export default function NavbarAdmin() {
+  const { logout, authorization } = useAuthContext();
   return (
-    <div className="sticky-top">
-      <div className="row flex-nowrap ">
-        <div className="px-0 bg-dark">
-          <div className="flex-column align-items-center align-items-sm-start px-1 pt-2 text-white min-vh-100">
-            <a
-              href="/"
-              className="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"
-            ></a>
-            <ul
-              className="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start px-2"
-              id="menu"
-            >
-              <li className="nav-item">
-                <Link to="/admin" className="nav-link align-middle px-0">
-                  <i className="bi bi-house"></i>
-                  <span className="ms-1 d-none d-sm-inline">Home</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="alumnosadmin" className="nav-link px-0 align-middle">
-                  <i className="bi bi-file-person"></i>
-                  <span className="ms-1 d-none d-sm-inline">Alumnos</span>
-                </Link>
-                <ul
-                  className="collapse show nav flex-column ms-1"
-                  id="submenu1"
-                  data-bs-parent="#menu"
-                ></ul>
-              </li>
-              <li>
-                <Link to="empresasadmin" className="nav-link px-0 align-middle">
-                  <i className="bi bi-building"></i>
-                  <span className="ms-1 d-none d-sm-inline">Empresas</span>
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="tarjetasadmin"
-                  className="nav-link px-0 align-middle "
-                >
-                  <i className="bi bi-card-checklist"></i>
-                  <span className="ms-1 d-none d-sm-inline">
-                    Tarjetas visita
-                  </span>
-                </Link>
-              </li>
-              <li>
-                <Link to="galeriaadmin" className="nav-link px-0 align-middle">
-                  <i className="bi bi-images"></i>
-                  <span className="ms-1 d-none d-sm-inline">Imagenes</span>{" "}
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="nav-link px-0 align-middle">
-                  <i className="bi bi-person-dash"></i>
-                  <span className="ms-1 d-none d-sm-inline">Log out</span>{" "}
-                </Link>
-              </li>
-            </ul>
-            <hr />
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      {authorization?.role == 0 ? (
+        <>
+          <NavbarSuperior />
+          <header id="header" className="d-flex align-items-center sticky-top">
+            <div className="container d-flex align-items-center">
+              <div className="logo me-auto mt-3">
+                <h1>
+                  <Link to="/admin" className="">
+                    horizons
+                  </Link>
+                </h1>
+
+                <a href="index.html">
+                  <img src="assets/img/logo.png" alt="" className="img-fluid" />
+                </a>
+              </div>
+
+              <nav id="navbar" className="navbar">
+                <ul>
+                  <li>
+                    <Link
+                      to="tarjetasadmin"
+                      className="nav-link scrollto active text-dark"
+                    >
+                      Eventos
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link onClick={logout} className="dropdown-item" to="/">
+                      Log Out
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </header>
+        </>
+      ) : authorization?.role == 2 ? (
+        <>
+          <NavbarSuperior />
+          <header id="header" className="d-flex align-items-center sticky-top">
+            <div className="container d-flex align-items-center">
+              <div className="logo me-auto mt-3">
+                <h1>
+                  <a className="">horizons</a>
+                </h1>
+
+                <a href="index.html">
+                  <img src="assets/img/logo.png" alt="" className="img-fluid" />
+                </a>
+              </div>
+
+              <nav id="navbar" className="navbar">
+                <ul>
+                  <li>
+                    <Link to="/" className="nav-link scrollto active text-dark">
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="nosotros" className="nav-link scrollto text-dark">
+                      Nosotros
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link to="eventos" className="nav-link scrollto text-dark">
+                      Eventos
+                    </Link>
+                  </li>
+                  <li className="dropdown">
+                    <Link to="/empresas" className="text-decoration-none">
+                      <span>Empresas</span>{" "}
+                    </Link>
+                  </li>
+                </ul>
+                <i className="bi bi-list mobile-nav-toggle"></i>
+                {!authorization?.email ? (
+                  <Link to="login" className="nav-link scrollto text-dark">
+                    Login
+                  </Link>
+                ) : (
+                  <Link
+                    className="nav-link scrollto text-dark"
+                    aria-current="page"
+                    to="/"
+                  >
+                    <div
+                      id="botones"
+                      className=" dropdown text-end mt-1 fs-6 badge d-flex justify-content-center "
+                    >
+                      {" "}
+                      {authorization.email}
+                      <ul className="dropdown-menu text-small">
+                        <li>
+                          <Link className="dropdown-item" to="editar">
+                            Perfil usuario
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            className="dropdown-item"
+                            to="test"
+                            aria-current="page"
+                          >
+                            Test aptitudes
+                          </Link>
+                        </li>
+                        <li></li>
+                        <li>
+                          <Link
+                            onClick={logout}
+                            className="dropdown-item"
+                            to="/"
+                          >
+                            Log Out
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </Link>
+                )}
+              </nav>
+            </div>
+          </header>
+        </>
+      ) : (
+        <>
+          <NavbarSuperior />
+          <header id="header" className="d-flex align-items-center sticky-top">
+            <div className="container d-flex align-items-center">
+              <div className="logo me-auto mt-3">
+                <h1>
+                  <a className="">horizons</a>
+                </h1>
+
+                <a href="index.html">
+                  <img src="assets/img/logo.png" alt="" className="img-fluid" />
+                </a>
+              </div>
+
+              <nav id="navbar" className="navbar">
+                <ul>
+                  <li>
+                    <Link to="/" className="nav-link scrollto active text-dark">
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="nosotros" className="nav-link scrollto text-dark">
+                      Nosotros
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link to="eventos" className="nav-link scrollto text-dark">
+                      Eventos
+                    </Link>
+                  </li>
+                  <li className="dropdown">
+                    <Link to="/empresas" className="text-decoration-none">
+                      <span>Empresas</span>{" "}
+                    </Link>
+                  </li>
+                </ul>
+                <i className="bi bi-list mobile-nav-toggle"></i>
+                {!authorization?.email ? (
+                  <Link to="login" className="nav-link scrollto text-dark">
+                    Login
+                  </Link>
+                ) : (
+                  <Link
+                    className="nav-link scrollto text-dark"
+                    aria-current="page"
+                    to="/"
+                  >
+                    <div
+                      id="botones"
+                      className=" dropdown text-end mt-1 fs-6 badge d-flex justify-content-center "
+                    >
+                      {" "}
+                      {authorization.email}
+                      <ul className="dropdown-menu text-small">
+                        <li>
+                          <Link className="dropdown-item" to="editarempresa">
+                            Perfil Empresa
+                          </Link>
+                        </li>
+                        <li>
+                          <Link className="dropdown-item" to="agendaeventos">
+                            Agenda Eventos
+                          </Link>
+                        </li>
+                        <li></li>
+                        <li>
+                          <Link
+                            onClick={logout}
+                            className="dropdown-item"
+                            to="/"
+                          >
+                            Log Out
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </Link>
+                )}
+              </nav>
+            </div>
+          </header>
+        </>
+      )}
+    </>
   );
 }

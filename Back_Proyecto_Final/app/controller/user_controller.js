@@ -207,7 +207,7 @@ controller.addAdmin = async (req, res) => {
     let usuarioObj = {
       role: role.admin,
     };
-    const idUser = await dao.addUser(usuarioObj, data.usuario);
+    const idUser = await dao.addUser(usuarioObj, data.alumno);
     let adminObj = {
       nombre: nombre,
       idUsuario: idUser,
@@ -351,7 +351,6 @@ controller.loginUser = async (req, res) => {
       data.eliminado,
       data.eliminadoNo
     );
-    console.log(userData);
 
     // Si no existe el usuario respondemos con un 404 (not found)
     if (userData.length <= 0)
@@ -476,11 +475,24 @@ controller.getEmpresa = async (req, res) => {
 // Controlador para todos los usuarios
 controller.allUsers = async (req, res) => {
   try {
-    let users = await dao.allUsers(data.alumno);
+    let users = await dao.allUsersElim(data.alumno);
+
+    let companies = await dao.allUsersElim(data.empresa);
+    let people = users.concat(companies);
+    people.sort((a, b) => {
+      if (a.idUsuario < b.idUsuario) {
+        return -1;
+      } else if (a.idUsuario > b.idUsuario) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
     // Si no existe el producto respondemos con un 404 (not found)
-    if (users.length <= 0) return res.status(404).send("No hay usuarios");
+    if (people <= 0) return res.status(404).send("No hay usuarios");
+
     // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
-    return res.send(users);
+    return res.send(people);
   } catch (e) {
     console.log(e.message);
   }

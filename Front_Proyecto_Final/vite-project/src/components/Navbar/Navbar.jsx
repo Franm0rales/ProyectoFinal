@@ -6,7 +6,42 @@ export default function Navbar() {
   const { logout, authorization } = useAuthContext();
   return (
     <>
-      {authorization?.role == 2 ? (
+      {authorization?.role == 0 ? (
+        <>
+          <NavbarSuperior />
+          <header id="header" className="d-flex align-items-center sticky-top">
+            <div className="container d-flex align-items-center">
+              <div className="logo me-auto mt-3">
+                <h1>
+                  <a className="">horizons</a>
+                </h1>
+
+                <a href="index.html">
+                  <img src="assets/img/logo.png" alt="" className="img-fluid" />
+                </a>
+              </div>
+
+              <nav id="navbar" className="navbar">
+                <ul>
+                  <li>
+                    <Link
+                      to="/admin"
+                      className="nav-link scrollto active text-dark"
+                    >
+                      Panel administrador
+                    </Link>
+                  </li>
+                  <li>
+                    <Link onClick={logout} className="dropdown-item" to="/">
+                      Log Out
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </header>
+        </>
+      ) : authorization?.role == 2 ? (
         <>
           <NavbarSuperior />
           <header id="header" className="d-flex align-items-center sticky-top">
@@ -69,7 +104,11 @@ export default function Navbar() {
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to="test" aria-current="page">
+                          <Link
+                            className="dropdown-item"
+                            to="test"
+                            aria-current="page"
+                          >
                             Test aptitudes
                           </Link>
                         </li>

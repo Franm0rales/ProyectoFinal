@@ -18,6 +18,7 @@ export default function Eventos() {
   const [isCheckedFecha, setIsCheckedFecha] = useState(false);
   const EVENTS_PER_PAGE = 5;
   const [allUndefined, setAllUndefined] = useState(true);
+  const [encode, setEncode] = useState();
   const eventsToShow = eventos.slice(
     (currentPage - 1) * EVENTS_PER_PAGE,
     currentPage * EVENTS_PER_PAGE
@@ -56,7 +57,7 @@ export default function Eventos() {
     const crearQuery = async () => {
       try {
         let x = 20;
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 4; i++) {
           if (selectedCiudades[i] !== undefined && x == 20) {
             x = i;
           }
@@ -71,21 +72,43 @@ export default function Eventos() {
         if (query === `where ${undefined}`) {
           query = " ";
         }
+
+        setEncode(encodeURI(query));
       } catch (e) {
         console.log(e.message);
       }
     };
     const fetchRutaABuscar = async () => {
       try {
+        let x = 20;
+        for (let i = 0; i < 4; i++) {
+          if (selectedCiudades[i] !== undefined && x == 20) {
+            x = i;
+          }
+        }
+        if (selectedCiudades[x] !== undefined) {
+          query = `where ${selectedCiudades[x]}`;
+        }
+        for (let i = x + 1; i < selectedCiudades.length; i++) {
+          if (selectedCiudades[i] !== undefined)
+            query += " and " + selectedCiudades[i] + " ";
+        }
+        if (
+          query === `where ${undefined}` ||
+          query === `where nombre like "%%"`
+        ) {
+          query = " ";
+        }
+        console.log(query);
+
+        // await crearQuery();
         const response = await fetch(
-          `http://localhost:3000/tarjeta/getTarjetaFilters/${query}`,
-          {}
+          `http://localhost:3000/tarjeta/getTarjetaFilters/${encodeURI(query)}`
         );
         const data = await response.json();
         setEventos(data);
         setError(null);
         setCurrentPage(1);
-        console.log(eventos);
       } catch (error) {
         console.log(error);
         setError("La ruta no existe");
@@ -94,21 +117,21 @@ export default function Eventos() {
     };
     const fetchBuscarNombre = async () => {
       const objetosFiltrados = eventos.filter((evento) =>
-        evento.nombre.toLowerCase().includes(empresaABuscar.toLocaleLowerCase())
+        evento.nombre
+          .toLowerCase()
+          .includes(selectedCiudades[3].toLocaleLowerCase())
       );
-      console.log(objetosFiltrados);
       setEventos(objetosFiltrados);
     };
     if (allUndefined == 0) {
       fetchData();
     } else {
-      crearQuery();
       fetchRutaABuscar();
       if (selectedCiudades[3] !== undefined) {
         fetchBuscarNombre();
       }
     }
-  }, [allUndefined]);
+  }, [unirse, allUndefined]);
 
   function handleCheckBoxFecha(x) {
     const fechaActual = new Date();
@@ -151,13 +174,10 @@ export default function Eventos() {
     setIsCheckedFecha(false);
   }
   function handleInputNombre(nombre) {
-    if (nombre === "") {
-      nombre = undefined;
-    }
-    let cambio = { ...selectedCiudades[3], nombre };
-    selectedCiudades[3] = cambio.nombre;
-    setEmpresaABuscar(selectedCiudades[3]);
+    //let cambio = { ...selectedCiudades[3], nombre };
+    selectedCiudades[3] = `nombre like "%${nombre}%"`;
     setSelectedCiudades([...selectedCiudades]);
+    console.log(selectedCiudades);
   }
 
   return (
@@ -214,8 +234,11 @@ export default function Eventos() {
               onClick={() => handleCheckBoxFecha(2)}
             />
           </div>
-          <button id="botones" onClick={(e) => deleteFilters(e)}>
-            Elimnar filtros
+          <button
+            className="border-0 bg-transparent"
+            onClick={(e) => deleteFilters(e)}
+          >
+            <i class="bi bi-x-square-fill text-danger fs-4"></i>
           </button>
         </div>
         <div className="container col-10 "></div>
@@ -256,23 +279,33 @@ export default function Eventos() {
                   />
                 </div>
               </div>
-
-              <div className="pb-2 text-center ">
-                <ContadorVisitas
-                  plazas={evento.plazas}
-                  setContadorPersonas={setContadorPersonas}
-                  contadorPersonas={evento.alumnos}
-                  idTarjeta={evento.id}
-                  setUnirse={setUnirse}
-                  unirse={unirse}
-                  data={data.idTarjeta}
-                  fechaInicio={evento.fechaInicio}
-                  avatar={data.avatar}
-                  nombre={data.nombre}
-                  apellidos={data.apellidos}
-                  correo={data.email}
-                />
-              </div>
+              {authorization?.role ? (
+                authorization?.role == 2 ? (
+                  <div className="pb-2 text-center ">
+                    <ContadorVisitas
+                      plazas={evento.plazas}
+                      setContadorPersonas={setContadorPersonas}
+                      contadorPersonas={evento.alumnos}
+                      idTarjeta={evento.id}
+                      setUnirse={setUnirse}
+                      unirse={unirse}
+                      data={data.idTarjeta}
+                      fechaInicio={evento.fechaInicio}
+                      avatar={data.avatar}
+                      nombre={data.nombre}
+                      apellidos={data.apellidos}
+                      correo={data.email}
+                    />
+                  </div>
+                ) : (
+                  <p></p>
+                )
+              ) : (
+                <p>
+                  <a href="http://127.0.0.1:5173/login">Registrate</a> para
+                  poder apuntarte a los eventos.
+                </p>
+              )}
             </div>
           </>
         ))}
