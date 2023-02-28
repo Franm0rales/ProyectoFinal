@@ -28,7 +28,7 @@ export default function LoginAcount() {
     <div id="fondo">
       <div className="container">
         <div className="  pt-5 d-flex justify-content-center">
-          <nav className="col-6">
+          <nav className="col-4">
             <ul className="nav nav-tabs px-5">
               <li className="">
                 <a

@@ -92,7 +92,7 @@ export default function LoginAlumno() {
           disabled={isSubmitting}
           type="submit"
           id="botones"
-          className="btn text-white"
+          className="btn text-white "
         >
           Login
         </button>
