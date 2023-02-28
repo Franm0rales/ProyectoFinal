@@ -29,9 +29,26 @@ export default function NavbarAdmin() {
                       to="/admin"
                       className="nav-link scrollto active text-dark"
                     >
-                      Panel administrador
+                      Candidatos
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      to="/admin"
+                      className="nav-link scrollto active text-dark"
+                    >
+                      Empresas
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/admin"
+                      className="nav-link scrollto active text-dark"
+                    >
+                      Eventos
+                    </Link>
+                  </li>
+
                   <li>
                     <Link onClick={logout} className="dropdown-item" to="/">
                       Log Out
