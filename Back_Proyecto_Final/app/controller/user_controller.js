@@ -476,10 +476,23 @@ controller.getEmpresa = async (req, res) => {
 controller.allUsers = async (req, res) => {
   try {
     let users = await dao.allUsers(data.alumno);
+
+    let companies = await dao.allUsers(data.empresa);
+    let people = users.concat(companies);
+    people.sort((a, b) => {
+      if (a.idUsuario < b.idUsuario) {
+        return -1;
+      } else if (a.idUsuario > b.idUsuario) {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
     // Si no existe el producto respondemos con un 404 (not found)
-    if (users.length <= 0) return res.status(404).send("No hay usuarios");
+    if (people <= 0) return res.status(404).send("No hay usuarios");
+
     // Como la consulta a la base de datos nos devuelve un array con el objeto del usuario usamos la desestructuración.
-    return res.send(users);
+    return res.send(people);
   } catch (e) {
     console.log(e.message);
   }
