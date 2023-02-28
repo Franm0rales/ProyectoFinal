@@ -14,7 +14,9 @@ export default function NavbarAdmin() {
             <div className="container d-flex align-items-center">
               <div className="logo me-auto mt-3">
                 <h1>
-                  <a className="">horizons</a>
+                  <Link to="/admin" className="">
+                    horizons
+                  </Link>
                 </h1>
 
                 <a href="index.html">

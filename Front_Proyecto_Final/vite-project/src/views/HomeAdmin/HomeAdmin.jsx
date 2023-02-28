@@ -1,5 +1,16 @@
 import "./HomeAdmin.css";
+import { useState, useEffect } from "react";
 export default function HomeAdmin() {
+  const [users, setUsers] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("http://localhost:3000/user/allUsers");
+      const json = await response.json();
+      setUsers(json);
+    };
+    fetchData();
+  }, []);
+  console.log(users);
   return (
     <>
       <div class="container">
@@ -14,7 +25,7 @@ export default function HomeAdmin() {
                         <span>Usuarios</span>
                       </th>
                       <th>
-                        <span>Fecha alta</span>
+                        <span>Fecha de alta</span>
                       </th>
                       <th class="text-center">
                         <span>Estado</span>
@@ -25,73 +36,61 @@ export default function HomeAdmin() {
                       <th>&nbsp;</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <img
-                          src="https://bootdey.com/img/Content/avatar/avatar1.png"
-                          alt=""
-                          style={{ width: "5rem", height: "3rem" }}
-                        />
-                        <a href="#" class="user-link">
-                          Mila Kunis
-                        </a>
-                        <span class="user-subhead">Admin</span>
-                      </td>
-                      <td>2013/08/08</td>
-                      <td class="text-center">
-                        <span class="label label-default">Inactive</span>
-                      </td>
-                      <td>
-                        <a href="#">mila@kunis.com</a>
-                      </td>
-                      <td style={{ width: "20%" }}>
-                        <a href="#" class="table-link">
-                          <span class="fa-stack">
-                            <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                          </span>
-                        </a>
-                        <a href="#" class="table-link">
-                          <span class="fa-stack">
-                            <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="bi bi-pencil text-primary"></i>
-                          </span>
-                        </a>
-                        <a href="#" class="table-link danger">
-                          <span class="fa-stack">
-                            <i class="bi bi-x-square-fill text-danger px-4"></i>
-                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                          </span>
-                        </a>
-                      </td>
-                    </tr>
-                  </tbody>
+                  {users ? (
+                    users.map((user) => (
+                      <tbody>
+                        <tr>
+                          <td>
+                            <img
+                              src={`https://bootdey.com/img/Content/avatar/avatar${user.avatar}.png`}
+                              alt=""
+                              style={{ width: "5rem", height: "3rem" }}
+                            />
+                            <a href="#" class="user-link">
+                              {user.nombre}
+                            </a>
+                            <span class="user-subhead">Admin</span>
+                          </td>
+                          <td>{user.tsAlta.split("T")[0]}</td>
+                          <td class="text-center">
+                            {user.eliminado == 1 ? (
+                              <span class="label label-default">Inactivo</span>
+                            ) : (
+                              <span class="label label-default">Activo</span>
+                            )}
+                          </td>
+                          <td>
+                            <a href="#">{user.email}</a>
+                          </td>
+                          <td style={{ width: "20%" }}>
+                            <a href="#" class="table-link">
+                              <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                              </span>
+                            </a>
+                            <a href="#" class="table-link">
+                              <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="bi bi-pencil text-primary"></i>
+                              </span>
+                            </a>
+                            <a href="#" class="table-link danger">
+                              <span class="fa-stack">
+                                <i class="bi bi-x-square-fill text-danger px-4"></i>
+                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                              </span>
+                            </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    ))
+                  ) : (
+                    <p>Cargando....</p>
+                  )}
                 </table>
               </div>
             </div>
-            <ul class="pagination pull-right">
-              <li>
-                <a href="#">
-                  <i class="fa fa-chevron-left"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">1</a>
-              </li>
-              <li>
-                <a href="#">2</a>
-              </li>
-              <li>
-                <a href="#">3</a>
-              </li>
-              <li>
-                <a href="#">4</a>
-              </li>
-              <li>
-                <a href="#">5</a>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
