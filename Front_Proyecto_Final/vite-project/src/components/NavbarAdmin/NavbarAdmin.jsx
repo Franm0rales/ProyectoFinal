@@ -28,22 +28,6 @@ export default function NavbarAdmin() {
                 <ul>
                   <li>
                     <Link
-                      to="alumnosadmin"
-                      className="nav-link scrollto active text-dark"
-                    >
-                      Candidatos
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="empresasadmin"
-                      className="nav-link scrollto active text-dark"
-                    >
-                      Empresas
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
                       to="/admin"
                       className="nav-link scrollto active text-dark"
                     >
