@@ -34,16 +34,19 @@ export default function Evento({
         evento.fechaFin.split("T")[0] >= fechaEnFormatoYYYYMMDD
       ) {
         setInProgress(true);
-        inProgressLet++;
+        
         setInProgressNum(inProgressLet);
+        inProgressLet++;
       } else if (evento.fechaInicio.split("T")[0] > fechaEnFormatoYYYYMMDD) {
         setPending(true);
-        pendingLet++;
+      
         setPendingNum(pendingLet);
+        pendingLet++;
       } else if (evento.fechaFin.split("T")[0] < fechaEnFormatoYYYYMMDD) {
         setCompleted(true);
-        completedLet++;
+        
         setCompletedNum(completedLet);
+        completedLet++;
       }
     };
     const fetchEventoAlumno = async () => {
@@ -74,11 +77,11 @@ export default function Evento({
         </td>
         <td>
           {completed ? (
-            <span className="text-success font-12">Completed</span>
+            <span className="text-success font-12">Completado</span>
           ) : inProgress ? (
-            <span className="text-primary font-12">inProgress</span>
+            <span className="text-primary font-12">En progeso</span>
           ) : pending ? (
-            <span className="text-black font-12">Pending</span>
+            <span className="text-black font-12">Pendiente</span>
           ) : (
             <p>undefined</p>
           )}
@@ -121,7 +124,7 @@ export default function Evento({
                 style={{ width: `${percentage}%` }}
               ></div>
             ) : pending ? (
-              <span className="text-black font-12">Pending</span>
+              <span className="text-black font-12 font-weight-bold"><b>Pendiente</b></span>
             ) : (
               <p>undefined</p>
             )}
