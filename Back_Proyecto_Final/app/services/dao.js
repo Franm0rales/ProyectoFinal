@@ -15,8 +15,10 @@ dao.getInfoBy2Filters = async (tabla, columna1, dato1, columna2, dato2) =>
 // Modificar usuario por su id
 dao.updateUser = async (tabla, id, userData, columna) =>
   await userQueries.updateUser(tabla, id, userData, columna);
-// Traer todos los usuarios
+// Traer todos los usuarios no eliminados
 dao.allUsers = async (tabla) => await userQueries.allUsers(tabla);
+// Traer todos los usuarios
+dao.allUsersElim = async (tabla) => await userQueries.allUsersElim(tabla);
 //Traer paginas preguntas test
 dao.allTests = async (tabla, pagination) =>
   await testQueries.allTests(tabla, pagination);

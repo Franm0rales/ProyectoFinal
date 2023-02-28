@@ -75,7 +75,7 @@ userQueries.deleteUser = async (tabla, data, id, columna) => {
     conn && (await conn.end());
   }
 };
-//Traer todos los Usuarios
+//Traer todos los Usuarios no eliminados
 userQueries.allUsers = async (tabla) => {
   // Conectamos con la base de datos
   let conn = null;
@@ -87,6 +87,19 @@ userQueries.allUsers = async (tabla) => {
       "select",
       conn
     );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
+//Traer todos los Usuarios
+userQueries.allUsersElim = async (tabla) => {
+  // Conectamos con la base de datos
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(`SELECT * FROM ${tabla}`, [], "select", conn);
   } catch (e) {
     throw new Error(e);
   } finally {

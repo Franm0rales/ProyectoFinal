@@ -475,9 +475,9 @@ controller.getEmpresa = async (req, res) => {
 // Controlador para todos los usuarios
 controller.allUsers = async (req, res) => {
   try {
-    let users = await dao.allUsers(data.alumno);
+    let users = await dao.allUsersElim(data.alumno);
 
-    let companies = await dao.allUsers(data.empresa);
+    let companies = await dao.allUsersElim(data.empresa);
     let people = users.concat(companies);
     people.sort((a, b) => {
       if (a.idUsuario < b.idUsuario) {
