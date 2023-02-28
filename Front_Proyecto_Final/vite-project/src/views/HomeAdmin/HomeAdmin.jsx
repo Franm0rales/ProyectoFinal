@@ -2,6 +2,7 @@ import "./HomeAdmin.css";
 import { useState, useEffect } from "react";
 export default function HomeAdmin() {
   const [users, setUsers] = useState(null);
+  const [id, setId] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("http://localhost:3000/user/allUsers");
@@ -10,7 +11,23 @@ export default function HomeAdmin() {
     };
     fetchData();
   }, []);
-  console.log(users);
+  async function deleteUser() {
+    let idUsuario = users.idUsuario;
+
+    await fetch(`http://localhost:3000/user/deleteUser/${id}`, {
+      method: "PATCH",
+    });
+  }
+
+  const [visible, setVisible] = useState("d-none");
+  function toggleVisible(x) {
+    if (visible === "d-none") {
+      setVisible("");
+    } else {
+      setVisible("d-none");
+    }
+    setId(x);
+  }
   return (
     <>
       <div className="container">
@@ -115,24 +132,34 @@ export default function HomeAdmin() {
                           <p className="font-italic">{user.email}</p>
                         </td>
                         <td style={{ width: "20%" }}>
-                          <a href="#" className="table-link">
-                            <span className="fa-stack">
-                              <i className="fa fa-square fa-stack-2x"></i>
-                              <i className="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                            </span>
-                          </a>
-                          <a href="#" className="table-link">
-                            <span className="fa-stack">
-                              <i className="fa fa-square fa-stack-2x"></i>
-                              <i className="bi bi-pencil text-primary"></i>
-                            </span>
-                          </a>
-                          <a href="#" className="table-link danger">
-                            <span className="fa-stack">
-                              <i className="bi bi-x-square-fill text-danger px-4"></i>
-                              <i className="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                            </span>
-                          </a>
+                          <button
+                            onClick={() => toggleVisible(user.idUsuario)}
+                            className="table-link danger border-0 bg-transparent"
+                          >
+                            <i className="bi bi-x-square-fill text-danger px-4"></i>
+                          </button>
+                          {id == user.idUsuario ? (
+                            <div
+                              className={`alert alert-danger ${visible}`}
+                              role="alert"
+                            >
+                              Eliminar usuario ¿Estas seguro?
+                              <button
+                                className="btn btn-outline-secondary mx-1 text-white rounded-2"
+                                onClick={() => deleteUser()}
+                              >
+                                Si
+                              </button>
+                              <button
+                                className="btn btn-outline-secondary mx-1 text-white rounded-2"
+                                onClick={toggleVisible}
+                              >
+                                No
+                              </button>
+                            </div>
+                          ) : (
+                            <p></p>
+                          )}
                         </td>
                       </tr>
                     </tbody>
