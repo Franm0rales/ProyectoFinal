@@ -207,7 +207,7 @@ controller.addAdmin = async (req, res) => {
     let usuarioObj = {
       role: role.admin,
     };
-    const idUser = await dao.addUser(usuarioObj, data.usuario);
+    const idUser = await dao.addUser(usuarioObj, data.alumno);
     let adminObj = {
       nombre: nombre,
       idUsuario: idUser,
@@ -351,7 +351,6 @@ controller.loginUser = async (req, res) => {
       data.eliminado,
       data.eliminadoNo
     );
-    console.log(userData);
 
     // Si no existe el usuario respondemos con un 404 (not found)
     if (userData.length <= 0)
