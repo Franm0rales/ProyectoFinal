@@ -11,9 +11,10 @@
 }
 
 
-/* TABLES */
+TABLES
 .table {
     border-collapse: separate;
+box-shadow: 0 0 0 0 !important
 }
 
 

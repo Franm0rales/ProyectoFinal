@@ -419,12 +419,6 @@ export default function HomeAdmin() {
                             <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                           </span>
                         </a>
-                        <a href="#" class="table-link danger">
-                          <span class="fa-stack">
-                            <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                          </span>
-                        </a>
                       </td>
                     </tr>
                   </tbody>
@@ -451,11 +445,6 @@ export default function HomeAdmin() {
               </li>
               <li>
                 <a href="#">5</a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-chevron-right"></i>
-                </a>
               </li>
             </ul>
           </div>
