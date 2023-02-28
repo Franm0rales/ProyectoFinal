@@ -41,15 +41,27 @@ export default function HomeAdmin() {
                       <tbody>
                         <tr>
                           <td>
-                            <img
-                              src={`https://bootdey.com/img/Content/avatar/avatar${user.avatar}.png`}
-                              alt=""
-                              style={{ width: "5rem", height: "3rem" }}
-                            />
+                            {user.CIF ? (
+                              <img
+                                src={`http://localhost:3000/${user.pathLogo}`}
+                                alt={user.nombre}
+                                style={{ width: "5rem", height: "3rem" }}
+                              />
+                            ) : (
+                              <img
+                                src={`https://bootdey.com/img/Content/avatar/avatar${user.avatar}.png`}
+                                alt={user.nombre}
+                                style={{ width: "5rem", height: "3rem" }}
+                              />
+                            )}
                             <a href="#" class="user-link">
                               {user.nombre}
                             </a>
-                            <span class="user-subhead">Admin</span>
+                            {user.CIF ? (
+                              <span class="user-subhead">Empresa</span>
+                            ) : (
+                              <span class="user-subhead">Candidato</span>
+                            )}
                           </td>
                           <td>{user.tsAlta.split("T")[0]}</td>
                           <td class="text-center">
