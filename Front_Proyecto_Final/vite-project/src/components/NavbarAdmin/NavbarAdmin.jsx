@@ -28,7 +28,7 @@ export default function NavbarAdmin() {
                 <ul>
                   <li>
                     <Link
-                      to="/admin"
+                      to="tarjetasadmin"
                       className="nav-link scrollto active text-dark"
                     >
                       Eventos

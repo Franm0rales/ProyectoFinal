@@ -62,7 +62,7 @@ export default function HomeAdmin() {
                     <th>
                       <span>Fecha modificación</span>
                     </th>
-                    <th className="text-center">
+                    <th className="text-center ">
                       <span>Estado</span>
                     </th>
                     <th>
