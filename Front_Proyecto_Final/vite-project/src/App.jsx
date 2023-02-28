@@ -23,6 +23,7 @@ import AgendaPerfilEmpresa from "./views/AgendaPerfilEmpresa/AgendaPerfilEmpresa
 import Eventos from "./views/Eventos/Eventos";
 import Nosotros from "./views/Nosotros/Nosotros";
 import Cookies from "./components/Cookies/Cookies";
+import VistaEventosAdmin from "./views/VistaEventosAdmin/VistaEventosAdmin";
 const ROLES = {
   Admin: "1",
   User: "0",
@@ -59,7 +60,7 @@ function App() {
             <Route path="settings/:id" element={<EditarAlumno />} />
 
             <Route path="settingsempresa/:id" element={<EditarEmpresa />} />
-            <Route path="tarjetasadmin" element={<CrearTarjeta />} />
+            <Route path="tarjetasadmin" element={<VistaEventosAdmin />} />
             <Route path="empresasadmin" element={<EmpresasAdmin />} />
             <Route path="galeriaadmin" element={<GaleriaAdmin />} />
           </Route>
