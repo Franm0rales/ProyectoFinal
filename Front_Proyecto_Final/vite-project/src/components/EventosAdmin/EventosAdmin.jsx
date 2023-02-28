@@ -1,15 +1,15 @@
 export default function EventosAdmin(){
     return(
         <div class="container">
-    <div class="row">
+    <div class="row pt-5 pb-5">
         <div class="col-xl-3 col-md-6">
             <div class="card-admin bg-pattern">
                 <div class="card-body">
                     <div class="float-right">
                         <i class="fa fa-archive text-primary h4 ml-3"></i>
                     </div>
-                    <h5 class="font-size-20 mt-0 pt-1">24</h5>
-                    <p class="text-muted mb-0">Total Projects</p>
+                    <h1 class=" mt-0 pt-1">24</h1>
+                    <p class="text-muted mb-0">Eventos totales</p>
                 </div>
             </div>
         </div>
@@ -19,8 +19,8 @@ export default function EventosAdmin(){
                     <div class="float-right">
                         <i class="fa fa-th text-primary h4 ml-3"></i>
                     </div>
-                    <h5 class="font-size-20 mt-0 pt-1">18</h5>
-                    <p class="text-muted mb-0">Completed Projects</p>
+                    <h1 class="mt-0 pt-1">18</h1>
+                    <p class="text-muted mb-0">Eventos completados</p>
                 </div>
             </div>
         </div>
@@ -30,8 +30,8 @@ export default function EventosAdmin(){
                     <div class="float-right">
                         <i class="fa fa-file text-primary h4 ml-3"></i>
                     </div>
-                    <h5 class="font-size-20 mt-0 pt-1">06</h5>
-                    <p class="text-muted mb-0">Pending Projects</p>
+                    <h1 class="mt-0 pt-1">06</h1>
+                    <p class="text-muted mb-0">Eventos pendientes</p>
                 </div>
             </div>
         </div>
@@ -62,12 +62,12 @@ export default function EventosAdmin(){
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Projects</th>
-                                    <th scope="col">Start Date</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Team</th>
-                                    <th scope="col">Progress</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">Eventos</th>
+                                    <th scope="col">Fecha evento</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Asistentes</th>
+                                    <th scope="col">Progreso</th>
+                                    <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -81,15 +81,15 @@ export default function EventosAdmin(){
                                     <td>
                                         <div class="team">
                                             <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Roger Drake">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="rounded-circle avatar-xs" alt="" style={{width:"3rem",height:"3rem"}} />
+                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="rounded-circle avatar-xs" alt="" style={{width:"1.5rem",height:"1.5rem"}} />
                                             </a>
 
                                             <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reggie James">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="rounded-circle avatar-xs" alt="" style={{width:"3rem",height:"3rem"}} />
+                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="rounded-circle avatar-xs" alt="" style={{width:"1.5rem",height:"1.5rem"}}  />
                                             </a>
 
                                             <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Gerald Mayberry">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar8.png" class="rounded-circle avatar-xs" alt="" style={{width:"3rem",height:"3rem"}} />
+                                                <img src="https://bootdey.com/img/Content/avatar/avatar8.png" class="rounded-circle avatar-xs" alt="" style={{width:"1.5rem",height:"1.5rem"}}  />
                                             </a>
                                         </div>
                                     </td>
@@ -103,195 +103,7 @@ export default function EventosAdmin(){
 
                                     <td>
                                         <div class="action">
-                                            <a href="#" class="text-success mr-4" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i class="fa fa-pencil h5 m-0"></i></a>
-                                            <a href="#" class="text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Close"> <i class="fa fa-remove h5 m-0"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Landing page Design</td>
-                                    <td>04/6/2019</td>
-                                    <td>
-                                        <span class="text-primary font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i> Pending</span>
-                                    </td>
-                                    <td>
-                                        <div class="team">
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Deborah Mixon">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle avatar-xs" alt="" style={{width:"3rem",height:"3rem"}}/>
-                                            </a>
-
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Scott Jessie">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle avatar-xs" alt="" style={{width:"3rem",height:"3rem"}}/>
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="mb-0">Progress<span class="float-right">78%</span></p>
-
-                                        <div class="progress mt-2" style={{height: "5px"}}>
-                                            <div class="progress-bar bg-primary" role="progressbar" style={{width: "78%"}} aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="action">
-                                            <a href="#" class="text-success mr-4" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i class="fa fa-pencil h5 m-0"></i></a>
-                                            <a href="#" class="text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Close"> <i class="fa fa fa-remove h5 m-0"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Multipurpose Landing Template</td>
-                                    <td>06/6/2019</td>
-                                    <td>
-                                        <span class="text-success font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i> Completed</span>
-                                    </td>
-                                    <td>
-                                        <div class="team">
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Neil Wing">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle avatar-xs" alt="" style={{width:"3rem",height:"3rem"}}/>
-                                            </a>
-
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Stanley Barber">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar4.png" class="rounded-circle avatar-xs" alt="" style={{width:"3rem",height:"3rem"}}/>
-                                            </a>
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Roger Drake">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle avatar-xs" alt="" style={{width:"3rem",height:"3rem"}}/>
-                                            </a>
-
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jack Krier">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="rounded-circle avatar-xs" alt="" style={{width:"3rem",height:"3rem"}}/>
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="mb-0">Progress<span class="float-right">100%</span></p>
-
-                                        <div class="progress mt-2" style={{height: "5px"}}>
-                                            <div class="progress-bar bg-success" role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="action">
-                                            <a href="#" class="text-success mr-4" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i class="fa fa-pencil h5 m-0"></i></a>
-                                            <a href="#" class="text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Close"> <i class="fa fa fa-remove h5 m-0"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>Blog Template Design</td>
-                                    <td>07/5/2019</td>
-                                    <td>
-                                        <span class="text-success font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i> Completed</span>
-                                    </td>
-                                    <td>
-                                        <div class="team">
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Roger Drake">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="rounded-circle avatar-xs" alt="" style={{width:"3rem",height:"3rem"}} />
-                                            </a>
-
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reggie James">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar8.png" class="rounded-circle avatar-xs" alt=""style={{width:"3rem",height:"3rem"}} />
-                                            </a>
-
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Gerald Mayberry">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle avatar-xs" alt="" style={{width:"3rem",height:"3rem"}} />
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="mb-0">Progress<span class="float-right">100%</span></p>
-
-                                        <div class="progress mt-2" style={{height: "5px"}}>
-                                            <div class="progress-bar bg-success" role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="action">
-                                            <a href="#" class="text-success mr-4" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i class="fa fa-pencil h5 m-0"></i></a>
-                                            <a href="#" class="text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Close"> <i class="fa fa fa-remove h5 m-0"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>Brand logo design</td>
-                                    <td>08/6/2019</td>
-                                    <td>
-                                        <span class="text-primary font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i> Pending</span>
-                                    </td>
-                                    <td>
-                                        <div class="team">
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Deborah Mixon">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle avatar-xs" alt=""style={{width:"3rem",height:"3rem"}} />
-                                            </a>
-
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Scott Jessie">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle avatar-xs" alt=""style={{width:"3rem",height:"3rem"}} />
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="mb-0">Progress<span class="float-right">54%</span></p>
-
-                                        <div class="progress mt-2" style={{height: "5px"}}>
-                                            <div class="progress-bar bg-primary" role="progressbar" style={{width: "54%"}} aria-valuenow="54" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="action">
-                                            <a href="#" class="text-success mr-4" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i class="fa fa-pencil h5 m-0"></i></a>
-                                            <a href="#" class="text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Close"> <i class="fa fa fa-remove h5 m-0"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>Redesign - Landing page</td>
-                                    <td>10/6/2019</td>
-                                    <td>
-                                        <span class="text-primary font-12"><i class="mdi mdi-checkbox-blank-circle mr-1"></i> Pending</span>
-                                    </td>
-                                    <td>
-                                        <div class="team">
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Neil Wing">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="rounded-circle avatar-xs" alt=""style={{width:"3rem",height:"3rem"}} />
-                                            </a>
-
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Stanley Barber">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" class="rounded-circle avatar-xs" alt=""style={{width:"3rem",height:"3rem"}} />
-                                            </a>
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Roger Drake">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar4.png" class="rounded-circle avatar-xs" alt="" style={{width:"3rem",height:"3rem"}}/>
-                                            </a>
-
-                                            <a href="javascript: void(0);" class="team-member" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jack Krier">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle avatar-xs" alt=""style={{width:"3rem",height:"3rem"}} />
-                                            </a>
-                                        </div>
-                                    </td>
-                                    
-                                    <td>
-                                        <p class="mb-0">Progress<span class="float-right">100%</span></p>
-                                        <div class="progress mt-2" style={{height: "5px"}}>
-                                            <div class="progress-bar bg-success" role="progressbar" style={{width: "100%"}} aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="action">
-                                            <a href="#" class="text-success mr-4" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i class="fa fa-pencil h5 m-0"></i></a>
-                                            <a href="#" class="text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Close"> <i class="fa fa fa-remove h5 m-0"></i></a>
+                                        <i class="bi bi-x-square-fill  text-danger "></i>
                                         </div>
                                     </td>
                                 </tr>
@@ -303,19 +115,7 @@ export default function EventosAdmin(){
                         </table>
                     </div>
 
-                    <div class="pt-3">
-                        <ul class="pagination justify-content-end mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </div>
+                   
                 </div>
             </div>
         </div>
