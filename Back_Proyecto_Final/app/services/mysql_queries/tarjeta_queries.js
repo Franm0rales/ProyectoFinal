@@ -108,6 +108,24 @@ tarjetaQueries.getJoin = async () => {
     conn && (await conn.end());
   }
 };
+//GetJoin eventos/alumnos
+tarjetaQueries.getJoinData = async (tabla1, tabla2, dato1, dato2, id) => {
+  // Conectamos con la base de datos
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      `SELECT * FROM ${tabla1} join ${tabla2} on ${tabla1}.${dato1}=${tabla2}.${dato2} where ${tabla1}.${dato1}=?`,
+      [id],
+      "select",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 //Traer respuestas con join con comentarios
 tarjetaQueries.getRespuestasWithData = async (id) => {
   // Conectamos con la base de datos

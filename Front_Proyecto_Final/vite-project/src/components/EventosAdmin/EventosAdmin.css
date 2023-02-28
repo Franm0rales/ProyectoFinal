@@ -9,3 +9,18 @@
     height: 2.3rem;
     width: 2.3rem;
 }
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #b6cffc;
+    border:1px solid black;
+
+  }
+  
+  .filler {
+    height: 100%;
+    background-color: #5e96ff;
+    text-align: center;
+    color: #b6cffc  ;
+    transition: width 0.2s ease-in;
+  }

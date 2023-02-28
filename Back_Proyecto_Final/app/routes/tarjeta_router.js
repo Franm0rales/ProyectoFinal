@@ -50,5 +50,7 @@ tarjetaRouter.get(
   "/getTarjetaFilters/:query",
   tarjetaController.getTarjetasFilters
 );
+//Join eventos/alumnos
+tarjetaRouter.get("/eventosAlumnos/:idTarjeta", tarjetaController.getJoinData);
 
 export default tarjetaRouter;

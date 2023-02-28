@@ -347,4 +347,20 @@ controller.getTarjetasFilters = async (req, res) => {
     console.log(e.message);
   }
 };
+//Controlador join eventos/alumnos
+controller.getJoinData = async (req, res) => {
+  const { idTarjeta } = req.params;
+  try {
+    let eventosAlumnos = await dao.getJoinData(
+      data.tarjeta,
+      data.alumno,
+      data.id,
+      data.idTarjeta,
+      idTarjeta
+    );
+    return res.send(eventosAlumnos);
+  } catch (e) {
+    console.log(e.message);
+  }
+};
 export default controller;

@@ -39,6 +39,9 @@ dao.contadorByDataNoFilter = async (tabla) =>
   await tarjetaQueries.contadorByDataNoFilter(tabla);
 //Join
 dao.getJoin = async () => await tarjetaQueries.getJoin();
+//Join data
+dao.getJoinData = async (tabla1, tabla2, dato1, dato2, id) =>
+  await tarjetaQueries.getJoinData(tabla1, tabla2, dato1, dato2, id);
 //Traer las respuestas con join a comentarios
 dao.getRespuestasWithData = async (id) =>
   await tarjetaQueries.getRespuestasWithData(id);
