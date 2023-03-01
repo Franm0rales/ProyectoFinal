@@ -42,7 +42,6 @@ export default function EventosAdmin() {
         const jsonEventos = await responseEventos.json();
         jsonEventos.sort((a, b) => a.id - b.id);
         setEventos(jsonEventos);
-        console.log("entreo", eventos);
       };
       fetchData();
     } catch (e) {

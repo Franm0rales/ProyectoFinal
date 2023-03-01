@@ -3,11 +3,9 @@ import { useState, useEffect } from "react";
 export default function HomeAdmin() {
   const [users, setUsers] = useState(null);
   const [userDeleted, setUserDeleted] = useState(true);
-  const [selectedFilters, setSelectedFilters] = useState([
-    undefined,
-    undefined,
-  ]);
+  const [estado, setEstado] = useState(false);
   const [id, setId] = useState(0);
+  const [filters, setFilters] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("http://localhost:3000/user/allUsers");
@@ -33,40 +31,35 @@ export default function HomeAdmin() {
   }
 
   useEffect(() => {
-    const fetchRutaABuscar = async () => {
+    const fetchEstado = async () => {
       try {
-        if (selectedFilters[0] == "alumno") {
-          const response = await fetch(`http://localhost:3000/user/allUsers`);
-          const data = await response.json();
-          setUsers(data);
-          console.log(users, "alumnos");
-        } else if (selectedFilters[0] == "empresa") {
-          const responseEmpresa = await fetch(
-            `http://localhost:3000/user/allEmpresa`
-          );
-          const dataEmpresa = await responseEmpresa.json();
-          setUsers(dataEmpresa);
-          console.log(users);
-        }
-        if (selectedFilters[1] == 0) {
-          const objetosFiltrados = users.filter((evento) =>
-            evento.eliminado.includes(selectedFilters[1])
-          );
-          setUsers(objetosFiltrados);
-        } else if (selectedFilters[1] == 1) {
-          const objetosFiltrados = users.filter((evento) =>
-            evento.nombre
-              .toLowerCase()
-              .includes(selectedFilters[1].toLocaleLowerCase())
-          );
-          setUsers(objetosFiltrados);
-        }
-      } catch (error) {
-        console.log(error);
+        users.sort(function (a, b) {
+          if (a.eliminado === 0 && b.eliminado === 1) {
+            setEstado(!estado);
+            if (estado) {
+              return -1;
+            } else {
+              return 1;
+            }
+          } else if (a.eliminado === 1 && b.eliminado === 0) {
+            setEstado(!estado);
+            if (estado) {
+              return 1;
+            } else {
+              return -1;
+            }
+          } else {
+            setEstado(!estado);
+            return 0;
+          }
+        });
+      } catch (e) {
+        console.log(e.message);
       }
     };
-    fetchRutaABuscar();
-  }, [selectedFilters]);
+    fetchEstado();
+    //fetchRutaABuscar();
+  }, [filters]);
 
   const [visible, setVisible] = useState("d-none");
   function toggleVisible(x) {
@@ -77,68 +70,35 @@ export default function HomeAdmin() {
     }
     setId(x);
   }
-  function handleChangeEstado(event, x) {
-    let options = event.target.value;
-    selectedFilters[x] = options;
-    setSelectedFilters([...selectedFilters]);
-    console.log(selectedFilters);
-  }
-  function handleChangeUsuario(event, x) {
-    let options = event.target.value;
-    selectedFilters[x] = options;
-    setSelectedFilters([...selectedFilters]);
-    console.log(selectedFilters);
-  }
-  function deleteFilters(e) {
-    e.preventDefault();
-    setSelectedFilters([undefined]);
-  }
+  // function handleChangeEstado(event, x) {
+  //   let options = event.target.value;
+  //   selectedFilters[x] = options;
+  //   setSelectedFilters([...selectedFilters]);
+  //   console.log(selectedFilters);
+  // }
+  // function handleChangeUsuario(event, x) {
+  //   let options = event.target.value;
+  //   selectedFilters[x] = options;
+  //   setSelectedFilters([...selectedFilters]);
+  //   console.log(selectedFilters);
+  // }
+  // function deleteFilters(e) {
+  //   e.preventDefault();
+  //   setSelectedFilters([undefined]);
+  // }
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
             <div className="main-box clearfix">
-              <div className="table-responsive d-flex  gap-3">
-                <div className="form-label col-3 pt-5">
-                  <select
-                    name="estado"
-                    onChange={(e) => handleChangeEstado(e, 1)}
-                    value={selectedFilters[1]}
-                    className="form-select col-2"
-                    aria-label="Default select example"
-                  >
-                    <option value={undefined}>Selecciona estado</option>
-                    <option value={0}>Activo</option>
-                    <option value={1}>Inactivo</option>
-                  </select>
-                </div>
-                <div className="form-label col-3 pt-5">
-                  <select
-                    name="usuario"
-                    onChange={(e) => handleChangeUsuario(e, 0)}
-                    value={selectedFilters[0]}
-                    className="form-select col-3"
-                    aria-label="Default select example"
-                  >
-                    <option value={undefined}>Selecciona usuario</option>
-                    <option value="alumno">Candidatos</option>
-                    <option value="empresa">Empresas</option>
-                  </select>
-                </div>
-
-                <button
-                  onClick={(e) => deleteFilters(e)}
-                  className="border-0 bg-transparent text-end pt-5"
-                >
-                  <i class="bi bi-x-square-fill  text-danger text-end "></i>
-                </button>
-              </div>
+              <div className="table-responsive d-flex  gap-3"></div>
               <table className="table user-list shadow-none ">
                 <thead>
                   <tr>
                     <th>
                       <span>Usuarios</span>
+                      <button onClick={() => setFilters(!filters)}>X</button>
                     </th>
                     <th>
                       <span>Fecha de alta</span>
@@ -148,6 +108,7 @@ export default function HomeAdmin() {
                     </th>
                     <th>
                       <span>Estado</span>
+                      <button onClick={() => setFilters(!filters)}>X</button>
                     </th>
                     <th>
                       <span>Email</span>
