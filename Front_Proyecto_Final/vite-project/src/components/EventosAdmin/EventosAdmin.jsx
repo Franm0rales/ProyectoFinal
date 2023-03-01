@@ -26,7 +26,7 @@ export default function EventosAdmin() {
       };
 
       fetchData();
-      deleteEvento();
+
       console.log(eventos);
     } catch (e) {
       console.log(e.message);

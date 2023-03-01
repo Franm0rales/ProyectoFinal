@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Swal from "sweetalert2";
 
 export default function Evento({
   evento,
@@ -54,6 +55,13 @@ export default function Evento({
     fecha();
     fetchEventoAlumno();
   }, []);
+  function avatarPopup(index) {
+    Swal.fire({
+      title: `${eventoAlumnos[index].nombre} ${eventoAlumnos[index].apellidos}`,
+      text: `${eventoAlumnos[index].email}`,
+      confirmButtonColor: "#5295ce",
+    });
+  }
 
   function deleteEvento() {
     fetch(`http://localhost:3000/tarjeta/deleteEvento/${id}`, {
@@ -97,8 +105,11 @@ export default function Evento({
         <td>
           <div className="team avatar-group">
             {alumnos ? (
-              eventoAlumnos.map((alumno) => (
-                <button className="border-0 bg-transparent p-0">
+              eventoAlumnos.map((alumno, index) => (
+                <button
+                  className="border-0 bg-transparent p-0"
+                  onClick={() => avatarPopup(index)}
+                >
                   <img
                     src={`https://bootdey.com/img/Content/avatar/avatar${alumno.avatar}.png`}
                     className="avatar "
