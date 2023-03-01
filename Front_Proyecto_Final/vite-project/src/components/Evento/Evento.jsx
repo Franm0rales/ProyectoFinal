@@ -83,16 +83,18 @@ export default function Evento({
           <div className="team avatar-group">
             {alumnos ? (
               eventoAlumnos.map((alumno) => (
-                <img
-                  src={`https://bootdey.com/img/Content/avatar/avatar${alumno.avatar}.png`}
-                  className="avatar "
-                  key={alumno.id}
-                  alt={alumno.nombre}
-                  style={{
-                    width: "1.5rem",
-                    height: "1.5rem",
-                  }}
-                />
+                <button className="border-0 bg-transparent p-0">
+                  <img
+                    src={`https://bootdey.com/img/Content/avatar/avatar${alumno.avatar}.png`}
+                    className="avatar "
+                    key={alumno.id}
+                    alt={alumno.nombre}
+                    style={{
+                      width: "1.2rem",
+                      height: "1.2rem",
+                    }}
+                  />
+                </button>
               ))
             ) : (
               <p>No alumnos apuntados</p>
