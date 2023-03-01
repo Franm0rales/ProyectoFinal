@@ -3,6 +3,10 @@ import { useState, useEffect } from "react";
 export default function HomeAdmin() {
   const [users, setUsers] = useState(null);
   const [userDeleted, setUserDeleted] = useState(true);
+  const [selectedFilters, setSelectedFilters] = useState([
+    undefined,
+    undefined,
+  ]);
   const [id, setId] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
@@ -28,6 +32,42 @@ export default function HomeAdmin() {
     toggleVisible(0);
   }
 
+  useEffect(() => {
+    const fetchRutaABuscar = async () => {
+      try {
+        if (selectedFilters[0] == "alumno") {
+          const response = await fetch(`http://localhost:3000/user/allUsers`);
+          const data = await response.json();
+          setUsers(data);
+          console.log(users, "alumnos");
+        } else if (selectedFilters[0] == "empresa") {
+          const responseEmpresa = await fetch(
+            `http://localhost:3000/user/allEmpresa`
+          );
+          const dataEmpresa = await responseEmpresa.json();
+          setUsers(dataEmpresa);
+          console.log(users);
+        }
+        if (selectedFilters[1] == 0) {
+          const objetosFiltrados = users.filter((evento) =>
+            evento.eliminado.includes(selectedFilters[1])
+          );
+          setUsers(objetosFiltrados);
+        } else if (selectedFilters[1] == 1) {
+          const objetosFiltrados = users.filter((evento) =>
+            evento.nombre
+              .toLowerCase()
+              .includes(selectedFilters[1].toLocaleLowerCase())
+          );
+          setUsers(objetosFiltrados);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchRutaABuscar();
+  }, [selectedFilters]);
+
   const [visible, setVisible] = useState("d-none");
   function toggleVisible(x) {
     if (visible === "d-none") {
@@ -37,41 +77,59 @@ export default function HomeAdmin() {
     }
     setId(x);
   }
+  function handleChangeEstado(event, x) {
+    let options = event.target.value;
+    selectedFilters[x] = options;
+    setSelectedFilters([...selectedFilters]);
+    console.log(selectedFilters);
+  }
+  function handleChangeUsuario(event, x) {
+    let options = event.target.value;
+    selectedFilters[x] = options;
+    setSelectedFilters([...selectedFilters]);
+    console.log(selectedFilters);
+  }
+  function deleteFilters(e) {
+    e.preventDefault();
+    setSelectedFilters([undefined]);
+  }
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
             <div className="main-box clearfix">
-              <div className="table-responsive d-flex justify-content-center">
-                <div className="d-flex align-items-center gap-2 px-3 pt-5 pb-5">
-                  <label>
-                    <b>Candidatos</b>
-                  </label>
-                  <input
-                    type="checkbox"
-                    name="plazas"
-                    value="alumnos<plazas"
-                    // checked={isCheckedPlazas}
-                    // onClick={(e) => handleCheckBoxPlazas(e, 1)}
-                  />
+              <div className="table-responsive d-flex justify-content-center gap-3">
+                <div className="form-label col-1 pt-5">
+                  <select
+                    name="estado"
+                    onChange={(e) => handleChangeEstado(e, 1)}
+                    value={selectedFilters[1]}
+                    className="form-select col-2"
+                    aria-label="Default select example"
+                  >
+                    <option value={undefined}>Selecciona estado</option>
+                    <option value={0}>Activo</option>
+                    <option value={1}>Inactivo</option>
+                  </select>
+                </div>
+                <div className="form-label col-1 pt-5">
+                  <select
+                    name="usuario"
+                    onChange={(e) => handleChangeUsuario(e, 0)}
+                    value={selectedFilters[0]}
+                    className="form-select col-2"
+                    aria-label="Default select example"
+                  >
+                    <option value={undefined}>Selecciona usuario</option>
+                    <option value="alumno">Candidatos</option>
+                    <option value="empresa">Empresas</option>
+                  </select>
                 </div>
 
-                <div className="d-flex align-items-center gap-2 px-3 pt-5 pb-5">
-                  <label>
-                    <b>Empresas</b>
-                  </label>
-                  <input
-                    type="checkbox"
-                    name="scales"
-                    value="fecha"
-                    // checked={isCheckedFecha}
-                    // onClick={() => handleCheckBoxFecha(2)}
-                  />
-                </div>
                 <button
+                  onClick={(e) => deleteFilters(e)}
                   className="border-0 bg-transparent"
-                  // onClick={(e) => deleteFilters(e)}
                 >
                   <i class="bi bi-x-square-fill  text-danger "></i>
                 </button>
@@ -88,7 +146,7 @@ export default function HomeAdmin() {
                     <th>
                       <span>Fecha modificación</span>
                     </th>
-                    <th className="text-center ">
+                    <th>
                       <span>Estado</span>
                     </th>
                     <th>
@@ -128,9 +186,9 @@ export default function HomeAdmin() {
                         </td>
                         <td>{user.tsAlta.split("T")[0]}</td>
                         <td>{user.tsMod.split("T")[0]}</td>
-                        <td className="text-center">
+                        <td>
                           {user.eliminado == 1 ? (
-                            <span className="label label-default">
+                            <span className="text-danger label label-default">
                               Inactivo
                             </span>
                           ) : (
