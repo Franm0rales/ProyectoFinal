@@ -162,12 +162,13 @@ export default function EventosAdmin() {
                           <th scope="col"> </th>
                         </tr>
                       </thead>
-                      {eventos.map((evento) => (
+                      {eventos.map((evento, index) => (
                         <Evento
                           evento={evento}
                           percentage={percentage}
                           setDeleteEvento={setDeleteEvento}
                           deleteEvento={deleteEvento}
+                          index={index}
                         />
                       ))}
                     </table>

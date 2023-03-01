@@ -6,6 +6,7 @@ export default function Evento({
   percentage,
   setDeleteEvento,
   deleteEvento,
+  index,
 }) {
   //const [inProgressNum, setInProgressNum] = useState(0);
   const [inProgress, setInProgress] = useState(false);
@@ -76,7 +77,7 @@ export default function Evento({
   return (
     <tbody>
       <tr className="">
-        <th scope="row">{evento.id}</th>
+        <th scope="row">{index + 1}</th>
         <td>{evento.nombre}</td>
         <td>
           {evento.fechaInicio.split("T")[0].split("-")[2]}-
