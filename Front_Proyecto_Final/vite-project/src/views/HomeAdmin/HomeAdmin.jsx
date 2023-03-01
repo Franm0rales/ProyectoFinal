@@ -98,7 +98,21 @@ export default function HomeAdmin() {
                   <tr>
                     <th>
                       <span>Usuarios</span>
-                      <button onClick={() => setFilters(!filters)}>X</button>
+                      {estado === true ? (
+                        <button
+                          onClick={() => setFilters(!filters)}
+                          className="border-0 bg-transparent"
+                        >
+                          <i class="bi bi-caret-up-fill"></i>
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => setFilters(!filters)}
+                          className="border-0 bg-transparent"
+                        >
+                          <i class="bi bi-caret-down-fill"></i>
+                        </button>
+                      )}
                     </th>
                     <th>
                       <span>Fecha de alta</span>
@@ -108,7 +122,21 @@ export default function HomeAdmin() {
                     </th>
                     <th>
                       <span>Estado</span>
-                      <button onClick={() => setFilters(!filters)}>X</button>
+                      {estado === true ? (
+                        <button
+                          onClick={() => setFilters(!filters)}
+                          className="border-0 bg-transparent"
+                        >
+                          <i class="bi bi-caret-up-fill"></i>
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => setFilters(!filters)}
+                          className="border-0 bg-transparent"
+                        >
+                          <i class="bi bi-caret-down-fill"></i>
+                        </button>
+                      )}
                     </th>
                     <th>
                       <span>Email</span>
