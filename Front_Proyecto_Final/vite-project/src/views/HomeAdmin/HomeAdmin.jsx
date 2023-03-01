@@ -2,6 +2,7 @@ import "./HomeAdmin.css";
 import { useState, useEffect } from "react";
 export default function HomeAdmin() {
   const [users, setUsers] = useState(null);
+  const [userDeleted, setUserDeleted] = useState(true);
   const [id, setId] = useState(0);
   useEffect(() => {
     const fetchData = async () => {
@@ -11,12 +12,20 @@ export default function HomeAdmin() {
     };
     fetchData();
   }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("http://localhost:3000/user/allUsers");
+      const json = await response.json();
+      setUsers(json);
+    };
+    fetchData();
+  }, [userDeleted]);
   async function deleteUser() {
-    let idUsuario = users.idUsuario;
-
     await fetch(`http://localhost:3000/user/deleteUser/${id}`, {
       method: "PATCH",
     });
+    setUserDeleted(!userDeleted);
+    toggleVisible(0);
   }
 
   const [visible, setVisible] = useState("d-none");
@@ -125,7 +134,9 @@ export default function HomeAdmin() {
                               Inactivo
                             </span>
                           ) : (
-                            <span className="label label-default text-success">Activo</span>
+                            <span className="label label-default text-success">
+                              Activo
+                            </span>
                           )}
                         </td>
                         <td>
@@ -152,7 +163,7 @@ export default function HomeAdmin() {
                               </button>
                               <button
                                 className="btn btn-outline-secondary mx-1 text-white rounded-2"
-                                onClick={toggleVisible}
+                                onClick={() => toggleVisible(0)}
                               >
                                 No
                               </button>
