@@ -5,9 +5,14 @@ import "./EventosAdmin.css";
 export default function EventosAdmin() {
   const [percentage, setPercentage] = useState(0);
   const [eventos, setEventos] = useState([]);
-  const [inProgressNum, setInProgressNum] = useState(0);
-  const [pendingNum, setPendingNum] = useState(0);
-  const [completedNum, setCompletedNum] = useState(0);
+  let [inProgressNum, setInProgressNum] = useState(0);
+  let [pendingNum, setPendingNum] = useState(0);
+  let [completedNum, setCompletedNum] = useState(0);
+  const fechaActual = new Date();
+  const anio = fechaActual.getFullYear();
+  const mes = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
+  const dia = ("0" + fechaActual.getDate()).slice(-2);
+  const fechaEnFormatoYYYYMMDD = `${anio}-${mes}-${dia}`;
 
   useEffect(() => {
     try {
@@ -19,12 +24,38 @@ export default function EventosAdmin() {
         jsonEventos.sort((a, b) => a.id - b.id);
         setEventos(jsonEventos);
       };
+
       fetchData();
+
+      console.log(eventos);
     } catch (e) {
       console.log(e.message);
     }
   }, []);
+  useEffect(() => {
+    let inProgressCount = 0;
+    let pendingCount = 0;
+    let completedCount = 0;
 
+    for (let i = 0; i < eventos.length; i++) {
+      if (
+        eventos[i].fechaInicio.split("T")[0] <= fechaEnFormatoYYYYMMDD &&
+        eventos[i].fechaFin.split("T")[0] >= fechaEnFormatoYYYYMMDD
+      ) {
+        inProgressCount++;
+      } else if (
+        eventos[i].fechaInicio.split("T")[0] > fechaEnFormatoYYYYMMDD
+      ) {
+        pendingCount++;
+      } else if (eventos[i].fechaFin.split("T")[0] < fechaEnFormatoYYYYMMDD) {
+        completedCount++;
+      }
+    }
+
+    setInProgressNum(inProgressCount);
+    setPendingNum(pendingCount);
+    setCompletedNum(completedCount);
+  }, [eventos]);
   useEffect(() => {
     const interval = setInterval(() => {
       setPercentage((prevPercentage) => prevPercentage + 1);
@@ -37,6 +68,7 @@ export default function EventosAdmin() {
 
     return () => clearInterval(interval);
   }, [percentage]);
+
   return (
     <>
       {eventos ? (

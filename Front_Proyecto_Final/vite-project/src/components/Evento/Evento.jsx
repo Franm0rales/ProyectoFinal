@@ -26,9 +26,7 @@ export default function Evento({
   const mes = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
   const dia = ("0" + fechaActual.getDate()).slice(-2);
   const fechaEnFormatoYYYYMMDD = `${anio}-${mes}-${dia}`;
-  let pendingLet = pendingNum;
-  let inProgressLet = inProgressNum;
-  let completedLet = completedNum;
+
   useEffect(() => {
     const fecha = () => {
       if (
@@ -36,16 +34,10 @@ export default function Evento({
         evento.fechaFin.split("T")[0] >= fechaEnFormatoYYYYMMDD
       ) {
         setInProgress(true);
-        inProgressLet++;
-        setInProgressNum(inProgressNum);
       } else if (evento.fechaInicio.split("T")[0] > fechaEnFormatoYYYYMMDD) {
         setPending(true);
-        pendingLet++;
-        setPendingNum(pendingNum++);
       } else if (evento.fechaFin.split("T")[0] < fechaEnFormatoYYYYMMDD) {
         setCompleted(true);
-        completedLet++;
-        setCompletedNum(completedNum);
       }
     };
     const fetchEventoAlumno = async () => {
@@ -95,7 +87,7 @@ export default function Evento({
           {completed ? (
             <span className="text-success font-12">Completado</span>
           ) : inProgress ? (
-            <span className="text-primary font-12">En progeso</span>
+            <span className="text-primary font-12">En progreso</span>
           ) : pending ? (
             <span className="text-black font-12">Pendiente</span>
           ) : (
@@ -106,16 +98,18 @@ export default function Evento({
           <div className="team avatar-group">
             {alumnos ? (
               eventoAlumnos.map((alumno) => (
-                <img
-                  src={`https://bootdey.com/img/Content/avatar/avatar${alumno.avatar}.png`}
-                  className="avatar "
-                  key={alumno.id}
-                  alt={alumno.nombre}
-                  style={{
-                    width: "1.5rem",
-                    height: "1.5rem",
-                  }}
-                />
+                <button className="border-0 bg-transparent p-0">
+                  <img
+                    src={`https://bootdey.com/img/Content/avatar/avatar${alumno.avatar}.png`}
+                    className="avatar "
+                    key={alumno.id}
+                    alt={alumno.nombre}
+                    style={{
+                      width: "1.2rem",
+                      height: "1.2rem",
+                    }}
+                  />
+                </button>
               ))
             ) : (
               <p>No alumnos apuntados</p>
@@ -131,7 +125,7 @@ export default function Evento({
               ></div>
             ) : inProgress ? (
               <div
-                className="filler rounded "
+                className="filler "
                 style={{ width: `${percentage}%` }}
               ></div>
             ) : pending ? (
