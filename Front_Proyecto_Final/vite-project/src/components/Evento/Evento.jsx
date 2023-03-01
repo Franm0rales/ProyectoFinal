@@ -18,7 +18,9 @@ export default function Evento({
   const [completed, setCompleted] = useState(false);
   const [alumnos, setAlumnos] = useState(true);
   const [idTarjeta, setIdTarjeta] = useState(evento.id);
+  const [id, setId] = useState(0);
   const [eventoAlumnos, setEventoAlumnos] = useState([]);
+  const [visible, setVisible] = useState("d-none");
   const fechaActual = new Date();
   const anio = fechaActual.getFullYear();
   const mes = ("0" + (fechaActual.getMonth() + 1)).slice(-2);
@@ -61,6 +63,19 @@ export default function Evento({
     fetchEventoAlumno();
   }, []);
 
+  function deleteEvento(idEvento) {
+    fetch(`http:localhost:3000/tarjeta/deleteEvento/${idEvento}`, {
+      method: "DELETE",
+    });
+  }
+  function toggleVisible(x) {
+    if (visible === "d-none") {
+      setVisible("");
+    } else {
+      setVisible("d-none");
+    }
+    setId(x);
+  }
   return (
     <tbody>
       <tr className="">
@@ -128,11 +143,34 @@ export default function Evento({
             )}
           </div>
         </td>
-
-        <td>
-          <div className="action text-center">
-            <i className="bi bi-x-square-fill  text-danger "></i>
+        <td style={{ width: "20%" }}>
+          <div className="d-flex justify-content-center">
+            <button
+              onClick={() => toggleVisible(evento.id)}
+              className="action text-center table-link danger border-0 bg-transparent p-0"
+            >
+              <i className="bi bi-x-square-fill text-danger"></i>
+            </button>
           </div>
+          {id == evento.id ? (
+            <div className={`alert alert-danger ${visible}`} role="alert">
+              Eliminar usuario ¿Estas seguro?
+              <button
+                className="btn btn-outline-secondary mx-1 text-white rounded-2"
+                onClick={() => deleteEvento(evento.id)}
+              >
+                Si
+              </button>
+              <button
+                className="btn btn-outline-secondary mx-1 text-white rounded-2"
+                onClick={() => toggleVisible(0)}
+              >
+                No
+              </button>
+            </div>
+          ) : (
+            <p></p>
+          )}
         </td>
       </tr>
     </tbody>

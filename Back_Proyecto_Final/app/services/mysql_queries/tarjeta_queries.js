@@ -157,5 +157,23 @@ tarjetaQueries.getTarjetaFilters = async (tabla, data) => {
     conn && (await conn.end());
   }
 };
+//Eliminar eventos
+tarjetaQueries.deleteEvento = async (tabla, columna, id) => {
+  // Conectamos con la base de datos
+  let conn = null;
+  try {
+    conn = await db.createConnection();
+    return await db.query(
+      `DELETE FROM ${tabla} where ${columna}=?`,
+      [id],
+      "delete",
+      conn
+    );
+  } catch (e) {
+    throw new Error(e);
+  } finally {
+    conn && (await conn.end());
+  }
+};
 
 export default tarjetaQueries;

@@ -52,5 +52,7 @@ tarjetaRouter.get(
 );
 //Join eventos/alumnos
 tarjetaRouter.get("/eventosAlumnos/:idTarjeta", tarjetaController.getJoinData);
+//Eliminar evento
+tarjetaRouter.delete("/deleteEvento/:id", tarjetaController.deleteEvento);
 
 export default tarjetaRouter;

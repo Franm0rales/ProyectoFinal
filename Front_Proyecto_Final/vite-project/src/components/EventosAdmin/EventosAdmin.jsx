@@ -30,7 +30,7 @@ export default function EventosAdmin() {
       setPercentage((prevPercentage) => prevPercentage + 1);
     }, 100);
 
-    if (percentage === 100) {
+    if (percentage === 103) {
       clearInterval(interval);
       setPercentage(0);
     }
@@ -108,7 +108,7 @@ export default function EventosAdmin() {
                           <th scope="col">Estado</th>
                           <th scope="col">Asistentes</th>
                           <th scope="col">Progreso</th>
-                          <th scope="col">Acciones</th>
+                          <th scope="col"> </th>
                         </tr>
                       </thead>
                       {eventos.map((evento) => (

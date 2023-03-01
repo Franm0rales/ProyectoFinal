@@ -48,5 +48,8 @@ dao.getRespuestasWithData = async (id) =>
 //Traer tarjetas por filtros
 dao.getTarjetaFilters = async (tabla, data) =>
   await tarjetaQueries.getTarjetaFilters(tabla, data);
+//Eliminar evento
+dao.deleteEvento = async (tabla, dato, id) =>
+  await tarjetaQueries.deleteEvento(tabla, dato, id);
 
 export default dao;

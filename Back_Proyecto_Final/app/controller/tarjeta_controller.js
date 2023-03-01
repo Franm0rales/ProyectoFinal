@@ -363,4 +363,14 @@ controller.getJoinData = async (req, res) => {
     console.log(e.message);
   }
 };
+//Eliminar evento
+controller.deleteEvento = async (req, res) => {
+  const { id } = req.params;
+  try {
+    await dao.deleteEvento(data.tarjeta, data.id, id);
+    return res.status(200).send();
+  } catch (e) {
+    console.log(e.message);
+  }
+};
 export default controller;
