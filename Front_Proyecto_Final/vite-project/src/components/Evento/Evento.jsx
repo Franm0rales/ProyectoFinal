@@ -34,13 +34,16 @@ export default function Evento({
         evento.fechaFin.split("T")[0] >= fechaEnFormatoYYYYMMDD
       ) {
         setInProgress(true);
-        setInProgressNum(inProgressNum++);
+        inProgressLet++;
+        setInProgressNum(inProgressNum);
       } else if (evento.fechaInicio.split("T")[0] > fechaEnFormatoYYYYMMDD) {
         setPending(true);
+        pendingLet++;
         setPendingNum(pendingNum++);
       } else if (evento.fechaFin.split("T")[0] < fechaEnFormatoYYYYMMDD) {
         setCompleted(true);
-        setCompletedNum(completedNum++);
+        completedLet++;
+        setCompletedNum(completedNum);
       }
     };
     const fetchEventoAlumno = async () => {
@@ -127,7 +130,7 @@ export default function Evento({
         </td>
 
         <td>
-          <div className="action ">
+          <div className="action text-center">
             <i className="bi bi-x-square-fill  text-danger "></i>
           </div>
         </td>
