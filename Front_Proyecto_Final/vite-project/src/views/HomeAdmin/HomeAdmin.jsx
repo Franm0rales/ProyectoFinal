@@ -99,8 +99,8 @@ export default function HomeAdmin() {
         <div className="row">
           <div className="col-lg-12">
             <div className="main-box clearfix">
-              <div className="table-responsive d-flex justify-content-center gap-3">
-                <div className="form-label col-1 pt-5">
+              <div className="table-responsive d-flex  gap-3">
+                <div className="form-label col-3 pt-5">
                   <select
                     name="estado"
                     onChange={(e) => handleChangeEstado(e, 1)}
@@ -113,12 +113,12 @@ export default function HomeAdmin() {
                     <option value={1}>Inactivo</option>
                   </select>
                 </div>
-                <div className="form-label col-1 pt-5">
+                <div className="form-label col-3 pt-5">
                   <select
                     name="usuario"
                     onChange={(e) => handleChangeUsuario(e, 0)}
                     value={selectedFilters[0]}
-                    className="form-select col-2"
+                    className="form-select col-3"
                     aria-label="Default select example"
                   >
                     <option value={undefined}>Selecciona usuario</option>
@@ -129,9 +129,9 @@ export default function HomeAdmin() {
 
                 <button
                   onClick={(e) => deleteFilters(e)}
-                  className="border-0 bg-transparent"
+                  className="border-0 bg-transparent text-end pt-5"
                 >
-                  <i class="bi bi-x-square-fill  text-danger "></i>
+                  <i class="bi bi-x-square-fill  text-danger text-end "></i>
                 </button>
               </div>
               <table className="table user-list shadow-none ">
