@@ -5,6 +5,7 @@ import "./EventosAdmin.css";
 export default function EventosAdmin() {
   const [percentage, setPercentage] = useState(0);
   const [eventos, setEventos] = useState([]);
+  const [deleteEvento, setDeleteEvento] = useState(true);
   let [inProgressNum, setInProgressNum] = useState(0);
   let [pendingNum, setPendingNum] = useState(0);
   let [completedNum, setCompletedNum] = useState(0);
@@ -32,6 +33,22 @@ export default function EventosAdmin() {
       console.log(e.message);
     }
   }, []);
+  useEffect(() => {
+    try {
+      const fetchData = async () => {
+        const responseEventos = await fetch(
+          `http://localhost:3000/tarjeta/getAllTarjetas/tarjetas`
+        );
+        const jsonEventos = await responseEventos.json();
+        jsonEventos.sort((a, b) => a.id - b.id);
+        setEventos(jsonEventos);
+        console.log("entreo", eventos);
+      };
+      fetchData();
+    } catch (e) {
+      console.log(e.message);
+    }
+  }, [deleteEvento]);
 
   useEffect(() => {
     let inProgressCount = 0;
@@ -149,12 +166,8 @@ export default function EventosAdmin() {
                         <Evento
                           evento={evento}
                           percentage={percentage}
-                          setInProgressNum={setInProgressNum}
-                          inProgressNum={inProgressNum}
-                          pendingNum={pendingNum}
-                          setPendingNum={setPendingNum}
-                          setCompletedNum={setCompletedNum}
-                          completedNum={completedNum}
+                          setDeleteEvento={setDeleteEvento}
+                          deleteEvento={deleteEvento}
                         />
                       ))}
                     </table>

@@ -4,12 +4,8 @@ import Swal from "sweetalert2";
 export default function Evento({
   evento,
   percentage,
-  setInProgressNum,
-  inProgressNum,
-  pendingNum,
-  setPendingNum,
-  setCompletedNum,
-  completedNum,
+  setDeleteEvento,
+  deleteEvento,
 }) {
   //const [inProgressNum, setInProgressNum] = useState(0);
   const [inProgress, setInProgress] = useState(false);
@@ -63,10 +59,11 @@ export default function Evento({
     });
   }
 
-  function deleteEvento() {
+  function deleteEventos() {
     fetch(`http://localhost:3000/tarjeta/deleteEvento/${id}`, {
       method: "DELETE",
     });
+    setDeleteEvento(!deleteEvento);
   }
   function toggleVisible(x) {
     if (visible === "d-none") {
@@ -162,7 +159,7 @@ export default function Evento({
               Eliminar usuario ¿Estas seguro?
               <button
                 className="btn btn-outline-secondary mx-1 text-white rounded-2"
-                onClick={() => deleteEvento(evento.id)}
+                onClick={() => deleteEventos(evento.id)}
               >
                 Si
               </button>
