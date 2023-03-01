@@ -103,7 +103,8 @@ export default function EventosAdmin() {
                         <tr>
                           <th scope="col">#</th>
                           <th scope="col">Eventos</th>
-                          <th scope="col">Fecha evento</th>
+                          <th scope="col">Fecha inicio evento</th>
+                          <th scope="col">Fecha fin evento</th>
                           <th scope="col">Estado</th>
                           <th scope="col">Asistentes</th>
                           <th scope="col">Progreso</th>

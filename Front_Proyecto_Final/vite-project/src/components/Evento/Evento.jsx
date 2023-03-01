@@ -34,16 +34,13 @@ export default function Evento({
         evento.fechaFin.split("T")[0] >= fechaEnFormatoYYYYMMDD
       ) {
         setInProgress(true);
-        inProgressLet++;
-        setInProgressNum(inProgressLet);
+        setInProgressNum(inProgressNum++);
       } else if (evento.fechaInicio.split("T")[0] > fechaEnFormatoYYYYMMDD) {
         setPending(true);
-        pendingLet++;
-        setPendingNum(pendingLet);
+        setPendingNum(pendingNum++);
       } else if (evento.fechaFin.split("T")[0] < fechaEnFormatoYYYYMMDD) {
         setCompleted(true);
-        completedLet++;
-        setCompletedNum(completedLet);
+        setCompletedNum(completedNum++);
       }
     };
     const fetchEventoAlumno = async () => {
@@ -52,11 +49,10 @@ export default function Evento({
       );
       const jsonEventoAlumnos = await responseEventoAlumnos.json();
       jsonEventoAlumnos.sort((a, b) => a.id - b.id);
-      console.log(jsonEventoAlumnos);
       setEventoAlumnos(jsonEventoAlumnos);
-      // if (eventoAlumnos.length < 1) {
-      // setAlumnos(false);
-      //}
+      //   if (eventoAlumnos.length < 1) {
+      //     setAlumnos(false);
+      //   }
     };
     fecha();
     fetchEventoAlumno();
@@ -64,13 +60,18 @@ export default function Evento({
 
   return (
     <tbody>
-      <tr>
+      <tr className="">
         <th scope="row">{evento.id}</th>
         <td>{evento.nombre}</td>
         <td>
           {evento.fechaInicio.split("T")[0].split("-")[2]}-
           {evento.fechaInicio.split("T")[0].split("-")[1]}-
           {evento.fechaInicio.split("T")[0].split("-")[0]}
+        </td>
+        <td>
+          {evento.fechaFin.split("T")[0].split("-")[2]}-
+          {evento.fechaFin.split("T")[0].split("-")[1]}-
+          {evento.fechaFin.split("T")[0].split("-")[0]}
         </td>
         <td>
           {completed ? (
@@ -84,27 +85,19 @@ export default function Evento({
           )}
         </td>
         <td>
-          <div className="team">
+          <div className="team avatar-group">
             {alumnos ? (
               eventoAlumnos.map((alumno) => (
-                <a
-                  href="javascript: void(0);"
-                  className="team-member"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title=""
-                  data-original-title="Roger Drake"
-                >
-                  <img
-                    src={`https://bootdey.com/img/Content/avatar/avatar${alumno.avatar}.png`}
-                    className="rounded-circle avatar-xs"
-                    alt=""
-                    style={{
-                      width: "1.5rem",
-                      height: "1.5rem",
-                    }}
-                  />
-                </a>
+                <img
+                  src={`https://bootdey.com/img/Content/avatar/avatar${alumno.avatar}.png`}
+                  className="avatar "
+                  key={alumno.id}
+                  alt={alumno.nombre}
+                  style={{
+                    width: "1.5rem",
+                    height: "1.5rem",
+                  }}
+                />
               ))
             ) : (
               <p>No alumnos apuntados</p>
@@ -129,7 +122,7 @@ export default function Evento({
         </td>
 
         <td>
-          <div className="action">
+          <div className="action ">
             <i className="bi bi-x-square-fill  text-danger "></i>
           </div>
         </td>
