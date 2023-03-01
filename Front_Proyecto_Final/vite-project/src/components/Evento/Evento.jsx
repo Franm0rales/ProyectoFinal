@@ -55,8 +55,8 @@ export default function Evento({
     fetchEventoAlumno();
   }, []);
 
-  function deleteEvento(idEvento) {
-    fetch(`http:localhost:3000/tarjeta/deleteEvento/${idEvento}`, {
+  function deleteEvento() {
+    fetch(`http://localhost:3000/tarjeta/deleteEvento/${id}`, {
       method: "DELETE",
     });
   }

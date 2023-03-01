@@ -26,12 +26,13 @@ export default function EventosAdmin() {
       };
 
       fetchData();
-
+      deleteEvento();
       console.log(eventos);
     } catch (e) {
       console.log(e.message);
     }
   }, []);
+
   useEffect(() => {
     let inProgressCount = 0;
     let pendingCount = 0;
@@ -56,6 +57,7 @@ export default function EventosAdmin() {
     setPendingNum(pendingCount);
     setCompletedNum(completedCount);
   }, [eventos]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setPercentage((prevPercentage) => prevPercentage + 1);
