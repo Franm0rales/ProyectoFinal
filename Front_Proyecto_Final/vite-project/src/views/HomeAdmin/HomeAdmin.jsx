@@ -143,12 +143,17 @@ export default function HomeAdmin() {
                           <p className="font-italic">{user.email}</p>
                         </td>
                         <td style={{ width: "20%" }}>
-                          <button
-                            onClick={() => toggleVisible(user.idUsuario)}
-                            className="table-link danger border-0 bg-transparent"
-                          >
-                            <i className="bi bi-x-square-fill text-danger px-4"></i>
-                          </button>
+                          {user.eliminado == 1 ? (
+                            <p></p>
+                          ) : (
+                            <button
+                              onClick={() => toggleVisible(user.idUsuario)}
+                              className="table-link danger border-0 bg-transparent"
+                            >
+                              <i className="bi bi-x-square-fill text-danger px-4"></i>
+                            </button>
+                          )}
+
                           {id == user.idUsuario ? (
                             <div
                               className={`alert alert-danger ${visible}`}
