@@ -72,7 +72,7 @@ export default function Evento({
           {completed ? (
             <span className="text-success font-12">Completado</span>
           ) : inProgress ? (
-            <span className="text-primary font-12">En progeso</span>
+            <span className="text-primary font-12">En progreso</span>
           ) : pending ? (
             <span className="text-black font-12">Pendiente</span>
           ) : (
@@ -110,7 +110,7 @@ export default function Evento({
               ></div>
             ) : inProgress ? (
               <div
-                className="filler rounded "
+                className="filler "
                 style={{ width: `${percentage}%` }}
               ></div>
             ) : pending ? (

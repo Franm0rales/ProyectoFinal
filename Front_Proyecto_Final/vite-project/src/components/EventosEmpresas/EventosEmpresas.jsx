@@ -42,7 +42,13 @@ export default function EventoEmpresas() {
           defaultDate={new Date()}
           defaultView="month"
           events={test}
-          style={{ height: "50vh", width: "70vh", background:"#ffffff8f",borderRadius:"8px", boxShadow:" 0 15px 30px 1px grey" }}
+          style={{
+            height: "60vh",
+            width: "80vh",
+            background: "#ffffff8f",
+            borderRadius: "8px",
+            boxShadow: " 0 15px 30px 1px grey",
+          }}
           onSelectEvent={onSelectEvent}
         />
         <div className="text-center">
