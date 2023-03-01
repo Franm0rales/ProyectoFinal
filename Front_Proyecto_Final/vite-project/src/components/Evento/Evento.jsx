@@ -75,11 +75,11 @@ export default function Evento({
         </td>
         <td>
           {completed ? (
-            <span className="text-success font-12">Completed</span>
+            <span className="text-success font-12">Completado</span>
           ) : inProgress ? (
-            <span className="text-primary font-12">inProgress</span>
+            <span className="text-primary font-12">En progeso</span>
           ) : pending ? (
-            <span className="text-black font-12">Pending</span>
+            <span className="text-black font-12">Pendiente</span>
           ) : (
             <p>undefined</p>
           )}
@@ -107,14 +107,19 @@ export default function Evento({
         <td>
           <div className="progress-bar rounded">
             {completed ? (
-              <div className="filler rounded " style={{ width: `100%` }}></div>
+              <div
+                className="filler rounded "
+                style={{ width: `100%`, background: "green" }}
+              ></div>
             ) : inProgress ? (
               <div
                 className="filler rounded "
                 style={{ width: `${percentage}%` }}
               ></div>
             ) : pending ? (
-              <span className="text-black font-12">Pending</span>
+              <span className="text-black font-12 font-weight-bold">
+                <b>Pendiente</b>
+              </span>
             ) : (
               <p>undefined</p>
             )}
