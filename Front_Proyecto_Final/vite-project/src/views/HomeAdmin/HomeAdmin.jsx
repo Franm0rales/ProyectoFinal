@@ -4,8 +4,10 @@ export default function HomeAdmin() {
   const [users, setUsers] = useState(null);
   const [userDeleted, setUserDeleted] = useState(true);
   const [estado, setEstado] = useState(false);
+  const [usuario, setUsuario] = useState(false);
   const [id, setId] = useState(0);
-  const [filters, setFilters] = useState(true);
+  const [filtersEstado, setFiltersEstado] = useState(true);
+  const [filtersUsuario, setFiltersUsuario] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("http://localhost:3000/user/allUsers");
@@ -31,25 +33,52 @@ export default function HomeAdmin() {
   }
 
   useEffect(() => {
-    const fetchEstado = async () => {
+    const fetchUsuario = async () => {
       try {
         users.sort(function (a, b) {
-          if (a.eliminado === 0 && b.eliminado === 1) {
-            setEstado(!estado);
+          setEstado(!estado);
+
+          if (a.CIF && !b.CIF) {
             if (estado) {
               return -1;
             } else {
               return 1;
             }
-          } else if (a.eliminado === 1 && b.eliminado === 0) {
-            setEstado(!estado);
+          } else if (!a.CIF && b.CIF) {
             if (estado) {
               return 1;
             } else {
               return -1;
             }
           } else {
-            setEstado(!estado);
+            return 0;
+          }
+        });
+      } catch (e) {
+        console.log(e.message);
+      }
+    };
+    fetchUsuario();
+  }, [filtersUsuario]);
+  useEffect(() => {
+    const fetchEstado = async () => {
+      try {
+        users.sort(function (a, b) {
+          setUsuario(!usuario);
+
+          if (a.eliminado === 0 && b.eliminado === 1) {
+            if (usuario) {
+              return -1;
+            } else {
+              return 1;
+            }
+          } else if (a.eliminado === 1 && b.eliminado === 0) {
+            if (usuario) {
+              return 1;
+            } else {
+              return -1;
+            }
+          } else {
             return 0;
           }
         });
@@ -58,8 +87,7 @@ export default function HomeAdmin() {
       }
     };
     fetchEstado();
-    //fetchRutaABuscar();
-  }, [filters]);
+  }, [filtersEstado]);
 
   const [visible, setVisible] = useState("d-none");
   function toggleVisible(x) {
@@ -70,22 +98,7 @@ export default function HomeAdmin() {
     }
     setId(x);
   }
-  // function handleChangeEstado(event, x) {
-  //   let options = event.target.value;
-  //   selectedFilters[x] = options;
-  //   setSelectedFilters([...selectedFilters]);
-  //   console.log(selectedFilters);
-  // }
-  // function handleChangeUsuario(event, x) {
-  //   let options = event.target.value;
-  //   selectedFilters[x] = options;
-  //   setSelectedFilters([...selectedFilters]);
-  //   console.log(selectedFilters);
-  // }
-  // function deleteFilters(e) {
-  //   e.preventDefault();
-  //   setSelectedFilters([undefined]);
-  // }
+
   return (
     <>
       <div className="container">
@@ -100,14 +113,14 @@ export default function HomeAdmin() {
                       <span>Usuarios</span>
                       {estado === true ? (
                         <button
-                          onClick={() => setFilters(!filters)}
+                          onClick={() => setFiltersUsuario(!filtersUsuario)}
                           className="border-0 bg-transparent"
                         >
                           <i class="bi bi-caret-up-fill"></i>
                         </button>
                       ) : (
                         <button
-                          onClick={() => setFilters(!filters)}
+                          onClick={() => setFiltersUsuario(!filtersUsuario)}
                           className="border-0 bg-transparent"
                         >
                           <i class="bi bi-caret-down-fill"></i>
@@ -124,14 +137,14 @@ export default function HomeAdmin() {
                       <span>Estado</span>
                       {estado === true ? (
                         <button
-                          onClick={() => setFilters(!filters)}
+                          onClick={() => setFiltersEstado(!filtersEstado)}
                           className="border-0 bg-transparent"
                         >
                           <i class="bi bi-caret-up-fill"></i>
                         </button>
                       ) : (
                         <button
-                          onClick={() => setFilters(!filters)}
+                          onClick={() => setFiltersEstado(!filtersEstado)}
                           className="border-0 bg-transparent"
                         >
                           <i class="bi bi-caret-down-fill"></i>
@@ -173,8 +186,17 @@ export default function HomeAdmin() {
                             <span className="user-subhead">Candidato</span>
                           )}
                         </td>
-                        <td>{user.tsAlta.split("T")[0]}</td>
-                        <td>{user.tsMod.split("T")[0]}</td>
+                        <td>
+                          {" "}
+                          {user.tsAlta.split("T")[0].split("-")[2]}-
+                          {user.tsAlta.split("T")[0].split("-")[1]}-
+                          {user.tsAlta.split("T")[0].split("-")[0]}
+                        </td>
+                        <td>
+                          {user.tsMod.split("T")[0].split("-")[2]}-
+                          {user.tsMod.split("T")[0].split("-")[1]}-
+                          {user.tsMod.split("T")[0].split("-")[0]}
+                        </td>
                         <td>
                           {user.eliminado == 1 ? (
                             <span className="text-danger label label-default">
