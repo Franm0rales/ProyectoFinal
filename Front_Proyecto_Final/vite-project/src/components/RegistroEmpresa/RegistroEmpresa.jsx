@@ -30,7 +30,6 @@ export default function RegistroEmpresa() {
         showConfirmButton: false,
         timer: 1500,
       });
-      // alert(`usuario ${values.nombre} registrado correctamente`);
     } else if (response.status === 409) {
       alert("usuario ya registrado");
     }

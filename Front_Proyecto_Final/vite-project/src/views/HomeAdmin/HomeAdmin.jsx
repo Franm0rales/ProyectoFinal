@@ -177,7 +177,8 @@ export default function HomeAdmin() {
                           )}
                           <h1 className="user-link fs-5">
                             <b>
-                              {user.nombre} {user.apellidos}
+                              {user.nombre.split(" ")[0]}{" "}
+                              {user.apellidos.split(" ")[0]}
                             </b>
                           </h1>
                           {user.CIF ? (
