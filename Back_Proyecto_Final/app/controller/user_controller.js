@@ -89,6 +89,7 @@ controller.addEmpresa = async (req, res) => {
     ciudad,
     direccion,
     descripcion,
+    UrlEmpresa,
   } = req.body;
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
   if (
@@ -99,7 +100,8 @@ controller.addEmpresa = async (req, res) => {
     !telefono ||
     !ciudad ||
     !direccion ||
-    !descripcion
+    !descripcion ||
+    !UrlEmpresa
   )
     return res.status(400).send("Error al recibir el body");
 
@@ -158,6 +160,7 @@ controller.addEmpresa = async (req, res) => {
       let empresaObj = {
         nombre: nombre,
         idUsuario: idUser,
+        UrlEmpresa: UrlEmpresa,
         CIF: CIF,
         pathLogo: bbddPath,
         telefono: telefono,
