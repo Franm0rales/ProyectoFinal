@@ -48,7 +48,7 @@ export default function RegistroEmpresa() {
     }
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    actions.resetForm();
+    //actions.resetForm();
   }
 
   const {
