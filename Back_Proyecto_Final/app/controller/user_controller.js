@@ -89,6 +89,7 @@ controller.addEmpresa = async (req, res) => {
     ciudad,
     direccion,
     descripcion,
+    urlEmpresa,
   } = req.body;
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
   if (
@@ -166,6 +167,7 @@ controller.addEmpresa = async (req, res) => {
         email: email,
         password: md5(password),
         descripcion: descripcion,
+        urlEmpresa: urlEmpresa,
       };
       let addEmpresa = await dao.addUser(empresaObj, data.empresa);
       console.log(addEmpresa);

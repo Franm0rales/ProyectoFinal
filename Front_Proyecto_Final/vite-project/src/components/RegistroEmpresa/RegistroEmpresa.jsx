@@ -14,6 +14,7 @@ export default function RegistroEmpresa() {
     formdata.append("ciudad", values.ciudad);
     formdata.append("direccion", values.direccion);
     formdata.append("descripcion", values.descripcion);
+    formdata.append("urlEmpresa", values.urlEmpresa);
 
     const response = await fetch("http://localhost:3000/user/signUpEmpresa", {
       method: "POST",
