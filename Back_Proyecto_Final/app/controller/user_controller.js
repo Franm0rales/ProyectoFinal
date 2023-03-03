@@ -13,7 +13,6 @@ const controller = {};
 controller.addAlumno = async (req, res) => {
   const { nombre, apellidos, email, password, telefono, ciudad, avatar } =
     req.body;
-
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
   if (
     !nombre ||
@@ -53,9 +52,7 @@ controller.addAlumno = async (req, res) => {
     let usuarioObj = {
       role: role.alumno,
     };
-
     const idUser = await dao.addUser(usuarioObj, data.usuario);
-
     let alumnoObj = {
       nombre: nombre,
       apellidos: apellidos,
@@ -76,9 +73,7 @@ controller.addAlumno = async (req, res) => {
     //     // text: "Hello world?", // plain text body
     //     html: "<b>Bienvenido a Canteen design,espero disfrutes de nuestros productos para cualquier consulta contactanos, gracias por registrarte!! Enlace de la web: http://127.0.0.1:5173/login</b>", // html body
     //   });
-
     return res.send(`Usuario ${nombre} con id: ${addAlumno} registrado`);
-    //}
   } catch (e) {
     console.log(e.message);
   }
@@ -226,29 +221,13 @@ controller.updateUser = async (req, res) => {
   const id = req.params.id;
   let user = await dao.getUserByData(data.usuario, data.id, id);
   [user] = user;
-  // Token hardcodeado para comprobar que funciona
-  // const authorization =
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjFwaWNhc3NvbW9yYWxlc0BnbWFpbC5jb20iLCJpZCI6IjQwIn0.CQw13UaNs6PG4ouCakwYMXtFEnLVD4sq_x9XDZedkwc";
-  // Recibimos el token desde el header
-  // const { authorization } = req.headers;
-  // Decodificamos el token para saber el id y el role
-  // const tokenDecode = jwt_decode(authorization);
-  // Si no existe el token enviamos un 401 (unauthorized)
-  // if (!authorization) return res.sendStatus(401);
-
   try {
-    // Si no nos llega ningún campo por el body devolvemos un 400 (bad request)
-    // if (Object.entries(req.body).length === 0)
-    //   return res.status(400).send("Error al recibir el body");
-
     // Usuario que quiere modificar los datos
     const tabla = tables[user.role];
-
     // Actualizamos el usuario
     await dao.updateUser(tabla, id, req.body, data.idUsuario);
     let userUp = await dao.getUserByData(tabla, data.idUsuario, id);
     [userUp] = userUp;
-
     // Devolvemos la respuesta
     return res.send(userUp);
   } catch (e) {
@@ -562,29 +541,7 @@ controller.deleteEmpresa = async (req, res) => {
   }
 };
 controller.deleteUser = async (req, res) => {
-  const { id } = req.params.id;
-  // // // OBTENER CABECERA Y COMPROBAR SU AUTENTICIDAD Y CADUCIDAD
-  // const { authorization } = req.headers;
-
-  // // const tokenDecode = jwt_decode(authorization);
-  // // Si no existe el token enviamos un 401 (unauthorized)
-  // if (!authorization) return res.sendStatus(401);
-  // // const token = authorization.split(" ")[1];
-
   try {
-    // // codificamos la clave secreta
-    // const encoder = new TextEncoder();
-    // // verificamos el token con la función jwtVerify. Le pasamos el token y la clave secreta codificada
-    // const { payload } = await jwtVerify(
-    //   authorization,
-    //   encoder.encode(process.env.JWT_SECRET)
-    // );
-    // // Verificamos que seamos usuario administrador
-    // if (payload.role != role.admin)
-    //   return res.status(409).send("No tiene permiso de administrador");
-    // Buscamos si el id del usuario existe en la base de datos
-    // Usuario que quiere modificar los datos
-    // const tabla = tables[id];
     const user = await dao.getUserByData(
       data.alumno,
       data.idUsuario,
@@ -619,7 +576,9 @@ controller.getUsersByidTarjeta = async (req, res) => {
   try {
     let users = await dao.getUserByData(data.alumno, data.idTarjeta, id);
     return res.status(200).send(users);
-  } catch (e) {}
+  } catch (e) {
+    console.log(e.message);
+  }
 };
 //Contador de usuarios
 controller.getNumberOfUsers = async (req, res) => {

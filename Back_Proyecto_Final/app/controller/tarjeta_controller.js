@@ -55,13 +55,14 @@ controller.addTarjeta = async (req, res) => {
         idEmpresa: id,
         plazas: plazas,
         fechaInicio: `${fechaInicio}T${horaInicio}:00Z`,
-        fechaFin: `${fechaFin}T24:00:00Z`,
+        fechaFin: `${fechaFin}T23:00:00Z`,
         horaInicio: horaInicio,
       };
 
       await dao.addUser(tarjetaObj, data.tarjeta);
     });
-    return res.send("Tarjeta subida!");
+    const users = await dao.getUserByData(data.tarjeta, data.idEmpresa, id);
+    return res.status(200).send(users);
   } catch (e) {
     console.log(e.message);
     return res.status(400).send(e.message);
