@@ -18,7 +18,6 @@ export default function CrearEvento(setEvento) {
     formdata.append("ciudad", values.ciudad);
     formdata.append("direccion", values.direccion);
     formdata.append("telefono", values.telefono);
-    console.log(formdata);
     try {
       const response = await fetch(
         `http://localhost:3000/tarjeta/tarjeta/${authorization.id}`,
@@ -43,7 +42,7 @@ export default function CrearEvento(setEvento) {
           position: "center",
           icon: "success",
           title: "Evento creado correctamente ",
-          showConfirmButton: false,
+          showConfirmButton: true,
           timer: 1500,
         });
       } else if (response.status === 409) {
@@ -59,7 +58,7 @@ export default function CrearEvento(setEvento) {
       console.log(e);
     }
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    //actions.resetForm();
+    actions.resetForm();
   }
 
   const {
