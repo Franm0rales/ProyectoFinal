@@ -23,4 +23,5 @@ export const BasicFormSchema = yup.object().shape({
   ciudad: yup.string().required("Requerido"),
   direccion: yup.string().required("Requerido"),
   descripcion: yup.string().required("Requerido"),
+  urlEmpresa: yup.string().required("Requerido"),
 });
