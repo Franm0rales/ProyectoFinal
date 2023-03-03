@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 
-export default function CrearEvento(setEvento) {
+export default function CrearEvento({ fetchCalendario }) {
   const { authorization } = useAuthContext();
 
   async function onSubmit(values, actions) {
@@ -18,7 +18,6 @@ export default function CrearEvento(setEvento) {
     formdata.append("ciudad", values.ciudad);
     formdata.append("direccion", values.direccion);
     formdata.append("telefono", values.telefono);
-    console.log(formdata);
     try {
       const response = await fetch(
         `http://localhost:3000/tarjeta/tarjeta/${authorization.id}`,
@@ -27,8 +26,6 @@ export default function CrearEvento(setEvento) {
           body: formdata,
         }
       );
-      const json = await response.json();
-      setEvento(json);
 
       if (response.status === 400) {
         Swal.fire({
@@ -43,8 +40,12 @@ export default function CrearEvento(setEvento) {
           position: "center",
           icon: "success",
           title: "Evento creado correctamente ",
-          showConfirmButton: false,
+          showConfirmButton: true,
           timer: 1500,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            fetchCalendario();
+          }
         });
       } else if (response.status === 409) {
         Swal.fire({
@@ -59,7 +60,7 @@ export default function CrearEvento(setEvento) {
       console.log(e);
     }
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    //actions.resetForm();
+    actions.resetForm();
   }
 
   const {

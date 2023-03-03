@@ -3,24 +3,14 @@ import { Container } from "react-bootstrap";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import Swal from "sweetalert2";
-import { useAuthContext } from "../../context/AuthContext/AuthContext";
 
 moment.locale("es-Es");
 const localizer = momentLocalizer(moment);
 
-export default function EventoEmpresas() {
-  const [test, setTest] = useState([]);
-  const { authorization } = useAuthContext();
+export default function EventoEmpresas({ fetchCalendario, test }) {
   useEffect(() => {
     fetchCalendario();
-  }, []);
-  async function fetchCalendario() {
-    const response = await fetch(
-      `http://localhost:3000/tarjeta/getTarjeta/${authorization.id}`
-    );
-    const json = await response.json();
-    setTest(json);
-  }
+  }, [fetchCalendario]);
 
   const onSelectEvent = (test) => {
     console.log(localizer);
@@ -51,16 +41,6 @@ export default function EventoEmpresas() {
           }}
           onSelectEvent={onSelectEvent}
         />
-        <div className="text-center">
-          <button
-            onClick={() => fetchCalendario()}
-            id="botones"
-            className="btn text-white mt-3  "
-            type="submit"
-          >
-            Actualizar agenda
-          </button>
-        </div>
       </Container>
     </>
   );
