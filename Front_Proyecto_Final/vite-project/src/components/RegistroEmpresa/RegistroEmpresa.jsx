@@ -15,13 +15,19 @@ export default function RegistroEmpresa() {
     formdata.append("direccion", values.direccion);
     formdata.append("descripcion", values.descripcion);
 
-    fetch("http://localhost:3000/user/signUpEmpresa", {
+    const response = await fetch("http://localhost:3000/user/signUpEmpresa", {
       method: "POST",
       body: formdata,
     });
 
     if (response.status === 400) {
-      alert("error al recibir el body");
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Fallo en el registro",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     } else if (response.status === 200) {
       Swal.fire({
         position: "center",
@@ -31,7 +37,13 @@ export default function RegistroEmpresa() {
         timer: 1500,
       });
     } else if (response.status === 409) {
-      alert("usuario ya registrado");
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Usuario ya registrado",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
 
     await new Promise((resolve) => setTimeout(resolve, 2000));
