@@ -70,6 +70,7 @@ export default function RegistroEmpresa() {
       ciudad: "",
       direccion: "",
       descripcion: "",
+      urlEmpresa: "",
       imagen: "",
     },
     validationSchema: BasicFormSchema,
@@ -314,6 +315,32 @@ export default function RegistroEmpresa() {
             }
           >
             {errors.passwordRepeat}
+          </div>{" "}
+        </div>
+        <div className="col-md-6">
+          <label htmlFor="exampleInputPassword1" className="form-label">
+            URL empresa
+          </label>
+          <input
+            type="text"
+            className={
+              errors.urlEmpresa && touched.urlEmpresa
+                ? "form-control is-invalid"
+                : "form-control"
+            }
+            value={values.urlEmpresa}
+            name="urlEmpresa"
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          <div
+            className={
+              errors.urlEmpresa && touched.urlEmpresa
+                ? "invalid-feeback is-invalid"
+                : ""
+            }
+          >
+            {errors.urlEmpresa}
           </div>{" "}
         </div>
         <div className="col-7">
