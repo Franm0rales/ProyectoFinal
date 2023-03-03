@@ -332,6 +332,7 @@ export default function RegistroEmpresa() {
             value={values.urlEmpresa}
             name="urlEmpresa"
             onChange={handleChange}
+            placeholder="www.URL.com"
             onBlur={handleBlur}
           />
           <div

@@ -25,7 +25,7 @@ export default function EmpresasParaVista({ empresas }) {
                     <a
                       id="botones"
                       className="rounded mb-3"
-                      href="https://www.pwc.es/"
+                      href={`https://${empresa.urlEmpresa}/`}
                     >
                       {" "}
                       Enlace web
