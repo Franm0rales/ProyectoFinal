@@ -89,7 +89,6 @@ controller.addEmpresa = async (req, res) => {
     ciudad,
     direccion,
     descripcion,
-    urlEmpresa,
     UrlEmpresa,
   } = req.body;
   // Si no alguno de estos campos recibidos por el body devolvemos un 400 (bad request)
