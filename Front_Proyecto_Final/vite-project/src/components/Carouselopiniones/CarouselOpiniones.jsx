@@ -64,7 +64,7 @@ export default function CarouselOpiniones({ comentarios }) {
               </div>
             </div>
 
-            <div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center gap-2">
               <a class="" href="#carouselExampleCaptions" data-bs-slide="prev">
                 <i class="bi bi-arrow-left rounded" id="botones"></i>
               </a>

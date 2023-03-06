@@ -139,104 +139,111 @@ export default function ContadorVisitas({
 
   return (
     <>
-      <div>
-        <p>
-          <i className="bi bi-people-fill fs-2"></i> {contadorPersonas || 0}/
-          {maxVisitors}
-        </p>
-
-        {fechaEnFormatoYYYYMMDD > diaEmpiezaEvento ? (
-          data == idTarjeta ? (
-            <div>
-              <button
-                id="botones"
-                className="rounded mt-2 mb-5 col-3"
-                onClick={() => cambioTextArea()}
-              >
-                Escribir una reseña
-              </button>
+      <div className="">
+        <div className="">
+          <div className="text-center">
+            <i className="bi bi-people-fill fs-2 text-muted"></i>
+          </div>
+          <div className="text-center pb-3 fs-5">
+            <b>
+              {contadorPersonas || 0}/{maxVisitors}
+            </b>
+          </div>
+        </div>
+        <div>
+          {fechaEnFormatoYYYYMMDD > diaEmpiezaEvento ? (
+            data == idTarjeta ? (
               <div>
-                <small>
-                  <i class="bi bi-asterisk text-primary"></i>Para poder
-                  participar en otro evento debes dejar tu comentario
-                </small>
-              </div>
-              <div className={`${abierto} mt-3`}>
-                <div class="verified_customer_section">
-                  <div class="image_review">
-                    <div class="customer_image">
-                      <img
-                        src={`https://bootdey.com/img/Content/avatar/avatar${avatar}.png`}
-                        alt="customer image"
-                      />
-                    </div>
-
-                    <div class="customer_name_review_status">
-                      <div class="customer_name">
-                        {nombre} {""} {apellidos}
-                      </div>
-                      <div class=" fst-italic text-start">{correo}</div>
-
-                      <div className="star-rating">
-                        {[...Array(5)].map((star, index) => {
-                          return (
-                            <i
-                              key={index}
-                              className=" bi bi-star-fill"
-                              onClick={() => handleStarClick(index)}
-                            ></i>
-                          );
-                        })}
-                      </div>
-
-                      <div class="customer_status"></div>
-                    </div>
-                  </div>
-
-                  <div class="customer_comment">
-                    <textarea
-                      className="rounded "
-                      name="comentario"
-                      id=""
-                      cols="60"
-                      rows="5"
-                      onChange={handleInput}
-                    ></textarea>
-                  </div>
-                </div>
                 <button
-                  onClick={() => enviarComentario()}
                   id="botones"
-                  className="rounded mt-3"
+                  className="rounded mt-2 mb-5 col-3"
+                  onClick={() => cambioTextArea()}
                 >
-                  Enviar
+                  Escribir una reseña
                 </button>
+                <div>
+                  <small>
+                    <i class="bi bi-asterisk text-primary"></i>Para poder
+                    participar en otro evento debes dejar tu comentario
+                  </small>
+                </div>
+                <div className={`${abierto} mt-3`}>
+                  <div class="verified_customer_section">
+                    <div class="image_review">
+                      <div class="customer_image">
+                        <img
+                          src={`https://bootdey.com/img/Content/avatar/avatar${avatar}.png`}
+                          alt="customer image"
+                        />
+                      </div>
+
+                      <div class="customer_name_review_status">
+                        <div class="customer_name">
+                          {nombre} {""} {apellidos}
+                        </div>
+                        <div class=" fst-italic text-start">{correo}</div>
+
+                        <div className="star-rating">
+                          {[...Array(5)].map((star, index) => {
+                            return (
+                              <i
+                                key={index}
+                                className=" bi bi-star-fill"
+                                onClick={() => handleStarClick(index)}
+                              ></i>
+                            );
+                          })}
+                        </div>
+
+                        <div class="customer_status"></div>
+                      </div>
+                    </div>
+
+                    <div class="customer_comment">
+                      <textarea
+                        className="rounded "
+                        name="comentario"
+                        id=""
+                        cols="60"
+                        rows="5"
+                        onChange={handleInput}
+                      ></textarea>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => enviarComentario()}
+                    id="botones"
+                    className="rounded mt-3"
+                  >
+                    Enviar
+                  </button>
+                </div>
               </div>
-            </div>
+            ) : (
+              <p>Evento ya finalizado</p>
+            )
+          ) : data == 0 && contadorPersonas < maxVisitors ? (
+            <button
+              id="botones"
+              className="rounded mt-2 mb-5 col-3"
+              onClick={() => handleClick(idTarjeta)}
+            >
+              Asistir
+            </button>
+          ) : data == idTarjeta ? (
+            <button
+              id="botones"
+              className="rounded mt-2 mb-5 col-3"
+              onClick={() => handleUnclick(0)}
+            >
+              Borrar Curso
+            </button>
+          ) : contadorPersonas < maxVisitors ? (
+            <p>Antes debes eliminarte del curso</p>
           ) : (
-            <p>Evento ya finalizado</p>
-          )
-        ) : data == 0 && contadorPersonas < maxVisitors ? (
-          <button
-            id="botones"
-            className="rounded mt-2 mb-5 col-3"
-            onClick={() => handleClick(idTarjeta)}
-          >
-            Asistir
-          </button>
-        ) : data == idTarjeta ? (
-          <button
-            id="botones"
-            className="rounded mt-2 mb-5 col-3"
-            onClick={() => handleUnclick(0)}
-          >
-            Borrar Curso
-          </button>
-        ) : contadorPersonas < maxVisitors ? (
-          <p>Antes debes eliminarte del curso</p>
-        ) : (
-          <p>Plazas cubiertas</p>
-        )}
+            <p>Plazas cubiertas</p>
+          )}
+        </div>
       </div>
     </>
   );

@@ -114,8 +114,8 @@ export default function Evento({
                     key={alumno.id}
                     alt={alumno.nombre}
                     style={{
-                      width: "1.2rem",
-                      height: "1.2rem",
+                      width: "1.5rem",
+                      height: "1.5rem",
                     }}
                   />
                 </button>
@@ -126,11 +126,15 @@ export default function Evento({
           </div>
         </td>
         <td>
-          <div className="progress-bar rounded">
+          <div className="progress-bar " style={{ borderRadius: "50px" }}>
             {completed ? (
               <div
-                className="filler rounded "
-                style={{ width: `100%`, background: "green" }}
+                className="filler"
+                style={{
+                  width: `100%`,
+                  background: "green",
+                  borderRadius: "50px",
+                }}
               ></div>
             ) : inProgress ? (
               <div
@@ -138,7 +142,7 @@ export default function Evento({
                 style={{ width: `${percentage}%` }}
               ></div>
             ) : pending ? (
-              <span className="text-black font-12 font-weight-bold">
+              <span className="text-black font-12 font-weight-bold px-2">
                 <b>Pendiente</b>
               </span>
             ) : (

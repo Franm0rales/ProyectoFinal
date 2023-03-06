@@ -941,10 +941,10 @@ opacity: 0.9;
   }
   
   
-  #footer .footer-top .footer-newsletter form input[type=submit]:hover {
+  /* #footer .footer-top .footer-newsletter form input[type=submit]:hover {
     background: #5e96ff;
   }
-  
+   */
   #footer .copyright {
     text-align: center;
     padding-top: 30px;
@@ -1074,8 +1074,7 @@ opacity: 0.9;
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #5e96ff;
-    border: 1px solid #ddd;
+    border: 2px solid #5e96ff;
     border-radius: 50%;
 }
 .options input:checked ~ .checkmark:after {
@@ -1796,7 +1795,7 @@ small, time, .small {
 	height: auto;
 	float: right;
 	width: 35%;
-
+;
 
 }
 

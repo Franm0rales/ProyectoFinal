@@ -91,7 +91,7 @@ export default function EditarUsuario() {
 
   return (
     <>
-      <div id="fondo" className=" pt-5 pb-5">
+      <div id="fondo" className=" pt-1 pb-5">
         {user ? (
           <CardEditarUsuario user={user} setUser={setUser} />
         ) : (

@@ -249,7 +249,7 @@ export default function Eventos() {
         {eventsToShow.map((evento) => (
           <>
             <div className="container meetup-card col-6" key={evento.id}>
-              <div className=" mb-3 d-flex">
+              <div className=" mb-0 d-flex">
                 <div className="card-body text-start ">
                   <p className="card-text mb-4 ">
                     <i class="bi bi-buildings text-primary fs-5"></i>{" "}
@@ -302,7 +302,7 @@ export default function Eventos() {
                     />
                   </div>
                 ) : (
-                  <p></p>
+                  <div></div>
                 )
               ) : (
                 <p>
@@ -313,7 +313,7 @@ export default function Eventos() {
             </div>
           </>
         ))}
-        <div className="d-flex justify-content-center pt-5">
+        <div className="d-flex justify-content-center gap-2 pt-5 ">
           <button
             className="btn btn-outline-primary"
             onClick={() => setCurrentPage(currentPage - 1)}

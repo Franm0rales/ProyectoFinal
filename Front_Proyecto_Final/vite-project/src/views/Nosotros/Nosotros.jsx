@@ -49,11 +49,12 @@ export default function Nosotros() {
             <h1 className="pb-3">¿Qué hacemos?</h1>
             <h4>
               En Horizons estamos tratando de activar todo el potencial de los
-              jóvenes, enriquecer sus conocimientos, ayudarlos a adquirir
-              experiencia para poder decidir sobre su futuro trabajo, así como
-              ayudarlos a comprender las posibles posibilidades futuras de
-              carrera y educación. A la vez dar a conocer a las empresas que se
-              prestan a intercambiar su dia a dia en sus trabajos.
+              <b> jóvenes</b>, enriquecer sus conocimientos, ayudarlos a
+              adquirir experiencia para poder decidir sobre su futuro trabajo,
+              así como ayudarlos a comprender las posibles posibilidades futuras
+              de carrera y educación. A la vez dar a conocer a las{" "}
+              <b>empresas</b> que se prestan a intercambiar su dia a dia en sus
+              trabajos.
             </h4>
           </div>
           {eventos ? (
@@ -68,8 +69,10 @@ export default function Nosotros() {
               <hr />
 
               <h3 className="text-primary">{alumnos.contador}</h3>
-              <h4>Alumnos</h4>
-              <p>Muchos alumnos ya han decidido, y ¿Tú?.</p>
+              <h4>Candidatos</h4>
+              <p>
+                Muchos candidatos ya han decidido, y <b>¿TÚ?</b>
+              </p>
               <a href="http://127.0.0.1:5173/login" class="link-text">
                 Registrate
               </a>

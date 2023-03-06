@@ -24,23 +24,29 @@ export default function EventoEmpresas({ fetchCalendario, test }) {
 
   return (
     <>
-      <Container className=" pt-4 ">
-        <Calendar
-          className="eventos calendario "
-          views={["month"]}
-          localizer={localizer}
-          defaultDate={new Date()}
-          defaultView="month"
-          events={test}
+      <Container className=" pt-4  ">
+        <div
+          className="p-4"
           style={{
-            height: "60vh",
-            width: "80vh",
             background: "#ffffff8f",
             borderRadius: "8px",
             boxShadow: " 0 15px 30px 1px grey",
           }}
-          onSelectEvent={onSelectEvent}
-        />
+        >
+          <Calendar
+            className="eventos calendario "
+            views={["month"]}
+            localizer={localizer}
+            defaultDate={new Date()}
+            defaultView="month"
+            events={test}
+            style={{
+              height: "60vh",
+              width: "80vh",
+            }}
+            onSelectEvent={onSelectEvent}
+          />
+        </div>
       </Container>
     </>
   );

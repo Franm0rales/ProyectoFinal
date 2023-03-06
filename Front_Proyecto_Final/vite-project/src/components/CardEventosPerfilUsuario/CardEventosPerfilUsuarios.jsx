@@ -29,7 +29,7 @@ export default function CardEventosPerfilUsuario({ cardEvento }) {
           <h3 class="text-uppercase">
             <strong>{cardEvento.nombre}</strong>
           </h3>
-          <ul class="list-inline">
+          <ul class="list-inline d-flex gap-4">
             <li class="list-inline-item">
               <i class="bi bi-envelope text-primary fs-4"></i>{" "}
               {cardEvento.email}

@@ -114,23 +114,24 @@ export default function CardEditarUsuario({ user, setUser }) {
   }
   return (
     <section className="section about-section gray-bg" id="about">
+      <h1 className="dark-color eventos text-center">Perfil</h1>
+
       <div className="container">
-        <div className="row align-items-start justify-content-center">
-          <div className="col-lg-6 d-flex justify-content-center">
-            <div className="about-avatar">
+        <div className="row ">
+          <div className="col-lg-6 d-flex justify-content-center align-items-center flex-column">
+            <div className="about-avatar pb-3">
               <img
                 className="rounded-circle color-sombra-avatar "
                 src={`https://bootdey.com/img/Content/avatar/avatar${user.avatar}.png`}
                 title=""
                 alt=""
+                style={{ height: "250px" }}
               />
             </div>
-          </div>
-          <div className="col-lg-4">
-            <div className="about-text go-to">
-              <h1 className="dark-color eventos">Perfil</h1>
-              <div className="d-flex">
-                <h4 className="theme-color lead">
+            <div className="d-flex">
+              <h4 className="theme-color lead">
+                {" "}
+                <b>
                   {!inputTitulo ? (
                     user.titulo === "null" ? (
                       "Inserte un titulo"
@@ -147,68 +148,72 @@ export default function CardEditarUsuario({ user, setUser }) {
                       }
                     ></input>
                   )}
-                </h4>
-                <button
-                  className="btn "
-                  onClick={() => setInputTitulo(!inputTitulo)}
-                >
-                  {!inputTitulo ? (
-                    <i className="bi bi-pencil text-primary"></i>
-                  ) : (
-                    <i className="bi bi-x-circle text-danger"></i>
-                  )}
-                </button>
-                {inputTitulo ? (
-                  <button className="btn" onClick={() => onSubmit()}>
-                    {" "}
-                    <i className="bi bi-check-circle text-success"></i>
-                  </button>
+                </b>
+              </h4>
+              <button
+                className="btn "
+                onClick={() => setInputTitulo(!inputTitulo)}
+              >
+                {!inputTitulo ? (
+                  <i className="bi bi-pencil text-primary"></i>
                 ) : (
-                  ""
+                  <i className="bi bi-x-circle text-danger"></i>
                 )}
-              </div>
-              <div className="d-flex">
-                <h6>
-                  {!inputDescripcion ? (
-                    user.descripcion === "null" ? (
-                      "Inserte un descripcion"
-                    ) : (
-                      user.descripcion
-                    )
-                  ) : (
-                    <textarea
-                      name="descripcion"
-                      onChange={handleInput}
-                      className="form-control d-flex flex-fill"
-                      placeholder={
-                        user.descripcion === "null"
-                          ? "Descripcion"
-                          : `${user.descripcion}`
-                      }
-                    ></textarea>
-                  )}
-                </h6>
-                <button
-                  className="btn "
-                  onClick={() => setInputDescripcion(!inputDescripcion)}
-                >
-                  {!inputDescripcion ? (
-                    <i className="bi bi-pencil text-primary"></i>
-                  ) : (
-                    <i className="bi bi-x-circle text-danger"></i>
-                  )}
+              </button>
+              {inputTitulo ? (
+                <button className="btn" onClick={() => onSubmit()}>
+                  {" "}
+                  <i className="bi bi-check-circle text-success"></i>
                 </button>
-                {inputDescripcion ? (
-                  <button className="btn" onClick={() => onSubmit()}>
-                    {" "}
-                    <i className="bi bi-check-circle text-success"></i>
-                  </button>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="d-flex">
+              <h6>
+                {!inputDescripcion ? (
+                  user.descripcion === "null" ? (
+                    "Inserte un descripcion"
+                  ) : (
+                    user.descripcion
+                  )
                 ) : (
-                  ""
+                  <textarea
+                    name="descripcion"
+                    onChange={handleInput}
+                    className="form-control d-flex flex-fill"
+                    placeholder={
+                      user.descripcion === "null"
+                        ? "Descripcion"
+                        : `${user.descripcion}`
+                    }
+                  ></textarea>
                 )}
-              </div>
+              </h6>
+              <button
+                className="btn "
+                onClick={() => setInputDescripcion(!inputDescripcion)}
+              >
+                {!inputDescripcion ? (
+                  <i className="bi bi-pencil text-primary"></i>
+                ) : (
+                  <i className="bi bi-x-circle text-danger"></i>
+                )}
+              </button>
+              {inputDescripcion ? (
+                <button className="btn" onClick={() => onSubmit()}>
+                  {" "}
+                  <i className="bi bi-check-circle text-success"></i>
+                </button>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+          <div className="col-lg-4">
+            <div className="about-text go-to">
               <div className="row about-list">
-                <div className="col-md-6">
+                <div className="col-md-6 p-0">
                   <div className="media">
                     <label>
                       <b>Nombre</b>
@@ -232,7 +237,7 @@ export default function CardEditarUsuario({ user, setUser }) {
                     ) : (
                       ""
                     )}
-                    <div className="d-flex align-text-center gap-3">
+                    <div className="d-flex align-text-center">
                       {inputNombre ? (
                         <input
                           name="nombre"
@@ -268,7 +273,7 @@ export default function CardEditarUsuario({ user, setUser }) {
                     ) : (
                       ""
                     )}
-                    <div className="d-flex align-text-center gap-3">
+                    <div className="d-flex align-text-center">
                       {inputApellido ? (
                         <input
                           name="apellidos"
@@ -304,7 +309,7 @@ export default function CardEditarUsuario({ user, setUser }) {
                     ) : (
                       ""
                     )}
-                    <div className="d-flex align-text-center gap-3">
+                    <div className="d-flex align-text-center">
                       {inputCiudad ? (
                         <select
                           name="ciudad"
@@ -351,7 +356,7 @@ export default function CardEditarUsuario({ user, setUser }) {
                     ) : (
                       ""
                     )}
-                    <div className="d-flex align-text-center gap-3">
+                    <div className="d-flex align-text-center">
                       {inputEmail ? (
                         <input
                           name="email"
@@ -387,7 +392,7 @@ export default function CardEditarUsuario({ user, setUser }) {
                     ) : (
                       ""
                     )}
-                    <div className="d-flex align-text-center gap-3">
+                    <div className="d-flex align-text-center">
                       {inputTelefono ? (
                         <input
                           name="telefono"
@@ -423,7 +428,7 @@ export default function CardEditarUsuario({ user, setUser }) {
                     ) : (
                       ""
                     )}
-                    <div className="d-flex ms-2 gap-3">
+                    <div className="d-flex ms-2">
                       {inputAvatar ? (
                         <div className="d-flex flex-row ">
                           <div className="col-4">

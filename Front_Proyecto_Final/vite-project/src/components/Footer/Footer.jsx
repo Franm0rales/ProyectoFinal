@@ -9,61 +9,57 @@ export default function Footer() {
             </div>
 
             <div class="col-lg-2 col-md-6 footer-links">
-              <h4>Useful Links</h4>
+              <h4>Utilidades</h4>
               <ul>
                 <li>
                   <i class="bx bx-chevron-right"></i> <a href="#">Home</a>
                 </li>
                 <li>
-                  <i class="bx bx-chevron-right"></i> <a href="#">About us</a>
+                  <i class="bx bx-chevron-right"></i>{" "}
+                  <a href="#">Sobre nosotros</a>
                 </li>
                 <li>
-                  <i class="bx bx-chevron-right"></i> <a href="#">Services</a>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Servicios</a>
                 </li>
                 <li>
                   <i class="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Terms of service</a>
+                  <a href="#">Términos y condiciones</a>
                 </li>
                 <li>
                   <i class="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Privacy policy</a>
+                  <a href="#">Política de privacidad</a>
                 </li>
               </ul>
             </div>
 
             <div class="col-lg-3 col-md-6 footer-links">
-              <h4>Our Services</h4>
+              <h4>Nuestros servicios</h4>
               <ul>
                 <li>
-                  <i class="bx bx-chevron-right"></i> <a href="#">Web Design</a>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Diseño web</a>
                 </li>
                 <li>
                   <i class="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Web Development</a>
+                  <a href="#">Desarrollo web</a>
                 </li>
                 <li>
-                  <i class="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Product Management</a>
+                  <i class="bx bx-chevron-right"></i> <a href="#">Productos</a>
                 </li>
                 <li>
                   <i class="bx bx-chevron-right"></i> <a href="#">Marketing</a>
                 </li>
                 <li>
                   <i class="bx bx-chevron-right"></i>{" "}
-                  <a href="#">Graphic Design</a>
+                  <a href="#">Diseño gráfico</a>
                 </li>
               </ul>
             </div>
 
             <div class="col-lg-4 col-md-6 footer-newsletter">
               <h4>Suscribete y recibe eventos diarios</h4>
-              <p>
-                Tamen quem nulla quae legam multos aute sint culpa legam noster
-                magna
-              </p>
-              <form action="" method="post">
-                <input className="rounded-r" type="email" name="email" />
-                <input className="rounded-right" type="submit" value="Subscribe" />
+              <form action="" method="post" className="">
+                <input className="" type="email" name="email" />
+                <input className="" type="submit" value="Subscribe" />
               </form>
             </div>
           </div>

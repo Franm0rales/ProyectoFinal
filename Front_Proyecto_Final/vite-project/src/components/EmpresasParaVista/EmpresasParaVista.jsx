@@ -8,17 +8,26 @@ export default function EmpresasParaVista({ empresas }) {
               <div className="card-body text-start d-flex">
                 <div className="d-flex flex-column col-8">
                   <h5 className="card-title  ">{empresa.nombre}</h5>
-                  <p className="card-text  ">
-                    {" "}
-                    <i class="bi bi-buildings text-primary fs-5"></i>{" "}
-                    <small>{empresa.ciudad}</small>{" "}
-                    <i className="bi bi-geo-alt text-primary fs-5"></i>{" "}
-                    <small>{empresa.direccion} </small>{" "}
-                    <i class="bi bi-envelope text-primary fs-5"></i>{" "}
-                    <small>{empresa.email}</small>{" "}
-                    <i class="bi bi-telephone  text-primary fs-5"></i>{" "}
-                    <small>{empresa.telefono}</small>{" "}
-                  </p>
+                  <div className="gap-5">
+                    <ul className="list-inline d-flex gap-4">
+                      <li className="list-inline-item">
+                        <i className="bi bi-buildings text-primary fs-5"></i>{" "}
+                        <small>{empresa.ciudad}</small>{" "}
+                      </li>
+                      <li>
+                        <i className="bi bi-geo-alt text-primary fs-5"></i>{" "}
+                        <small>{empresa.direccion} </small>{" "}
+                      </li>
+                      <li>
+                        <i className="bi bi-envelope text-primary fs-5"></i>{" "}
+                        <small>{empresa.email}</small>{" "}
+                      </li>
+                      <li>
+                        <i className="bi bi-telephone  text-primary fs-5"></i>{" "}
+                        <small>{empresa.telefono}</small>{" "}
+                      </li>
+                    </ul>
+                  </div>
 
                   <p className="card-text ">{empresa.descripcion}</p>
                   <div className="col-7">
@@ -34,7 +43,7 @@ export default function EmpresasParaVista({ empresas }) {
                 </div>
                 <div className="d-flex justify-content-end align-items-center col-4">
                   <img
-                    className="empresas-img "
+                    className="empresas-img"
                     src={`http://localhost:3000/${empresa.pathLogo}`}
                   />
                 </div>
