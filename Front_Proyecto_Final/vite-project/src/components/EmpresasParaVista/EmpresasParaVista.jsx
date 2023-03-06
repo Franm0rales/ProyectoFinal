@@ -6,7 +6,7 @@ export default function EmpresasParaVista({ empresas }) {
           <div className="container meetup-card " key={empresa.id}>
             <div className=" ">
               <div className="card-body text-start d-flex">
-                <div className="d-flex flex-column">
+                <div className="d-flex flex-column col-8">
                   <h5 className="card-title  ">{empresa.nombre}</h5>
                   <p className="card-text  ">
                     {" "}
@@ -32,7 +32,7 @@ export default function EmpresasParaVista({ empresas }) {
                     </a>
                   </div>
                 </div>
-                <div className="d-flex justify-content-end align-items-center">
+                <div className="d-flex justify-content-end align-items-center col-4">
                   <img
                     className="empresas-img "
                     src={`http://localhost:3000/${empresa.pathLogo}`}
