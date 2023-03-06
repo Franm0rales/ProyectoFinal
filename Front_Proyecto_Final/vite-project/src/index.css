@@ -1795,6 +1795,7 @@ small, time, .small {
 	height: auto;
 	float: right;
 	width: 35%;
+  border-radius: 0
 ;
 
 }

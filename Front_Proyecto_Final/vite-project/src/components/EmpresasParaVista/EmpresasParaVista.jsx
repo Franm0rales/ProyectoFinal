@@ -33,7 +33,7 @@ export default function EmpresasParaVista({ empresas }) {
                   <div className="col-7">
                     <a
                       id="botones"
-                      className="rounded mb-3"
+                      className=" mb-3"
                       href={`https://${empresa.urlEmpresa}/`}
                     >
                       {" "}
