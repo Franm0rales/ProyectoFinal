@@ -213,16 +213,20 @@ export default function Eventos() {
               <option value="ciudad = 'Sevilla'">Sevilla</option>
             </select>
           </div>
-          <div className="d-flex align-items-center gap-2">
-            <label>Plazas disponibles</label>
-            <input
-              type="checkbox"
-              name="plazas"
-              value="alumnos<plazas"
-              checked={isCheckedPlazas}
-              onClick={(e) => handleCheckBoxPlazas(e, 1)}
-            />
-          </div>
+          {authorization?.email ? (
+            <div className="d-flex align-items-center gap-2">
+              <label>Plazas disponibles</label>
+              <input
+                type="checkbox"
+                name="plazas"
+                value="alumnos<plazas"
+                checked={isCheckedPlazas}
+                onClick={(e) => handleCheckBoxPlazas(e, 1)}
+              />
+            </div>
+          ) : (
+            <p></p>
+          )}
 
           <div className="d-flex align-items-center gap-2">
             <label>Fecha disponible</label>
