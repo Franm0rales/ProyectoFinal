@@ -109,7 +109,7 @@ export default function HomeAdmin() {
               <table className="table user-list shadow-none ">
                 <thead>
                   <tr>
-                    <th>
+                    <th className="col-5">
                       <span>Usuarios</span>
                       {estado === true ? (
                         <button
@@ -127,13 +127,13 @@ export default function HomeAdmin() {
                         </button>
                       )}
                     </th>
-                    <th>
+                    <th className="col-2">
                       <span>Fecha de alta</span>
                     </th>
-                    <th>
+                    <th className="col-2">
                       <span>Fecha modificación</span>
                     </th>
-                    <th>
+                    <th className="col-2">
                       <span>Estado</span>
                       {estado === true ? (
                         <button
@@ -154,7 +154,7 @@ export default function HomeAdmin() {
                     <th>
                       <span>Email</span>
                     </th>
-                    <th>&nbsp;</th>
+                    <th></th>
                   </tr>
                 </thead>
                 {users ? (

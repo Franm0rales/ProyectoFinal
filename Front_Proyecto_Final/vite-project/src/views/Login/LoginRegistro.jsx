@@ -29,7 +29,7 @@ export default function LoginAcount() {
       <div className="container">
         <div className="  pt-5 d-flex justify-content-center">
           <nav className="col-6">
-            <ul className="nav nav-tabs px-5">
+            <ul className="nav nav-tabs px-5 gap-1">
               <li className="">
                 <a
                   type="button"
@@ -38,7 +38,7 @@ export default function LoginAcount() {
                     setShowRegistration(false);
                     setActiveTab("Alumno");
                   }}
-                  className={`nav-link active text-white ${
+                  className={`nav-link active text-white shadow-none ${
                     activeTab === "Alumno" ? "active-tab" : ""
                   }`}
                   id="botones"
@@ -54,7 +54,7 @@ export default function LoginAcount() {
                     setShowRegistration(false);
                     setActiveTab("Empresa");
                   }}
-                  className={`nav-link active text-white ${
+                  className={`nav-link active text-white shadow-none ${
                     activeTab === "Empresa" ? "active-tab" : ""
                   }`}
                   id="botones"
