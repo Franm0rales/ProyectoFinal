@@ -187,7 +187,7 @@ export default function Registro() {
             <option value="">Selecciona una ciudad</option>
             <option value="Almeria">Almeria</option>
             <option value="Cadiz">Cadiz</option>
-            <option value="Cordoba">Córdpba</option>
+            <option value="Cordoba">Córdoba</option>
             <option value="Granada">Granada</option>
             <option value="Huelva">Huelva</option>
             <option value="Jaen">Jaen</option>
