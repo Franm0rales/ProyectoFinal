@@ -1,4 +1,3 @@
-import galeria1 from "../../assets/galeria1.jpg";
 import { useState } from "react";
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -25,9 +24,14 @@ export default function CardIdEmpresa({ users }) {
   }
   return (
     <>
-      <div id="card" className="mb-5">
+      <div id="card" className="mb-5 d-flex gap-5">
         <div class="left">
-          <img src={`http://localhost:3000/${users.pathLogo}`} alt="" />
+          <img
+            src={`http://localhost:3000/${users.pathLogo}`}
+            style={{ maxHeight: "300px", maxWidth: "420px" }}
+            alt=""
+            className="p-3"
+          />
         </div>
         <div class="right">
           <div className=" d-flex">

@@ -174,7 +174,6 @@ export default function CrearEvento({ fetchCalendario }) {
                 onBlur={handleBlur}
               />
             </label>
-
             <label className="form-label col-5 gap-3">
               Fecha fin del evento:
               <input
@@ -197,6 +196,7 @@ export default function CrearEvento({ fetchCalendario }) {
                 value={values.horaInicio}
                 onChange={handleChange}
                 onBlur={handleBlur}
+                step="300"
               />
             </label>
 

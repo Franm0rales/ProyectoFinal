@@ -10,7 +10,7 @@ const localizer = momentLocalizer(moment);
 export default function EventoEmpresas({ fetchCalendario, test }) {
   useEffect(() => {
     fetchCalendario();
-  }, [fetchCalendario]);
+  }, []);
 
   const onSelectEvent = (test) => {
     console.log(localizer);

@@ -251,14 +251,20 @@ export default function Eventos() {
             <div className="container meetup-card col-6" key={evento.id}>
               <div className=" mb-0 d-flex">
                 <div className="card-body text-start ">
-                  <p className="card-text mb-4 ">
-                    <i class="bi bi-buildings text-primary fs-5"></i>{" "}
-                    <small>{evento.ciudad} </small>
-                    <i className="bi bi-geo-alt text-primary fs-5"></i>{" "}
-                    <small>{evento.direccion} </small>
-                    <i class="bi bi-clock text-primary fs-5"></i>{" "}
-                    <small>{evento.horaInicio}</small>
-                  </p>
+                  <ul className="card-text mb-4 gap-4 d-flex list-unstyled">
+                    <li>
+                      <i class="bi bi-buildings text-primary fs-5"></i>{" "}
+                      <small>{evento.ciudad} </small>
+                    </li>
+                    <li>
+                      <i className="bi bi-geo-alt text-primary fs-5"></i>{" "}
+                      <small>{evento.direccion} </small>
+                    </li>
+                    <li>
+                      <i class="bi bi-clock text-primary fs-5"></i>{" "}
+                      <small>{evento.horaInicio}</small>
+                    </li>
+                  </ul>
 
                   <h2 className="card-title fs-1 mb-3">{evento.nombre}</h2>
                   <p className="card-text">
