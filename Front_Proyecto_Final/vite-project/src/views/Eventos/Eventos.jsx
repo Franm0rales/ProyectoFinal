@@ -213,7 +213,7 @@ export default function Eventos() {
               <option value="ciudad = 'Sevilla'">Sevilla</option>
             </select>
           </div>
-          {authorization?.email ? (
+          {authorization?.role == 2 ? (
             <div className="d-flex align-items-center gap-2">
               <label>Plazas disponibles</label>
               <input

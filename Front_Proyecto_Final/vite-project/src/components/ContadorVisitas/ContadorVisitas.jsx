@@ -236,7 +236,7 @@ export default function ContadorVisitas({
               className="rounded mt-2 mb-5 col-3"
               onClick={() => handleUnclick(0)}
             >
-              Borrar Curso
+              Borrarte del evento
             </button>
           ) : contadorPersonas < maxVisitors ? (
             <p>Antes debes eliminarte del curso</p>

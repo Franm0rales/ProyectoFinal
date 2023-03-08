@@ -11,7 +11,7 @@ export default function Quedadas() {
 
       <div className="row no-gutters modelo basico align-items-end mt-4">
         <div className="col-md-6">
-          <div className="contenido bg-white p-5  rounded">
+          <div className="contenido bg-white p-5 px-md-0  rounded">
             <h1>Babel</h1>
             <p className="fs-5">
               Somos un equipo internacional formado por cerca de más de 2.700
@@ -39,7 +39,7 @@ export default function Quedadas() {
 
       <div className="row no-gutters modelo premier justify-content-end mt-4">
         <div className="col-md-6">
-          <div className="contenido bg-white p-5 rounded-bottom">
+          <div className="contenido bg-white p-5  rounded-bottom">
             <h1>Talan</h1>
             <p className="fs-5">
               Os ayudamos a valorizar sus datos y a tener beneficio de
@@ -69,7 +69,7 @@ export default function Quedadas() {
           <div className="contenido bg-white p-5 px-md-0 rounded">
             <h1>Indra</h1>
             <p className="fs-5">
-              Indra es una de las principales compañías globales de tecnología y
+              Una de las principales compañías globales de tecnología y
               consultoría y el socio tecnológico para las operaciones clave de
               los negocios de sus clientes en todo el mundo.
             </p>
@@ -78,9 +78,7 @@ export default function Quedadas() {
               específicos de los mercados de Transporte y Defensa, y la empresa
               líder en consultoría de transformación digital y Tecnologías de la
               Información en España y Latinoamérica a través de su filial
-              Minsait. Su modelo de negocio está basado en una oferta integral
-              de productos propios, con un enfoque end-to-end, de alto valor y
-              con un elevado componente de innovación
+              Minsait.
             </p>
             <a
               href="#"

@@ -39,11 +39,11 @@ export default function LoginAcount() {
                     setActiveTab("Alumno");
                   }}
                   className={`nav-link active text-white shadow-none ${
-                    activeTab === "Alumno" ? "active-tab" : ""
+                    activeTab === "Alumno" ? "" : "activeTabLogin"
                   }`}
-                  id="botones"
+                  id={`${activeTab === "Alumno" ? "botones" : ""}`}
                 >
-                  Alumno
+                  Candidato
                 </a>
               </li>
               <li className="">
@@ -55,9 +55,9 @@ export default function LoginAcount() {
                     setActiveTab("Empresa");
                   }}
                   className={`nav-link active text-white shadow-none ${
-                    activeTab === "Empresa" ? "active-tab" : ""
+                    activeTab === "Empresa" ? "" : "activeTabLogin"
                   }`}
-                  id="botones"
+                  id={`${activeTab === "Empresa" ? "botones" : ""}`}
                 >
                   Empresa
                 </a>

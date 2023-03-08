@@ -86,10 +86,9 @@ export default function Navbar() {
                     Login
                   </Link>
                 ) : (
-                  <Link
-                    className="nav-link scrollto text-dark"
+                  <div
+                    className="ms-4 nav-link scrollto text-dark"
                     aria-current="page"
-                    to="/"
                   >
                     <div
                       id="botones"
@@ -124,7 +123,7 @@ export default function Navbar() {
                         </li>
                       </ul>
                     </div>
-                  </Link>
+                  </div>
                 )}
               </nav>
             </div>
