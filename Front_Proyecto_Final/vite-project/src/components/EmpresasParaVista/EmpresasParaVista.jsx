@@ -2,7 +2,7 @@ export default function EmpresasParaVista({ empresas }) {
   return (
     <div id="fondo" className="pt-5 pb-5">
       <div className="container col-10 ">
-        {empresas.map((empresa, index) => (
+        {empresas.map((empresa) => (
           <div className="container meetup-card " key={empresa.id}>
             <div className=" ">
               <div className="card-body text-start d-flex">
