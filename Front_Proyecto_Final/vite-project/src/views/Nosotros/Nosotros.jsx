@@ -40,7 +40,7 @@ export default function Nosotros() {
     <div id="fondo">
       <div className="container">
         <p className=" text-animado text-center fs-5">
-          ¿ Quieres saber como seria el trabajo de tus sueños?
+          ¿ Quieres saber como sería el trabajo de tus sueños?
           <span className="texto-contacto text-center">Horizons</span>
           &mdash; Contacta con empresas &mdash;
         </p>
@@ -74,7 +74,7 @@ export default function Nosotros() {
                 Muchos candidatos ya han decidido, y <b>¿TÚ?</b>
               </p>
               <a href="http://127.0.0.1:5173/login" class="link-text">
-                Registrate
+                Regístrate
               </a>
             </div>
           ) : (
@@ -88,7 +88,7 @@ export default function Nosotros() {
         )}
 
         <div>
-          <h1 className="text-center">Contactanos</h1>
+          <h1 className="text-center">Contáctanos</h1>
         </div>
         <Contacto />
       </div>

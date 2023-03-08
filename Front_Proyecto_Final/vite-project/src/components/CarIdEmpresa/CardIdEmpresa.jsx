@@ -76,24 +76,28 @@ export default function CardIdEmpresa({ users }) {
       </div>
       <div className="d-flex justify-content-end">
         <div
-          className={`alert alert-danger mt-5 col-4  ${visible}`}
+          className={`d-flex justify-content-center align-item-end alert alert-danger mt-5 col-3  ${visible}`}
           role="alert"
         >
-          Eliminar usuario ¿Estas seguro?
-          <button
-            id="botones"
-            className="btn  mx-1 text-white rounded"
-            onClick={() => deleteUser()}
-          >
-            Si
-          </button>
-          <button
-            id="botones"
-            className="btn mx-1 text-white rounded"
-            onClick={() => toggleVisible()}
-          >
-            No
-          </button>
+          <div>
+            <p>Eliminar usuario ¿Estas seguro?</p>
+            <div className="d-flex justify-content-center gap-3">
+              <button
+                id="botones"
+                className="btn text-white rounded"
+                onClick={() => deleteUser()}
+              >
+                Si
+              </button>
+              <button
+                id="botones"
+                className="btn text-white rounded"
+                onClick={() => toggleVisible()}
+              >
+                No
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </>
