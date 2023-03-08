@@ -3,6 +3,7 @@ import CardEditarUsuario from "../../components/CardEditarUsuario/CardEditarUsua
 import { useAuthContext } from "../../context/AuthContext/AuthContext";
 import Grafica from "../../components/Grafica/Grafica";
 import CardEventosPerfilUsuario from "../../components/CardEventosPerfilUsuario/CardEventosPerfilUsuarios";
+import { Link } from "react-router-dom";
 
 export default function EditarUsuario() {
   const { authorization } = useAuthContext();
@@ -114,13 +115,13 @@ export default function EditarUsuario() {
 
         {aptitudes[0] === undefined ? (
           <div className="d-flex justify-content-center">
-            <a
-              href="http://127.0.0.1:5173/test"
+            <Link
+              to="/test"
               id="botones"
               className="text-white rounded col-3 text-center mb-5 mt-5"
             >
               Realizar test aptitudes
-            </a>
+            </Link>
           </div>
         ) : (
           <>
