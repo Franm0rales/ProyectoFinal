@@ -430,7 +430,7 @@ export default function CardEditarUsuario({ user, setUser }) {
                     )}
                     <div className="d-flex ms-2">
                       {inputAvatar ? (
-                        <div className="d-flex flex-row ">
+                        <div className="d-flex flex-row gap-4">
                           <div className="col-4">
                             <button
                               className={`btn ${avatar2}`}

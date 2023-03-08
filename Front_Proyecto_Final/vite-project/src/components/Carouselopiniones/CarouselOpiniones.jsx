@@ -33,7 +33,9 @@ export default function CarouselOpiniones({ comentarios }) {
                     >
                       <div class="p-4">
                         <div class="t-card">
-                          <p class="fs-4">{comentario.comentario}</p>
+                          <small class="text-black fs-5">
+                            {comentario.comentario}
+                          </small>
                           <br />
                         </div>
                         <div class="row">
@@ -51,8 +53,6 @@ export default function CarouselOpiniones({ comentarios }) {
                               </strong>
                             </h4>
                             <p class="testimonial_subtitle">
-                              <span>{comentario.titulo}</span>
-                              <br />
                               <span>{renderStars(comentario.rating)}</span>
                             </p>
                           </div>
