@@ -29,7 +29,7 @@ controller.addTarjeta = async (req, res) => {
     if (req.files === null) return res.status(400).send("Error");
     // Controlamos si nos viene algún tipo de archivo en el objeto files
     if (!req.files || Object.keys(req.files).length === 0) {
-      return res.status(400).send("No hay archivos");
+      return res.status(400).send();
     }
     // 1 archivo [{}] , >1 archivo [[{},{},...]]
     // Obtenemos un array de objetos con todas las imagenes

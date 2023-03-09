@@ -8,7 +8,7 @@ tarjetaQueries.getAllData = async (tabla, columna) => {
   try {
     conn = await db.createConnection();
     return await db.query(
-      `SELECT * FROM ${tabla} order by ${columna}`,
+      `SELECT * FROM ${tabla} order by ${columna} desc`,
       [],
       "select",
       conn

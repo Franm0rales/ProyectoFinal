@@ -215,35 +215,39 @@ export default function HomeAdmin() {
                           {user.eliminado == 1 ? (
                             <p></p>
                           ) : (
-                            <button
-                              onClick={() => toggleVisible(user.idUsuario)}
-                              className="table-link danger border-0 bg-transparent"
-                            >
-                              <i className="bi bi-x-square-fill text-danger px-4"></i>
-                            </button>
-                          )}
+                            <div>
+                              <button
+                                onClick={() => toggleVisible(user.idUsuario)}
+                                className="table-link danger border-0 bg-transparent"
+                              >
+                                <i className="bi bi-x-square-fill text-danger px-4"></i>
+                              </button>
 
-                          {id == user.idUsuario ? (
-                            <div
-                              className={`alert alert-danger ${visible}`}
-                              role="alert"
-                            >
-                              Eliminar usuario ¿Estas seguro?
-                              <button
-                                className="btn btn-outline-secondary mx-1 text-white rounded-2"
-                                onClick={() => deleteUser()}
-                              >
-                                Si
-                              </button>
-                              <button
-                                className="btn btn-outline-secondary mx-1 text-white rounded-2"
-                                onClick={() => toggleVisible(0)}
-                              >
-                                No
-                              </button>
+                              {id == user.idUsuario ? (
+                                <div
+                                  className={`d-flex alert alert-danger ${visible}`}
+                                  role="alert"
+                                >
+                                  <div>¿Estás seguro?</div>
+                                  <div className="d-flex flex-row">
+                                    <button
+                                      className="btn btn-outline-secondary mx-1 text-white rounded-2"
+                                      onClick={() => deleteUser()}
+                                    >
+                                      Si
+                                    </button>
+                                    <button
+                                      className="btn btn-outline-secondary mx-1 text-white rounded-2"
+                                      onClick={() => toggleVisible(0)}
+                                    >
+                                      No
+                                    </button>
+                                  </div>
+                                </div>
+                              ) : (
+                                <p></p>
+                              )}
                             </div>
-                          ) : (
-                            <p></p>
                           )}
                         </td>
                       </tr>

@@ -50,10 +50,10 @@ export default function ComentariosPerfilEmpresa({
                 {evento.alumnos} / {evento.plazas}{" "}
               </li>{" "}
               <li>
-                {" "}
                 <i class="bi bi-calendar3 text-primary fs-4 px-1"></i>{" "}
-                {evento.start.split("T")[0]}
-                {"        "}
+                {evento.start.split("T")[0].split("-")[2]}-
+                {evento.start.split("T")[0].split("-")[1]}-
+                {evento.start.split("T")[0].split("-")[0]}
               </li>{" "}
               <li class="list-inline-item">
                 {"   "}

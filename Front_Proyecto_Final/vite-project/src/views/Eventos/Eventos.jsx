@@ -44,6 +44,7 @@ export default function Eventos() {
         let jsoneventos = await responseEventos.json();
         setEventos(jsoneventos);
         setError(null);
+        console.log(eventos);
 
         const responseData = await fetch(
           `http://localhost:3000/user/${authorization.id}`
